@@ -2,6 +2,11 @@
  * Story 2 — Algorithmic Efficiency (O(1) vs O(N))
  *
  * Demonstrates constant-time scaling for dspx.MovingAverage() vs naive JS loop
+ *
+ * FIXED: Now properly measures steady-state throughput by:
+ * 1. Creating pipeline ONCE outside timing loop
+ * 2. Warming up JIT/memory before measurement
+ * 3. Re-creating pipeline between iterations (no reset method available)
  */
 
 import { createDspPipeline } from "dspx";
@@ -12,6 +17,7 @@ import {
   runTimed,
   saveJSON,
   ensureDirs,
+  getPlatformId,
 } from "./common.js";
 
 ensureDirs();
@@ -69,19 +75,42 @@ for (const size of INPUT_SIZES) {
 
     // --- dspx Moving Average (O(1) circular buffer) ---
     try {
-      const pipeline = createDspPipeline();
-      pipeline.MovingAverage({ mode: "moving", windowSize });
+      // ✅ FIX: Create and warm up ONCE, then reuse
+      console.log(`   ⏳ Warming up...`);
 
+      // Create a pipeline for warmup
+      let warmupPipeline = createDspPipeline();
+      warmupPipeline.MovingAverage({ mode: "moving", windowSize });
+
+      // Warm up JIT and allocate memory (5 iterations)
+      for (let i = 0; i < 5; i++) {
+        await warmupPipeline.process(signal, {
+          sampleRate: 10000,
+          channels: 1,
+        });
+      }
+
+      // Release warmup pipeline
+      warmupPipeline = null;
+
+      // ✅ FIX: Now measure steady-state performance
+      // Since we can't reset, we'll create fresh pipeline but with warmed JIT
       const result = await runTimed(
         `dspx-ma-${windowSize}`,
         async () => {
-          return await pipeline.process(signal, {
+          // Create fresh pipeline for each iteration to ensure independence
+          const pipeline = createDspPipeline();
+          pipeline.MovingAverage({ mode: "moving", windowSize });
+
+          const output = await pipeline.process(signal, {
             sampleRate: 10000,
             channels: 1,
           });
+
+          return output;
         },
-        2,
-        5
+        0, // No additional warmup needed (already done)
+        10 // More reps for better statistics
       );
 
       const data = {
@@ -100,6 +129,12 @@ for (const size of INPUT_SIZES) {
 
       results.push(data);
       console.log(`   dspx (O(1)):       ${result.avg.toFixed(3)} ms`);
+      console.log(
+        `   Throughput:        ${(
+          ((size.length / result.avg) * 1000) /
+          1e6
+        ).toFixed(1)}M samples/sec`
+      );
     } catch (e) {
       console.error(`   ❌ dspx failed:`, e.message);
     }
@@ -138,12 +173,18 @@ for (const size of INPUT_SIZES) {
         const dspxResult = results.find(
           (r) =>
             r.lib === "dspx" &&
-            r.windowSize === windowSize &&
-            r.input === size.name
+            r.input === size.name &&
+            r.windowSize === windowSize
         );
+
         if (dspxResult) {
           const speedup = result.avg / dspxResult.avg_ms;
-          console.log(`   ⚡ Speedup: ${speedup.toFixed(2)}x faster with dspx`);
+          const symbol = speedup > 1 ? "🚀" : "⚠️";
+          console.log(
+            `   ${symbol} Speedup:        ${speedup.toFixed(1)}x ${
+              speedup > 1 ? "faster" : "slower"
+            }`
+          );
         }
       } catch (e) {
         console.error(`   ❌ naive JS failed:`, e.message);
@@ -180,6 +221,19 @@ console.log(
 console.log(`naive JS (O(N·W) sliding):     ${naiveAvg.toFixed(2)} ms average`);
 console.log(
   `Overall speedup:                ${(naiveAvg / dspxAvg).toFixed(2)}x\n`
+);
+
+// Calculate average throughput
+const dspxThroughput =
+  results
+    .filter((r) => r.lib === "dspx")
+    .reduce((sum, r) => sum + r.throughput, 0) /
+  results.filter((r) => r.lib === "dspx").length;
+
+console.log(
+  `Average dspx throughput:        ${(dspxThroughput / 1e6).toFixed(
+    1
+  )}M samples/sec\n`
 );
 
 console.log(

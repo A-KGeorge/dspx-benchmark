@@ -382,7 +382,6 @@ if (story3Data) {
   const inputSizes = story3Data.map((r) => r.input.toUpperCase());
   const saveTimes = story3Data.map((r) => r.save_ms);
   const loadTimes = story3Data.map((r) => r.load_ms);
-  const seamlessMarkers = story3Data.map((r) => (r.seamless ? "✓" : "✗"));
 
   const config = {
     type: "bar",
@@ -415,7 +414,7 @@ if (story3Data) {
         },
         subtitle: {
           display: true,
-          text: subtitle + ` • Seamless: ${seamlessMarkers.join(", ")}`,
+          text: subtitle,
           font: { size: 14 },
           padding: { bottom: 20 },
         },
