@@ -1,0 +1,59 @@
+[
+  {
+    "test": "redis_persistence",
+    "input": "small",
+    "samples": 1024,
+    "save_ms": 0.14944980000145733,
+    "load_ms": 0.7468424000311643,
+    "state_size_bytes": 3475,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.11"
+    }
+  },
+  {
+    "test": "redis_persistence",
+    "input": "medium",
+    "samples": 65536,
+    "save_ms": 0.1723100000526756,
+    "load_ms": 0.31437059994786976,
+    "state_size_bytes": 3537,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.11"
+    }
+  },
+  {
+    "test": "redis_persistence",
+    "input": "large",
+    "samples": 1048576,
+    "save_ms": 0.19083239999599755,
+    "load_ms": 0.20746700004674495,
+    "state_size_bytes": 3460,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.11"
+    }
+  }
+]
