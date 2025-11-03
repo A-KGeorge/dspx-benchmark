@@ -146,6 +146,7 @@ The repository includes a GitHub Actions workflow that automatically runs benchm
 - **Linux ARM64** (github-actions-linux-arm64)
 
 Results are committed back to the repository automatically:
+
 - Triggered on push to main, pull requests, and weekly schedule (Sundays)
 - Results stored in `results/github-actions-{platform}/`
 - Charts generated in `charts/github-actions-{platform}/`
