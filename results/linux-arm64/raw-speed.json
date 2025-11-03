@@ -4,10 +4,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.00873199999332428,
-    "min_ms": 0.005695998668670654,
-    "max_ms": 0.014485999941825867,
-    "throughput": 117269812.27472062,
+    "avg_ms": 0.008979599922895432,
+    "min_ms": 0.005614999681711197,
+    "max_ms": 0.015297999605536461,
+    "throughput": 114036260.94622442,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -16,7 +16,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -24,10 +24,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "tfjs",
-    "avg_ms": 22.80223399978131,
-    "min_ms": 19.757744001224637,
-    "max_ms": 26.007520999759436,
-    "throughput": 44907.88051775194,
+    "avg_ms": 22.882303800061344,
+    "min_ms": 19.870951000601053,
+    "max_ms": 29.054238999262452,
+    "throughput": 44750.73877820182,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -36,7 +36,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -44,10 +44,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "fft.js",
-    "avg_ms": 0.2132914999499917,
-    "min_ms": 0.20137299969792366,
-    "max_ms": 0.28031199984252453,
-    "throughput": 4800941.435735071,
+    "avg_ms": 0.21708739995956422,
+    "min_ms": 0.1972529999911785,
+    "max_ms": 0.27675499953329563,
+    "throughput": 4716994.170047342,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -56,7 +56,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -64,10 +64,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 0.3623785000294447,
-    "min_ms": 0.3428109996020794,
-    "max_ms": 0.3970090001821518,
-    "throughput": 180849581.29324707,
+    "avg_ms": 0.3630162999033928,
+    "min_ms": 0.3400229997932911,
+    "max_ms": 0.435029000043869,
+    "throughput": 180531838.42554915,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -76,7 +76,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -84,10 +84,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "tfjs",
-    "avg_ms": 1417.6760954994709,
-    "min_ms": 1362.2090739998966,
-    "max_ms": 1567.729403000325,
-    "throughput": 46227.76684184025,
+    "avg_ms": 1422.5959674997255,
+    "min_ms": 1357.7892279997468,
+    "max_ms": 1610.2146709989756,
+    "throughput": 46067.893834383896,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -96,7 +96,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -104,10 +104,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fft.js",
-    "avg_ms": 0.6050560005009175,
-    "min_ms": 0.5863800011575222,
-    "max_ms": 0.6380550004541874,
-    "throughput": 108313941.09924313,
+    "avg_ms": 0.6076898001134395,
+    "min_ms": 0.5846359990537167,
+    "max_ms": 0.6863139998167753,
+    "throughput": 107844495.64196433,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -116,7 +116,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -124,10 +124,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 8.360852699540555,
-    "min_ms": 6.577287999913096,
-    "max_ms": 10.265118999406695,
-    "throughput": 125414959.17726445,
+    "avg_ms": 8.406826999783515,
+    "min_ms": 6.592159999534488,
+    "max_ms": 10.437762999907136,
+    "throughput": 124729104.09920438,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -136,7 +136,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -144,10 +144,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "tfjs",
-    "avg_ms": 32252.311415799708,
-    "min_ms": 26141.870311999694,
-    "max_ms": 54146.74350799993,
-    "throughput": 32511.654327085693,
+    "avg_ms": 31731.37700979989,
+    "min_ms": 26296.94714199938,
+    "max_ms": 42126.23379199952,
+    "throughput": 33045.39855538443,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -156,7 +156,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -164,10 +164,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fft.js",
-    "avg_ms": 28.148647099547087,
-    "min_ms": 26.150728000327945,
-    "max_ms": 30.457142999395728,
-    "throughput": 37251381.79080982,
+    "avg_ms": 20.211508000083267,
+    "min_ms": 18.4729989990592,
+    "max_ms": 21.78828600049019,
+    "throughput": 51880146.69641078,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -176,7 +176,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -184,10 +184,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.5347476998344064,
-    "min_ms": 0.34247699938714504,
-    "max_ms": 1.0556290000677109,
-    "throughput": 1914921.7478019986,
+    "avg_ms": 0.3974287001416087,
+    "min_ms": 0.29286300018429756,
+    "max_ms": 0.7968029994517565,
+    "throughput": 2576562.7888351707,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -197,7 +197,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -205,10 +205,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "fili",
-    "avg_ms": 1.0833049001172186,
-    "min_ms": 0.29706900008022785,
-    "max_ms": 4.687748000025749,
-    "throughput": 945255.5784518268,
+    "avg_ms": 0.6224458003416657,
+    "min_ms": 0.2221510000526905,
+    "max_ms": 2.3738429993391037,
+    "throughput": 1645123.1568080592,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -218,7 +218,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -226,10 +226,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "naive_js",
-    "avg_ms": 0.10998170003294945,
-    "min_ms": 0.09903599880635738,
-    "max_ms": 0.16983500123023987,
-    "throughput": 9310639.85820568,
+    "avg_ms": 0.10055190008133649,
+    "min_ms": 0.07372399978339672,
+    "max_ms": 0.3196089994162321,
+    "throughput": 10183795.623669825,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -239,7 +239,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -247,10 +247,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 9.104225700348616,
-    "min_ms": 4.465792000293732,
-    "max_ms": 12.730650000274181,
-    "throughput": 7198415.566245301,
+    "avg_ms": 7.02790890019387,
+    "min_ms": 3.3853479996323586,
+    "max_ms": 11.717490000650287,
+    "throughput": 9325106.647041505,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -260,7 +260,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -268,10 +268,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fili",
-    "avg_ms": 14.468689000234008,
-    "min_ms": 14.357547000050545,
-    "max_ms": 14.861925000324845,
-    "throughput": 4529505.057364912,
+    "avg_ms": 10.716763400100172,
+    "min_ms": 10.638407001271844,
+    "max_ms": 10.81291799992323,
+    "throughput": 6115279.170891038,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -281,7 +281,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -289,10 +289,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "naive_js",
-    "avg_ms": 6.510721799917519,
-    "min_ms": 6.396999999880791,
-    "max_ms": 6.964243000373244,
-    "throughput": 10065857.8286712,
+    "avg_ms": 4.807075900025666,
+    "min_ms": 4.69748199917376,
+    "max_ms": 5.346102999523282,
+    "throughput": 13633235.955282107,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -302,7 +302,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -310,10 +310,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 59.98252350017428,
-    "min_ms": 46.00988299958408,
-    "max_ms": 75.49818699993193,
-    "throughput": 17481358.549327347,
+    "avg_ms": 54.241304899565876,
+    "min_ms": 37.275232000276446,
+    "max_ms": 66.05948899872601,
+    "throughput": 19331688.312837627,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -323,7 +323,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -331,10 +331,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fili",
-    "avg_ms": 254.38479120004922,
-    "min_ms": 240.02652299962938,
-    "max_ms": 269.5455379988998,
-    "throughput": 4122007.4323366117,
+    "avg_ms": 175.4834054995328,
+    "min_ms": 172.54891699925065,
+    "max_ms": 181.77154299989343,
+    "throughput": 5975357.026011166,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -344,7 +344,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -352,10 +352,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "naive_js",
-    "avg_ms": 97.9811436995864,
-    "min_ms": 95.52271200157702,
-    "max_ms": 112.63948799856007,
-    "throughput": 10701814.251270333,
+    "avg_ms": 81.84686429984868,
+    "min_ms": 75.69017300009727,
+    "max_ms": 89.24824099987745,
+    "throughput": 12811437.664349698,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -365,7 +365,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -375,10 +375,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "dspx",
-    "avg_ms": 3.90420239996165,
-    "min_ms": 1.8981299996376038,
-    "max_ms": 5.563085999339819,
-    "throughput": 16786014.98750263,
+    "avg_ms": 3.5278563998639583,
+    "min_ms": 2.3508209995925426,
+    "max_ms": 7.4746569991111755,
+    "throughput": 18576719.846796263,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -387,7 +387,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -397,10 +397,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "tfjs",
-    "avg_ms": 17.38215630017221,
-    "min_ms": 11.719455000013113,
-    "max_ms": 21.44178600050509,
-    "throughput": 3770303.227531714,
+    "avg_ms": 15.67958039995283,
+    "min_ms": 9.573408000171185,
+    "max_ms": 25.759827999398112,
+    "throughput": 4179703.686470919,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -409,7 +409,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -419,10 +419,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "naive_js",
-    "avg_ms": 0.9765420001000166,
-    "min_ms": 0.9400720000267029,
-    "max_ms": 1.0269840005785227,
-    "throughput": 67110272.7719728,
+    "avg_ms": 0.8823182998225093,
+    "min_ms": 0.8576159998774529,
+    "max_ms": 0.9226689990609884,
+    "throughput": 74277049.46523662,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -431,7 +431,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -441,10 +441,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "dspx",
-    "avg_ms": 3.9541316002607347,
-    "min_ms": 2.9147380013018847,
-    "max_ms": 5.436301000416279,
-    "throughput": 16574056.36061242,
+    "avg_ms": 4.851863100379705,
+    "min_ms": 2.8189750015735626,
+    "max_ms": 10.240383999422193,
+    "throughput": 13507388.531813927,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -453,7 +453,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -463,10 +463,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "tfjs",
-    "avg_ms": 33.606926400214434,
-    "min_ms": 27.857994001358747,
-    "max_ms": 40.88636600039899,
-    "throughput": 1950074.196597218,
+    "avg_ms": 33.112065099924806,
+    "min_ms": 24.61077699996531,
+    "max_ms": 53.51093500107527,
+    "throughput": 1979218.143061359,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -475,7 +475,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -485,10 +485,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "naive_js",
-    "avg_ms": 3.484600099734962,
-    "min_ms": 3.4188720006495714,
-    "max_ms": 3.607788998633623,
-    "throughput": 18807323.11434665,
+    "avg_ms": 3.3611268999055026,
+    "min_ms": 3.1018559988588095,
+    "max_ms": 5.301683999598026,
+    "throughput": 19498222.456832122,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -497,7 +497,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -507,10 +507,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "dspx",
-    "avg_ms": 7.551972600258887,
-    "min_ms": 3.2819529995322227,
-    "max_ms": 18.055059000849724,
-    "throughput": 8677997.586717062,
+    "avg_ms": 3.893530500307679,
+    "min_ms": 3.1275430005043745,
+    "max_ms": 4.868827000260353,
+    "throughput": 16832024.30154872,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -519,7 +519,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -529,10 +529,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "tfjs",
-    "avg_ms": 63.527755000256,
-    "min_ms": 48.629842000082135,
-    "max_ms": 118.23452699929476,
-    "throughput": 1031612.0882870157,
+    "avg_ms": 51.90137249995023,
+    "min_ms": 44.668054001405835,
+    "max_ms": 73.46895699948072,
+    "throughput": 1262702.6385489681,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -541,7 +541,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -551,10 +551,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "naive_js",
-    "avg_ms": 7.184065299853683,
-    "min_ms": 6.482489999383688,
-    "max_ms": 10.05524600110948,
-    "throughput": 9122411.512787163,
+    "avg_ms": 6.210282399877906,
+    "min_ms": 6.096158999949694,
+    "max_ms": 6.893565000966191,
+    "throughput": 10552821.237451045,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -563,7 +563,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -573,10 +573,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "dspx",
-    "avg_ms": 10.500893600285053,
-    "min_ms": 5.425069998949766,
-    "max_ms": 17.260612001642585,
-    "throughput": 6240992.671159051,
+    "avg_ms": 9.010409100167454,
+    "min_ms": 6.291847001761198,
+    "max_ms": 14.48123300075531,
+    "throughput": 7273365.645382522,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -585,7 +585,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -595,10 +595,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "tfjs",
-    "avg_ms": 99.10443340037018,
-    "min_ms": 92.66047600097954,
-    "max_ms": 109.68802100047469,
-    "throughput": 661282.2227159336,
+    "avg_ms": 90.63448850046844,
+    "min_ms": 83.63130499981344,
+    "max_ms": 111.4826650004834,
+    "throughput": 723080.1550743157,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -607,7 +607,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -617,10 +617,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "naive_js",
-    "avg_ms": 12.706935999915004,
-    "min_ms": 12.610254999250174,
-    "max_ms": 12.817564999684691,
-    "throughput": 5157498.235643775,
+    "avg_ms": 12.161769700422884,
+    "min_ms": 12.080245999619365,
+    "max_ms": 12.317212000489235,
+    "throughput": 5388689.443586587,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -629,7 +629,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -639,10 +639,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "dspx",
-    "avg_ms": 7.55462619997561,
-    "min_ms": 5.588965000584722,
-    "max_ms": 14.81928800046444,
-    "throughput": 8674949.397259599,
+    "avg_ms": 8.413314100168645,
+    "min_ms": 5.379419999197125,
+    "max_ms": 16.250045001506805,
+    "throughput": 7789558.219238045,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "unknown",
@@ -651,7 +651,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -661,10 +661,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "tfjs",
-    "avg_ms": 213.9121072001755,
-    "min_ms": 178.3798719998449,
-    "max_ms": 257.02894099988043,
-    "throughput": 306368.82062347437,
+    "avg_ms": 165.90286270026118,
+    "min_ms": 160.36710199899971,
+    "max_ms": 175.052833000198,
+    "throughput": 395026.33609405963,
     "backend": "CPU (TensorFlow.js WASM)",
     "meta": {
       "cpu": "unknown",
@@ -673,7 +673,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -683,10 +683,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "naive_js",
-    "avg_ms": 36.69929870031774,
-    "min_ms": 36.61564300023019,
-    "max_ms": 36.82270699925721,
-    "throughput": 1785756.1948297555,
+    "avg_ms": 24.209231700189413,
+    "min_ms": 23.980356998741627,
+    "max_ms": 25.06613700091839,
+    "throughput": 2707066.4947821223,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "unknown",
@@ -695,7 +695,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   }
 ]

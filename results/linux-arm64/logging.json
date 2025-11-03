@@ -4,10 +4,10 @@
     "input": "medium",
     "samples": 65536,
     "mode": "none",
-    "avg_ms": 5.652626899816096,
-    "min_ms": 2.0774470008909702,
-    "max_ms": 9.29555399902165,
-    "throughput": 11593901.589742668,
+    "avg_ms": 3.768124899826944,
+    "min_ms": 2.373691000044346,
+    "max_ms": 6.950347999110818,
+    "throughput": 17392204.808022637,
     "overhead_percent": 0,
     "meta": {
       "cpu": "unknown",
@@ -16,7 +16,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -24,11 +24,11 @@
     "input": "medium",
     "samples": 65536,
     "mode": "batched",
-    "avg_ms": 4.19457720015198,
-    "min_ms": 2.4114609993994236,
-    "max_ms": 10.72609000094235,
-    "throughput": 15623982.316412121,
-    "overhead_percent": -25.79419667184389,
+    "avg_ms": 4.28843940012157,
+    "min_ms": 2.537906000390649,
+    "max_ms": 9.735796000808477,
+    "throughput": 15282016.110136049,
+    "overhead_percent": 13.808313527996969,
     "log_count": 0,
     "meta": {
       "cpu": "unknown",
@@ -37,7 +37,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -45,11 +45,11 @@
     "input": "medium",
     "samples": 65536,
     "mode": "per-message",
-    "avg_ms": 5.53745740018785,
-    "min_ms": 2.2827220000326633,
-    "max_ms": 11.809714000672102,
-    "throughput": 11835034.613137934,
-    "overhead_percent": -2.0374509351040513,
+    "avg_ms": 3.7693788001313804,
+    "min_ms": 2.8666989989578724,
+    "max_ms": 4.800588000565767,
+    "throughput": 17386419.215207495,
+    "overhead_percent": 0.03327650589538826,
     "log_count": 0,
     "meta": {
       "cpu": "unknown",
@@ -58,7 +58,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -66,11 +66,11 @@
     "input": "medium",
     "samples": 65536,
     "mode": "console",
-    "avg_ms": 7.808151400089264,
-    "min_ms": 3.548345999792218,
-    "max_ms": 13.25802999921143,
-    "throughput": 8393279.874062225,
-    "overhead_percent": 38.13314656135001,
+    "avg_ms": 8.525842800736427,
+    "min_ms": 5.803936000913382,
+    "max_ms": 10.16915100067854,
+    "throughput": 7686747.402185186,
+    "overhead_percent": 126.26221336580399,
     "log_count": 0,
     "meta": {
       "cpu": "unknown",
@@ -79,7 +79,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -87,10 +87,10 @@
     "input": "large",
     "samples": 1048576,
     "mode": "none",
-    "avg_ms": 28.833563400059937,
-    "min_ms": 18.735065000131726,
-    "max_ms": 43.39006300084293,
-    "throughput": 36366507.512485266,
+    "avg_ms": 27.037518799863754,
+    "min_ms": 19.44029700011015,
+    "max_ms": 35.92039299942553,
+    "throughput": 38782256.89870936,
     "overhead_percent": 0,
     "meta": {
       "cpu": "unknown",
@@ -99,7 +99,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -107,11 +107,11 @@
     "input": "large",
     "samples": 1048576,
     "mode": "batched",
-    "avg_ms": 29.11180190052837,
-    "min_ms": 16.327267000451684,
-    "max_ms": 46.28722600080073,
-    "throughput": 36018931.55163881,
-    "overhead_percent": 0.9649813191936399,
+    "avg_ms": 22.71078430004418,
+    "min_ms": 13.809937000274658,
+    "max_ms": 35.93924100138247,
+    "throughput": 46170840.51993573,
+    "overhead_percent": -16.00270546956172,
     "log_count": 0,
     "meta": {
       "cpu": "unknown",
@@ -120,7 +120,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -128,11 +128,11 @@
     "input": "large",
     "samples": 1048576,
     "mode": "per-message",
-    "avg_ms": 30.87963159997016,
-    "min_ms": 22.674226999282837,
-    "max_ms": 42.17729399912059,
-    "throughput": 33956881.79132983,
-    "overhead_percent": 7.096133667287097,
+    "avg_ms": 22.87919870018959,
+    "min_ms": 14.457265999168158,
+    "max_ms": 35.26438000053167,
+    "throughput": 45830975.714691915,
+    "overhead_percent": -15.379813992751131,
     "log_count": 0,
     "meta": {
       "cpu": "unknown",
@@ -141,7 +141,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   }
 ]

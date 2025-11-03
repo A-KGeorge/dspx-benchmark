@@ -6,10 +6,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.7832299999892711,
-    "min_ms": 0.3104560002684593,
-    "max_ms": 1.6553810015320778,
-    "throughput": 1307406.5089616422,
+    "avg_ms": 0.3078055001795292,
+    "min_ms": 0.20110000111162663,
+    "max_ms": 0.5260770004242659,
+    "throughput": 3326776.160278964,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -17,7 +17,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -27,10 +27,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.5021558001637458,
-    "min_ms": 0.06021900102496147,
-    "max_ms": 2.2658350002020597,
-    "throughput": 2039207.7511921364,
+    "avg_ms": 0.3648954004049301,
+    "min_ms": 0.038266001269221306,
+    "max_ms": 1.6689290013164282,
+    "throughput": 2806283.660642615,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -38,7 +38,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -48,10 +48,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.32861030045896766,
-    "min_ms": 0.26655200123786926,
-    "max_ms": 0.4832600001245737,
-    "throughput": 3116153.0803197175,
+    "avg_ms": 0.185224099829793,
+    "min_ms": 0.13274999894201756,
+    "max_ms": 0.24701900035142899,
+    "throughput": 5528438.259065526,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -59,7 +59,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -69,10 +69,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.1906835999339819,
-    "min_ms": 0.17850100062787533,
-    "max_ms": 0.20210099965333939,
-    "throughput": 5370152.442866231,
+    "avg_ms": 0.3642357997596264,
+    "min_ms": 0.12281799875199795,
+    "max_ms": 1.2658730000257492,
+    "throughput": 2811365.6062248084,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -80,7 +80,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -90,10 +90,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.69690450001508,
-    "min_ms": 0.2005550004541874,
-    "max_ms": 2.8263630010187626,
-    "throughput": 1469354.8398350738,
+    "avg_ms": 0.6657886002212763,
+    "min_ms": 0.13185499981045723,
+    "max_ms": 3.4008349999785423,
+    "throughput": 1538025.733182682,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -101,7 +101,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -111,10 +111,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.5567524001002312,
-    "min_ms": 0.5132069997489452,
-    "max_ms": 0.614156000316143,
-    "throughput": 1839237.6931211273,
+    "avg_ms": 0.3806496001780033,
+    "min_ms": 0.3791600000113249,
+    "max_ms": 0.382659999653697,
+    "throughput": 2690138.1205211994,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -122,7 +122,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -132,10 +132,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.3833694001659751,
-    "min_ms": 0.2786779999732971,
-    "max_ms": 0.8287480007857084,
-    "throughput": 2671053.0354187675,
+    "avg_ms": 0.49292390011250975,
+    "min_ms": 0.1857130005955696,
+    "max_ms": 1.3256340008229017,
+    "throughput": 2077399.7766516744,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -143,7 +143,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -153,10 +153,10 @@
     "windowSize": 2048,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.6844986002892256,
-    "min_ms": 0.6558619998395443,
-    "max_ms": 0.716814000159502,
-    "throughput": 1495985.5280453789,
+    "avg_ms": 0.6103597998619079,
+    "min_ms": 0.5233089998364449,
+    "max_ms": 0.8442949987947941,
+    "throughput": 1677698.9576175837,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -164,7 +164,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -174,10 +174,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.5932338999584317,
-    "min_ms": 0.3942740000784397,
-    "max_ms": 0.9382419995963573,
-    "throughput": 1726131.969315564,
+    "avg_ms": 0.4243420001119375,
+    "min_ms": 0.28508200123906136,
+    "max_ms": 0.5943040009588003,
+    "throughput": 2413147.8847954674,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -185,7 +185,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -195,10 +195,10 @@
     "windowSize": 8192,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.8714556004852057,
-    "min_ms": 0.6560660004615784,
-    "max_ms": 1.7040449995547533,
-    "throughput": 1175045.5208846685,
+    "avg_ms": 0.5121461998671293,
+    "min_ms": 0.5059670004993677,
+    "max_ms": 0.527378998696804,
+    "throughput": 1999429.0697962134,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -206,7 +206,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -216,10 +216,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 9.457973499968649,
-    "min_ms": 7.499913001433015,
-    "max_ms": 10.418761000037193,
-    "throughput": 6929179.913669376,
+    "avg_ms": 7.078323500230908,
+    "min_ms": 3.1670040003955364,
+    "max_ms": 10.62428400106728,
+    "throughput": 9258689.574990759,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -227,7 +227,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -237,10 +237,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 4.23661039955914,
-    "min_ms": 3.642171999439597,
-    "max_ms": 5.05744899995625,
-    "throughput": 15468970.19532871,
+    "avg_ms": 4.705274799838662,
+    "min_ms": 3.0593710001558065,
+    "max_ms": 6.733074000105262,
+    "throughput": 13928198.200506195,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -248,7 +248,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -258,10 +258,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 11.443393300287426,
-    "min_ms": 7.634186001494527,
-    "max_ms": 18.84951100125909,
-    "throughput": 5726972.610331755,
+    "avg_ms": 8.404706900194288,
+    "min_ms": 3.7726260013878345,
+    "max_ms": 11.393229000270367,
+    "throughput": 7797535.449866197,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -269,7 +269,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -279,10 +279,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 12.486335600167513,
-    "min_ms": 11.618510000407696,
-    "max_ms": 14.39783599972725,
-    "throughput": 5248617.536687127,
+    "avg_ms": 10.731804000213742,
+    "min_ms": 8.492092000320554,
+    "max_ms": 15.932843999937177,
+    "throughput": 6106708.620348893,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -290,7 +290,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -300,10 +300,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 6.73278780002147,
-    "min_ms": 3.330943001434207,
-    "max_ms": 12.125369999557734,
-    "throughput": 9733857.942142632,
+    "avg_ms": 4.969819499924779,
+    "min_ms": 3.0169520005583763,
+    "max_ms": 9.892546998336911,
+    "throughput": 13186796.824510815,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -311,7 +311,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -321,10 +321,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 42.51982599981129,
-    "min_ms": 42.121604999527335,
-    "max_ms": 43.40541600063443,
-    "throughput": 1541304.51992656,
+    "avg_ms": 39.82947580032051,
+    "min_ms": 39.77112799882889,
+    "max_ms": 39.97619200125337,
+    "throughput": 1645414.5750889503,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -332,7 +332,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -342,10 +342,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 5.688934100046754,
-    "min_ms": 3.055155001580715,
-    "max_ms": 10.733082000166178,
-    "throughput": 11519908.448132912,
+    "avg_ms": 3.2353564999997615,
+    "min_ms": 2.174770001322031,
+    "max_ms": 5.717670999467373,
+    "throughput": 20256191.241986725,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -353,7 +353,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -363,10 +363,10 @@
     "windowSize": 2048,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 191.66383839957416,
-    "min_ms": 145.29383499920368,
-    "max_ms": 257.60004299879074,
-    "throughput": 341932.0021305887,
+    "avg_ms": 158.71140359938144,
+    "min_ms": 154.05059899948537,
+    "max_ms": 172.19553099945188,
+    "throughput": 412925.5901827045,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -374,7 +374,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -384,10 +384,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 6.855818900093436,
-    "min_ms": 3.2260489985346794,
-    "max_ms": 10.31012300029397,
-    "throughput": 9559178.99160184,
+    "avg_ms": 3.2282435001805423,
+    "min_ms": 1.920338999480009,
+    "max_ms": 6.079030999913812,
+    "throughput": 20300823.03157579,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -395,7 +395,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -405,10 +405,10 @@
     "windowSize": 8192,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 623.9619497999549,
-    "min_ms": 622.4810719992965,
-    "max_ms": 627.8503439985216,
-    "throughput": 105032.04565760965,
+    "avg_ms": 588.8718271996826,
+    "min_ms": 585.9525019992143,
+    "max_ms": 591.8932589981705,
+    "throughput": 111290.77156169873,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -416,7 +416,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -426,10 +426,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 50.38858179990202,
-    "min_ms": 35.95222199894488,
-    "max_ms": 65.31062699854374,
-    "throughput": 20809793.85694953,
+    "avg_ms": 52.629938199929896,
+    "min_ms": 44.0887690000236,
+    "max_ms": 60.84207199886441,
+    "throughput": 19923565.101229716,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -437,7 +437,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -447,10 +447,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 53.240470399707554,
-    "min_ms": 53.07425699941814,
-    "max_ms": 53.36721600033343,
-    "throughput": 19695092.7016182,
+    "avg_ms": 50.7684634000063,
+    "min_ms": 49.77411099895835,
+    "max_ms": 52.069844000041485,
+    "throughput": 20654081.88028535,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -458,7 +458,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -468,10 +468,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 43.502433699928226,
-    "min_ms": 30.33412200026214,
-    "max_ms": 57.590954000130296,
-    "throughput": 24103846.861370657,
+    "avg_ms": 57.23415080010891,
+    "min_ms": 39.61147500015795,
+    "max_ms": 96.46605599857867,
+    "throughput": 18320809.95946226,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -479,7 +479,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -489,10 +489,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 178.27798539996147,
-    "min_ms": 177.37708999961615,
-    "max_ms": 180.53298900090158,
-    "throughput": 5881690.875334665,
+    "avg_ms": 168.63092380017042,
+    "min_ms": 167.1957359984517,
+    "max_ms": 174.0110229998827,
+    "throughput": 6218171.473949669,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -500,7 +500,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -510,10 +510,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 48.442817699350414,
-    "min_ms": 32.384349999949336,
-    "max_ms": 65.10653799958527,
-    "throughput": 21645644.28328166,
+    "avg_ms": 47.72762280013412,
+    "min_ms": 35.385582000017166,
+    "max_ms": 55.33847500011325,
+    "throughput": 21970002.662631113,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -521,7 +521,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -531,10 +531,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 614.1565867997706,
-    "min_ms": 563.0920369997621,
-    "max_ms": 679.775952000171,
-    "throughput": 1707343.082427707,
+    "avg_ms": 639.0634379997849,
+    "min_ms": 635.7134809996933,
+    "max_ms": 644.0487479995936,
+    "throughput": 1640801.1124559953,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -542,7 +542,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -552,10 +552,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 51.042627199925484,
-    "min_ms": 40.70500699989498,
-    "max_ms": 65.37668300047517,
-    "throughput": 20543143.20250214,
+    "avg_ms": 52.96747649963945,
+    "min_ms": 43.91463400050998,
+    "max_ms": 62.73993100039661,
+    "throughput": 19796601.033223428,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -563,7 +563,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   },
   {
@@ -573,10 +573,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 52.41679349951446,
-    "min_ms": 36.66583199985325,
-    "max_ms": 64.68534100055695,
-    "throughput": 20004581.16557078,
+    "avg_ms": 53.28441980034113,
+    "min_ms": 40.76610700041056,
+    "max_ms": 70.2239900007844,
+    "throughput": 19678848.03717591,
     "meta": {
       "cpu": "unknown",
       "cores": 8,
@@ -584,7 +584,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.13"
+      "dspx": "0.2.0-alpha.14"
     }
   }
 ]
