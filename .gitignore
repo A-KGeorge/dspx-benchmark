@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Results
+results/*.json
+!results/.gitkeep
+
+# Charts
+charts/*.png
+!charts/.gitkeep
+
+# Generated report (optional - you may want to commit this)
+# BENCHMARKS.md
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

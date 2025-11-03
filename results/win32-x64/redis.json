@@ -1,0 +1,59 @@
+[
+  {
+    "test": "redis_persistence",
+    "input": "small",
+    "samples": 1024,
+    "save_ms": 0.05620000000003529,
+    "load_ms": 0.21344000000001415,
+    "state_size_bytes": 3474,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
+      "cores": 24,
+      "ram": "64 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26200.6901]",
+      "node": "v22.17.1",
+      "dspx": "0.2.0-alpha.10"
+    }
+  },
+  {
+    "test": "redis_persistence",
+    "input": "medium",
+    "samples": 65536,
+    "save_ms": 0.04832000000003518,
+    "load_ms": 0.2617599999999811,
+    "state_size_bytes": 3536,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
+      "cores": 24,
+      "ram": "64 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26200.6901]",
+      "node": "v22.17.1",
+      "dspx": "0.2.0-alpha.10"
+    }
+  },
+  {
+    "test": "redis_persistence",
+    "input": "large",
+    "samples": 1048576,
+    "save_ms": 0.04805999999998676,
+    "load_ms": 0.20326000000000022,
+    "state_size_bytes": 3459,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
+      "cores": 24,
+      "ram": "64 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26200.6901]",
+      "node": "v22.17.1",
+      "dspx": "0.2.0-alpha.10"
+    }
+  }
+]

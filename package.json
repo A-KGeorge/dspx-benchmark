@@ -1,0 +1,34 @@
+{
+  "name": "dspx-benchmarks",
+  "version": "1.0.0",
+  "description": "Benchmark suite for dspx library",
+  "type": "module",
+  "scripts": {
+    "bench:all": "node --no-warnings raw-speed.js && node --no-warnings algorithmic.js && node --no-warnings redis.js && node --no-warnings logging.js && node --no-warnings generate-charts.js && node --no-warnings generate-report.js",
+    "bench:speed": "node --no-warnings raw-speed.js",
+    "bench:algo": "node --no-warnings algorithmic.js",
+    "bench:redis": "node --no-warnings redis.js",
+    "bench:logging": "node --no-warnings logging.js",
+    "charts": "node --no-warnings generate-charts.js",
+    "report": "node --no-warnings generate-report.js"
+  },
+  "keywords": [
+    "benchmark",
+    "dsp",
+    "performance"
+  ],
+  "author": "Alan Kochukalam George",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "chart.js": "^4.5.1",
+    "chartjs-node-canvas": "^5.0.0",
+    "crypto": "^1.0.1",
+    "dsp.js": "^1.0.1",
+    "dspx": "^0.2.0-alpha.11",
+    "fft.js": "^4.0.4",
+    "fili": "^2.0.3",
+    "redis": "^5.9.0"
+  },
+  "main": "common.js"
+}
