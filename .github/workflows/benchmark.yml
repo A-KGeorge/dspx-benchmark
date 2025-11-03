@@ -1,0 +1,166 @@
+name: Cross-Platform Benchmarks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: # Allow manual trigger
+  schedule:
+    # Run benchmarks weekly on Sunday at 00:00 UTC
+    - cron: "0 0 * * 0"
+
+permissions:
+  contents: write
+
+jobs:
+  benchmark-windows:
+    name: Benchmark on Windows x64
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Set platform identifier
+        run: echo "BENCHMARK_PLATFORM=github-actions-win32-x64" >> $env:GITHUB_ENV
+
+      - name: Run benchmarks
+        run: |
+          npm run bench:speed
+          npm run bench:algo
+          npm run bench:logging
+        continue-on-error: true
+        # Redis benchmarks skipped on CI (requires Redis server)
+
+      - name: Generate charts and report
+        run: |
+          npm run charts
+          npm run report
+        continue-on-error: true
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results-windows
+          path: |
+            results/github-actions-win32-x64/*.json
+            charts/github-actions-win32-x64/*.png
+            BENCHMARKS-github-actions-win32-x64.md
+          retention-days: 90
+
+      - name: Commit results to repository
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add results/github-actions-win32-x64/*.json
+          git add charts/github-actions-win32-x64/*.png
+          git add BENCHMARKS-github-actions-win32-x64.md
+          git diff --staged --quiet || git commit -m "chore: update Windows x64 benchmark results [skip ci]"
+        continue-on-error: true
+
+  benchmark-linux-arm64:
+    name: Benchmark on Linux ARM64
+    runs-on: ubuntu-latest-arm64
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Set platform identifier
+        run: echo "BENCHMARK_PLATFORM=github-actions-linux-arm64" >> $GITHUB_ENV
+
+      - name: Run benchmarks
+        run: |
+          npm run bench:speed
+          npm run bench:algo
+          npm run bench:logging
+        continue-on-error: true
+        # Redis benchmarks skipped on CI (requires Redis server)
+
+      - name: Generate charts and report
+        run: |
+          npm run charts
+          npm run report
+        continue-on-error: true
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results-linux-arm64
+          path: |
+            results/github-actions-linux-arm64/*.json
+            charts/github-actions-linux-arm64/*.png
+            BENCHMARKS-github-actions-linux-arm64.md
+          retention-days: 90
+
+      - name: Commit results to repository
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add results/github-actions-linux-arm64/*.json
+          git add charts/github-actions-linux-arm64/*.png
+          git add BENCHMARKS-github-actions-linux-arm64.md
+          git diff --staged --quiet || git commit -m "chore: update Linux ARM64 benchmark results [skip ci]"
+        continue-on-error: true
+
+  push-results:
+    name: Push benchmark results
+    needs: [benchmark-windows, benchmark-linux-arm64]
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Pull latest changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git pull origin ${{ github.head_ref || github.ref_name }} --rebase
+
+      - name: Download Windows results
+        uses: actions/download-artifact@v4
+        with:
+          name: benchmark-results-windows
+          path: ./
+
+      - name: Download Linux ARM64 results
+        uses: actions/download-artifact@v4
+        with:
+          name: benchmark-results-linux-arm64
+          path: ./
+
+      - name: Commit and push results
+        run: |
+          git add results/ charts/ BENCHMARKS-*.md
+          git diff --staged --quiet || git commit -m "chore: update benchmark results from CI [skip ci]"
+          git push origin ${{ github.head_ref || github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,16 +2,22 @@
 node_modules/
 package-lock.json
 
-# Results
+# Results - Allow platform-specific results to be committed by CI
+# Individual local results are ignored, but CI results are kept
 results/*.json
+results/*/*.json
+!results/github-actions-*/*.json
 !results/.gitkeep
 
-# Charts
+# Charts - Allow platform-specific charts to be committed by CI
 charts/*.png
+charts/*/*.png
+!charts/github-actions-*/*.png
 !charts/.gitkeep
 
-# Generated report (optional - you may want to commit this)
+# Generated reports - Allow CI-generated reports to be committed
 # BENCHMARKS.md
+!BENCHMARKS-github-actions-*.md
 
 # Logs
 *.log
