@@ -36,13 +36,13 @@ Compares FFT and FIR filter implementations:
 
 **Key Metric**: Throughput (samples/sec)
 
-![FIR Filter Throughput](./charts/win32-x64/fir_throughput.png)
+![FIR Filter Throughput](./charts/amd-ryzen-9-5900x-12-core-processor/fir_throughput.png)
 _Windows x64 results_
 
-![FFT Throughput](./charts/win32-x64/fft_throughput.png)
+![FFT Throughput](./charts/amd-ryzen-9-5900x-12-core-processor/fft_throughput.png)
 _Windows x64 results_
 
-![1D Convolution Throughput](./charts/win32-x64/convolution_throughput.png)
+![1D Convolution Throughput](./charts/amd-ryzen-9-5900x-12-core-processor/convolution_throughput.png)
 _Windows x64 results_
 
 ### Algorithmic Efficiency
@@ -51,10 +51,10 @@ Demonstrates O(1) circular buffer vs O(N·W) naive sliding window for moving ave
 
 **Key Metric**: Execution time vs window size
 
-![Moving Average (Small Input)](./charts/win32-x64/moving_avg_small.png)
+![Moving Average (Small Input)](./charts/amd-ryzen-9-5900x-12-core-processor/moving_avg_small.png)
 _Windows x64 results_
 
-![Moving Average (Medium Input)](./charts/win32-x64/moving_avg_medium.png)
+![Moving Average (Medium Input)](./charts/amd-ryzen-9-5900x-12-core-processor/moving_avg_medium.png)
 _Windows x64 results_
 
 ### Redis Resilience
@@ -63,7 +63,7 @@ Tests state save/load operations for crash recovery with seamless processing con
 
 **Key Metric**: Serialization latency, state size
 
-![State Persistence Latency](./charts/win32-x64/redis_latency.png)
+![State Persistence Latency](./charts/amd-ryzen-9-5900x-12-core-processor/redis_latency.png)
 _Windows x64 results_
 
 ### Production Logging
@@ -77,7 +77,7 @@ Compares logging mode overhead:
 
 **Key Metric**: Throughput overhead (%)
 
-![Logging Mode Performance Impact](./charts/win32-x64/logging_perf.png)
+![Logging Mode Performance Impact](./charts/amd-ryzen-9-5900x-12-core-processor/logging_perf.png)
 _Windows x64 results_
 
 ## Input Sizes
