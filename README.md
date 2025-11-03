@@ -90,29 +90,29 @@ _Windows x64 results_
 
 ## Output Files
 
-Results are organized by platform (auto-detected as `${os.platform()}-${process.arch}` or set via `BENCHMARK_PLATFORM` env var):
+Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or set via `BENCHMARK_PLATFORM` env var):
 
 ```
 ├── results/
-│   ├── win32-x64/              # Windows x64 results
+│   ├── amd-ryzen-9-5900x/      # AMD Ryzen 9 5900X results
 │   │   ├── raw-speed.json
 │   │   ├── algorithmic.json
 │   │   ├── redis.json
 │   │   └── logging.json
-│   └── linux-arm64/            # Example: Linux ARM64 results
+│   └── tensor-g4/              # Google Tensor G4 results
 │       └── ...
 ├── charts/
-│   ├── win32-x64/              # Windows x64 charts
+│   ├── amd-ryzen-9-5900x/      # AMD Ryzen 9 5900X charts
 │   │   ├── fft_throughput.png
 │   │   ├── fir_throughput.png
 │   │   ├── moving_avg_small.png
 │   │   ├── moving_avg_medium.png
 │   │   ├── redis_latency.png
 │   │   └── logging_perf.png
-│   └── linux-arm64/            # Example: Linux ARM64 charts
+│   └── tensor-g4/              # Google Tensor G4 charts
 │       └── ...
-├── BENCHMARKS-win32-x64.md     # Windows x64 report
-└── BENCHMARKS-linux-arm64.md   # Example: Linux ARM64 report
+├── BENCHMARKS-amd-ryzen-9-5900x.md     # AMD Ryzen 9 5900X report
+└── BENCHMARKS-tensor-g4.md             # Google Tensor G4 report
 ```
 
 ## Requirements
@@ -123,11 +123,15 @@ Results are organized by platform (auto-detected as `${os.platform()}-${process.
 
 ## Platform-Specific Results
 
-The benchmark suite automatically organizes results by platform to enable cross-platform comparisons:
+The benchmark suite automatically organizes results by CPU name to enable easy cross-platform comparisons:
 
-- **Auto-detection**: Results saved to `results/${os.platform()}-${process.arch}/`
-- **Custom naming**: Set `BENCHMARK_PLATFORM` environment variable for specific device names
-  - Example: `BENCHMARK_PLATFORM="pixel-9-pro-xl-linux-arm64"`
+- **Auto-detection**: Results saved to `results/{sanitized-cpu-name}/`
+  - CPU name is extracted from `os.cpus()[0].model`
+  - Sanitized: lowercase, spaces to dashes, special chars removed
+  - Example: "AMD Ryzen 9 5900X" → `amd-ryzen-9-5900x`
+  - Example: "Tensor G4" → `tensor-g4`
+- **Custom naming**: Set `BENCHMARK_PLATFORM` environment variable to override
+  - Example: `BENCHMARK_PLATFORM="my-custom-device-name"`
 
 All results include machine specifications embedded in JSON and chart subtitles:
 
@@ -148,9 +152,9 @@ The repository includes a GitHub Actions workflow that automatically runs benchm
 Results are committed back to the repository automatically:
 
 - Triggered on push to main, pull requests, and weekly schedule (Sundays)
-- Results stored in `results/github-actions-{platform}/`
-- Charts generated in `charts/github-actions-{platform}/`
-- Reports created as `BENCHMARKS-github-actions-{platform}.md`
+- Results stored in `results/{cpu-name}/`
+- Charts generated in `charts/{cpu-name}/`
+- Reports created as `BENCHMARKS-{cpu-name}.md`
 
 You can also manually trigger benchmarks from the Actions tab on GitHub.
 

@@ -128,7 +128,22 @@ export async function runTimed(name, fn, warmups = 2, reps = 5) {
 }
 
 /**
+ * Sanitize CPU name for use as directory name
+ */
+function sanitizeCpuName(cpuName) {
+  return cpuName
+    .replace(/\(R\)/g, '')
+    .replace(/\(TM\)/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '')
+    .replace(/^-+|-+$/g, '')  // Remove leading/trailing dashes
+    .replace(/-+/g, '-')       // Replace multiple dashes with single dash
+    .toLowerCase();
+}
+
+/**
  * Get platform identifier from environment variable or auto-detect
+ * Now uses CPU name instead of architecture
  */
 export function getPlatformId() {
   // Check if user set a custom platform identifier
@@ -136,8 +151,10 @@ export function getPlatformId() {
     return process.env.BENCHMARK_PLATFORM;
   }
 
-  // Auto-detect: os-arch format (e.g., "linux-arm64", "win32-x64")
-  return `${os.platform()}-${process.arch}`;
+  // Auto-detect: use sanitized CPU name
+  const cpus = os.cpus();
+  const cpuName = cpus[0]?.model || "unknown-cpu";
+  return sanitizeCpuName(cpuName);
 }
 
 /**

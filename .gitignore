@@ -2,24 +2,25 @@
 node_modules/
 package-lock.json
 
-# Results - Allow platform-specific results to be committed by CI
-# Individual local results are ignored, but CI results are kept
+# Results - Allow CPU-specific results to be committed
+# Individual local results are ignored, but specific CPUs can be kept
 results/*.json
 results/*/*.json
 !results/github-actions-*/*.json
+!results/tensor-g4/**
 !results/.gitkeep
-!results/linux-arm64/**
 
-# Charts - Allow platform-specific charts to be committed by CI
+# Charts - Allow CPU-specific charts to be committed
 charts/*.png
 charts/*/*.png
 !charts/github-actions-*/*.png
+!charts/tensor-g4/**
 !charts/.gitkeep
-!charts/linux-arm64/**
 
-# Generated reports - Allow CI-generated reports to be committed
+# Generated reports - Allow CPU-specific reports to be committed
 # BENCHMARKS.md
 !BENCHMARKS-github-actions-*.md
+!BENCHMARKS-tensor-g4.md
 
 # Logs
 *.log
