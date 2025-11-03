@@ -8,12 +8,14 @@ results/*.json
 results/*/*.json
 !results/github-actions-*/*.json
 !results/.gitkeep
+!results/linux-arm64/**
 
 # Charts - Allow platform-specific charts to be committed by CI
 charts/*.png
 charts/*/*.png
 !charts/github-actions-*/*.png
 !charts/.gitkeep
+!charts/linux-arm64/**
 
 # Generated reports - Allow CI-generated reports to be committed
 # BENCHMARKS.md

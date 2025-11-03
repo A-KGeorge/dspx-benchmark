@@ -1,0 +1,147 @@
+[
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "none",
+    "avg_ms": 5.339127499982714,
+    "min_ms": 2.528865000233054,
+    "max_ms": 8.9829619997181,
+    "throughput": 12274664.727563104,
+    "overhead_percent": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "batched",
+    "avg_ms": 8.68148839995265,
+    "min_ms": 5.981778000015765,
+    "max_ms": 11.83530499972403,
+    "throughput": 7548935.963602444,
+    "overhead_percent": 62.601256478343274,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "per-message",
+    "avg_ms": 7.309747199807316,
+    "min_ms": 4.281343000009656,
+    "max_ms": 11.28897299990058,
+    "throughput": 8965563.132159688,
+    "overhead_percent": 36.90902118053899,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "console",
+    "avg_ms": 9.385132600087672,
+    "min_ms": 5.341048000380397,
+    "max_ms": 12.930124999955297,
+    "throughput": 6982959.409586582,
+    "overhead_percent": 75.7802674710064,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "none",
+    "avg_ms": 25.18682210003026,
+    "min_ms": 19.940481999889016,
+    "max_ms": 31.585077000316232,
+    "throughput": 41631929.420692585,
+    "overhead_percent": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "batched",
+    "avg_ms": 25.171384899970143,
+    "min_ms": 16.680068000219762,
+    "max_ms": 40.692954999860376,
+    "throughput": 41657461.60439681,
+    "overhead_percent": -0.061290781341159555,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "per-message",
+    "avg_ms": 27.053648499818518,
+    "min_ms": 20.089810999576002,
+    "max_ms": 34.094656999688596,
+    "throughput": 38759134.465986505,
+    "overhead_percent": 7.411917201678318,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.15"
+    }
+  }
+]
