@@ -2,26 +2,6 @@
 node_modules/
 package-lock.json
 
-# Results - Allow CPU-specific results to be committed
-# Individual local results are ignored, but specific CPUs can be kept
-results/*.json
-results/*/*.json
-!results/github-actions-*/*.json
-!results/tensor-g4/**
-!results/.gitkeep
-
-# Charts - Allow CPU-specific charts to be committed
-charts/*.png
-charts/*/*.png
-!charts/github-actions-*/*.png
-!charts/tensor-g4/**
-!charts/.gitkeep
-
-# Generated reports - Allow CPU-specific reports to be committed
-# BENCHMARKS.md
-!BENCHMARKS-github-actions-*.md
-!BENCHMARKS-tensor-g4.md
-
 # Logs
 *.log
 npm-debug.log*

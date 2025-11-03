@@ -9,7 +9,7 @@
     "seamless": false,
     "redis_available": true,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -28,7 +28,7 @@
     "seamless": false,
     "redis_available": true,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -47,7 +47,7 @@
     "seamless": false,
     "redis_available": true,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",

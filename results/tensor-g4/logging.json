@@ -10,7 +10,7 @@
     "throughput": 12274664.727563104,
     "overhead_percent": 0,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -31,7 +31,7 @@
     "overhead_percent": 62.601256478343274,
     "log_count": 0,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -52,7 +52,7 @@
     "overhead_percent": 36.90902118053899,
     "log_count": 0,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -73,7 +73,7 @@
     "overhead_percent": 75.7802674710064,
     "log_count": 0,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -93,7 +93,7 @@
     "throughput": 41631929.420692585,
     "overhead_percent": 0,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -114,7 +114,7 @@
     "overhead_percent": -0.061290781341159555,
     "log_count": 0,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -135,7 +135,7 @@
     "overhead_percent": 7.411917201678318,
     "log_count": 0,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",

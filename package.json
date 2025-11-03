@@ -10,7 +10,8 @@
     "bench:redis": "node --no-warnings redis.js",
     "bench:logging": "node --no-warnings logging.js",
     "charts": "node --no-warnings generate-charts.js",
-    "report": "node --no-warnings generate-report.js"
+    "report": "node --no-warnings generate-report.js",
+    "regenerate-charts": "node --no-warnings regenerate-charts.js"
   },
   "keywords": [
     "benchmark",

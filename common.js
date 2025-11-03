@@ -132,12 +132,12 @@ export async function runTimed(name, fn, warmups = 2, reps = 5) {
  */
 function sanitizeCpuName(cpuName) {
   return cpuName
-    .replace(/\(R\)/g, '')
-    .replace(/\(TM\)/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/[^\w-]/g, '')
-    .replace(/^-+|-+$/g, '')  // Remove leading/trailing dashes
-    .replace(/-+/g, '-')       // Replace multiple dashes with single dash
+    .replace(/\(R\)/g, "")
+    .replace(/\(TM\)/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "")
+    .replace(/^-+|-+$/g, "") // Remove leading/trailing dashes
+    .replace(/-+/g, "-") // Replace multiple dashes with single dash
     .toLowerCase();
 }
 
