@@ -19,23 +19,29 @@ import {
   printResult,
   getSummaryLine,
   ensureDirs,
+  loadTensorFlow,
+  getPlatformId,
 } from "./common.js";
-import * as tf from "@tensorflow/tfjs-node";
 
 ensureDirs();
 
 console.log("🚀 Story 1 — Raw Computational Speed\n");
-console.log("Comparing dspx (C++ SIMD) vs TensorFlow.js (CPU) vs Pure JS\n");
+console.log("Comparing dspx (C++ SIMD) vs TensorFlow.js vs Pure JS\n");
 
 const specs = getMachineSpecs();
+const platformId = getPlatformId();
 console.log("Machine Specs:");
 console.log(`  CPU: ${specs.cpu}`);
 console.log(`  Cores: ${specs.cores}`);
 console.log(`  RAM: ${specs.ram}`);
 console.log(`  OS: ${specs.os}`);
+console.log(`  Platform: ${platformId}`);
 console.log(`  Node: ${specs.node}`);
 console.log(`  dspx: ${specs.dspx}`);
 console.log("");
+
+// Load TensorFlow with appropriate backend
+const tf = await loadTensorFlow();
 
 // Check Fili availability
 let filiAvailable = false;
@@ -99,41 +105,47 @@ for (const size of INPUT_SIZES) {
   }
 
   // --- TensorFlow.js FFT ---
+  if (tf) {
+    try {
+      const backendName = platformId.includes("linux-arm64")
+        ? "WASM"
+        : "Node (C++)";
+      const result = await runTimed(
+        "tfjs-fft",
+        () => {
+          const tensor = tf.tensor1d(Array.from(signal));
+          const fftResult = tf.spectral.fft(
+            tf.complex(tensor, tf.zeros(tensor.shape))
+          );
+          const output = fftResult.dataSync();
+          tensor.dispose();
+          fftResult.dispose();
+          return output;
+        },
+        3,
+        10
+      );
 
-  try {
-    const result = await runTimed(
-      "tfjs-fft",
-      () => {
-        const tensor = tf.tensor1d(Array.from(signal));
-        const fftResult = tf.spectral.fft(
-          tf.complex(tensor, tf.zeros(tensor.shape))
-        );
-        const output = fftResult.dataSync();
-        tensor.dispose();
-        fftResult.dispose();
-        return output;
-      },
-      3,
-      10
-    );
+      const data = {
+        test: "fft",
+        input: size.name,
+        samples: size.length,
+        lib: "tfjs",
+        avg_ms: result.avg,
+        min_ms: result.min,
+        max_ms: result.max,
+        throughput: (size.length / result.avg) * 1000,
+        backend: `CPU (TensorFlow.js ${backendName})`,
+        meta: specs,
+      };
 
-    const data = {
-      test: "fft",
-      input: size.name,
-      samples: size.length,
-      lib: "tfjs",
-      avg_ms: result.avg,
-      min_ms: result.min,
-      max_ms: result.max,
-      throughput: (size.length / result.avg) * 1000,
-      backend: "CPU (TensorFlow.js)",
-      meta: specs,
-    };
-
-    results.push(data);
-    printResult(data);
-  } catch (e) {
-    console.error("❌ TensorFlow.js FFT failed:", e.message);
+      results.push(data);
+      printResult(data);
+    } catch (e) {
+      console.error("❌ TensorFlow.js FFT failed:", e.message);
+    }
+  } else {
+    console.log("⚠️  TensorFlow.js FFT skipped (not available)\n");
   }
 
   // --- fft.js ---
@@ -442,55 +454,62 @@ for (const kernelSize of KERNEL_SIZES) {
   }
 
   // --- TensorFlow.js Conv1d ---
-  try {
-    const result = await runTimed(
-      "tfjs-conv1d",
-      () => {
-        // TensorFlow.js conv1d expects [batch, width, channels]
-        // Signal: [1, N, 1], Kernel: [kernelSize, 1, 1]
-        const signalTensor = tf.reshape(tf.tensor1d(Array.from(signal)), [
-          1,
-          signal.length,
-          1,
-        ]);
-        const kernelTensor = tf.reshape(tf.tensor1d(Array.from(kernel)), [
-          kernelSize,
-          1,
-          1,
-        ]);
+  if (tf) {
+    try {
+      const backendName = platformId.includes("linux-arm64")
+        ? "WASM"
+        : "Node (C++)";
+      const result = await runTimed(
+        "tfjs-conv1d",
+        () => {
+          // TensorFlow.js conv1d expects [batch, width, channels]
+          // Signal: [1, N, 1], Kernel: [kernelSize, 1, 1]
+          const signalTensor = tf.reshape(tf.tensor1d(Array.from(signal)), [
+            1,
+            signal.length,
+            1,
+          ]);
+          const kernelTensor = tf.reshape(tf.tensor1d(Array.from(kernel)), [
+            kernelSize,
+            1,
+            1,
+          ]);
 
-        const convResult = tf.conv1d(signalTensor, kernelTensor, 1, "valid");
-        const output = convResult.dataSync();
+          const convResult = tf.conv1d(signalTensor, kernelTensor, 1, "valid");
+          const output = convResult.dataSync();
 
-        signalTensor.dispose();
-        kernelTensor.dispose();
-        convResult.dispose();
+          signalTensor.dispose();
+          kernelTensor.dispose();
+          convResult.dispose();
 
-        return output;
-      },
-      3,
-      10
-    );
+          return output;
+        },
+        3,
+        10
+      );
 
-    const data = {
-      test: "conv1d",
-      input: `kernel${kernelSize}`,
-      samples: CONV_SIGNAL_SIZE,
-      signal_size: CONV_SIGNAL_SIZE,
-      kernel_size: kernelSize,
-      lib: "tfjs",
-      avg_ms: result.avg,
-      min_ms: result.min,
-      max_ms: result.max,
-      throughput: (CONV_SIGNAL_SIZE / result.avg) * 1000,
-      backend: "CPU (TensorFlow.js)",
-      meta: specs,
-    };
+      const data = {
+        test: "conv1d",
+        input: `kernel${kernelSize}`,
+        samples: CONV_SIGNAL_SIZE,
+        signal_size: CONV_SIGNAL_SIZE,
+        kernel_size: kernelSize,
+        lib: "tfjs",
+        avg_ms: result.avg,
+        min_ms: result.min,
+        max_ms: result.max,
+        throughput: (CONV_SIGNAL_SIZE / result.avg) * 1000,
+        backend: `CPU (TensorFlow.js ${backendName})`,
+        meta: specs,
+      };
 
-    results.push(data);
-    printResult(data);
-  } catch (e) {
-    console.error("❌ TensorFlow.js Conv1d failed:", e.message);
+      results.push(data);
+      printResult(data);
+    } catch (e) {
+      console.error("❌ TensorFlow.js Conv1d failed:", e.message);
+    }
+  } else {
+    console.log("⚠️  TensorFlow.js Conv1d skipped (not available)\n");
   }
 
   // --- Naive JS Conv1d ---

@@ -21,6 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "@tensorflow/tfjs-node": "^4.22.0",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-backend-wasm": "^4.22.0",
     "chart.js": "^4.5.1",
     "chartjs-node-canvas": "^5.0.0",
     "crypto": "^1.0.1",

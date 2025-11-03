@@ -141,6 +141,46 @@ export function getPlatformId() {
 }
 
 /**
+ * Load TensorFlow.js with appropriate backend for the platform
+ * Returns null if TensorFlow is not available/needed for the current platform
+ */
+export async function loadTensorFlow() {
+  const platformId = getPlatformId();
+
+  try {
+    // For linux-arm64, use WASM backend
+    if (platformId === "linux-arm64" || platformId.includes("linux-arm64")) {
+      console.log(
+        "⚙️  Loading TensorFlow.js with WASM backend (linux-arm64)..."
+      );
+      const tf = await import("@tensorflow/tfjs");
+      const wasm = await import("@tensorflow/tfjs-backend-wasm");
+
+      // Set WASM backend
+      wasm.setWasmPaths(
+        "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@latest/dist/"
+      );
+      await tf.setBackend("wasm");
+      await tf.ready();
+
+      console.log(`✓ TensorFlow.js WASM backend ready\n`);
+      return tf;
+    } else {
+      // For other platforms, use tfjs-node (native bindings)
+      console.log("⚙️  Loading TensorFlow.js with Node backend...");
+      const tf = await import("@tensorflow/tfjs-node");
+      await tf.ready();
+      console.log(`✓ TensorFlow.js Node backend ready\n`);
+      return tf;
+    }
+  } catch (e) {
+    console.warn(`⚠️  Could not load TensorFlow.js: ${e.message}`);
+    console.warn("   TensorFlow.js benchmarks will be skipped.\n");
+    return null;
+  }
+}
+
+/**
  * Save JSON results (with optional platform-specific subdirectory)
  */
 export function saveJSON(file, data, usePlatformDir = true) {
