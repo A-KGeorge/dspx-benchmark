@@ -98,7 +98,7 @@ Demonstrating constant-time scaling with circular buffer implementation:
 
 ![Moving Average (Small)](../charts/12th-gen-intel-core-i5-12600t/moving_avg_small.png)
 
-![Moving Average (Medium)](./charts/12th-gen-intel-core-i5-12600t/moving_avg_medium.png)
+![Moving Average (Medium)](../charts/12th-gen-intel-core-i5-12600t/moving_avg_medium.png)
 
 #### Complexity Analysis
 
