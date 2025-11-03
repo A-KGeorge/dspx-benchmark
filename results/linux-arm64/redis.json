@@ -3,9 +3,9 @@
     "test": "redis_persistence",
     "input": "small",
     "samples": 1024,
-    "save_ms": 0.130549400113523,
-    "load_ms": 0.11860279999673366,
-    "state_size_bytes": 2382,
+    "save_ms": 0.09371419996023178,
+    "load_ms": 0.08568279966711997,
+    "state_size_bytes": 2378,
     "seamless": false,
     "redis_available": true,
     "meta": {
@@ -15,15 +15,15 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.12"
+      "dspx": "0.2.0-alpha.13"
     }
   },
   {
     "test": "redis_persistence",
     "input": "medium",
     "samples": 65536,
-    "save_ms": 0.25776239996775985,
-    "load_ms": 0.10127699980512261,
+    "save_ms": 0.09945999979972839,
+    "load_ms": 0.3179909992963076,
     "state_size_bytes": 2408,
     "seamless": false,
     "redis_available": true,
@@ -34,16 +34,16 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.12"
+      "dspx": "0.2.0-alpha.13"
     }
   },
   {
     "test": "redis_persistence",
     "input": "large",
     "samples": 1048576,
-    "save_ms": 0.12097100000828505,
-    "load_ms": 0.17590240007266403,
-    "state_size_bytes": 2406,
+    "save_ms": 0.09506500028073787,
+    "load_ms": 0.09688799977302551,
+    "state_size_bytes": 2402,
     "seamless": false,
     "redis_available": true,
     "meta": {
@@ -53,7 +53,7 @@
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.12"
+      "dspx": "0.2.0-alpha.13"
     }
   }
 ]
