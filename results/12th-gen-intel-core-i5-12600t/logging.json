@@ -1,0 +1,147 @@
+[
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "none",
+    "avg_ms": 0.8783600000000007,
+    "min_ms": 0.7678999999999974,
+    "max_ms": 1.444199999999995,
+    "throughput": 74611776.49255425,
+    "overhead_percent": 0,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "batched",
+    "avg_ms": 0.8470399999999983,
+    "min_ms": 0.787700000000001,
+    "max_ms": 0.9834000000000032,
+    "throughput": 77370608.23573872,
+    "overhead_percent": -3.565736144633444,
+    "log_count": 0,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "per-message",
+    "avg_ms": 0.8093399999999988,
+    "min_ms": 0.6940000000000026,
+    "max_ms": 1.3730999999999938,
+    "throughput": 80974621.29636507,
+    "overhead_percent": -7.85782594835851,
+    "log_count": 0,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "console",
+    "avg_ms": 0.7531800000000033,
+    "min_ms": 0.6949000000000183,
+    "max_ms": 0.859499999999997,
+    "throughput": 87012400.75413541,
+    "overhead_percent": -14.251559724941632,
+    "log_count": 0,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "none",
+    "avg_ms": 9.292280000000002,
+    "min_ms": 8.6267,
+    "max_ms": 10.378600000000006,
+    "throughput": 112843779.99801984,
+    "overhead_percent": 0,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "batched",
+    "avg_ms": 9.13658000000001,
+    "min_ms": 8.70519999999999,
+    "max_ms": 9.7774,
+    "throughput": 114766794.57740194,
+    "overhead_percent": -1.6755844636622268,
+    "log_count": 0,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "per-message",
+    "avg_ms": 9.200760000000008,
+    "min_ms": 8.692099999999982,
+    "max_ms": 10.256400000000042,
+    "throughput": 113966237.57167876,
+    "overhead_percent": -0.9849035973947601,
+    "log_count": 0,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  }
+]

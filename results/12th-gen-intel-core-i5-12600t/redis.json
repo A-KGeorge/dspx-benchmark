@@ -1,0 +1,59 @@
+[
+  {
+    "test": "redis_persistence",
+    "input": "small",
+    "samples": 1024,
+    "save_ms": 0.05098000000000411,
+    "load_ms": 0.17217999999999165,
+    "state_size_bytes": 3478,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "redis_persistence",
+    "input": "medium",
+    "samples": 65536,
+    "save_ms": 0.040179999999998016,
+    "load_ms": 0.17359999999998763,
+    "state_size_bytes": 3540,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  },
+  {
+    "test": "redis_persistence",
+    "input": "large",
+    "samples": 1048576,
+    "save_ms": 0.06530000000002474,
+    "load_ms": 0.2495600000000195,
+    "state_size_bytes": 3463,
+    "seamless": true,
+    "redis_available": true,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    }
+  }
+]

@@ -331,7 +331,7 @@ markdown += `## Conclusion
 `;
 
 // Write report (platform-specific)
-const reportPath = path.join(__dirname, `BENCHMARKS-${platformId}.md`);
+const reportPath = path.join(__dirname, `reports/BENCHMARKS-${platformId}.md`);
 fs.writeFileSync(reportPath, markdown);
 
 console.log(`✅ Report generated: ${reportPath}\n`);
