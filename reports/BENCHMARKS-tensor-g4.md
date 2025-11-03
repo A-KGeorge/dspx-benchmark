@@ -6,7 +6,7 @@
 
 | Component        | Specification            |
 | ---------------- | ------------------------ |
-| **CPU**          | unknown                  |
+| **CPU**          | Tensor G4                |
 | **Cores**        | 8                        |
 | **RAM**          | 4 GB                     |
 | **Architecture** | arm64                    |
