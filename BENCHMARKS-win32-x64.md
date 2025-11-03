@@ -12,7 +12,7 @@
 | **Architecture** | x64 |
 | **OS** | Microsoft Windows [Version 10.0.26200.6901] |
 | **Node.js** | v22.17.1 |
-| **dspx** | v0.2.0-alpha.12 |
+| **dspx** | v0.2.0-alpha.14 |
 
 ---
 
@@ -26,7 +26,7 @@ This benchmark suite evaluates **dspx**, a high-performance DSP library with nat
 4. **Production Logging** — TopicRouter batching overhead
 
 **Key Findings:**
-- 🚀 **3.0x faster** than pure JS for FFT and filtering
+- 🚀 **2.7x faster** than pure JS for FFT and filtering
 - ⚡ **O(1) complexity** for moving averages (vs O(N·W) naive)
 - 💾 **Sub-millisecond** state save/load operations
 - 📊 **<5% overhead** with batched logging (vs >20% per-message)
@@ -45,15 +45,15 @@ Comparing Fast Fourier Transform implementations across different backends:
 
 | Library | Input Size | Throughput | Backend |
 |---------|------------|------------|---------|
-| dspx | small | 153.75M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | small | 3.84M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | small | 3.42M samples/sec | CPU (Pure JS) |
-| dspx | medium | 193.78M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | medium | 13.04M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | medium | 93.81M samples/sec | CPU (Pure JS) |
-| dspx | large | 140.09M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | large | 15.62M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | large | 62.73M samples/sec | CPU (Pure JS) |
+| dspx | small | 88.66M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | small | 4.08M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | small | 3.23M samples/sec | CPU (Pure JS) |
+| dspx | medium | 186.13M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | medium | 14.58M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | medium | 94.69M samples/sec | CPU (Pure JS) |
+| dspx | large | 146.45M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | large | 15.70M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | large | 58.57M samples/sec | CPU (Pure JS) |
 
 **Key Insights:**
 - Native C++ SIMD (dspx) consistently outperforms pure JS implementations
@@ -70,15 +70,15 @@ Testing Finite Impulse Response filter implementations (51-tap lowpass):
 
 | Library | Input Size | Throughput | Backend |
 |---------|------------|------------|---------|
-| dspx | small | 12.74M samples/sec | CPU (Native C++ SIMD) |
-| fili | small | 7.75M samples/sec | CPU (Pure JS) |
-| naive_js | small | 13.27M samples/sec | CPU (Pure JS) |
-| dspx | medium | 33.68M samples/sec | CPU (Native C++ SIMD) |
-| fili | medium | 11.81M samples/sec | CPU (Pure JS) |
-| naive_js | medium | 15.43M samples/sec | CPU (Pure JS) |
-| dspx | large | 37.88M samples/sec | CPU (Native C++ SIMD) |
-| fili | large | 12.08M samples/sec | CPU (Pure JS) |
-| naive_js | large | 21.12M samples/sec | CPU (Pure JS) |
+| dspx | small | 12.28M samples/sec | CPU (Native C++ SIMD) |
+| fili | small | 7.86M samples/sec | CPU (Pure JS) |
+| naive_js | small | 13.34M samples/sec | CPU (Pure JS) |
+| dspx | medium | 33.00M samples/sec | CPU (Native C++ SIMD) |
+| fili | medium | 12.10M samples/sec | CPU (Pure JS) |
+| naive_js | medium | 15.25M samples/sec | CPU (Pure JS) |
+| dspx | large | 37.12M samples/sec | CPU (Native C++ SIMD) |
+| fili | large | 12.20M samples/sec | CPU (Pure JS) |
+| naive_js | large | 20.57M samples/sec | CPU (Pure JS) |
 
 **Key Insights:**
 - SIMD-optimized convolution in dspx delivers N/Ax speedup
@@ -108,17 +108,17 @@ Demonstrating constant-time scaling with circular buffer implementation:
 
 | Window Size | dspx (ms) | naive JS (ms) | Speedup |
 |-------------|-----------|---------------|--------|
-| 32 | 2.676 | 7.820 | 2.9x |
-| 128 | 2.634 | 30.635 | 11.6x |
-| 512 | 2.622 | 122.451 | 46.7x |
-| 2048 | 2.692 | 44.338 | 16.5x |
-| 8192 | 2.625 | 165.858 | 63.2x |
+| 32 | 2.615 | 7.873 | 3.0x |
+| 128 | 2.627 | 30.874 | 11.8x |
+| 512 | 2.662 | 124.922 | 46.9x |
+| 2048 | 2.975 | 43.024 | 14.5x |
+| 8192 | 2.730 | 162.384 | 59.5x |
 
 
 **Key Insights:**
 - dspx maintains constant time regardless of window size
 - Naive implementation degrades linearly with window size (O(N·W) complexity)
-- 26.2x average speedup with circular buffer approach
+- 25.5x average speedup with circular buffer approach
 - Critical for real-time processing where window sizes can be large (1000+ samples)
 
 ---
@@ -135,13 +135,13 @@ Testing pipeline state serialization for crash recovery (FirFilter → RMS pipel
 
 | Input Size | Save Time (ms) | Load Time (ms) | State Size | Seamless? |
 |------------|----------------|----------------|------------|-----------|
-| small | 0.059 | 0.202 | 3.39 KB | ✅ |
-| medium | 0.058 | 0.184 | 3.45 KB | ✅ |
-| large | 0.060 | 0.215 | 3.38 KB | ✅ |
+| small | 0.049 | 0.218 | 3.39 KB | ✅ |
+| medium | 0.059 | 0.268 | 3.45 KB | ✅ |
+| large | 0.060 | 0.258 | 3.38 KB | ✅ |
 
 **Performance Metrics:**
-- Average save time: **0.059 ms**
-- Average load time: **0.201 ms**
+- Average save time: **0.056 ms**
+- Average load time: **0.248 ms**
 - Average state size: **3.41 KB**
 - All tests seamless: **✅ YES**
 
@@ -166,21 +166,21 @@ Comparing throughput impact of different logging strategies:
 
 | Mode | Average Overhead | Recommendation |
 |------|------------------|----------------|
-| batched | -4.20% | ✅ Recommended |
-| per-message | -3.06% | ✅ Recommended |
-| console | -3.10% | ✅ Recommended |
+| batched | -3.44% | ✅ Recommended |
+| per-message | -5.46% | ✅ Recommended |
+| console | -8.50% | ✅ Recommended |
 
 #### Detailed Results
 
 | Input Size | Mode | Throughput | Overhead |
 |------------|------|------------|----------|
-| medium | none | 105.43M samples/sec | — |
-| medium | batched | 115.68M samples/sec | -8.85% |
-| medium | per-message | 112.46M samples/sec | -6.24% |
-| medium | console | 108.80M samples/sec | -3.10% |
-| large | none | 141.08M samples/sec | — |
-| large | batched | 140.46M samples/sec | 0.45% |
-| large | per-message | 140.92M samples/sec | 0.11% |
+| medium | none | 99.52M samples/sec | — |
+| medium | batched | 109.33M samples/sec | -8.97% |
+| medium | per-message | 112.28M samples/sec | -11.37% |
+| medium | console | 108.77M samples/sec | -8.50% |
+| large | none | 142.11M samples/sec | — |
+| large | batched | 139.20M samples/sec | 2.09% |
+| large | per-message | 141.47M samples/sec | 0.45% |
 
 **Key Insights:**
 - **Batched logging (TopicRouter)**: <5% overhead — production-ready
@@ -198,13 +198,13 @@ Comparing throughput impact of different logging strategies:
 ### Performance Wins
 
 1. **Native SIMD Acceleration**
-   - 3.0x faster than pure JavaScript
+   - 2.7x faster than pure JavaScript
    - Consistent performance across input sizes
    - Optimized for modern CPU architectures
 
 2. **Optimal Algorithms**
    - O(1) circular buffers vs O(N·W) naive implementations
-   - 26.2x speedup for moving averages
+   - 25.5x speedup for moving averages
    - Critical for real-time processing with large windows
 
 3. **Production-Ready Resilience**
@@ -241,5 +241,5 @@ Comparing throughput impact of different logging strategies:
 ---
 
 **Generated by:** dspx benchmark suite v1.0  
-**Date:** 2025-11-03T13:19:08.441Z  
+**Date:** 2025-11-03T16:02:12.896Z  
 **Runtime:** Node.js v22.17.1
