@@ -74,7 +74,7 @@ markdown += `## Story 1 — Raw Computational Speed
 
 Comparing Fast Fourier Transform implementations across different backends:
 
-![FFT Throughput](./charts/${platformId}/fft_throughput.png)
+![FFT Throughput](../charts/${platformId}/fft_throughput.png)
 
 #### Results Summary
 
@@ -97,7 +97,7 @@ markdown += `\n**Key Insights:**
 
 Testing Finite Impulse Response filter implementations (51-tap lowpass):
 
-![FIR Filter Throughput](./charts/${platformId}/fir_throughput.png)
+![FIR Filter Throughput](../charts/${platformId}/fir_throughput.png)
 
 #### Results Summary
 
@@ -132,9 +132,9 @@ markdown += `## Story 2 — Algorithmic Efficiency
 
 Demonstrating constant-time scaling with circular buffer implementation:
 
-![Moving Average (Small)](./charts/${platformId}/moving_avg_small.png)
+![Moving Average (Small)](../charts/${platformId}/moving_avg_small.png)
 
-![Moving Average (Medium)](./charts/${platformId}/moving_avg_medium.png)
+![Moving Average (Medium)](../charts/${platformId}/moving_avg_medium.png)
 
 #### Complexity Analysis
 
@@ -169,7 +169,7 @@ markdown += `## Story 3 — Redis Resilience (State Persistence)
 
 Testing pipeline state serialization for crash recovery (FirFilter → RMS pipeline):
 
-![Redis Latency](./charts/${platformId}/redis_latency.png)
+![Redis Latency](../charts/${platformId}/redis_latency.png)
 
 #### Results Summary
 
@@ -219,7 +219,7 @@ markdown += `## Story 4 — Production Logging
 
 Comparing throughput impact of different logging strategies:
 
-![Logging Performance](./charts/${platformId}/logging_perf.png)
+![Logging Performance](../charts/${platformId}/logging_perf.png)
 
 #### Overhead Analysis
 
