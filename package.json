@@ -20,14 +20,14 @@
   "author": "Alan Kochukalam George",
   "license": "ISC",
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.22.0",
     "@tensorflow/tfjs": "^4.22.0",
     "@tensorflow/tfjs-backend-wasm": "^4.22.0",
+    "@tensorflow/tfjs-node": "^4.22.0",
     "chart.js": "^4.5.1",
     "chartjs-node-canvas": "^5.0.0",
     "crypto": "^1.0.1",
     "dsp.js": "^1.0.1",
-    "dspx": "^0.2.0-alpha.11",
+    "dspx": "^0.2.0-alpha.12",
     "fft.js": "^4.0.4",
     "fili": "^2.0.3",
     "redis": "^5.9.0"
