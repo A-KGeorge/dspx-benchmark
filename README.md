@@ -142,22 +142,6 @@ All results include machine specifications embedded in JSON and chart subtitles:
 - Node.js version
 - dspx version
 
-### Continuous Integration
-
-The repository includes a GitHub Actions workflow that automatically runs benchmarks on:
-
-- **Windows x64** (github-actions-win32-x64)
-- **Linux ARM64** (github-actions-linux-arm64)
-
-Results are committed back to the repository automatically:
-
-- Triggered on push to main, pull requests, and weekly schedule (Sundays)
-- Results stored in `results/{cpu-name}/`
-- Charts generated in `charts/{cpu-name}/`
-- Reports created as `BENCHMARKS-{cpu-name}.md`
-
-You can also manually trigger benchmarks from the Actions tab on GitHub.
-
 ## Notes
 
 - All benchmarks are **CPU-only** (no GPU/CUDA)
