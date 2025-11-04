@@ -94,25 +94,30 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 
 ```
 ├── results/
-│   ├── amd-ryzen-9-5900x/      # AMD Ryzen 9 5900X results
+│   ├── amd-ryzen-9-5900x-12-core-processor/      # AMD Ryzen 9 5900X results
 │   │   ├── raw-speed.json
 │   │   ├── algorithmic.json
 │   │   ├── redis.json
 │   │   └── logging.json
-│   └── tensor-g4/              # Google Tensor G4 results
-│       └── ...
+│   ├── tensor-g4/              # Google Tensor G4 results
+│   │   └── ...
+│   └── ...                   # Other CPU results
+│
 ├── charts/
-│   ├── amd-ryzen-9-5900x/      # AMD Ryzen 9 5900X charts
+│   ├── amd-ryzen-9-5900x-12-core-processor/      # AMD Ryzen 9 5900X charts
 │   │   ├── fft_throughput.png
 │   │   ├── fir_throughput.png
 │   │   ├── moving_avg_small.png
 │   │   ├── moving_avg_medium.png
 │   │   ├── redis_latency.png
 │   │   └── logging_perf.png
-│   └── tensor-g4/              # Google Tensor G4 charts
-│       └── ...
-├── BENCHMARKS-amd-ryzen-9-5900x.md     # AMD Ryzen 9 5900X report
-└── BENCHMARKS-tensor-g4.md             # Google Tensor G4 report
+│   ├── tensor-g4/              # Google Tensor G4 charts
+│   │   └── ...
+│   └── ...                   # Other CPU charts
+├── reports/
+│   ├── BENCHMARKS-amd-ryzen-9-5900x.md     # AMD Ryzen 9 5900X report
+│   ├── BENCHMARKS-tensor-g4.md             # Google Tensor G4 report
+│   └── ...                                 # Other CPU reports
 ```
 
 ## Requirements
