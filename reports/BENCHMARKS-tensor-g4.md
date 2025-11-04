@@ -1,6 +1,6 @@
 # 🧠 DSPX Benchmarks
 
-**Auto-Generated:** 2025-11-03
+**Auto-Generated:** 2025-11-04
 
 ## Machine Specifications
 
@@ -28,7 +28,7 @@ This benchmark suite evaluates **dspx**, a high-performance DSP library with nat
 **Key Findings:**
 
 - 🚀 **1.7x faster** than pure JS for FFT and filtering
-- ⚡ **O(1) complexity** for moving averages (vs O(N·W) naive)
+- ⚡ **~112x speedup** for moving averages (O(1) vs O(N·W) naive)
 - 💾 **Sub-millisecond** state save/load operations
 - 📊 **<5% overhead** with batched logging (vs >20% per-message)
 
@@ -107,21 +107,41 @@ Demonstrating constant-time scaling with circular buffer implementation:
 | **dspx (circular buffer)**    | O(1) per sample | O(W)             | ✅ Constant time      |
 | **naive JS (sliding window)** | O(N·W) total    | O(1)             | ❌ Linear with window |
 
-#### Performance Comparison
+#### Performance Comparison (SMALL Input)
 
-| Window Size | dspx (ms) | naive JS (ms) | Speedup |
-| ----------- | --------- | ------------- | ------- |
-| 32          | 14.585    | 11.668        | 0.8x    |
-| 128         | 13.330    | 41.071        | 3.1x    |
-| 512         | 16.198    | 148.662       | 9.2x    |
-| 2048        | 13.885    | 49.835        | 3.6x    |
-| 8192        | 13.377    | 191.618       | 14.3x   |
+| Window Size | dspx (ms) | naive JS (ms) | Speedup (Time) | Throughput (dspx) | Throughput (naive) | Speedup (Throughput) |
+| ----------- | --------- | ------------- | -------------- | ----------------- | ------------------ | -------------------- |
+| 32          | 0.712     | 0.349         | **0.5x**       | 1.4M              | 2.9M               | **0.5x**             |
+| 128         | 1.420     | 0.170         | **0.1x**       | 720.9K            | 6.0M               | **0.1x**             |
+| 512         | 0.295     | 0.457         | **1.5x**       | 3.5M              | 2.2M               | **1.5x**             |
+| 2048        | 0.252     | 0.597         | **2.4x**       | 4.1M              | 1.7M               | **2.4x**             |
+| 8192        | 0.266     | 0.743         | **2.8x**       | 3.9M              | 1.4M               | **2.8x**             |
+
+#### Performance Comparison (MEDIUM Input)
+
+| Window Size | dspx (ms) | naive JS (ms) | Speedup (Time) | Throughput (dspx) | Throughput (naive) | Speedup (Throughput) |
+| ----------- | --------- | ------------- | -------------- | ----------------- | ------------------ | -------------------- |
+| 32          | 5.326     | 4.244         | **0.8x**       | 12.3M             | 15.4M              | **0.8x**             |
+| 128         | 3.457     | 8.548         | **2.5x**       | 19.0M             | 7.7M               | **2.5x**             |
+| 512         | 3.833     | 26.423        | **6.9x**       | 17.1M             | 2.5M               | **6.9x**             |
+| 2048        | 3.010     | 99.073        | **32.9x**      | 21.8M             | 661.5K             | **32.9x**            |
+| 8192        | 3.423     | 382.494       | **111.7x**     | 19.1M             | 171.3K             | **111.7x**           |
+
+#### Performance Comparison (LARGE Input)
+
+| Window Size | dspx (ms) | naive JS (ms) | Speedup (Time) | Throughput (dspx) | Throughput (naive) | Speedup (Throughput) |
+| ----------- | --------- | ------------- | -------------- | ----------------- | ------------------ | -------------------- |
+| 32          | 37.719    | 30.412        | **0.8x**       | 27.8M             | 34.5M              | **0.8x**             |
+| 128         | 35.112    | 114.496       | **3.3x**       | 29.9M             | 9.2M               | **3.3x**             |
+| 512         | 44.466    | 419.106       | **9.4x**       | 23.6M             | 2.5M               | **9.4x**             |
+| 2048        | 38.393    | ⏭️ skipped    | **—**          | 27.3M             | ⏭️ skipped         | **—**                |
+| 8192        | 36.442    | ⏭️ skipped    | **—**          | 28.8M             | ⏭️ skipped         | **—**                |
 
 **Key Insights:**
 
 - dspx maintains constant time regardless of window size
 - Naive implementation degrades linearly with window size (O(N·W) complexity)
-- 5.9x average speedup with circular buffer approach
+- **~112x speedup** with circular buffer approach at production scale (medium input, 8192 window)
 - Critical for real-time processing where window sizes can be large (1000+ samples)
 
 ---
@@ -212,7 +232,7 @@ Comparing throughput impact of different logging strategies:
 2. **Optimal Algorithms**
 
    - O(1) circular buffers vs O(N·W) naive implementations
-   - 5.9x speedup for moving averages
+   - **~112x speedup** for moving averages
    - Critical for real-time processing with large windows
 
 3. **Production-Ready Resilience**
@@ -245,12 +265,12 @@ Comparing throughput impact of different logging strategies:
 ### Next Steps
 
 1. **Install:** `npm install dspx`
-2. **Documentation:** [README.md](https://github.com/A-KGeorge/dspx/README.md)
-3. **Examples:** [src/ts/examples/](https://github.com/A-KGeorge/dspx/src/ts/examples/)
-4. **Source:** [GitHub](https://github.com/A-KGeorge/dspx)
+2. **Documentation:** [README.md](../README.md)
+3. **Examples:** [src/ts/examples/](https://github.com/A-KGeorge/dsp-ts-redis/src/ts/examples/)
+4. **Source:** [GitHub](https://github.com/A-KGeorge/dsp-ts-redis)
 
 ---
 
 **Generated by:** dspx benchmark suite v1.0  
-**Date:** 2025-11-03T19:26:54.026Z  
+**Date:** 2025-11-04T18:29:22.717Z  
 **Runtime:** Node.js v18.20.4

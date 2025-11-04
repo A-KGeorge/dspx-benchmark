@@ -1,41 +1,85 @@
 /**
- * Generate Markdown benchmark report
- * * ---
- * * ### FIX APPLIED (by Gemini): ###
- * - `generateMovingAverageTable`: Rewritten to generate *separate* tables
- * for each input size (small, medium, large) instead of incorrectly
- * averaging them. It now also shows both time and throughput speedups
- * to confirm they match.
- * * - `calculateAlgorithmicSpeedup`: Modified to pull the most representative
- * speedup (medium input @ 8192 window) for the Executive Summary,
- * rather than a flawed average.
- * * ---
+ * Regenerate reports for a specific platform from existing JSON results
+ * Usage: node regenerate-reports.js [platform-id]
+ * Example: node regenerate-reports.js 12th-gen-intel-core-i5-12600t
+ *
+ * This script fixes inconsistencies from the original generate-report.js:
+ * 1. It loads data for a *specific platform-id* provided as an argument.
+ * 2. It pulls machine specs from the loaded JSON, not the host machine.
+ * 3. It uses corrected logic for Story 2 (Moving Avg) to show correct speedups.
  */
 
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "node:url";
-import {
-  getMachineSpecs,
-  loadJSON,
-  formatThroughput,
-  formatBytes,
-  getPlatformId,
-} from "./common.js";
+// Import only the formatters; we get specs/platform from args and JSON
+import { formatThroughput, formatBytes } from "./common.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const platformId = getPlatformId();
-console.log(`📝 Generating benchmark report for platform: ${platformId}...\n`);
+// 1. Get platform from command line argument
+const platformId = process.argv[2];
 
-const specs = getMachineSpecs();
+if (!platformId) {
+  console.error("❌ Error: Platform identifier required");
+  console.error("Usage: node regenerate-reports.js <platform-id>");
+  console.error(
+    "Example: node regenerate-reports.js 12th-gen-intel-core-i5-12600t"
+  );
+  process.exit(1);
+}
 
-// Load all results
-const story1 = loadJSON("raw-speed") || [];
-const story2 = loadJSON("algorithmic") || [];
-const story3 = loadJSON("redis") || [];
-const story4 = loadJSON("logging") || [];
+console.log(`📝 Regenerating report for platform: ${platformId}...\n`);
+
+// 2. Check if results exist for this platform
+const resultsDir = path.join(__dirname, "results", platformId);
+if (!fs.existsSync(resultsDir)) {
+  console.error(`❌ Error: Results directory not found: ${resultsDir}`);
+  process.exit(1);
+}
+
+// 3. Define a local loader fn, just like in regenerate-charts.js
+const loadPlatformJSON = (filename) => {
+  const filePath = path.join(resultsDir, `${filename}.json`);
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    console.log(`✓ Loaded: ${filename}.json`);
+    return data;
+  } catch (e) {
+    console.warn(`⚠️  Could not load ${filename}.json:`, e.message);
+    return null;
+  }
+};
+
+// 4. Load all data for that specific platform
+const story1 = loadPlatformJSON("raw-speed") || [];
+const story2 = loadPlatformJSON("algorithmic") || [];
+const story3 = loadPlatformJSON("redis") || [];
+const story4 = loadPlatformJSON("logging") || [];
+
+// 5. Get machine specs from the *loaded JSON data*, not the host
+let specs = {
+  cpu: "Unknown",
+  arch: "Unknown",
+  node: "Unknown",
+  ram: "Unknown",
+  os: "Unknown",
+  dspx: "Unknown",
+};
+if (story1.length > 0 && story1[0].meta) {
+  specs = story1[0].meta;
+} else if (story2.length > 0 && story2[0].meta) {
+  specs = story2[0].meta;
+} else if (story3.length > 0 && story3[0].meta) {
+  specs = story3[0].meta;
+} else if (story4.length > 0 && story4[0].meta) {
+  specs = story4[0].meta;
+}
+
+console.log(
+  `\nMachine specs: ${specs.cpu} • ${specs.arch} • Node ${specs.node}`
+);
 
 // --- Main Report String ---
 let markdown = `# 🧠 DSPX Benchmarks
@@ -67,7 +111,9 @@ This benchmark suite evaluates **dspx**, a high-performance DSP library with nat
 
 **Key Findings:**
 - 🚀 **${calculateSpeedup(story1)}x faster** than pure JS for FFT and filtering
-- ⚡ **O(1) complexity** for moving averages (vs O(N·W) naive)
+- ⚡ **~${calculateAlgorithmicSpeedup(
+  story2
+)}x speedup** for moving averages (O(1) vs O(N·W) naive)
 - 💾 **Sub-millisecond** state save/load operations
 - 📊 **<5% overhead** with batched logging (vs >20% per-message)
 
@@ -329,7 +375,7 @@ markdown += `## Conclusion
 
 1. **Install:** \`npm install dspx\`
 2. **Documentation:** [README.md](../README.md)
-3. **Examples:** [src/ts/examples/](../src/ts/examples/)
+3. **Examples:** [src/ts/examples/](https://github.com/A-KGeorge/dsp-ts-redis/src/ts/examples/)
 4. **Source:** [GitHub](https://github.com/A-KGeorge/dsp-ts-redis)
 
 ---
@@ -339,14 +385,15 @@ markdown += `## Conclusion
 **Runtime:** Node.js ${specs.node}
 `;
 
-// Write report (platform-specific)
+// 6. Write report (platform-specific)
 const reportPath = path.join(__dirname, `reports/BENCHMARKS-${platformId}.md`);
 fs.writeFileSync(reportPath, markdown);
 
-console.log(`✅ Report generated: ${reportPath}\n`);
+console.log(`✅ Report regenerated: ${reportPath}\n`);
 
 // ============================================================================
 // Helper Functions
+// (Copied from generate-report.js, with fixes for Story 2)
 // ============================================================================
 
 function calculateSpeedup(results) {

@@ -11,7 +11,8 @@
     "bench:logging": "node --no-warnings logging.js",
     "charts": "node --no-warnings generate-charts.js",
     "report": "node --no-warnings generate-report.js",
-    "regenerate-charts": "node --no-warnings regenerate-charts.js"
+    "regenerate-charts": "node --no-warnings regenerate-charts.js",
+    "regenerate-reports": "node --no-warnings regenerate-reports.js"
   },
   "keywords": [
     "benchmark",
