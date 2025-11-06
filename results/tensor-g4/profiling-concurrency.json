@@ -14,7 +14,7 @@
     "throughput_samples_per_sec": "23284673",
     "efficiency_percent": "100.0",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -38,7 +38,7 @@
     "throughput_samples_per_sec": "23067012",
     "efficiency_percent": "49.5",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -62,7 +62,7 @@
     "throughput_samples_per_sec": "31173512",
     "efficiency_percent": "33.5",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -86,7 +86,7 @@
     "throughput_samples_per_sec": "50544978",
     "efficiency_percent": "27.1",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -110,7 +110,7 @@
     "throughput_samples_per_sec": "110898878",
     "efficiency_percent": "29.8",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -134,7 +134,7 @@
     "throughput_samples_per_sec": "171100965",
     "efficiency_percent": "23.0",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",

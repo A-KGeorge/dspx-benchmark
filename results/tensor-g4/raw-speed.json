@@ -4,19 +4,19 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.07856060001067817,
-    "min_ms": 0.005369999911636114,
-    "max_ms": 0.3870250000618398,
-    "throughput": 13034523.665308246,
+    "avg_ms": 0.01644760000053793,
+    "min_ms": 0.008299000008264557,
+    "max_ms": 0.03872800001408905,
+    "throughput": 62258323.400770284,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -24,19 +24,19 @@
     "input": "small",
     "samples": 1024,
     "lib": "tfjs",
-    "avg_ms": 22.16051880000159,
-    "min_ms": 19.281749999616295,
-    "max_ms": 31.400270000100136,
-    "throughput": 46208.30447344611,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 22.031830300000728,
+    "min_ms": 20.437447000003885,
+    "max_ms": 26.480979999992996,
+    "throughput": 46478.20839469548,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -44,19 +44,19 @@
     "input": "small",
     "samples": 1024,
     "lib": "fft.js",
-    "avg_ms": 0.34895389997400345,
-    "min_ms": 0.19668699987232685,
-    "max_ms": 1.1386580001562834,
-    "throughput": 2934485.0425121672,
+    "avg_ms": 0.2320356000069296,
+    "min_ms": 0.21650700000463985,
+    "max_ms": 0.28371300001163036,
+    "throughput": 4413115.91828762,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -64,19 +64,19 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 0.40610449989326297,
-    "min_ms": 0.3580969995819032,
-    "max_ms": 0.4631529999896884,
-    "throughput": 161377182.51638415,
+    "avg_ms": 0.42061890000186397,
+    "min_ms": 0.3591770000057295,
+    "max_ms": 0.529469999979483,
+    "throughput": 155808500.2830581,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -84,19 +84,19 @@
     "input": "medium",
     "samples": 65536,
     "lib": "tfjs",
-    "avg_ms": 1470.4203574000392,
-    "min_ms": 1410.7233839998953,
-    "max_ms": 1699.854148000013,
-    "throughput": 44569.567926738404,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 1424.8765161999968,
+    "min_ms": 1384.2435620000178,
+    "max_ms": 1474.546365999995,
+    "throughput": 45994.16107634222,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -104,19 +104,19 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fft.js",
-    "avg_ms": 0.6173702000174671,
-    "min_ms": 0.5896939998492599,
-    "max_ms": 0.739589000120759,
-    "throughput": 106153487.80706584,
+    "avg_ms": 0.78292220000003,
+    "min_ms": 0.5901430000085384,
+    "max_ms": 2.2667179999989457,
+    "throughput": 83706912.38541645,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -124,19 +124,19 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 8.996401699911804,
-    "min_ms": 6.539408000186086,
-    "max_ms": 13.684785000048578,
-    "throughput": 116555044.44741276,
+    "avg_ms": 10.012739499998862,
+    "min_ms": 6.430068999994546,
+    "max_ms": 13.453985000000102,
+    "throughput": 104724186.62246422,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -144,19 +144,19 @@
     "input": "large",
     "samples": 1048576,
     "lib": "tfjs",
-    "avg_ms": 48597.678698500014,
-    "min_ms": 27285.756744999904,
-    "max_ms": 129026.9319310002,
-    "throughput": 21576.668435242867,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 40080.09598900001,
+    "min_ms": 28195.683220000006,
+    "max_ms": 42480.05072399997,
+    "throughput": 26162.013191978927,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -164,19 +164,19 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fft.js",
-    "avg_ms": 18.108091599913315,
-    "min_ms": 17.211785999592394,
-    "max_ms": 18.62011400004849,
-    "throughput": 57906488.61114772,
+    "avg_ms": 18.28837419998599,
+    "min_ms": 17.969885999918915,
+    "max_ms": 18.62496899999678,
+    "throughput": 57335659.72205464,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -184,20 +184,20 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.47695669983513655,
-    "min_ms": 0.30309199960902333,
-    "max_ms": 1.0354140000417829,
-    "throughput": 2146945.41528393,
+    "avg_ms": 0.4623174000182189,
+    "min_ms": 0.2773320000851527,
+    "max_ms": 0.7450030000181869,
+    "throughput": 2214928.5316962902,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -205,20 +205,20 @@
     "input": "small",
     "samples": 1024,
     "lib": "fili",
-    "avg_ms": 2.32141920006834,
-    "min_ms": 0.34162600012496114,
-    "max_ms": 6.4742760001681745,
-    "throughput": 441109.4730197177,
+    "avg_ms": 0.30871070000575856,
+    "min_ms": 0.20368599996436387,
+    "max_ms": 1.0223759999498725,
+    "throughput": 3317021.405415811,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -226,20 +226,20 @@
     "input": "small",
     "samples": 1024,
     "lib": "naive_js",
-    "avg_ms": 0.11816090000793338,
-    "min_ms": 0.11384800029918551,
-    "max_ms": 0.14013299997895956,
-    "throughput": 8666149.292458404,
+    "avg_ms": 0.4901155999978073,
+    "min_ms": 0.06803099997341633,
+    "max_ms": 1.2747250000247732,
+    "throughput": 2089303.013420877,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -247,20 +247,20 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 7.796136399917304,
-    "min_ms": 3.3295829999260604,
-    "max_ms": 14.203685999847949,
-    "throughput": 8406215.160716679,
+    "avg_ms": 7.214263400004711,
+    "min_ms": 2.874631000100635,
+    "max_ms": 13.317743999999948,
+    "throughput": 9084226.11793703,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -268,20 +268,20 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fili",
-    "avg_ms": 10.179284900054336,
-    "min_ms": 9.769192000385374,
-    "max_ms": 11.071485999971628,
-    "throughput": 6438173.2747896835,
+    "avg_ms": 10.003563400008716,
+    "min_ms": 9.762843000004068,
+    "max_ms": 10.74359500000719,
+    "throughput": 6551265.522038166,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -289,20 +289,20 @@
     "input": "medium",
     "samples": 65536,
     "lib": "naive_js",
-    "avg_ms": 6.794685699930414,
-    "min_ms": 4.19345200015232,
-    "max_ms": 22.401427999604493,
-    "throughput": 9645184.912772516,
+    "avg_ms": 6.732130699965637,
+    "min_ms": 4.193625999963842,
+    "max_ms": 21.865223999950103,
+    "throughput": 9734808.030440426,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -310,20 +310,20 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 58.16288350010291,
-    "min_ms": 36.976035999599844,
-    "max_ms": 69.93476200010628,
-    "throughput": 18028267.11640156,
+    "avg_ms": 47.712604200013445,
+    "min_ms": 28.609805000014603,
+    "max_ms": 60.73663000005763,
+    "throughput": 21976918.208117943,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -331,20 +331,20 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fili",
-    "avg_ms": 156.58271479997785,
-    "min_ms": 154.4757090001367,
-    "max_ms": 163.3172749998048,
-    "throughput": 6696626.77224286,
+    "avg_ms": 155.07358650000532,
+    "min_ms": 152.99019500007853,
+    "max_ms": 158.5878500000108,
+    "throughput": 6761796.2779236045,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -352,20 +352,20 @@
     "input": "large",
     "samples": 1048576,
     "lib": "naive_js",
-    "avg_ms": 76.44952360009775,
-    "min_ms": 73.23908100044355,
-    "max_ms": 87.55002600001171,
-    "throughput": 13715925.8896763,
+    "avg_ms": 73.5336591999745,
+    "min_ms": 72.47837399994023,
+    "max_ms": 76.93293399992399,
+    "throughput": 14259809.88037603,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -375,19 +375,19 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "dspx",
-    "avg_ms": 2.8143181000370534,
-    "min_ms": 1.3659709999337792,
-    "max_ms": 5.128283000085503,
-    "throughput": 23286635.579374325,
+    "avg_ms": 4.282316999998875,
+    "min_ms": 1.993239999981597,
+    "max_ms": 9.593414000002667,
+    "throughput": 15303864.706890505,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -397,19 +397,19 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "tfjs",
-    "avg_ms": 13.319909400073811,
-    "min_ms": 8.219958000350744,
-    "max_ms": 20.255571000277996,
-    "throughput": 4920153.586002382,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 14.65737400003709,
+    "min_ms": 8.978694000048563,
+    "max_ms": 30.71301800000947,
+    "throughput": 4471196.545836531,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -419,19 +419,19 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "naive_js",
-    "avg_ms": 0.9473342000506818,
-    "min_ms": 0.8911709999665618,
-    "max_ms": 1.2027269997633994,
-    "throughput": 69179387.79840721,
+    "avg_ms": 0.7943622999940999,
+    "min_ms": 0.7535470000002533,
+    "max_ms": 0.8980330000631511,
+    "throughput": 82501397.66261159,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -441,19 +441,19 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "dspx",
-    "avg_ms": 4.320223300019279,
-    "min_ms": 2.248232000041753,
-    "max_ms": 12.085822999943048,
-    "throughput": 15169586.25719822,
+    "avg_ms": 2.953472200001124,
+    "min_ms": 2.265648000058718,
+    "max_ms": 4.219419999979436,
+    "throughput": 22189475.831184413,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -463,19 +463,19 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "tfjs",
-    "avg_ms": 26.920833599939943,
-    "min_ms": 21.32691300008446,
-    "max_ms": 38.69909600028768,
-    "throughput": 2434397.1280349283,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 37.76379680000245,
+    "min_ms": 20.506389999995008,
+    "max_ms": 104.66918700002134,
+    "throughput": 1735418.7225156275,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -485,19 +485,19 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "naive_js",
-    "avg_ms": 2.7490368000697343,
-    "min_ms": 2.6213500001467764,
-    "max_ms": 3.283890000078827,
-    "throughput": 23839622.662867796,
+    "avg_ms": 2.9179759999737143,
+    "min_ms": 2.616096999961883,
+    "max_ms": 3.7713610000209883,
+    "throughput": 22459403.367467847,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -507,19 +507,19 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "dspx",
-    "avg_ms": 7.54717720001936,
-    "min_ms": 3.1062420001253486,
-    "max_ms": 15.113371999934316,
-    "throughput": 8683511.498819968,
+    "avg_ms": 5.615502199996262,
+    "min_ms": 2.864172999979928,
+    "max_ms": 11.940234999987297,
+    "throughput": 11670550.142433142,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -529,19 +529,19 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "tfjs",
-    "avg_ms": 40.163060300098735,
-    "min_ms": 36.027943999972194,
-    "max_ms": 51.30740900011733,
-    "throughput": 1631748.166357704,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 40.651449699979274,
+    "min_ms": 35.01682399993297,
+    "max_ms": 57.02212900004815,
+    "throughput": 1612144.2281561096,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -551,19 +551,19 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "naive_js",
-    "avg_ms": 5.052890600031242,
-    "min_ms": 4.840326999779791,
-    "max_ms": 6.181275000330061,
-    "throughput": 12970001.764850162,
+    "avg_ms": 4.84938559998991,
+    "min_ms": 4.632488999981433,
+    "max_ms": 5.4487770000705495,
+    "throughput": 13514289.315359116,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -573,19 +573,19 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "dspx",
-    "avg_ms": 9.691522299963982,
-    "min_ms": 6.26289700018242,
-    "max_ms": 13.892456999979913,
-    "throughput": 6762198.751814621,
+    "avg_ms": 9.839162099990062,
+    "min_ms": 6.854397000046447,
+    "max_ms": 16.680913000018336,
+    "throughput": 6660729.779019109,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -595,19 +595,19 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "tfjs",
-    "avg_ms": 92.30907619995996,
-    "min_ms": 68.38052899995819,
-    "max_ms": 244.6249659997411,
-    "throughput": 709962.6894546739,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 74.20030330001609,
+    "min_ms": 66.72673899994697,
+    "max_ms": 93.0048480000114,
+    "throughput": 883230.8910519748,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -617,19 +617,19 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "naive_js",
-    "avg_ms": 10.196607500081882,
-    "min_ms": 9.866725000087172,
-    "max_ms": 10.621669000014663,
-    "throughput": 6427235.7251638565,
+    "avg_ms": 9.781046499998775,
+    "min_ms": 9.596627000020817,
+    "max_ms": 10.269733999972232,
+    "throughput": 6700305.53479203,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -639,19 +639,19 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "dspx",
-    "avg_ms": 7.52717869989574,
-    "min_ms": 3.2687539998441935,
-    "max_ms": 15.159351999871433,
-    "throughput": 8706582.188743275,
+    "avg_ms": 7.964805000007618,
+    "min_ms": 4.984279999975115,
+    "max_ms": 14.814375000074506,
+    "throughput": 8228198.932671587,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -661,19 +661,19 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "tfjs",
-    "avg_ms": 146.79915539994835,
-    "min_ms": 132.25353199988604,
-    "max_ms": 181.08481599995866,
-    "throughput": 446433.0862221232,
-    "backend": "CPU (TensorFlow.js WASM)",
+    "avg_ms": 140.118936400034,
+    "min_ms": 131.959514999995,
+    "max_ms": 172.05430700001307,
+    "throughput": 467716.93879332143,
+    "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
@@ -683,19 +683,19 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "naive_js",
-    "avg_ms": 20.921233199955896,
-    "min_ms": 18.39400799991563,
-    "max_ms": 31.248041999991983,
-    "throughput": 3132511.328258516,
+    "avg_ms": 20.031861000019127,
+    "min_ms": 19.445720999967307,
+    "max_ms": 20.857403000001796,
+    "throughput": 3271588.1964205634,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   }
 ]

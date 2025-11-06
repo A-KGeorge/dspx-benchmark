@@ -3,57 +3,57 @@
     "test": "redis_persistence",
     "input": "small",
     "samples": 1024,
-    "save_ms": 0.06674659997224808,
-    "load_ms": 0.07463180003687739,
-    "state_size_bytes": 2381,
+    "save_ms": 0.06817719996906817,
+    "load_ms": 0.07229499996174127,
+    "state_size_bytes": 2457,
     "seamless": false,
     "redis_available": true,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
     "test": "redis_persistence",
     "input": "medium",
     "samples": 65536,
-    "save_ms": 0.07016420001164078,
-    "load_ms": 0.08692800002172589,
-    "state_size_bytes": 2409,
+    "save_ms": 0.07930940000806004,
+    "load_ms": 0.07576979999430478,
+    "state_size_bytes": 2485,
     "seamless": false,
     "redis_available": true,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   },
   {
     "test": "redis_persistence",
     "input": "large",
     "samples": 1048576,
-    "save_ms": 0.24803240010514854,
-    "load_ms": 0.08965420005843043,
-    "state_size_bytes": 2405,
+    "save_ms": 0.10898779998533428,
+    "load_ms": 0.11214519997593016,
+    "state_size_bytes": 2481,
     "seamless": false,
     "redis_available": true,
     "meta": {
-      "cpu": "Tensor G4",
+      "cpu": "tensor-g4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
       "os": "linux 6.1.0-29-avf-arm64",
       "node": "v18.20.4",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "0.2.0-alpha.17"
     }
   }
 ]
