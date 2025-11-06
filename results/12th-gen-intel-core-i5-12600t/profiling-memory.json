@@ -1,0 +1,80 @@
+[
+  {
+    "test": "memory_profiling",
+    "input": "small",
+    "samples": 1024,
+    "iterations": 50,
+    "heap_used_before_mb": "5.42",
+    "heap_used_after_mb": "5.46",
+    "heap_growth_mb": "0.04",
+    "heap_growth_per_iter_kb": "0.77",
+    "heap_peak_mb": "5.45",
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    },
+    "latency_p50_ms": "0.085",
+    "latency_p95_ms": "0.176",
+    "latency_p99_ms": "0.224",
+    "latency_min_ms": "0.069",
+    "latency_max_ms": "0.224",
+    "latency_avg_ms": "0.095"
+  },
+  {
+    "test": "memory_profiling",
+    "input": "medium",
+    "samples": 65536,
+    "iterations": 50,
+    "heap_used_before_mb": "5.52",
+    "heap_used_after_mb": "5.52",
+    "heap_growth_mb": "-0.00",
+    "heap_growth_per_iter_kb": "-0.09",
+    "heap_peak_mb": "5.52",
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    },
+    "latency_p50_ms": "1.749",
+    "latency_p95_ms": "2.346",
+    "latency_p99_ms": "2.428",
+    "latency_min_ms": "1.680",
+    "latency_max_ms": "2.428",
+    "latency_avg_ms": "1.809"
+  },
+  {
+    "test": "memory_profiling",
+    "input": "large",
+    "samples": 1048576,
+    "iterations": 50,
+    "heap_used_before_mb": "5.54",
+    "heap_used_after_mb": "5.53",
+    "heap_growth_mb": "-0.01",
+    "heap_growth_per_iter_kb": "-0.14",
+    "heap_peak_mb": "5.53",
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "0.2.0-alpha.15"
+    },
+    "latency_p50_ms": "26.069",
+    "latency_p95_ms": "30.780",
+    "latency_p99_ms": "33.466",
+    "latency_min_ms": "25.041",
+    "latency_max_ms": "33.466",
+    "latency_avg_ms": "26.486"
+  }
+]

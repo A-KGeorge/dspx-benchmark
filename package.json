@@ -4,7 +4,7 @@
   "description": "Benchmark suite for dspx library",
   "type": "module",
   "scripts": {
-    "bench:all": "npm run bench:speed && npm run bench:algo && npm run bench:redis && npm run bench:logging && npm run bench:profiling",
+    "bench:all": "npm run bench:speed && npm run bench:algo && npm run bench:redis && npm run bench:logging && npm run bench:profiling && npm run charts && npm run report",
     "bench:speed": "node --no-warnings raw-speed.js",
     "bench:algo": "node --no-warnings algorithmic.js",
     "bench:redis": "node --no-warnings redis.js",
