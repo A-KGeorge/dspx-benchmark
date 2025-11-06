@@ -4,11 +4,12 @@
   "description": "Benchmark suite for dspx library",
   "type": "module",
   "scripts": {
-    "bench:all": "node --no-warnings raw-speed.js && node --no-warnings algorithmic.js && node --no-warnings redis.js && node --no-warnings logging.js && node --no-warnings generate-charts.js && node --no-warnings generate-report.js",
+    "bench:all": "npm run bench:speed && npm run bench:algo && npm run bench:redis && npm run bench:logging && npm run bench:profiling",
     "bench:speed": "node --no-warnings raw-speed.js",
     "bench:algo": "node --no-warnings algorithmic.js",
     "bench:redis": "node --no-warnings redis.js",
     "bench:logging": "node --no-warnings logging.js",
+    "bench:profiling": "node --expose-gc profiling.js",
     "charts": "node --no-warnings generate-charts.js",
     "report": "node --no-warnings generate-report.js",
     "regenerate-charts": "node --no-warnings regenerate-charts.js",

@@ -590,5 +590,242 @@ if (story4Data) {
   console.log("   ✓ Saved: logging_perf.png");
 }
 
+// ============================================================================
+// Story 5: Memory Growth Over Iterations
+// ============================================================================
+
+const memoryData = loadPlatformJSON("profiling-memory");
+if (memoryData) {
+  console.log("📈 Chart 7: Memory Growth Over Iterations...");
+
+  const inputSizes = memoryData.map((r) => r.input.toUpperCase());
+  const heapGrowth = memoryData.map((r) =>
+    parseFloat(r.heap_growth_per_iter_kb)
+  );
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          label: "Heap Growth per Iteration (KB)",
+          data: heapGrowth,
+          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Memory Growth per Iteration (50 iterations)",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • Flat line indicates no memory leaks",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Growth (KB/iteration)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "memory_growth.png"), buffer);
+  console.log("   ✓ Saved: memory_growth.png");
+}
+
+// ============================================================================
+// Story 5: Latency Distribution (p50/p95/p99)
+// ============================================================================
+
+if (memoryData) {
+  console.log("📈 Chart 8: Latency Distribution...");
+
+  const inputSizes = memoryData.map((r) => r.input.toUpperCase());
+  const p50 = memoryData.map((r) => parseFloat(r.latency_p50_ms));
+  const p95 = memoryData.map((r) => parseFloat(r.latency_p95_ms));
+  const p99 = memoryData.map((r) => parseFloat(r.latency_p99_ms));
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          label: "p50 (Median)",
+          data: p50,
+          backgroundColor: "rgba(54, 162, 235, 0.6)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 2,
+        },
+        {
+          label: "p95",
+          data: p95,
+          backgroundColor: "rgba(255, 206, 86, 0.6)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 2,
+        },
+        {
+          label: "p99",
+          data: p99,
+          backgroundColor: "rgba(255, 99, 132, 0.6)",
+          borderColor: "rgb(255, 99, 132)",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Latency Distribution: p50/p95/p99",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • FIR Filter → RMS Pipeline (50 iterations)",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Latency (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "latency_distribution.png"), buffer);
+  console.log("   ✓ Saved: latency_distribution.png");
+}
+
+// ============================================================================
+// Story 5: Concurrent Scaling
+// ============================================================================
+
+const concurrencyData = loadPlatformJSON("profiling-concurrency");
+if (concurrencyData) {
+  console.log("📈 Chart 9: Concurrent Scaling...");
+
+  const pipelineCounts = concurrencyData.map((r) => r.num_pipelines);
+  const throughput = concurrencyData.map(
+    (r) => parseInt(r.throughput_samples_per_sec) / 1e6
+  );
+
+  const config = {
+    type: "line",
+    data: {
+      labels: pipelineCounts,
+      datasets: [
+        {
+          label: "Throughput (Million samples/sec)",
+          data: throughput,
+          borderColor: "rgb(153, 102, 255)",
+          backgroundColor: "rgba(153, 102, 255, 0.2)",
+          borderWidth: 3,
+          tension: 0.1,
+          fill: true,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Concurrent Pipeline Scaling",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • Should scale linearly or stay flat",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Throughput (M samples/sec)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Number of Concurrent Pipelines",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "concurrent_scaling.png"), buffer);
+  console.log("   ✓ Saved: concurrent_scaling.png");
+}
+
 console.log("\n✅ All charts regenerated successfully!\n");
 console.log(`📁 Charts saved to: ${chartsDir}`);

@@ -162,34 +162,34 @@ export function getPlatformId() {
  * Returns null if TensorFlow is not available/needed for the current platform
  */
 export async function loadTensorFlow() {
-  const platformId = getPlatformId();
+  const arch = process.arch;
+  const platform = process.platform;
 
   try {
-    // For linux-arm64, use WASM backend
-    if (platformId === "linux-arm64" || platformId.includes("linux-arm64")) {
+    // For ARM64 platforms (including Pixel 9 Pro XL), use CPU backend
+    // tfjs-node doesn't have ARM64 prebuilts, so we use pure JS backend
+    if (arch === "arm64" || arch === "arm") {
       console.log(
-        "⚙️  Loading TensorFlow.js with WASM backend (linux-arm64)..."
+        `⚙️  Loading TensorFlow.js with CPU backend on ${platform}-${arch}...`
       );
       const tf = await import("@tensorflow/tfjs");
-      const wasm = await import("@tensorflow/tfjs-backend-wasm");
 
-      // Set WASM backend
-      wasm.setWasmPaths(
-        "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@latest/dist/"
+      // Explicitly set CPU backend (pure JavaScript, no native bindings)
+      await tf.setBackend("cpu");
+      await tf.ready();
+
+      console.log(
+        `✓ TensorFlow.js CPU backend ready (pure JS, slower than native)\n`
       );
-      await tf.setBackend("wasm");
-      await tf.ready();
-
-      console.log(`✓ TensorFlow.js WASM backend ready\n`);
-      return tf;
-    } else {
-      // For other platforms, use tfjs-node (native bindings)
-      console.log("⚙️  Loading TensorFlow.js with Node backend...");
-      const tf = await import("@tensorflow/tfjs-node");
-      await tf.ready();
-      console.log(`✓ TensorFlow.js Node backend ready\n`);
       return tf;
     }
+
+    // For x64/x86 platforms, use tfjs-node (native bindings with better performance)
+    console.log("⚙️  Loading TensorFlow.js with Node backend...");
+    const tf = await import("@tensorflow/tfjs-node");
+    await tf.ready();
+    console.log(`✓ TensorFlow.js Node backend ready (native C++)\n`);
+    return tf;
   } catch (e) {
     console.warn(`⚠️  Could not load TensorFlow.js: ${e.message}`);
     console.warn("   TensorFlow.js benchmarks will be skipped.\n");
