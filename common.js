@@ -168,7 +168,7 @@ export async function loadTensorFlow() {
   try {
     // For ARM64 platforms (including Pixel 9 Pro XL), use CPU backend
     // tfjs-node doesn't have ARM64 prebuilts, so we use pure JS backend
-    if (arch === "arm64" || arch === "arm") {
+    if ((arch === "arm64" || arch === "arm") && platform === "linux") {
       console.log(
         `⚙️  Loading TensorFlow.js with CPU backend on ${platform}-${arch}...`
       );
