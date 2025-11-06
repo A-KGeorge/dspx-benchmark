@@ -1,0 +1,80 @@
+[
+  {
+    "test": "memory_profiling",
+    "input": "small",
+    "samples": 1024,
+    "iterations": 50,
+    "heap_used_before_mb": "3.64",
+    "heap_used_after_mb": "3.70",
+    "heap_growth_mb": "0.06",
+    "heap_growth_per_iter_kb": "1.17",
+    "heap_peak_mb": "3.77",
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.17"
+    },
+    "latency_p50_ms": "0.629",
+    "latency_p95_ms": "2.280",
+    "latency_p99_ms": "7.404",
+    "latency_min_ms": "0.193",
+    "latency_max_ms": "7.404",
+    "latency_avg_ms": "0.922"
+  },
+  {
+    "test": "memory_profiling",
+    "input": "medium",
+    "samples": 65536,
+    "iterations": 50,
+    "heap_used_before_mb": "4.21",
+    "heap_used_after_mb": "3.76",
+    "heap_growth_mb": "-0.45",
+    "heap_growth_per_iter_kb": "-9.20",
+    "heap_peak_mb": "4.18",
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.17"
+    },
+    "latency_p50_ms": "18.662",
+    "latency_p95_ms": "28.637",
+    "latency_p99_ms": "28.813",
+    "latency_min_ms": "6.703",
+    "latency_max_ms": "28.813",
+    "latency_avg_ms": "18.230"
+  },
+  {
+    "test": "memory_profiling",
+    "input": "large",
+    "samples": 1048576,
+    "iterations": 50,
+    "heap_used_before_mb": "3.78",
+    "heap_used_after_mb": "3.78",
+    "heap_growth_mb": "-0.00",
+    "heap_growth_per_iter_kb": "-0.10",
+    "heap_peak_mb": "3.78",
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.1.0-29-avf-arm64",
+      "node": "v18.20.4",
+      "dspx": "0.2.0-alpha.17"
+    },
+    "latency_p50_ms": "27.591",
+    "latency_p95_ms": "42.016",
+    "latency_p99_ms": "65.563",
+    "latency_min_ms": "20.329",
+    "latency_max_ms": "65.563",
+    "latency_avg_ms": "29.869"
+  }
+]
