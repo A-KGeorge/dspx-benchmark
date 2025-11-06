@@ -29,7 +29,7 @@
     "chartjs-node-canvas": "^5.0.0",
     "crypto": "^1.0.1",
     "dsp.js": "^1.0.1",
-    "dspx": "^0.2.0-alpha.15",
+    "dspx": "^0.2.0-alpha.17",
     "fft.js": "^4.0.4",
     "fili": "^2.0.3",
     "redis": "^5.9.0"
