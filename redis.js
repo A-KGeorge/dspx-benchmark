@@ -64,7 +64,18 @@ for (const size of INPUT_SIZES) {
   const secondHalf = signal.slice(halfLength);
 
   // --- Create pipeline and process first half ---
-  const pipeline1 = createDspPipeline();
+
+  let pipeline1;
+  if (!redisAvailable) {
+    pipeline1 = createDspPipeline();
+  } else {
+    pipeline1 = createDspPipeline({
+      redisHost: "localhost",
+      redisPort: 6379,
+      stateKey: `dsp:state:${size.name}`,
+    });
+  }
+
   pipeline1
     .filter({
       type: "fir",
