@@ -30,7 +30,7 @@
     "chartjs-node-canvas": "^5.0.0",
     "crypto": "^1.0.1",
     "dsp.js": "^1.0.1",
-    "dspx": "^1.1.5",
+    "dspx": "^1.1.6",
     "fft.js": "^4.0.4",
     "fili": "^2.0.3",
     "redis": "^5.9.0"

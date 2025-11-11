@@ -12,7 +12,7 @@
 | **Architecture** | x64 |
 | **OS** | Microsoft Windows [Version 10.0.26200.6901] |
 | **Node.js** | v22.17.1 |
-| **dspx** | v1.1.5 |
+| **dspx** | v1.1.6 |
 
 ---
 
@@ -27,13 +27,13 @@ This benchmark suite evaluates **dspx**, a high-performance DSP library with nat
 5. **Production Profiling** — Memory stability, latency distribution, concurrent scaling
 
 **Key Findings:**
-- 🚀 **3.3x faster** than pure JS for FFT and filtering
+- 🚀 **3.1x faster** than pure JS for FFT and filtering
 - ⚡ **O(1) complexity** for moving averages (vs O(N·W) naive)
 - 💾 **Sub-millisecond** state save/load operations
 - 📊 **<5% overhead** with batched logging (vs >20% per-message)
-- 🔒 **No memory leaks** detected (0.18333333333333335KB avg growth/iter)
+- 🔒 **No memory leaks** detected (0.18666666666666668KB avg growth/iter)
 - ⚡ **Predictable latency** with tight p99 distribution
-- 📈 **3.6x scaling** with concurrent pipelines
+- 📈 **4.1x scaling** with concurrent pipelines
 
 ---
 
@@ -49,15 +49,15 @@ Comparing Fast Fourier Transform implementations across different backends:
 
 | Library | Input Size | Throughput | Backend |
 |---------|------------|------------|---------|
-| dspx | small | 138.57M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | small | 3.90M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | small | 4.96M samples/sec | CPU (Pure JS) |
-| dspx | medium | 206.29M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | medium | 13.03M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | medium | 75.90M samples/sec | CPU (Pure JS) |
-| dspx | large | 148.51M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | large | 15.66M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | large | 69.17M samples/sec | CPU (Pure JS) |
+| dspx | small | 135.99M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | small | 3.92M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | small | 5.20M samples/sec | CPU (Pure JS) |
+| dspx | medium | 228.09M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | medium | 14.30M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | medium | 96.58M samples/sec | CPU (Pure JS) |
+| dspx | large | 143.08M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | large | 15.77M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | large | 61.88M samples/sec | CPU (Pure JS) |
 
 **Key Insights:**
 - Native C++ SIMD (dspx) consistently outperforms pure JS implementations
@@ -74,15 +74,15 @@ Testing Finite Impulse Response filter implementations (51-tap lowpass):
 
 | Library | Input Size | Throughput | Backend |
 |---------|------------|------------|---------|
-| dspx | small | 12.22M samples/sec | CPU (Native C++ SIMD) |
-| fili | small | 8.31M samples/sec | CPU (Pure JS) |
-| naive_js | small | 13.82M samples/sec | CPU (Pure JS) |
-| dspx | medium | 34.01M samples/sec | CPU (Native C++ SIMD) |
-| fili | medium | 12.40M samples/sec | CPU (Pure JS) |
-| naive_js | medium | 20.31M samples/sec | CPU (Pure JS) |
-| dspx | large | 36.89M samples/sec | CPU (Native C++ SIMD) |
-| fili | large | 12.25M samples/sec | CPU (Pure JS) |
-| naive_js | large | 21.16M samples/sec | CPU (Pure JS) |
+| dspx | small | 11.69M samples/sec | CPU (Native C++ SIMD) |
+| fili | small | 8.58M samples/sec | CPU (Pure JS) |
+| naive_js | small | 13.31M samples/sec | CPU (Pure JS) |
+| dspx | medium | 32.71M samples/sec | CPU (Native C++ SIMD) |
+| fili | medium | 12.19M samples/sec | CPU (Pure JS) |
+| naive_js | medium | 15.85M samples/sec | CPU (Pure JS) |
+| dspx | large | 37.46M samples/sec | CPU (Native C++ SIMD) |
+| fili | large | 12.19M samples/sec | CPU (Pure JS) |
+| naive_js | large | 21.26M samples/sec | CPU (Pure JS) |
 
 **Key Insights:**
 - SIMD-optimized convolution in dspx delivers N/Ax speedup
@@ -113,37 +113,37 @@ Demonstrating constant-time scaling with circular buffer implementation:
 
 | Window Size | dspx (ms) | naive JS (ms) | Speedup (Time) | Throughput (dspx) | Throughput (naive) | Speedup (Throughput) |
 |-------------|-----------|---------------|----------------|-------------------|--------------------|----------------------|
-| 32 | 0.092 | 0.023 | **0.2x** | 11.1M | 45.2M | **0.2x** |
-| 128 | 0.066 | 0.083 | **1.2x** | 15.5M | 12.4M | **1.2x** |
-| 512 | 0.067 | 0.290 | **4.3x** | 15.3M | 3.5M | **4.3x** |
-| 2048 | 0.092 | 0.345 | **3.7x** | 11.1M | 3.0M | **3.7x** |
-| 8192 | 0.083 | 0.342 | **4.1x** | 12.4M | 3.0M | **4.1x** |
+| 32 | 0.090 | 0.024 | **0.3x** | 11.3M | 42.5M | **0.3x** |
+| 128 | 0.090 | 0.089 | **1.0x** | 11.4M | 11.5M | **1.0x** |
+| 512 | 0.084 | 0.263 | **3.1x** | 12.2M | 3.9M | **3.1x** |
+| 2048 | 0.089 | 0.384 | **4.3x** | 11.5M | 2.7M | **4.3x** |
+| 8192 | 0.099 | 0.357 | **3.6x** | 10.3M | 2.9M | **3.6x** |
 
 #### Performance Comparison (MEDIUM Input)
 
 | Window Size | dspx (ms) | naive JS (ms) | Speedup (Time) | Throughput (dspx) | Throughput (naive) | Speedup (Throughput) |
 |-------------|-----------|---------------|----------------|-------------------|--------------------|----------------------|
-| 32 | 0.573 | 1.465 | **2.6x** | 114.5M | 44.7M | **2.6x** |
-| 128 | 0.592 | 5.509 | **9.3x** | 110.6M | 11.9M | **9.3x** |
-| 512 | 0.546 | 22.058 | **40.4x** | 120.0M | 3.0M | **40.4x** |
-| 2048 | 0.738 | 85.001 | **115.1x** | 88.8M | 771.0K | **115.1x** |
-| 8192 | 0.568 | 324.669 | **571.3x** | 115.3M | 201.9K | **571.3x** |
+| 32 | 0.706 | 1.504 | **2.1x** | 92.9M | 43.6M | **2.1x** |
+| 128 | 0.620 | 5.570 | **9.0x** | 105.6M | 11.8M | **9.0x** |
+| 512 | 0.608 | 22.520 | **37.1x** | 107.8M | 2.9M | **37.1x** |
+| 2048 | 0.543 | 86.074 | **158.6x** | 120.7M | 761.4K | **158.6x** |
+| 8192 | 0.510 | 324.652 | **636.8x** | 128.5M | 201.9K | **636.8x** |
 
 #### Performance Comparison (LARGE Input)
 
 | Window Size | dspx (ms) | naive JS (ms) | Speedup (Time) | Throughput (dspx) | Throughput (naive) | Speedup (Throughput) |
 |-------------|-----------|---------------|----------------|-------------------|--------------------|----------------------|
-| 32 | 7.100 | 21.909 | **3.1x** | 147.7M | 47.9M | **3.1x** |
-| 128 | 7.399 | 86.465 | **11.7x** | 141.7M | 12.1M | **11.7x** |
-| 512 | 7.222 | 344.790 | **47.7x** | 145.2M | 3.0M | **47.7x** |
-| 2048 | 7.028 | ⏭️ skipped | **—** | 149.2M | ⏭️ skipped | **—** |
-| 8192 | 7.209 | ⏭️ skipped | **—** | 145.5M | ⏭️ skipped | **—** |
+| 32 | 7.286 | 22.194 | **3.0x** | 143.9M | 47.2M | **3.0x** |
+| 128 | 7.439 | 86.810 | **11.7x** | 141.0M | 12.1M | **11.7x** |
+| 512 | 7.320 | 345.564 | **47.2x** | 143.3M | 3.0M | **47.2x** |
+| 2048 | 7.427 | ⏭️ skipped | **—** | 141.2M | ⏭️ skipped | **—** |
+| 8192 | 7.182 | ⏭️ skipped | **—** | 146.0M | ⏭️ skipped | **—** |
 
 
 **Key Insights:**
 - dspx maintains constant time regardless of window size
 - Naive implementation degrades linearly with window size (O(N·W) complexity)
-- **~571x speedup** with circular buffer approach at production scale (medium input, 8192 window)
+- **~637x speedup** with circular buffer approach at production scale (medium input, 8192 window)
 - Critical for real-time processing where window sizes can be large (1000+ samples)
 
 ---
@@ -160,13 +160,13 @@ Testing pipeline state serialization for crash recovery (FirFilter → RMS pipel
 
 | Input Size | Save Time (ms) | Load Time (ms) | State Size | Seamless? |
 |------------|----------------|----------------|------------|-----------|
-| small | 0.055 | 0.196 | 4.15 KB | ✅ |
-| medium | 0.056 | 0.218 | 4.17 KB | ✅ |
-| large | 0.059 | 0.233 | 4.06 KB | ✅ |
+| small | 0.056 | 0.223 | 4.15 KB | ✅ |
+| medium | 0.073 | 0.244 | 4.17 KB | ✅ |
+| large | 0.057 | 0.265 | 4.06 KB | ✅ |
 
 **Performance Metrics:**
-- Average save time: **0.057 ms**
-- Average load time: **0.216 ms**
+- Average save time: **0.062 ms**
+- Average load time: **0.244 ms**
 - Average state size: **4.13 KB**
 - All tests seamless: **✅ YES**
 
@@ -191,21 +191,21 @@ Comparing throughput impact of different logging strategies:
 
 | Mode | Average Overhead | Recommendation |
 |------|------------------|----------------|
-| batched | -8.92% | ✅ Recommended |
-| per-message | -7.74% | ✅ Recommended |
-| console | -12.22% | ✅ Recommended |
+| batched | 6.01% | ✅ Recommended |
+| per-message | -7.95% | ✅ Recommended |
+| console | -11.44% | ✅ Recommended |
 
 #### Detailed Results
 
 | Input Size | Mode | Throughput | Overhead |
 |------------|------|------------|----------|
-| medium | none | 101.00M samples/sec | — |
-| medium | batched | 119.47M samples/sec | -15.46% |
-| medium | per-message | 116.35M samples/sec | -13.20% |
-| medium | console | 115.06M samples/sec | -12.22% |
-| large | none | 141.22M samples/sec | — |
-| large | batched | 144.67M samples/sec | -2.39% |
-| large | per-message | 144.52M samples/sec | -2.29% |
+| medium | none | 103.92M samples/sec | — |
+| medium | batched | 100.87M samples/sec | 3.02% |
+| medium | per-message | 120.79M samples/sec | -13.97% |
+| medium | console | 117.34M samples/sec | -11.44% |
+| large | none | 140.70M samples/sec | — |
+| large | batched | 129.07M samples/sec | 9.01% |
+| large | per-message | 143.45M samples/sec | -1.92% |
 
 **Key Insights:**
 - **Batched logging (TopicRouter)**: <5% overhead — production-ready
@@ -230,12 +230,12 @@ Testing for memory leaks during sustained operation:
 
 | Input Size | Heap Growth/Iteration | Peak Heap | Status |
 |------------|----------------------|-----------|--------|
-| small | 0.76 KB | 5.65 MB | ✅ Stable |
+| small | 0.77 KB | 5.65 MB | ✅ Stable |
 | medium | -0.09 KB | 5.71 MB | ✅ Stable |
 | large | -0.12 KB | 5.72 MB | ✅ Stable |
 
 **Key Insights:**
-- Average heap growth: **0.18 KB/iteration** (50 iterations)
+- Average heap growth: **0.19 KB/iteration** (50 iterations)
 - ✅ No memory leaks detected
 - Native C++ allocations stay within expected bounds
 - Garbage collection efficiently reclaims temporary buffers
@@ -250,9 +250,9 @@ Measuring latency consistency under steady load:
 
 | Input Size | p50 (Median) | p95 | p99 | Min | Max |
 |------------|--------------|-----|-----|-----|-----|
-| small | 0.085 ms | 0.112 ms | 0.154 ms | 0.076 ms | 0.154 ms |
-| medium | 2.076 ms | 2.238 ms | 2.620 ms | 1.995 ms | 2.620 ms |
-| large | 34.751 ms | 36.291 ms | 41.340 ms | 32.802 ms | 41.340 ms |
+| small | 0.081 ms | 0.097 ms | 0.106 ms | 0.073 ms | 0.106 ms |
+| medium | 2.101 ms | 2.386 ms | 2.483 ms | 2.007 ms | 2.483 ms |
+| large | 33.784 ms | 35.640 ms | 37.890 ms | 32.592 ms | 37.890 ms |
 
 **Key Insights:**
 - Tight latency distribution indicates predictable performance
@@ -270,15 +270,15 @@ Testing throughput with multiple independent pipelines:
 
 | Pipeline Count | Total Throughput | p99 Latency | Efficiency |
 |----------------|------------------|-------------|------------|
-| 1 | 31.4M samples/sec | 2.433 ms | 100.0% |
-| 2 | 54.3M samples/sec | 2.746 ms | 86.3% |
-| 4 | 97.3M samples/sec | 4.480 ms | 77.4% |
-| 8 | 98.1M samples/sec | 7.300 ms | 39.0% |
-| 16 | 95.8M samples/sec | 13.293 ms | 19.0% |
-| 32 | 112.9M samples/sec | 20.053 ms | 11.2% |
+| 1 | 29.4M samples/sec | 2.388 ms | 100.0% |
+| 2 | 53.9M samples/sec | 2.683 ms | 91.6% |
+| 4 | 95.8M samples/sec | 4.355 ms | 81.4% |
+| 8 | 105.2M samples/sec | 7.538 ms | 44.7% |
+| 16 | 114.5M samples/sec | 11.180 ms | 24.3% |
+| 32 | 119.2M samples/sec | 18.691 ms | 12.7% |
 
 **Key Insights:**
-- **3.6x throughput increase** from 1 to 32 pipelines
+- **4.1x throughput increase** from 1 to 32 pipelines
 - ✅ Good scaling with concurrency
 - Async processing allows effective CPU core utilization
 - Ideal for multi-tenant or microservices architectures
@@ -291,13 +291,13 @@ Testing throughput with multiple independent pipelines:
 ### Performance Wins
 
 1. **Native SIMD Acceleration**
-   - 3.3x faster than pure JavaScript
+   - 3.1x faster than pure JavaScript
    - Consistent performance across input sizes
    - Optimized for modern CPU architectures
 
 2. **Optimal Algorithms**
    - O(1) circular buffers vs O(N·W) naive implementations
-   - **~571x speedup** for moving averages
+   - **~637x speedup** for moving averages
    - Critical for real-time processing with large windows
 
 3. **Production-Ready Resilience**
@@ -313,7 +313,7 @@ Testing throughput with multiple independent pipelines:
 5. **Production Stability**
    - ✅ No memory leaks
    - Tight latency distribution (low p99 tail)
-   - **3.6x concurrent scaling** efficiency
+   - **4.1x concurrent scaling** efficiency
    - Predictable performance under load
 
 ### When to Use dspx
@@ -340,5 +340,5 @@ Testing throughput with multiple independent pipelines:
 ---
 
 **Generated by:** dspx benchmark suite v1.0  
-**Date:** 2025-11-10T19:11:00.020Z  
+**Date:** 2025-11-10T23:43:21.646Z  
 **Runtime:** Node.js v22.17.1

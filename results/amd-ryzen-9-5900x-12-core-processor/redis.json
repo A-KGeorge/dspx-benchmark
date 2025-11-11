@@ -3,8 +3,8 @@
     "test": "redis_persistence",
     "input": "small",
     "samples": 1024,
-    "save_ms": 0.0548799999999801,
-    "load_ms": 0.1962800000000243,
+    "save_ms": 0.05583999999996649,
+    "load_ms": 0.22296000000001187,
     "state_size_bytes": 4248,
     "seamless": true,
     "redis_available": false,
@@ -15,15 +15,15 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
     "test": "redis_persistence",
     "input": "medium",
     "samples": 65536,
-    "save_ms": 0.055639999999971226,
-    "load_ms": 0.2179800000000114,
+    "save_ms": 0.07262000000000626,
+    "load_ms": 0.24365999999997712,
     "state_size_bytes": 4265,
     "seamless": true,
     "redis_available": false,
@@ -34,15 +34,15 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
     "test": "redis_persistence",
     "input": "large",
     "samples": 1048576,
-    "save_ms": 0.05922000000002754,
-    "load_ms": 0.23297999999995228,
+    "save_ms": 0.057320000000026995,
+    "load_ms": 0.2647599999999784,
     "state_size_bytes": 4162,
     "seamless": true,
     "redis_available": false,
@@ -53,7 +53,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   }
 ]

@@ -6,10 +6,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.09225000000000136,
-    "min_ms": 0.06770000000000209,
-    "max_ms": 0.1629999999999825,
-    "throughput": 11100271.002709864,
+    "avg_ms": 0.09046999999999628,
+    "min_ms": 0.0759999999999934,
+    "max_ms": 0.12709999999998445,
+    "throughput": 11318669.172101714,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -17,7 +17,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -27,10 +27,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.022640000000001236,
-    "min_ms": 0.021399999999999864,
-    "max_ms": 0.02549999999999386,
-    "throughput": 45229681.978796124,
+    "avg_ms": 0.024120000000004894,
+    "min_ms": 0.022500000000007958,
+    "max_ms": 0.02600000000001046,
+    "throughput": 42454394.69319205,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -38,7 +38,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -48,10 +48,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.06620000000000062,
-    "min_ms": 0.056200000000018235,
-    "max_ms": 0.08650000000000091,
-    "throughput": 15468277.945619192,
+    "avg_ms": 0.08990000000000009,
+    "min_ms": 0.0771000000000015,
+    "max_ms": 0.10370000000000346,
+    "throughput": 11390433.815350378,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -59,7 +59,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -69,10 +69,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.0825999999999965,
-    "min_ms": 0.07900000000000773,
-    "max_ms": 0.08679999999998245,
-    "throughput": 12397094.430993263,
+    "avg_ms": 0.0893000000000029,
+    "min_ms": 0.08830000000000382,
+    "max_ms": 0.09090000000000487,
+    "throughput": 11466965.28555394,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -80,7 +80,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -90,10 +90,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.06688000000000045,
-    "min_ms": 0.05559999999999832,
-    "max_ms": 0.10360000000000014,
-    "throughput": 15311004.784688892,
+    "avg_ms": 0.08423000000000229,
+    "min_ms": 0.07080000000001974,
+    "max_ms": 0.10030000000000427,
+    "throughput": 12157188.650124328,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -101,7 +101,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -111,10 +111,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.2902600000000007,
-    "min_ms": 0.2593999999999994,
-    "max_ms": 0.3254000000000019,
-    "throughput": 3527871.5634258855,
+    "avg_ms": 0.26305999999999585,
+    "min_ms": 0.25960000000000605,
+    "max_ms": 0.26940000000001874,
+    "throughput": 3892648.0650802716,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -122,7 +122,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -132,10 +132,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.09208000000000709,
-    "min_ms": 0.06870000000000687,
-    "max_ms": 0.1494000000000142,
-    "throughput": 11120764.552562132,
+    "avg_ms": 0.08872999999999535,
+    "min_ms": 0.06470000000001619,
+    "max_ms": 0.12709999999998445,
+    "throughput": 11540628.874113081,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -143,7 +143,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -153,10 +153,10 @@
     "windowSize": 2048,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.3451600000000042,
-    "min_ms": 0.3375000000000057,
-    "max_ms": 0.35599999999999454,
-    "throughput": 2966740.0625796374,
+    "avg_ms": 0.3835199999999929,
+    "min_ms": 0.3504999999999825,
+    "max_ms": 0.43949999999998113,
+    "throughput": 2670004.1718815677,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -164,7 +164,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -174,10 +174,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.08261999999999432,
-    "min_ms": 0.06870000000000687,
-    "max_ms": 0.11089999999998668,
-    "throughput": 12394093.439845925,
+    "avg_ms": 0.0990099999999984,
+    "min_ms": 0.08339999999998327,
+    "max_ms": 0.12399999999999523,
+    "throughput": 10342389.65761051,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -185,7 +185,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -195,10 +195,10 @@
     "windowSize": 8192,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.3423800000000085,
-    "min_ms": 0.33790000000001896,
-    "max_ms": 0.34480000000002065,
-    "throughput": 2990828.9035573765,
+    "avg_ms": 0.35697999999999863,
+    "min_ms": 0.35079999999999245,
+    "max_ms": 0.3673000000000002,
+    "throughput": 2868508.0396660985,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -206,7 +206,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -216,10 +216,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.5725599999999929,
-    "min_ms": 0.4947999999999979,
-    "max_ms": 0.6980999999999824,
-    "throughput": 114461366.49434263,
+    "avg_ms": 0.7056799999999953,
+    "min_ms": 0.54819999999998,
+    "max_ms": 0.9887999999999977,
+    "throughput": 92869289.19623688,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -227,7 +227,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -237,10 +237,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 1.465179999999998,
-    "min_ms": 1.4163000000000068,
-    "max_ms": 1.520700000000005,
-    "throughput": 44728975.27948791,
+    "avg_ms": 1.5037199999999928,
+    "min_ms": 1.4282999999999788,
+    "max_ms": 1.5819999999999936,
+    "throughput": 43582581.86364503,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -248,7 +248,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -258,10 +258,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.5924600000000027,
-    "min_ms": 0.5430000000000064,
-    "max_ms": 0.6867000000000019,
-    "throughput": 110616750.49792342,
+    "avg_ms": 0.6204999999999927,
+    "min_ms": 0.5374999999999659,
+    "max_ms": 0.7312000000000012,
+    "throughput": 105618049.95971115,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -269,7 +269,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -279,10 +279,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 5.508600000000007,
-    "min_ms": 5.397300000000001,
-    "max_ms": 5.623199999999997,
-    "throughput": 11897033.729078153,
+    "avg_ms": 5.570080000000007,
+    "min_ms": 5.489500000000021,
+    "max_ms": 5.61239999999998,
+    "throughput": 11765719.702410005,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -290,7 +290,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -300,10 +300,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.5463500000000039,
-    "min_ms": 0.5139000000000067,
-    "max_ms": 0.6214000000000226,
-    "throughput": 119952411.45785584,
+    "avg_ms": 0.6077799999999968,
+    "min_ms": 0.5348999999999933,
+    "max_ms": 0.7623999999999569,
+    "throughput": 107828490.57224712,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -311,7 +311,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -321,10 +321,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 22.05796,
-    "min_ms": 21.522699999999986,
-    "max_ms": 22.395399999999995,
-    "throughput": 2971081.641275984,
+    "avg_ms": 22.51987999999998,
+    "min_ms": 21.84499999999997,
+    "max_ms": 24.001199999999983,
+    "throughput": 2910139.840887254,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -332,7 +332,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -342,10 +342,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.7382599999999968,
-    "min_ms": 0.5183999999999855,
-    "max_ms": 1.72199999999998,
-    "throughput": 88770893.72307898,
+    "avg_ms": 0.5428200000000061,
+    "min_ms": 0.5177000000000476,
+    "max_ms": 0.5824999999999818,
+    "throughput": 120732471.16907863,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -353,7 +353,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -363,10 +363,10 @@
     "windowSize": 2048,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 85.00052000000001,
-    "min_ms": 84.8954,
-    "max_ms": 85.15200000000004,
-    "throughput": 771007.047956883,
+    "avg_ms": 86.07351999999999,
+    "min_ms": 85.76929999999993,
+    "max_ms": 86.68459999999993,
+    "throughput": 761395.6069183648,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -374,7 +374,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -384,10 +384,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.568320000000017,
-    "min_ms": 0.5217000000000098,
-    "max_ms": 0.761000000000081,
-    "throughput": 115315315.31531186,
+    "avg_ms": 0.5098399999999856,
+    "min_ms": 0.4936999999999898,
+    "max_ms": 0.5340000000001055,
+    "throughput": 128542287.77656098,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -395,7 +395,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -405,10 +405,10 @@
     "windowSize": 8192,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 324.66925999999984,
-    "min_ms": 323.8599999999997,
-    "max_ms": 325.58089999999993,
-    "throughput": 201854.6504833874,
+    "avg_ms": 324.6523,
+    "min_ms": 324.35469999999987,
+    "max_ms": 325.08600000000024,
+    "throughput": 201865.1954722021,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -416,7 +416,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -426,10 +426,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 7.100109999999949,
-    "min_ms": 6.905599999999595,
-    "max_ms": 7.512400000000071,
-    "throughput": 147684472.49408916,
+    "avg_ms": 7.286389999999983,
+    "min_ms": 6.901699999999892,
+    "max_ms": 7.891000000000076,
+    "throughput": 143908849.2381004,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -437,7 +437,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -447,10 +447,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 21.909100000000034,
-    "min_ms": 21.8746000000001,
-    "max_ms": 21.94399999999996,
-    "throughput": 47860295.493653245,
+    "avg_ms": 22.19384000000009,
+    "min_ms": 22.01839999999993,
+    "max_ms": 22.621599999999944,
+    "throughput": 47246262.927010186,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -458,7 +458,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -468,10 +468,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 7.399150000000054,
-    "min_ms": 6.883299999999963,
-    "max_ms": 8.22990000000027,
-    "throughput": 141715737.6185092,
+    "avg_ms": 7.439300000000003,
+    "min_ms": 7.016000000000076,
+    "max_ms": 9.072300000000268,
+    "throughput": 140950895.9176266,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -479,7 +479,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -489,10 +489,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 86.46506,
-    "min_ms": 86.26430000000028,
-    "max_ms": 86.60159999999996,
-    "throughput": 12127164.429192554,
+    "avg_ms": 86.8104800000001,
+    "min_ms": 86.39909999999963,
+    "max_ms": 87.62080000000014,
+    "throughput": 12078910.288250897,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -500,7 +500,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -510,10 +510,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 7.221780000000126,
-    "min_ms": 6.876600000000508,
-    "max_ms": 7.8926000000001295,
-    "throughput": 145196336.63722542,
+    "avg_ms": 7.319740000000093,
+    "min_ms": 6.868600000000697,
+    "max_ms": 8.284899999999652,
+    "throughput": 143253175.6592429,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -521,7 +521,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -531,10 +531,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 344.7901600000001,
-    "min_ms": 344.22479999999996,
-    "max_ms": 345.8240999999998,
-    "throughput": 3041200.4797352673,
+    "avg_ms": 345.56363999999974,
+    "min_ms": 345.3290999999999,
+    "max_ms": 345.9513999999999,
+    "throughput": 3034393.3175376924,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -542,7 +542,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -552,10 +552,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 7.027730000000156,
-    "min_ms": 6.856600000000071,
-    "max_ms": 7.146099999999933,
-    "throughput": 149205504.4801062,
+    "avg_ms": 7.427410000000054,
+    "min_ms": 6.8585000000002765,
+    "max_ms": 9.086699999999837,
+    "throughput": 141176533.9465564,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -563,7 +563,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   },
   {
@@ -573,10 +573,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 7.208770000000095,
-    "min_ms": 6.928000000000793,
-    "max_ms": 7.601699999999255,
-    "throughput": 145458379.16870508,
+    "avg_ms": 7.1816000000000715,
+    "min_ms": 6.919299999999566,
+    "max_ms": 8.066200000000208,
+    "throughput": 146008688.8715592,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -584,7 +584,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.5"
+      "dspx": "1.1.6"
     }
   }
 ]
