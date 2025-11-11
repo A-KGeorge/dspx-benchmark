@@ -2,6 +2,7 @@
  * Story 3 — Redis Resilience (State Persistence)
  *
  * Demonstrates seamless state save/load for streaming DSP pipelines
+ *
  */
 
 import { createDspPipeline } from "dspx";
@@ -64,17 +65,17 @@ for (const size of INPUT_SIZES) {
   const secondHalf = signal.slice(halfLength);
 
   // --- Create pipeline and process first half ---
+  console.log("\n📊 Phase 1: Process first half + save state");
 
-  let pipeline1;
-  if (!redisAvailable) {
-    pipeline1 = createDspPipeline();
-  } else {
-    pipeline1 = createDspPipeline({
-      redisHost: "localhost",
-      redisPort: 6379,
-      stateKey: `dsp:state:${size.name}`,
-    });
-  }
+  const pipelineConfig = redisAvailable
+    ? {
+        redisHost: "localhost",
+        redisPort: 6379,
+        stateKey: `dsp:benchmark:${size.name}`,
+      }
+    : undefined;
+
+  const pipeline1 = createDspPipeline(pipelineConfig);
 
   pipeline1
     .filter({
@@ -87,8 +88,6 @@ for (const size of INPUT_SIZES) {
     })
     .Rms({ mode: "moving", windowSize: 100 });
 
-  console.log("\n📊 Phase 1: Process first half + save state");
-
   const output1 = await pipeline1.process(firstHalf, {
     sampleRate: 10000,
     channels: 1,
@@ -96,7 +95,6 @@ for (const size of INPUT_SIZES) {
 
   // --- Save state ---
   let saveTime, loadTime, stateSize;
-  let seamless = false;
 
   const saveResult = await runTimed(
     "save-state",
@@ -124,7 +122,8 @@ for (const size of INPUT_SIZES) {
   // --- Create new pipeline and restore state ---
   console.log("\n📊 Phase 2: Create new pipeline + load state");
 
-  const pipeline2 = createDspPipeline();
+  const pipeline2 = createDspPipeline(pipelineConfig);
+
   pipeline2
     .filter({
       type: "fir",
@@ -159,7 +158,7 @@ for (const size of INPUT_SIZES) {
   // --- Verify continuity (compare with non-interrupted processing) ---
   console.log("\n📊 Phase 4: Verify continuity");
 
-  const pipelineContinuous = createDspPipeline();
+  const pipelineContinuous = createDspPipeline(pipelineConfig);
   pipelineContinuous
     .filter({
       type: "fir",
@@ -181,6 +180,14 @@ for (const size of INPUT_SIZES) {
   outputRestored.set(output1, 0);
   outputRestored.set(output2, output1.length);
 
+  console.log(`   Continuous output length: ${outputContinuous.length}`);
+  console.log(`   Restored output length: ${outputRestored.length}`);
+  console.log(
+    `   Length match: ${
+      outputContinuous.length === outputRestored.length ? "✅" : "❌"
+    }`
+  );
+
   // Compute SHA-256 hashes
   const hashContinuous = createHash("sha256")
     .update(Buffer.from(outputContinuous.buffer))
@@ -190,15 +197,41 @@ for (const size of INPUT_SIZES) {
     .update(Buffer.from(outputRestored.buffer))
     .digest("hex");
 
-  seamless = hashContinuous === hashRestored;
+  const seamless = hashContinuous === hashRestored;
 
   if (seamless) {
     console.log("   ✅ SEAMLESS: Outputs match perfectly!");
     console.log(`   ✓ SHA-256 hash: ${hashContinuous.substring(0, 16)}...`);
   } else {
-    console.log("   ⚠️  Outputs differ (expected for edge effects)");
+    console.log("   ⚠️  Outputs differ");
     console.log(`   Continuous: ${hashContinuous.substring(0, 16)}...`);
     console.log(`   Restored:   ${hashRestored.substring(0, 16)}...`);
+
+    // Additional debugging: Compare sample values
+    let maxDiff = 0;
+    let diffCount = 0;
+    const threshold = 1e-6;
+
+    for (
+      let i = 0;
+      i < Math.min(outputContinuous.length, outputRestored.length);
+      i++
+    ) {
+      const diff = Math.abs(outputContinuous[i] - outputRestored[i]);
+      if (diff > threshold) {
+        diffCount++;
+        maxDiff = Math.max(maxDiff, diff);
+      }
+    }
+
+    console.log(`   Samples differing (threshold ${threshold}): ${diffCount}`);
+    console.log(`   Maximum difference: ${maxDiff.toExponential(3)}`);
+
+    if (diffCount === 0) {
+      console.log(
+        "   ✅ All samples match within threshold (hash difference likely due to floating-point rounding)"
+      );
+    }
   }
 
   // --- Record results ---
@@ -211,7 +244,6 @@ for (const size of INPUT_SIZES) {
     state_size_bytes: stateSize,
     seamless,
     redis_available: redisAvailable,
-    meta: specs,
   };
 
   results.push(data);
@@ -222,9 +254,6 @@ if (redisAvailable) {
   await redis.disconnect();
   console.log("\n✓ Disconnected from Redis");
 }
-
-// Save results
-saveJSON("redis", results);
 
 // Summary
 console.log("\n" + "=".repeat(80));
@@ -243,6 +272,17 @@ console.log(`\nAverage save time:  ${avgSaveMs.toFixed(3)} ms`);
 console.log(`Average load time:  ${avgLoadMs.toFixed(3)} ms`);
 console.log(`Average state size: ${formatBytes(avgStateSize)}`);
 console.log(`All seamless:       ${allSeamless ? "✅ YES" : "⚠️  NO"}`);
+
+console.log("\n📊 Results by input size:");
+results.forEach((r) => {
+  console.log(
+    `  ${r.input.padEnd(10)} - Save: ${r.save_ms.toFixed(
+      2
+    )}ms, Load: ${r.load_ms.toFixed(2)}ms, Size: ${formatBytes(
+      r.state_size_bytes
+    )}, Seamless: ${r.seamless ? "✅" : "❌"}`
+  );
+});
 
 console.log("\nKey insights:");
 console.log(
