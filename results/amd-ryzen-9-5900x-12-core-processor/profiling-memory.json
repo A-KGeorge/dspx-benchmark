@@ -4,11 +4,11 @@
     "input": "small",
     "samples": 1024,
     "iterations": 50,
-    "heap_used_before_mb": "5.61",
-    "heap_used_after_mb": "5.65",
+    "heap_used_before_mb": "5.62",
+    "heap_used_after_mb": "5.66",
     "heap_growth_mb": "0.04",
     "heap_growth_per_iter_kb": "0.77",
-    "heap_peak_mb": "5.65",
+    "heap_peak_mb": "5.66",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
       "cores": 24,
@@ -16,14 +16,14 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.6"
+      "dspx": "1.2.3"
     },
-    "latency_p50_ms": "0.081",
-    "latency_p95_ms": "0.097",
+    "latency_p50_ms": "0.077",
+    "latency_p95_ms": "0.098",
     "latency_p99_ms": "0.106",
-    "latency_min_ms": "0.073",
+    "latency_min_ms": "0.071",
     "latency_max_ms": "0.106",
-    "latency_avg_ms": "0.081"
+    "latency_avg_ms": "0.079"
   },
   {
     "test": "memory_profiling",
@@ -31,35 +31,9 @@
     "samples": 65536,
     "iterations": 50,
     "heap_used_before_mb": "5.72",
-    "heap_used_after_mb": "5.71",
+    "heap_used_after_mb": "5.72",
     "heap_growth_mb": "-0.00",
     "heap_growth_per_iter_kb": "-0.09",
-    "heap_peak_mb": "5.71",
-    "meta": {
-      "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
-      "cores": 24,
-      "ram": "64 GB",
-      "arch": "x64",
-      "os": "Microsoft Windows [Version 10.0.26200.6901]",
-      "node": "v22.17.1",
-      "dspx": "1.1.6"
-    },
-    "latency_p50_ms": "2.101",
-    "latency_p95_ms": "2.386",
-    "latency_p99_ms": "2.483",
-    "latency_min_ms": "2.007",
-    "latency_max_ms": "2.483",
-    "latency_avg_ms": "2.139"
-  },
-  {
-    "test": "memory_profiling",
-    "input": "large",
-    "samples": 1048576,
-    "iterations": 50,
-    "heap_used_before_mb": "5.73",
-    "heap_used_after_mb": "5.72",
-    "heap_growth_mb": "-0.01",
-    "heap_growth_per_iter_kb": "-0.12",
     "heap_peak_mb": "5.72",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -68,13 +42,39 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.1.6"
+      "dspx": "1.2.3"
     },
-    "latency_p50_ms": "33.784",
-    "latency_p95_ms": "35.640",
-    "latency_p99_ms": "37.890",
-    "latency_min_ms": "32.592",
-    "latency_max_ms": "37.890",
-    "latency_avg_ms": "33.937"
+    "latency_p50_ms": "2.133",
+    "latency_p95_ms": "2.238",
+    "latency_p99_ms": "2.403",
+    "latency_min_ms": "1.989",
+    "latency_max_ms": "2.403",
+    "latency_avg_ms": "2.118"
+  },
+  {
+    "test": "memory_profiling",
+    "input": "large",
+    "samples": 1048576,
+    "iterations": 50,
+    "heap_used_before_mb": "5.74",
+    "heap_used_after_mb": "5.73",
+    "heap_growth_mb": "-0.01",
+    "heap_growth_per_iter_kb": "-0.12",
+    "heap_peak_mb": "5.73",
+    "meta": {
+      "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
+      "cores": 24,
+      "ram": "64 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26200.6901]",
+      "node": "v22.17.1",
+      "dspx": "1.2.3"
+    },
+    "latency_p50_ms": "34.535",
+    "latency_p95_ms": "35.637",
+    "latency_p99_ms": "35.829",
+    "latency_min_ms": "32.764",
+    "latency_max_ms": "35.829",
+    "latency_avg_ms": "34.396"
   }
 ]
