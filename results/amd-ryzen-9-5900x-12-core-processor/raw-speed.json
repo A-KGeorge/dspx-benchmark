@@ -4,10 +4,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.007599999999990814,
-    "min_ms": 0.005499999999983629,
+    "avg_ms": 0.007550000000026103,
+    "min_ms": 0.005500000000097316,
     "max_ms": 0.014499999999998181,
-    "throughput": 134736842.105426,
+    "throughput": 135629139.07237878,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -16,7 +16,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -24,10 +24,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "tfjs",
-    "avg_ms": 0.25985999999999193,
-    "min_ms": 0.16629999999997835,
-    "max_ms": 0.5484000000000151,
-    "throughput": 3940583.3910568454,
+    "avg_ms": 0.2264700000000289,
+    "min_ms": 0.13140000000009877,
+    "max_ms": 0.4801000000001068,
+    "throughput": 4521570.18589601,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -36,7 +36,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -44,10 +44,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "fft.js",
-    "avg_ms": 0.18435999999996966,
-    "min_ms": 0.1752999999999929,
-    "max_ms": 0.20029999999997017,
-    "throughput": 5554350.184422698,
+    "avg_ms": 0.2946199999999749,
+    "min_ms": 0.1817999999999529,
+    "max_ms": 0.9443999999999733,
+    "throughput": 3475663.566628495,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -56,7 +56,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -64,10 +64,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 0.32223000000000185,
-    "min_ms": 0.3020000000000209,
-    "max_ms": 0.3771999999999025,
-    "throughput": 203382676.96986508,
+    "avg_ms": 0.2788000000000125,
+    "min_ms": 0.26940000000001874,
+    "max_ms": 0.30530000000010205,
+    "throughput": 235064562.41031945,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -76,7 +76,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -84,10 +84,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "tfjs",
-    "avg_ms": 4.489959999999996,
-    "min_ms": 3.8254000000000588,
-    "max_ms": 5.244599999999991,
-    "throughput": 14596121.123573495,
+    "avg_ms": 4.426710000000014,
+    "min_ms": 3.6364000000000942,
+    "max_ms": 5.59050000000002,
+    "throughput": 14804674.351832353,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -96,7 +96,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -104,10 +104,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fft.js",
-    "avg_ms": 0.8257999999999924,
-    "min_ms": 0.608600000000024,
-    "max_ms": 1.482599999999934,
-    "throughput": 79360620.00484452,
+    "avg_ms": 0.6896199999999908,
+    "min_ms": 0.6118999999999915,
+    "max_ms": 0.9910999999999603,
+    "throughput": 95032046.63437963,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -116,7 +116,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -124,10 +124,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 7.063080000000002,
-    "min_ms": 6.886600000000044,
-    "max_ms": 7.619399999999928,
-    "throughput": 148458746.0428028,
+    "avg_ms": 6.784629999999981,
+    "min_ms": 6.690200000000004,
+    "max_ms": 7.079399999999964,
+    "throughput": 154551685.20612073,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -136,7 +136,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -144,10 +144,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "tfjs",
-    "avg_ms": 67.77327,
-    "min_ms": 61.5458000000001,
-    "max_ms": 70.077,
-    "throughput": 15471822.445633803,
+    "avg_ms": 63.5933,
+    "min_ms": 60.39080000000013,
+    "max_ms": 67.09069999999997,
+    "throughput": 16488781.050833972,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -156,7 +156,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -164,10 +164,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fft.js",
-    "avg_ms": 20.20772999999999,
-    "min_ms": 19.378999999999905,
-    "max_ms": 20.817000000000007,
-    "throughput": 51889846.11334378,
+    "avg_ms": 16.764779999999995,
+    "min_ms": 14.95089999999982,
+    "max_ms": 19.25330000000008,
+    "throughput": 62546362.075732596,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -176,7 +176,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -184,10 +184,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.08759000000013657,
-    "min_ms": 0.06870000000026266,
-    "max_ms": 0.13340000000016516,
-    "throughput": 11690832.2867725,
+    "avg_ms": 0.10201999999999316,
+    "min_ms": 0.08359999999993306,
+    "max_ms": 0.14360000000010587,
+    "throughput": 10037247.598510768,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -197,7 +197,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -205,10 +205,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "fili",
-    "avg_ms": 0.12085000000006403,
-    "min_ms": 0.1069999999999709,
-    "max_ms": 0.16789999999991778,
-    "throughput": 8473314.025647145,
+    "avg_ms": 0.1206599999999753,
+    "min_ms": 0.11050000000000182,
+    "max_ms": 0.13990000000012515,
+    "throughput": 8486656.721367558,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -218,7 +218,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -226,10 +226,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "naive_js",
-    "avg_ms": 0.07718000000008943,
-    "min_ms": 0.07349999999996726,
-    "max_ms": 0.09360000000015134,
-    "throughput": 13267685.928981777,
+    "avg_ms": 0.07729999999996835,
+    "min_ms": 0.07519999999999527,
+    "max_ms": 0.08400000000006003,
+    "throughput": 13247089.26261862,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -239,7 +239,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -247,10 +247,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 1.8851599999999962,
-    "min_ms": 1.6992999999997664,
-    "max_ms": 3.264900000000125,
-    "throughput": 34764157.94945794,
+    "avg_ms": 1.9543500000000222,
+    "min_ms": 1.684500000000071,
+    "max_ms": 3.0837000000001353,
+    "throughput": 33533399.851612687,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -260,7 +260,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -268,10 +268,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fili",
-    "avg_ms": 5.309890000000133,
-    "min_ms": 5.259400000000369,
-    "max_ms": 5.404500000000098,
-    "throughput": 12342251.91105623,
+    "avg_ms": 5.780439999999999,
+    "min_ms": 5.41820000000007,
+    "max_ms": 8.121100000000297,
+    "throughput": 11337545.238770753,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -281,7 +281,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -289,10 +289,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "naive_js",
-    "avg_ms": 3.2502299999999194,
-    "min_ms": 3.1450999999997293,
-    "max_ms": 3.3108000000001994,
-    "throughput": 20163496.12181342,
+    "avg_ms": 4.1782400000000965,
+    "min_ms": 3.235700000000179,
+    "max_ms": 4.897900000000391,
+    "throughput": 15685073.14084363,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -302,7 +302,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -310,10 +310,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 28.481479999999966,
-    "min_ms": 27.467799999999897,
-    "max_ms": 29.946300000000065,
-    "throughput": 36816064.3337355,
+    "avg_ms": 27.856850000000076,
+    "min_ms": 27.105199999999968,
+    "max_ms": 29.033300000000054,
+    "throughput": 37641585.46282143,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -323,7 +323,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -331,10 +331,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fili",
-    "avg_ms": 85.5014000000001,
-    "min_ms": 85.19129999999996,
-    "max_ms": 86.1832000000004,
-    "throughput": 12263845.972112723,
+    "avg_ms": 85.90689000000006,
+    "min_ms": 85.3153000000002,
+    "max_ms": 87.66690000000017,
+    "throughput": 12205959.265898222,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -344,7 +344,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -352,10 +352,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "naive_js",
-    "avg_ms": 49.65953999999992,
-    "min_ms": 47.87180000000035,
-    "max_ms": 52.70499999999993,
-    "throughput": 21115298.289110243,
+    "avg_ms": 49.81315999999997,
+    "min_ms": 47.979499999999916,
+    "max_ms": 51.82330000000047,
+    "throughput": 21050180.31379661,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -365,7 +365,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -375,10 +375,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "dspx",
-    "avg_ms": 0.6382199999998193,
-    "min_ms": 0.5207999999993262,
-    "max_ms": 0.7800999999999476,
-    "throughput": 102685594.30920146,
+    "avg_ms": 0.6204099999999926,
+    "min_ms": 0.519800000000032,
+    "max_ms": 0.7761000000000422,
+    "throughput": 105633371.48015149,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -387,7 +387,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -397,10 +397,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "tfjs",
-    "avg_ms": 4.070089999999982,
-    "min_ms": 3.447099999999409,
-    "max_ms": 4.968800000000556,
-    "throughput": 16101855.241530359,
+    "avg_ms": 4.126090000000204,
+    "min_ms": 3.6656000000002678,
+    "max_ms": 4.89220000000023,
+    "throughput": 15883318.105033278,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -409,7 +409,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -419,10 +419,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "naive_js",
-    "avg_ms": 0.591989999999987,
-    "min_ms": 0.5612999999993917,
-    "max_ms": 0.6273000000001048,
-    "throughput": 110704572.71237932,
+    "avg_ms": 0.6029600000000755,
+    "min_ms": 0.5830000000005384,
+    "max_ms": 0.6526999999996406,
+    "throughput": 108690460.39536916,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -431,7 +431,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -441,10 +441,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "dspx",
-    "avg_ms": 0.6452300000001742,
-    "min_ms": 0.5021999999999025,
-    "max_ms": 0.7180000000007567,
-    "throughput": 101569982.79680471,
+    "avg_ms": 0.6461400000000139,
+    "min_ms": 0.5938000000005559,
+    "max_ms": 0.7653000000000247,
+    "throughput": 101426935.33908843,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -453,7 +453,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -463,10 +463,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "tfjs",
-    "avg_ms": 4.270370000000094,
-    "min_ms": 3.8306000000002314,
-    "max_ms": 4.975699999999961,
-    "throughput": 15346679.561723823,
+    "avg_ms": 4.301770000000124,
+    "min_ms": 3.851599999999962,
+    "max_ms": 4.979199999999764,
+    "throughput": 15234659.221668782,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -475,7 +475,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -485,10 +485,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "naive_js",
-    "avg_ms": 1.793720000000303,
-    "min_ms": 1.7642000000005282,
-    "max_ms": 1.9153999999998632,
-    "throughput": 36536360.189990036,
+    "avg_ms": 1.7840100000000347,
+    "min_ms": 1.760599999999613,
+    "max_ms": 1.8695999999999913,
+    "throughput": 36735220.09405705,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -497,7 +497,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -507,10 +507,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "dspx",
-    "avg_ms": 0.8073199999998906,
-    "min_ms": 0.5546000000003914,
-    "max_ms": 2.29109999999946,
-    "throughput": 81177228.3605124,
+    "avg_ms": 0.7084899999999834,
+    "min_ms": 0.6688999999996668,
+    "max_ms": 0.8361000000004424,
+    "throughput": 92500952.73045708,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -519,7 +519,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -529,10 +529,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "tfjs",
-    "avg_ms": 5.3304399999999985,
-    "min_ms": 4.819899999999507,
-    "max_ms": 6.093899999999849,
-    "throughput": 12294669.858398186,
+    "avg_ms": 5.200050000000101,
+    "min_ms": 4.75839999999971,
+    "max_ms": 5.732300000000578,
+    "throughput": 12602955.74080994,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -541,7 +541,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -551,10 +551,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "naive_js",
-    "avg_ms": 3.6169099999999164,
-    "min_ms": 3.567699999999604,
-    "max_ms": 3.6486000000004424,
-    "throughput": 18119333.906567074,
+    "avg_ms": 3.723539999999775,
+    "min_ms": 3.6512000000002445,
+    "max_ms": 3.9049000000004526,
+    "throughput": 17600455.480538398,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -563,7 +563,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -573,10 +573,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "dspx",
-    "avg_ms": 1.564219999999932,
-    "min_ms": 1.4854999999997744,
-    "max_ms": 1.6871000000001004,
-    "throughput": 41896919.87060826,
+    "avg_ms": 1.569000000000051,
+    "min_ms": 1.4637000000002445,
+    "max_ms": 1.8214000000007218,
+    "throughput": 41769279.79604708,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -585,7 +585,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -595,10 +595,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "tfjs",
-    "avg_ms": 9.421640000000025,
-    "min_ms": 6.393199999999524,
-    "max_ms": 12.005400000000009,
-    "throughput": 6955901.520329776,
+    "avg_ms": 5.262900000000082,
+    "min_ms": 4.730499999999665,
+    "max_ms": 6.052300000000287,
+    "throughput": 12452450.170058139,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -607,7 +607,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -617,10 +617,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "naive_js",
-    "avg_ms": 6.850740000000042,
-    "min_ms": 6.684799999999996,
-    "max_ms": 7.750500000000102,
-    "throughput": 9566265.834055824,
+    "avg_ms": 6.827180000000044,
+    "min_ms": 6.7851999999993495,
+    "max_ms": 6.89010000000053,
+    "throughput": 9599278.179277472,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -629,7 +629,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -639,10 +639,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "dspx",
-    "avg_ms": 1.6938600000001316,
-    "min_ms": 1.5336000000006607,
-    "max_ms": 1.9085000000004584,
-    "throughput": 38690328.59858248,
+    "avg_ms": 1.5180699999998069,
+    "min_ms": 1.4520000000002256,
+    "max_ms": 1.626800000000003,
+    "throughput": 43170604.78107619,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -651,7 +651,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -661,10 +661,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "tfjs",
-    "avg_ms": 16.161919999999828,
-    "min_ms": 8.198499999999513,
-    "max_ms": 28.228500000000167,
-    "throughput": 4054963.7666812297,
+    "avg_ms": 16.246330000000036,
+    "min_ms": 8.045000000000073,
+    "max_ms": 27.859300000000076,
+    "throughput": 4033895.655203351,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -673,7 +673,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   },
   {
@@ -683,10 +683,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "naive_js",
-    "avg_ms": 13.313250000000062,
-    "min_ms": 12.990000000000691,
-    "max_ms": 15.067799999999806,
-    "throughput": 4922614.688374341,
+    "avg_ms": 13.343019999999978,
+    "min_ms": 13.069799999999304,
+    "max_ms": 13.783400000000256,
+    "throughput": 4911631.69957027,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -695,7 +695,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     }
   }
 ]

@@ -7,7 +7,7 @@
     "heap_used_before_mb": "5.62",
     "heap_used_after_mb": "5.66",
     "heap_growth_mb": "0.04",
-    "heap_growth_per_iter_kb": "0.77",
+    "heap_growth_per_iter_kb": "0.76",
     "heap_peak_mb": "5.66",
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -16,14 +16,14 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     },
-    "latency_p50_ms": "0.077",
-    "latency_p95_ms": "0.098",
-    "latency_p99_ms": "0.106",
-    "latency_min_ms": "0.071",
-    "latency_max_ms": "0.106",
-    "latency_avg_ms": "0.079"
+    "latency_p50_ms": "0.079",
+    "latency_p95_ms": "0.101",
+    "latency_p99_ms": "0.147",
+    "latency_min_ms": "0.072",
+    "latency_max_ms": "0.147",
+    "latency_avg_ms": "0.082"
   },
   {
     "test": "memory_profiling",
@@ -42,14 +42,14 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     },
-    "latency_p50_ms": "2.133",
-    "latency_p95_ms": "2.238",
-    "latency_p99_ms": "2.403",
-    "latency_min_ms": "1.989",
-    "latency_max_ms": "2.403",
-    "latency_avg_ms": "2.118"
+    "latency_p50_ms": "2.034",
+    "latency_p95_ms": "2.153",
+    "latency_p99_ms": "2.338",
+    "latency_min_ms": "2.000",
+    "latency_max_ms": "2.338",
+    "latency_avg_ms": "2.054"
   },
   {
     "test": "memory_profiling",
@@ -68,13 +68,13 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.2.3"
+      "dspx": "1.2.4"
     },
-    "latency_p50_ms": "34.535",
-    "latency_p95_ms": "35.637",
-    "latency_p99_ms": "35.829",
-    "latency_min_ms": "32.764",
-    "latency_max_ms": "35.829",
-    "latency_avg_ms": "34.396"
+    "latency_p50_ms": "33.836",
+    "latency_p95_ms": "34.679",
+    "latency_p99_ms": "34.726",
+    "latency_min_ms": "32.259",
+    "latency_max_ms": "34.726",
+    "latency_avg_ms": "33.653"
   }
 ]
