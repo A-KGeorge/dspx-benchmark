@@ -70,6 +70,9 @@ console.log("");
 
 const pipeline = createDspPipeline()
   .pipeline({ onLogBatch: (logs) => router.routeBatch(logs) })
+  .tap((data, stageIndex) => {
+    console.log(`Data after stage ${stageIndex}:`, data);
+  })
   .convolution({ kernel, mode: "batch" });
 
 // Process with await to handle the promise properly
@@ -135,11 +138,17 @@ console.log("");
 // ============================================================================
 console.log("--- MOVING MODE ---");
 
-const movingPipeline = createDspPipeline();
-movingPipeline.convolution({
-  kernel: kernel,
-  mode: "moving",
+const movingPipeline = createDspPipeline().pipeline({
+  onLogBatch: (logs) => router.routeBatch(logs),
 });
+movingPipeline
+  .tap((data, stageIndex) => {
+    console.log(`Data after stage ${stageIndex}:`, data);
+  })
+  .convolution({
+    kernel: kernel,
+    mode: "moving",
+  });
 
 const movingResult = await movingPipeline.process(flattenedInput, {
   channels: totalChannels,

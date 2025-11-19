@@ -18,12 +18,12 @@
       "node": "v22.17.1",
       "dspx": "1.2.4"
     },
-    "latency_p50_ms": "0.079",
-    "latency_p95_ms": "0.101",
-    "latency_p99_ms": "0.147",
-    "latency_min_ms": "0.072",
-    "latency_max_ms": "0.147",
-    "latency_avg_ms": "0.082"
+    "latency_p50_ms": "0.077",
+    "latency_p95_ms": "0.093",
+    "latency_p99_ms": "0.109",
+    "latency_min_ms": "0.073",
+    "latency_max_ms": "0.109",
+    "latency_avg_ms": "0.079"
   },
   {
     "test": "memory_profiling",
@@ -44,12 +44,12 @@
       "node": "v22.17.1",
       "dspx": "1.2.4"
     },
-    "latency_p50_ms": "2.034",
-    "latency_p95_ms": "2.153",
-    "latency_p99_ms": "2.338",
-    "latency_min_ms": "2.000",
-    "latency_max_ms": "2.338",
-    "latency_avg_ms": "2.054"
+    "latency_p50_ms": "2.050",
+    "latency_p95_ms": "2.187",
+    "latency_p99_ms": "2.497",
+    "latency_min_ms": "2.007",
+    "latency_max_ms": "2.497",
+    "latency_avg_ms": "2.070"
   },
   {
     "test": "memory_profiling",
@@ -70,11 +70,11 @@
       "node": "v22.17.1",
       "dspx": "1.2.4"
     },
-    "latency_p50_ms": "33.836",
-    "latency_p95_ms": "34.679",
-    "latency_p99_ms": "34.726",
-    "latency_min_ms": "32.259",
-    "latency_max_ms": "34.726",
-    "latency_avg_ms": "33.653"
+    "latency_p50_ms": "33.763",
+    "latency_p95_ms": "34.760",
+    "latency_p99_ms": "34.990",
+    "latency_min_ms": "32.332",
+    "latency_max_ms": "34.990",
+    "latency_avg_ms": "33.610"
   }
 ]
