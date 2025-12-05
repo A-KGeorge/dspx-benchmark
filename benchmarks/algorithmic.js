@@ -17,8 +17,7 @@ import {
   runTimed,
   saveJSON,
   ensureDirs,
-  getPlatformId,
-} from "./common.js";
+} from "../lib/common.js";
 
 ensureDirs();
 
@@ -61,6 +60,15 @@ function naiveMovingAverage(signal, windowSize) {
   return output;
 }
 
+// TensorFlow.js implementation
+function sma_tfjs(data, windowSize) {
+  return tf.tidy(() => {
+    const x = tf.tensor1d(data);
+    const frames = tf.signal.frame(x, windowSize, 1); // shape: [N-W+1, W]
+    return frames.mean(-1); // reduce across window dimension
+  });
+}
+
 for (const size of INPUT_SIZES) {
   const signal = genSignal(size.length, 50, 10000);
 
@@ -75,7 +83,6 @@ for (const size of INPUT_SIZES) {
 
     // --- dspx Moving Average (O(1) circular buffer) ---
     try {
-      // ✅ FIX: Create and warm up ONCE, then reuse
       console.log(`   ⏳ Warming up...`);
 
       // Create a pipeline for warmup
@@ -91,6 +98,7 @@ for (const size of INPUT_SIZES) {
       }
 
       // Release warmup pipeline
+      warmupPipeline.dispose();
       warmupPipeline = null;
 
       // ✅ FIX: Now measure steady-state performance
@@ -107,6 +115,7 @@ for (const size of INPUT_SIZES) {
             channels: 1,
           });
 
+          pipeline.dispose();
           return output;
         },
         0, // No additional warmup needed (already done)
@@ -141,56 +150,52 @@ for (const size of INPUT_SIZES) {
 
     // --- Naive JS Moving Average (O(N·W)) ---
     // Only run for smaller inputs to avoid extremely long execution times
-    if (size.length <= 65536 || windowSize <= 512) {
-      try {
-        const result = await runTimed(
-          `naive-ma-${windowSize}`,
-          () => {
-            return naiveMovingAverage(signal, windowSize);
-          },
-          2,
-          5
+    try {
+      const result = await runTimed(
+        `naive-ma-${windowSize}`,
+        () => {
+          return naiveMovingAverage(signal, windowSize);
+        },
+        2,
+        5
+      );
+
+      const data = {
+        test: "moving_average",
+        input: size.name,
+        samples: size.length,
+        windowSize,
+        lib: "naive_js",
+        impl: "sliding_window_ONW",
+        avg_ms: result.avg,
+        min_ms: result.min,
+        max_ms: result.max,
+        throughput: (size.length / result.avg) * 1000,
+        meta: specs,
+      };
+
+      results.push(data);
+      console.log(`   naive JS (O(N·W)): ${result.avg.toFixed(3)} ms`);
+
+      // Calculate speedup
+      const dspxResult = results.find(
+        (r) =>
+          r.lib === "dspx" &&
+          r.input === size.name &&
+          r.windowSize === windowSize
+      );
+
+      if (dspxResult) {
+        const speedup = result.avg / dspxResult.avg_ms;
+        const symbol = speedup > 1 ? "🚀" : "⚠️";
+        console.log(
+          `   ${symbol} Speedup:        ${speedup.toFixed(1)}x ${
+            speedup > 1 ? "faster" : "slower"
+          }`
         );
-
-        const data = {
-          test: "moving_average",
-          input: size.name,
-          samples: size.length,
-          windowSize,
-          lib: "naive_js",
-          impl: "sliding_window_ONW",
-          avg_ms: result.avg,
-          min_ms: result.min,
-          max_ms: result.max,
-          throughput: (size.length / result.avg) * 1000,
-          meta: specs,
-        };
-
-        results.push(data);
-        console.log(`   naive JS (O(N·W)): ${result.avg.toFixed(3)} ms`);
-
-        // Calculate speedup
-        const dspxResult = results.find(
-          (r) =>
-            r.lib === "dspx" &&
-            r.input === size.name &&
-            r.windowSize === windowSize
-        );
-
-        if (dspxResult) {
-          const speedup = result.avg / dspxResult.avg_ms;
-          const symbol = speedup > 1 ? "🚀" : "⚠️";
-          console.log(
-            `   ${symbol} Speedup:        ${speedup.toFixed(1)}x ${
-              speedup > 1 ? "faster" : "slower"
-            }`
-          );
-        }
-      } catch (e) {
-        console.error(`   ❌ naive JS failed:`, e.message);
       }
-    } else {
-      console.log(`   naive JS (O(N·W)): ⏭️  skipped (would take too long)`);
+    } catch (e) {
+      console.error(`   ❌ naive JS failed:`, e.message);
     }
   }
 }

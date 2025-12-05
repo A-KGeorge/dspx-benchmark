@@ -14,7 +14,7 @@ import {
   saveJSON,
   ensureDirs,
   INPUT_SIZES,
-} from "./common.js";
+} from "../lib/common.js";
 
 const WARMUP_ITERATIONS = 10;
 const TEST_ITERATIONS = 50;
@@ -67,6 +67,8 @@ async function runMemoryTest(config, configName) {
       sampleRate: config.sampleRate,
       channels: 1,
     });
+
+    pipeline.dispose();
   }
 
   forceGC();
@@ -95,6 +97,9 @@ async function runMemoryTest(config, configName) {
       sampleRate: config.sampleRate,
       channels: 1,
     });
+
+    // Dispose pipeline after use
+    pipeline.dispose();
 
     // ✅ FIX: Force GC periodically to prevent accumulation
     if (i % GC_INTERVAL === 0) {
@@ -165,17 +170,35 @@ async function runLatencyTest(config, configName) {
     });
   }
 
+  // Dispose warmup pipeline
+  warmupPipeline.dispose();
+
   // ✅ FIX: Reuse pipeline for latency measurement
+  const testPipeline = createDspPipeline();
+  testPipeline
+    .filter({
+      type: "fir",
+      mode: "lowpass",
+      cutoffFrequency: 3000,
+      sampleRate: config.sampleRate,
+      order: 51,
+      windowType: "hamming",
+    })
+    .Rms({ mode: "moving", windowSize: 100 });
+
   const latencies = [];
 
   for (let i = 0; i < TEST_ITERATIONS; i++) {
     const start = performance.now();
-    await warmupPipeline.process(signal, {
+    await testPipeline.process(signal, {
       sampleRate: config.sampleRate,
       channels: 1,
     });
     latencies.push(performance.now() - start);
   }
+
+  // Dispose test pipeline
+  testPipeline.dispose();
 
   latencies.sort((a, b) => a - b);
 
@@ -210,7 +233,7 @@ async function runConcurrentTest() {
 
   const config = TEST_CONFIGS.medium;
   const signal = generateSignal(config.samples, config.sampleRate);
-  const concurrencyLevels = [1, 2, 4, 8, 16, 32];
+  const concurrencyLevels = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
 
   const results = [];
 
@@ -288,6 +311,9 @@ async function runConcurrentTest() {
           : "100.0",
       meta: getMachineSpecs(),
     });
+
+    // Dispose all pipelines for this concurrency level
+    pipelines.forEach((p) => p.dispose());
   }
 
   return results;
@@ -297,9 +323,7 @@ async function main() {
   ensureDirs();
 
   const specs = getMachineSpecs();
-  console.log(
-    "🚀 Profiling Story — Memory, Latency Percentiles, Concurrency\n"
-  );
+  console.log("🚀 Story 5 — Memory, Latency Percentiles, Concurrency\n");
   console.log("Machine Specs:");
   console.log(`  CPU: ${specs.cpu}`);
   console.log(`  Cores: ${specs.cores}`);

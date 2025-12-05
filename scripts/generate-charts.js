@@ -1,0 +1,2009 @@
+/**
+ * Generate charts from benchmark results
+ */
+
+import { ChartJSNodeCanvas } from "chartjs-node-canvas";
+import fs from "fs";
+import path from "path";
+import { getMachineSpecs, loadJSON, getPlatformId } from "../lib/common.js";
+
+const width = 1000;
+const height = 700;
+const chartCanvas = new ChartJSNodeCanvas({
+  width,
+  height,
+  backgroundColour: "white",
+});
+
+const specs = getMachineSpecs();
+const platformId = getPlatformId();
+const subtitle = `${specs.cpu} • ${specs.arch} • Node ${specs.node} • RAM ${specs.ram}`;
+
+console.log(`📊 Generating charts for platform: ${platformId}\n`);
+
+// Ensure charts directory exists (platform-specific)
+const chartsDir = path.join(process.cwd(), "charts", platformId);
+fs.mkdirSync(chartsDir, { recursive: true });
+
+// ============================================================================
+// Story 1: FFT Throughput
+// ============================================================================
+
+console.log("📈 Chart 1: FFT Throughput...");
+
+const story1Data = loadJSON("raw-speed");
+if (story1Data) {
+  const fftResults = story1Data.filter((r) => r.test === "fft");
+  const inputSizes = ["small", "medium", "large"];
+  const libraries = [...new Set(fftResults.map((r) => r.lib))];
+
+  const datasets = libraries.map((lib) => {
+    const libData = inputSizes.map((size) => {
+      const result = fftResults.find((r) => r.lib === lib && r.input === size);
+      return result ? result.throughput : 0;
+    });
+
+    return {
+      label: lib,
+      data: libData,
+      borderWidth: 3,
+      tension: 0.1,
+    };
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: inputSizes.map((s) => s.toUpperCase()),
+      datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "FFT Throughput: dspx vs TensorFlow.js vs fft.js",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle,
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          type: "logarithmic",
+          title: {
+            display: true,
+            text: "Throughput (samples/sec)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "fft_throughput.png"), buffer);
+  console.log("   ✓ Saved: charts/fft_throughput.png");
+}
+
+// ============================================================================
+// Story 1: FIR Filter Throughput
+// ============================================================================
+
+console.log("📈 Chart 2: FIR Filter Throughput...");
+
+if (story1Data) {
+  const firResults = story1Data.filter((r) => r.test === "fir_filter");
+  const inputSizes = ["small", "medium", "large"];
+  const libraries = [...new Set(firResults.map((r) => r.lib))];
+
+  const datasets = libraries.map((lib) => {
+    const libData = inputSizes.map((size) => {
+      const result = firResults.find((r) => r.lib === lib && r.input === size);
+      return result ? result.throughput : 0;
+    });
+
+    return {
+      label: lib,
+      data: libData,
+      borderWidth: 3,
+      tension: 0.1,
+    };
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: inputSizes.map((s) => s.toUpperCase()),
+      datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "FIR Filter Throughput: dspx vs fili vs dsp.js",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle,
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          type: "logarithmic",
+          title: {
+            display: true,
+            text: "Throughput (samples/sec)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "fir_throughput.png"), buffer);
+  console.log("   ✓ Saved: charts/fir_throughput.png");
+}
+
+// ============================================================================
+// Story 1: Convolution Throughput (Kernel Size Scaling)
+// ============================================================================
+
+console.log("📈 Chart 3: Convolution Throughput (Kernel Scaling)...");
+
+if (story1Data) {
+  const convResults = story1Data.filter((r) => r.test === "conv1d");
+  const kernelSizes = [...new Set(convResults.map((r) => r.kernel_size))].sort(
+    (a, b) => a - b
+  );
+  const libraries = [...new Set(convResults.map((r) => r.lib))];
+
+  const datasets = libraries.map((lib) => {
+    const libData = kernelSizes.map((size) => {
+      const result = convResults.find(
+        (r) => r.lib === lib && r.kernel_size === size
+      );
+      return result ? result.throughput : 0;
+    });
+
+    return {
+      label: lib,
+      data: libData,
+      borderWidth: 3,
+      tension: 0.1,
+    };
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: kernelSizes.map((s) => `K=${s}`),
+      datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "1D Convolution Throughput: dspx vs TensorFlow.js vs Naive JS",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • dspx uses FFT for kernel > 64 (moving mode)",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          type: "logarithmic",
+          title: {
+            display: true,
+            text: "Throughput (samples/sec)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Kernel Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "convolution_throughput.png"), buffer);
+  console.log("   ✓ Saved: charts/convolution_throughput.png");
+}
+
+// ============================================================================
+// Story 2: Moving Average O(1) vs O(N)
+// ============================================================================
+
+console.log("📈 Chart 4: Moving Average Scaling...");
+
+const story2Data = loadJSON("algorithmic");
+if (story2Data) {
+  const windowSizes = [32, 128, 512, 2048, 8192];
+
+  // Create separate charts for each input size
+  for (const inputSize of ["small", "medium", "large"]) {
+    const sizeResults = story2Data.filter((r) => r.input === inputSize);
+
+    if (sizeResults.length === 0) continue;
+
+    const dspxData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "dspx" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const naiveData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "naive_js" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const config = {
+      type: "line",
+      data: {
+        labels: windowSizes,
+        datasets: [
+          {
+            label: "dspx (O(1) circular buffer)",
+            data: dspxData,
+            borderColor: "rgb(75, 192, 192)",
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "naive JS (O(N·W) sliding window)",
+            data: naiveData,
+            borderColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+        ],
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          title: {
+            display: true,
+            text: `Moving Average: O(1) vs O(N·W) — ${inputSize.toUpperCase()} input`,
+            font: { size: 20, weight: "bold" },
+          },
+          subtitle: {
+            display: true,
+            text: subtitle,
+            font: { size: 14 },
+            padding: { bottom: 20 },
+          },
+          legend: {
+            display: true,
+            position: "top",
+            labels: { font: { size: 14 } },
+          },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Time (ms)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Window Size",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+        },
+      },
+    };
+
+    const buffer = await chartCanvas.renderToBuffer(config);
+    fs.writeFileSync(
+      path.join(chartsDir, `moving_avg_${inputSize}.png`),
+      buffer
+    );
+    console.log(`   ✓ Saved: charts/moving_avg_${inputSize}.png`);
+  }
+}
+// ============================================================================
+// Story 3: Redis State Persistence
+// ============================================================================
+
+console.log("📈 Chart 5: State Save/Load Latency...");
+
+const story3Data = loadJSON("persistence");
+if (story3Data) {
+  const inputSizes = story3Data.map((r) => r.input.toUpperCase());
+  const jsonSaveTimes = story3Data.map((r) => r.json_save_ms);
+  const jsonLoadTimes = story3Data.map((r) => r.json_load_ms);
+  const toonSaveTimes = story3Data.map((r) => r.toon_save_ms);
+  const toonLoadTimes = story3Data.map((r) => r.toon_load_ms);
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          label: "JSON Save",
+          data: jsonSaveTimes,
+          backgroundColor: "rgba(54, 162, 235, 0.6)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 2,
+        },
+        {
+          label: "JSON Load",
+          data: jsonLoadTimes,
+          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 2,
+        },
+        {
+          label: "TOON Save",
+          data: toonSaveTimes,
+          backgroundColor: "rgba(255, 206, 86, 0.6)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 2,
+        },
+        {
+          label: "TOON Load",
+          data: toonLoadTimes,
+          backgroundColor: "rgba(255, 159, 64, 0.6)",
+          borderColor: "rgb(255, 159, 64)",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "State Persistence: JSON vs TOON (FirFilter → RMS Pipeline)",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle,
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Time (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "persistence_latency.png"), buffer);
+  console.log("   ✓ Saved: charts/persistence_latency.png");
+}
+
+// ============================================================================
+// Story 4: Logging Performance
+// ============================================================================
+
+console.log("📈 Chart 6: Logging Performance...");
+
+const story4Data = loadJSON("logging");
+if (story4Data) {
+  const modes = ["none", "batched", "per-message", "console"];
+  const inputSizes = ["medium", "large"];
+
+  const datasets = inputSizes.map((size, idx) => {
+    const sizeResults = story4Data.filter((r) => r.input === size);
+    const throughputs = modes.map((mode) => {
+      const result = sizeResults.find((r) => r.mode === mode);
+      return result ? result.throughput : 0;
+    });
+
+    const colors = ["rgba(75, 192, 192, 0.6)", "rgba(255, 159, 64, 0.6)"];
+
+    return {
+      label: size.toUpperCase(),
+      data: throughputs,
+      backgroundColor: colors[idx],
+      borderColor: colors[idx].replace("0.6", "1"),
+      borderWidth: 2,
+    };
+  });
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: modes,
+      datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Logging Mode Performance Impact",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle,
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          type: "logarithmic",
+          title: {
+            display: true,
+            text: "Throughput (samples/sec)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Logging Mode",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "logging_perf.png"), buffer);
+  console.log("   ✓ Saved: charts/logging_perf.png");
+}
+
+// ============================================================================
+// Story 5: Memory Growth Over Iterations
+// ============================================================================
+
+console.log("📈 Chart 7: Memory Growth Over Iterations...");
+
+const memoryData = loadJSON("profiling-memory");
+if (memoryData) {
+  const inputSizes = memoryData.map((r) => r.input.toUpperCase());
+  const heapGrowth = memoryData.map((r) =>
+    parseFloat(r.heap_growth_per_iter_kb)
+  );
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          label: "Heap Growth per Iteration (KB)",
+          data: heapGrowth,
+          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Memory Growth per Iteration (50 iterations)",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • Flat line indicates no memory leaks",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Growth (KB/iteration)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "memory_growth.png"), buffer);
+  console.log("   ✓ Saved: charts/memory_growth.png");
+}
+
+// ============================================================================
+// Story 5: Latency Distribution (p50/p95/p99)
+// ============================================================================
+
+console.log("📈 Chart 8: Latency Distribution...");
+
+if (memoryData) {
+  const inputSizes = memoryData.map((r) => r.input.toUpperCase());
+  const p50 = memoryData.map((r) => parseFloat(r.latency_p50_ms));
+  const p95 = memoryData.map((r) => parseFloat(r.latency_p95_ms));
+  const p99 = memoryData.map((r) => parseFloat(r.latency_p99_ms));
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          label: "p50 (Median)",
+          data: p50,
+          backgroundColor: "rgba(54, 162, 235, 0.6)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 2,
+        },
+        {
+          label: "p95",
+          data: p95,
+          backgroundColor: "rgba(255, 206, 86, 0.6)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 2,
+        },
+        {
+          label: "p99",
+          data: p99,
+          backgroundColor: "rgba(255, 99, 132, 0.6)",
+          borderColor: "rgb(255, 99, 132)",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Latency Distribution: p50/p95/p99",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • FIR Filter → RMS Pipeline (50 iterations)",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Latency (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "latency_distribution.png"), buffer);
+  console.log("   ✓ Saved: charts/latency_distribution.png");
+}
+
+// ============================================================================
+// Story 5b: Latency Distribution Threaded (p50/p95/p99)
+// ============================================================================
+
+console.log("📈 Chart 8b: Latency Distribution Threaded...");
+
+const latencyThreadedData = loadJSON("profiling-latency-threaded");
+if (latencyThreadedData) {
+  const inputSizes = latencyThreadedData.map((r) => r.input.toUpperCase());
+  const p50 = latencyThreadedData.map((r) => parseFloat(r.latency_p50_ms));
+  const p95 = latencyThreadedData.map((r) => parseFloat(r.latency_p95_ms));
+  const p99 = latencyThreadedData.map((r) => parseFloat(r.latency_p99_ms));
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          label: "p50 (Median)",
+          data: p50,
+          backgroundColor: "rgba(54, 162, 235, 0.6)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 2,
+        },
+        {
+          label: "p95",
+          data: p95,
+          backgroundColor: "rgba(255, 206, 86, 0.6)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 2,
+        },
+        {
+          label: "p99",
+          data: p99,
+          backgroundColor: "rgba(255, 99, 132, 0.6)",
+          borderColor: "rgb(255, 99, 132)",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Latency Distribution Threaded: p50/p95/p99",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            " • FIR Filter → RMS Pipeline (50 iterations, worker threads)",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Latency (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(chartsDir, "latency_distribution_threaded.png"),
+    buffer
+  );
+  console.log("   ✓ Saved: charts/latency_distribution_threaded.png");
+}
+
+// ============================================================================
+// Story 5: Concurrent Scaling
+// ============================================================================
+
+console.log("📈 Chart 9: Concurrent Scaling...");
+
+const concurrencyData = loadJSON("profiling-concurrency");
+const concurrencyThreadedData = loadJSON("profiling-concurrency-threaded");
+if (concurrencyData || concurrencyThreadedData) {
+  const datasets = [];
+
+  if (concurrencyData) {
+    const pipelineCounts = concurrencyData.map((r) => r.num_pipelines);
+    const throughput = concurrencyData.map(
+      (r) => parseInt(r.throughput_samples_per_sec) / 1e6
+    );
+
+    datasets.push({
+      label: "Throughput (Million samples/sec) - Single Thread",
+      data: throughput,
+      borderColor: "rgb(153, 102, 255)",
+      backgroundColor: "rgba(153, 102, 255, 0.2)",
+      borderWidth: 3,
+      tension: 0.1,
+      fill: true,
+    });
+  }
+
+  if (concurrencyThreadedData) {
+    const pipelineCounts = concurrencyThreadedData.map((r) => r.num_pipelines);
+    const throughput = concurrencyThreadedData.map(
+      (r) => parseInt(r.throughput_samples_per_sec) / 1e6
+    );
+
+    datasets.push({
+      label: "Throughput (Million samples/sec) - Worker Threads",
+      data: throughput,
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 99, 132, 0.2)",
+      borderWidth: 3,
+      tension: 0.1,
+      fill: true,
+    });
+  }
+
+  const labels = concurrencyData
+    ? concurrencyData.map((r) => r.num_pipelines)
+    : concurrencyThreadedData.map((r) => r.num_pipelines);
+
+  const config = {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Concurrent Pipeline Scaling",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • Should scale linearly or stay flat",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Throughput (M samples/sec)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Number of Concurrent Pipelines",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "concurrent_scaling.png"), buffer);
+  console.log("   ✓ Saved: charts/concurrent_scaling.png");
+}
+
+// ============================================================================
+// Story 6: Audio Latency
+// ============================================================================
+
+console.log("📈 Chart 10: Audio Latency vs Buffer Duration...");
+
+const audioLatencyData = loadJSON("audio-latency");
+if (audioLatencyData) {
+  // Map config to buffer duration
+  const configToDuration = {
+    "ultra-low": 2.67,
+    low: 5.33,
+    balanced: 10.67,
+    "high-quality": 21.33,
+    batch: 42.67,
+  };
+
+  // Group by pipeline type and config
+  const pipelineTypes = [...new Set(audioLatencyData.map((r) => r.pipeline))];
+  const configs = [...new Set(audioLatencyData.map((r) => r.config))];
+
+  const datasets = [];
+  const colors = [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(255, 205, 86)",
+  ];
+
+  pipelineTypes.forEach((pipeline, idx) => {
+    const pipelineData = audioLatencyData.filter(
+      (r) => r.pipeline === pipeline
+    );
+    const bufferDurations = pipelineData.map((r) => configToDuration[r.config]);
+    const avgLatencies = pipelineData.map((r) => parseFloat(r.avg_ms));
+
+    datasets.push({
+      label: `${pipeline} pipeline`,
+      data: avgLatencies,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.2)"),
+      borderWidth: 3,
+      tension: 0.1,
+    });
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: configs.map((c) => c.replace("-", " ")),
+      datasets: datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Audio Latency vs Buffer Duration",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            " • Processing time must be < buffer duration for real-time",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Latency (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Buffer Configuration",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(chartsDir, "audio_latency_vs_duration.png"),
+    buffer
+  );
+  console.log("   ✓ Saved: charts/audio_latency_vs_duration.png");
+}
+
+console.log("📈 Chart 11: Audio Latency Percentiles...");
+
+if (audioLatencyData) {
+  const pipelineTypes = [...new Set(audioLatencyData.map((r) => r.pipeline))];
+  const configs = [...new Set(audioLatencyData.map((r) => r.config))];
+
+  const datasets = [];
+  const colors = [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(255, 205, 86)",
+  ];
+
+  pipelineTypes.forEach((pipeline, idx) => {
+    const pipelineData = audioLatencyData.filter(
+      (r) => r.pipeline === pipeline
+    );
+    const p50Latencies = pipelineData.map((r) => parseFloat(r.p50_ms));
+    const p95Latencies = pipelineData.map((r) => parseFloat(r.p95_ms));
+    const p99Latencies = pipelineData.map((r) => parseFloat(r.p99_ms));
+
+    datasets.push({
+      label: `${pipeline} p50`,
+      data: p50Latencies,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.2)"),
+      borderWidth: 2,
+      borderDash: [5, 5],
+      tension: 0.1,
+      fill: false,
+    });
+
+    datasets.push({
+      label: `${pipeline} p95`,
+      data: p95Latencies,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.2)"),
+      borderWidth: 3,
+      tension: 0.1,
+      fill: false,
+    });
+
+    datasets.push({
+      label: `${pipeline} p99`,
+      data: p99Latencies,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.8)"),
+      borderWidth: 4,
+      tension: 0.1,
+      fill: false,
+    });
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: configs.map((c) => c.replace("-", " ")),
+      datasets: datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Audio Latency Percentiles",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • p99 must be < buffer duration for real-time",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Latency (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Buffer Configuration",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(chartsDir, "audio_latency_percentiles.png"),
+    buffer
+  );
+  console.log("   ✓ Saved: charts/audio_latency_percentiles.png");
+}
+
+console.log("📈 Chart 12: Audio Latency Jitter...");
+
+if (audioLatencyData) {
+  const pipelineTypes = [...new Set(audioLatencyData.map((r) => r.pipeline))];
+  const configs = [...new Set(audioLatencyData.map((r) => r.config))];
+
+  const datasets = [];
+  const colors = [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(255, 205, 86)",
+  ];
+
+  pipelineTypes.forEach((pipeline, idx) => {
+    const pipelineData = audioLatencyData.filter(
+      (r) => r.pipeline === pipeline
+    );
+    const avgJitters = pipelineData.map((r) => parseFloat(r.jitter_avg_ms));
+
+    datasets.push({
+      label: `${pipeline} pipeline`,
+      data: avgJitters,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.2)"),
+      borderWidth: 3,
+      tension: 0.1,
+      fill: true,
+    });
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: configs.map((c) => c.replace("-", " ")),
+      datasets: datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Audio Latency Jitter",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            " • Lower jitter = more consistent real-time performance",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Average Jitter (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Buffer Configuration",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "audio_latency_jitter.png"), buffer);
+  console.log("   ✓ Saved: charts/audio_latency_jitter.png");
+}
+
+console.log("📈 Chart 13: Audio Latency Headroom...");
+
+if (audioLatencyData) {
+  const pipelineTypes = [...new Set(audioLatencyData.map((r) => r.pipeline))];
+  const configs = [...new Set(audioLatencyData.map((r) => r.config))];
+
+  const datasets = [];
+  const colors = [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(255, 205, 86)",
+  ];
+
+  pipelineTypes.forEach((pipeline, idx) => {
+    const pipelineData = audioLatencyData.filter(
+      (r) => r.pipeline === pipeline
+    );
+    const headrooms = pipelineData.map((r) => parseFloat(r.headroom_percent));
+
+    datasets.push({
+      label: `${pipeline} pipeline`,
+      data: headrooms,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.2)"),
+      borderWidth: 3,
+      tension: 0.1,
+      fill: true,
+    });
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: configs.map((c) => c.replace("-", " ")),
+      datasets: datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Audio Latency Headroom",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            " • Higher headroom = more reliable real-time performance",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Headroom (%)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Buffer Configuration",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "audio_latency_headroom.png"), buffer);
+  console.log("   ✓ Saved: charts/audio_latency_headroom.png");
+}
+
+// ============================================================================
+// Story 6: DSP Processing Time
+// ============================================================================
+
+console.log("📈 Chart 14: DSP Processing Time vs Buffer Duration...");
+
+if (audioLatencyData) {
+  // Map config to buffer duration
+  const configToDuration = {
+    "ultra-low": 2.67,
+    low: 5.33,
+    balanced: 10.67,
+    "high-quality": 21.33,
+    batch: 42.67,
+  };
+
+  // Group by pipeline type and config
+  const pipelineTypes = [...new Set(audioLatencyData.map((r) => r.pipeline))];
+  const configs = [...new Set(audioLatencyData.map((r) => r.config))];
+
+  const datasets = [];
+  const colors = [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(255, 205, 86)",
+  ];
+
+  pipelineTypes.forEach((pipeline, idx) => {
+    const pipelineData = audioLatencyData.filter(
+      (r) => r.pipeline === pipeline
+    );
+    const bufferDurations = pipelineData.map((r) => configToDuration[r.config]);
+    const procAvgLatencies = pipelineData.map((r) => parseFloat(r.proc_avg_ms));
+
+    datasets.push({
+      label: `${pipeline} pipeline`,
+      data: procAvgLatencies,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.2)"),
+      borderWidth: 3,
+      tension: 0.1,
+    });
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: configs.map((c) => c.replace("-", " ")),
+      datasets: datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "DSP Processing Time vs Buffer Duration",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            " • Pure DSP computation time (excludes OS timing overhead)",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Processing Time (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Buffer Configuration",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(path.join(chartsDir, "dsp_processing_time.png"), buffer);
+  console.log("   ✓ Saved: charts/dsp_processing_time.png");
+}
+
+console.log("📈 Chart 15: DSP Processing Dropouts...");
+
+if (audioLatencyData) {
+  const pipelineTypes = [...new Set(audioLatencyData.map((r) => r.pipeline))];
+  const configs = [...new Set(audioLatencyData.map((r) => r.config))];
+
+  const datasets = [];
+  const colors = [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(255, 205, 86)",
+  ];
+
+  pipelineTypes.forEach((pipeline, idx) => {
+    const pipelineData = audioLatencyData.filter(
+      (r) => r.pipeline === pipeline
+    );
+    const procDropouts = pipelineData.map((r) => parseFloat(r.proc_dropouts));
+
+    datasets.push({
+      label: `${pipeline} pipeline`,
+      data: procDropouts,
+      borderColor: colors[idx % colors.length],
+      backgroundColor: colors[idx % colors.length]
+        .replace("rgb", "rgba")
+        .replace(")", ", 0.2)"),
+      borderWidth: 3,
+      tension: 0.1,
+      fill: true,
+    });
+  });
+
+  const config = {
+    type: "line",
+    data: {
+      labels: configs.map((c) => c.replace("-", " ")),
+      datasets: datasets,
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "DSP Processing Dropouts",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            " • Processing time exceeded buffer duration (pure DSP failures)",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 14 } },
+        },
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: "Dropouts (count)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Buffer Configuration",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  console.log("📈 Chart 15: DSP Processing Dropouts...");
+
+  if (audioLatencyData) {
+    const pipelineTypes = [...new Set(audioLatencyData.map((r) => r.pipeline))];
+    const configs = [...new Set(audioLatencyData.map((r) => r.config))];
+
+    const datasets = [];
+    const colors = [
+      "rgb(255, 99, 132)",
+      "rgb(54, 162, 235)",
+      "rgb(255, 205, 86)",
+    ];
+
+    pipelineTypes.forEach((pipeline, idx) => {
+      const pipelineData = audioLatencyData.filter(
+        (r) => r.pipeline === pipeline
+      );
+      const procDropouts = pipelineData.map((r) => parseFloat(r.proc_dropouts));
+
+      datasets.push({
+        label: `${pipeline} pipeline`,
+        data: procDropouts,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.2)"),
+        borderWidth: 3,
+        tension: 0.1,
+        fill: true,
+      });
+    });
+
+    const config = {
+      type: "line",
+      data: {
+        labels: configs.map((c) => c.replace("-", " ")),
+        datasets: datasets,
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "DSP Processing Dropouts",
+            font: { size: 20, weight: "bold" },
+          },
+          subtitle: {
+            display: true,
+            text:
+              subtitle +
+              " • Processing time exceeded buffer duration (pure DSP failures)",
+            font: { size: 14 },
+            padding: { bottom: 20 },
+          },
+          legend: {
+            display: true,
+            position: "top",
+            labels: { font: { size: 14 } },
+          },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Dropouts (count)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+            beginAtZero: true,
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Buffer Configuration",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+        },
+      },
+    };
+
+    const buffer = await chartCanvas.renderToBuffer(config);
+    fs.writeFileSync(
+      path.join(chartsDir, "dsp_processing_dropouts.png"),
+      buffer
+    );
+    console.log("   ✓ Saved: charts/dsp_processing_dropouts.png");
+  }
+
+  // ============================================================================
+  // Story 6: Audio Latency (Threaded Version)
+  // ============================================================================
+
+  console.log("📈 Chart 16: Audio Latency Threaded vs Buffer Duration...");
+
+  const audioLatencyThreadedData = loadJSON("audio-latency-threaded");
+  if (audioLatencyThreadedData) {
+    // Map config to buffer duration
+    const configToDuration = {
+      "ultra-low": 2.67,
+      low: 5.33,
+      balanced: 10.67,
+      "high-quality": 21.33,
+      batch: 42.67,
+    };
+
+    // Group by pipeline type and config
+    const pipelineTypes = [
+      ...new Set(audioLatencyThreadedData.map((r) => r.pipeline)),
+    ];
+    const configs = [...new Set(audioLatencyThreadedData.map((r) => r.config))];
+
+    const datasets = [];
+    const colors = [
+      "rgb(255, 99, 132)",
+      "rgb(54, 162, 235)",
+      "rgb(255, 205, 86)",
+    ];
+
+    pipelineTypes.forEach((pipeline, idx) => {
+      const pipelineData = audioLatencyThreadedData.filter(
+        (r) => r.pipeline === pipeline
+      );
+      const bufferDurations = pipelineData.map(
+        (r) => configToDuration[r.config]
+      );
+      const avgLatencies = pipelineData.map((r) => parseFloat(r.avg_ms));
+
+      datasets.push({
+        label: `${pipeline} pipeline (threaded)`,
+        data: avgLatencies,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.2)"),
+        borderWidth: 3,
+        tension: 0.1,
+      });
+    });
+
+    const config = {
+      type: "line",
+      data: {
+        labels: configs.map((c) => c.replace("-", " ")),
+        datasets: datasets,
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "Audio Latency Threaded vs Buffer Duration",
+            font: { size: 20, weight: "bold" },
+          },
+          subtitle: {
+            display: true,
+            text:
+              subtitle + " • Worker thread isolates DSP from main thread noise",
+            font: { size: 14 },
+            padding: { bottom: 20 },
+          },
+          legend: {
+            display: true,
+            position: "top",
+            labels: { font: { size: 14 } },
+          },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Latency (ms)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+            beginAtZero: true,
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Buffer Configuration",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+        },
+      },
+    };
+
+    const buffer = await chartCanvas.renderToBuffer(config);
+    fs.writeFileSync(
+      path.join(chartsDir, "audio_latency_threaded_vs_duration.png"),
+      buffer
+    );
+    console.log("   ✓ Saved: charts/audio_latency_threaded_vs_duration.png");
+  }
+
+  console.log("📈 Chart 17: DSP Processing Time Threaded...");
+
+  if (audioLatencyThreadedData) {
+    // Map config to buffer duration
+    const configToDuration = {
+      "ultra-low": 2.67,
+      low: 5.33,
+      balanced: 10.67,
+      "high-quality": 21.33,
+      batch: 42.67,
+    };
+
+    // Group by pipeline type and config
+    const pipelineTypes = [
+      ...new Set(audioLatencyThreadedData.map((r) => r.pipeline)),
+    ];
+    const configs = [...new Set(audioLatencyThreadedData.map((r) => r.config))];
+
+    const datasets = [];
+    const colors = [
+      "rgb(255, 99, 132)",
+      "rgb(54, 162, 235)",
+      "rgb(255, 205, 86)",
+    ];
+
+    pipelineTypes.forEach((pipeline, idx) => {
+      const pipelineData = audioLatencyThreadedData.filter(
+        (r) => r.pipeline === pipeline
+      );
+      const bufferDurations = pipelineData.map(
+        (r) => configToDuration[r.config]
+      );
+      const procAvgLatencies = pipelineData.map((r) =>
+        parseFloat(r.proc_avg_ms)
+      );
+
+      datasets.push({
+        label: `${pipeline} pipeline (threaded)`,
+        data: procAvgLatencies,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.2)"),
+        borderWidth: 3,
+        tension: 0.1,
+      });
+    });
+
+    const config = {
+      type: "line",
+      data: {
+        labels: configs.map((c) => c.replace("-", " ")),
+        datasets: datasets,
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "DSP Processing Time Threaded",
+            font: { size: 20, weight: "bold" },
+          },
+          subtitle: {
+            display: true,
+            text:
+              subtitle + " • Pure DSP computation in isolated worker thread",
+            font: { size: 14 },
+            padding: { bottom: 20 },
+          },
+          legend: {
+            display: true,
+            position: "top",
+            labels: { font: { size: 14 } },
+          },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Processing Time (ms)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+            beginAtZero: true,
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Buffer Configuration",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+        },
+      },
+    };
+
+    const buffer = await chartCanvas.renderToBuffer(config);
+    fs.writeFileSync(
+      path.join(chartsDir, "dsp_processing_time_threaded.png"),
+      buffer
+    );
+    console.log("   ✓ Saved: charts/dsp_processing_time_threaded.png");
+  }
+
+  console.log("📈 Chart 18: Audio Latency Percentiles Threaded...");
+
+  if (audioLatencyThreadedData) {
+    const pipelineTypes = [
+      ...new Set(audioLatencyThreadedData.map((r) => r.pipeline)),
+    ];
+    const configs = [...new Set(audioLatencyThreadedData.map((r) => r.config))];
+
+    const datasets = [];
+    const colors = [
+      "rgb(255, 99, 132)",
+      "rgb(54, 162, 235)",
+      "rgb(255, 205, 86)",
+    ];
+
+    pipelineTypes.forEach((pipeline, idx) => {
+      const pipelineData = audioLatencyThreadedData.filter(
+        (r) => r.pipeline === pipeline
+      );
+      const p50Latencies = pipelineData.map((r) => parseFloat(r.p50_ms));
+      const p95Latencies = pipelineData.map((r) => parseFloat(r.p95_ms));
+      const p99Latencies = pipelineData.map((r) => parseFloat(r.p99_ms));
+
+      datasets.push({
+        label: `${pipeline} p50`,
+        data: p50Latencies,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.2)"),
+        borderWidth: 2,
+        borderDash: [5, 5],
+        tension: 0.1,
+        fill: false,
+      });
+
+      datasets.push({
+        label: `${pipeline} p95`,
+        data: p95Latencies,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.2)"),
+        borderWidth: 3,
+        tension: 0.1,
+        fill: false,
+      });
+
+      datasets.push({
+        label: `${pipeline} p99`,
+        data: p99Latencies,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.8)"),
+        borderWidth: 4,
+        tension: 0.1,
+        fill: false,
+      });
+    });
+
+    const config = {
+      type: "line",
+      data: {
+        labels: configs.map((c) => c.replace("-", " ")),
+        datasets: datasets,
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "Audio Latency Percentiles Threaded",
+            font: { size: 20, weight: "bold" },
+          },
+          subtitle: {
+            display: true,
+            text:
+              subtitle +
+              " • p99 must be < buffer duration for real-time (threaded)",
+            font: { size: 14 },
+            padding: { bottom: 20 },
+          },
+          legend: {
+            display: true,
+            position: "top",
+            labels: { font: { size: 14 } },
+          },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Latency (ms)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+            beginAtZero: true,
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Buffer Configuration",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+        },
+      },
+    };
+
+    const buffer = await chartCanvas.renderToBuffer(config);
+    fs.writeFileSync(
+      path.join(chartsDir, "audio_latency_percentiles_threaded.png"),
+      buffer
+    );
+    console.log("   ✓ Saved: charts/audio_latency_percentiles_threaded.png");
+  }
+
+  console.log("📈 Chart 19: Audio Latency Jitter Threaded...");
+
+  if (audioLatencyThreadedData) {
+    const pipelineTypes = [
+      ...new Set(audioLatencyThreadedData.map((r) => r.pipeline)),
+    ];
+    const configs = [...new Set(audioLatencyThreadedData.map((r) => r.config))];
+
+    const datasets = [];
+    const colors = [
+      "rgb(255, 99, 132)",
+      "rgb(54, 162, 235)",
+      "rgb(255, 205, 86)",
+    ];
+
+    pipelineTypes.forEach((pipeline, idx) => {
+      const pipelineData = audioLatencyThreadedData.filter(
+        (r) => r.pipeline === pipeline
+      );
+      const avgJitters = pipelineData.map((r) => parseFloat(r.jitter_avg_ms));
+      const maxJitters = pipelineData.map((r) => parseFloat(r.jitter_max_ms));
+
+      datasets.push({
+        label: `${pipeline} avg jitter`,
+        data: avgJitters,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.2)"),
+        borderWidth: 2,
+        tension: 0.1,
+        fill: false,
+      });
+
+      datasets.push({
+        label: `${pipeline} max jitter`,
+        data: maxJitters,
+        borderColor: colors[idx % colors.length],
+        backgroundColor: colors[idx % colors.length]
+          .replace("rgb", "rgba")
+          .replace(")", ", 0.2)"),
+        borderWidth: 2,
+        borderDash: [5, 5],
+        tension: 0.1,
+        fill: false,
+      });
+    });
+
+    const config = {
+      type: "line",
+      data: {
+        labels: configs.map((c) => c.replace("-", " ")),
+        datasets: datasets,
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "Audio Latency Jitter Threaded",
+            font: { size: 20, weight: "bold" },
+          },
+          subtitle: {
+            display: true,
+            text:
+              subtitle +
+              " • Jitter measures latency variation between consecutive samples",
+            font: { size: 14 },
+            padding: { bottom: 20 },
+          },
+          legend: {
+            display: true,
+            position: "top",
+            labels: { font: { size: 14 } },
+          },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Jitter (ms)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+            beginAtZero: true,
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Buffer Configuration",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+        },
+      },
+    };
+
+    const buffer = await chartCanvas.renderToBuffer(config);
+    fs.writeFileSync(
+      path.join(chartsDir, "audio_latency_jitter_threaded.png"),
+      buffer
+    );
+    console.log("   ✓ Saved: charts/audio_latency_jitter_threaded.png");
+  }
+}
+
+console.log("\n✅ All charts generated successfully!\n");

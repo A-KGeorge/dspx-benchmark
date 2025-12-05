@@ -13,7 +13,7 @@ import {
   saveJSON,
   ensureDirs,
   formatThroughput,
-} from "./common.js";
+} from "../lib/common.js";
 
 ensureDirs();
 
@@ -84,6 +84,9 @@ for (const size of testSizes) {
     results.push(data);
     console.log(`   Time: ${result.avg.toFixed(2)} ms`);
     console.log(`   Throughput: ${formatThroughput(size.length, result.avg)}`);
+
+    // Dispose pipeline
+    pipeline.dispose();
   } catch (e) {
     console.error("   ❌ Failed:", e.message);
   }
@@ -154,6 +157,9 @@ for (const size of testSizes) {
     console.log(`   Throughput: ${formatThroughput(size.length, result.avg)}`);
     console.log(`   Overhead: ${overhead.toFixed(2)}%`);
     console.log(`   Logs captured: ${logCount}`);
+
+    // Dispose pipeline
+    pipeline.dispose();
   } catch (e) {
     console.error("   ❌ Failed:", e.message);
   }
@@ -211,6 +217,9 @@ for (const size of testSizes) {
     console.log(`   Throughput: ${formatThroughput(size.length, result.avg)}`);
     console.log(`   Overhead: ${overhead.toFixed(2)}%`);
     console.log(`   Logs captured: ${logCount}`);
+
+    // Dispose pipeline
+    pipeline.dispose();
   } catch (e) {
     console.error("   ❌ Failed:", e.message);
   }
@@ -279,6 +288,9 @@ for (const size of testSizes) {
       );
       console.log(`   Overhead: ${overhead.toFixed(2)}%`);
       console.log(`   Logs captured: ${logCount}`);
+
+      // Dispose pipeline
+      pipeline.dispose();
     } catch (e) {
       console.error("   ❌ Failed:", e.message);
     }

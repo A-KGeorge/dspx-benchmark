@@ -14,17 +14,13 @@
 
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "node:url";
 import {
   getMachineSpecs,
   loadJSON,
   formatThroughput,
   formatBytes,
   getPlatformId,
-} from "./common.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+} from "../lib/common.js";
 
 const platformId = getPlatformId();
 console.log(`📝 Generating benchmark report for platform: ${platformId}...\n`);
@@ -34,10 +30,14 @@ const specs = getMachineSpecs();
 // Load all results
 const story1 = loadJSON("raw-speed") || [];
 const story2 = loadJSON("algorithmic") || [];
-const story3 = loadJSON("redis") || [];
+const story3 = loadJSON("persistence") || [];
 const story4 = loadJSON("logging") || [];
 const story5Memory = loadJSON("profiling-memory") || [];
 const story5Concurrency = loadJSON("profiling-concurrency") || [];
+const story5ConcurrencyThreaded =
+  loadJSON("profiling-concurrency-threaded") || [];
+const story5LatencyThreaded = loadJSON("profiling-latency-threaded") || [];
+const story6 = loadJSON("audio-latency") || [];
 
 // --- Main Report String ---
 let markdown = `# 🧠 DSPX Benchmarks
@@ -209,21 +209,88 @@ Testing pipeline state serialization for crash recovery (FirFilter → RMS pipel
 `;
 
 for (const result of story3) {
-  markdown += `| ${result.input} | ${result.save_ms.toFixed(
-    3
-  )} | ${result.load_ms.toFixed(3)} | ${formatBytes(
-    result.state_size_bytes
-  )} | ${result.seamless ? "✅" : "⚠️"} |\n`;
+  const save =
+    typeof result.save_ms === "number"
+      ? result.save_ms
+      : typeof result.toon_save_ms === "number"
+      ? result.toon_save_ms
+      : typeof result.json_save_ms === "number"
+      ? result.json_save_ms
+      : null;
+  const load =
+    typeof result.load_ms === "number"
+      ? result.load_ms
+      : typeof result.toon_load_ms === "number"
+      ? result.toon_load_ms
+      : typeof result.json_load_ms === "number"
+      ? result.json_load_ms
+      : null;
+  const size =
+    typeof result.state_size_bytes === "number"
+      ? result.state_size_bytes
+      : typeof result.toon_state_size_bytes === "number"
+      ? result.toon_state_size_bytes
+      : typeof result.json_state_size_bytes === "number"
+      ? result.json_state_size_bytes
+      : 0;
+  const seamless =
+    typeof result.seamless === "boolean"
+      ? result.seamless
+      : (result.json_seamless && result.toon_seamless) || false;
+
+  markdown += `| ${result.input} | ${
+    typeof save === "number" ? save.toFixed(3) : "N/A"
+  } | ${typeof load === "number" ? load.toFixed(3) : "N/A"} | ${formatBytes(
+    size
+  )} | ${seamless ? "✅" : "⚠️"} |\n`;
 }
 
-const avgSave = story3.reduce((sum, r) => sum + r.save_ms, 0) / story3.length;
-const avgLoad = story3.reduce((sum, r) => sum + r.load_ms, 0) / story3.length;
+const validSave = story3
+  .map((r) =>
+    typeof r.save_ms === "number"
+      ? r.save_ms
+      : typeof r.toon_save_ms === "number"
+      ? r.toon_save_ms
+      : typeof r.json_save_ms === "number"
+      ? r.json_save_ms
+      : null
+  )
+  .filter((v) => typeof v === "number");
+const validLoad = story3
+  .map((r) =>
+    typeof r.load_ms === "number"
+      ? r.load_ms
+      : typeof r.toon_load_ms === "number"
+      ? r.toon_load_ms
+      : typeof r.json_load_ms === "number"
+      ? r.json_load_ms
+      : null
+  )
+  .filter((v) => typeof v === "number");
+const avgSave =
+  validSave.length > 0
+    ? validSave.reduce((sum, v) => sum + v, 0) / validSave.length
+    : 0;
+const avgLoad =
+  validLoad.length > 0
+    ? validLoad.reduce((sum, v) => sum + v, 0) / validLoad.length
+    : 0;
 const avgSize =
-  story3.reduce((sum, r) => sum + r.state_size_bytes, 0) / story3.length;
+  story3
+    .map((r) =>
+      typeof r.state_size_bytes === "number"
+        ? r.state_size_bytes
+        : typeof r.toon_state_size_bytes === "number"
+        ? r.toon_state_size_bytes
+        : typeof r.json_state_size_bytes === "number"
+        ? r.json_state_size_bytes
+        : 0
+    )
+    .reduce((sum, v) => sum + v, 0) / story3.length;
 
 markdown += `\n**Performance Metrics:**
-- Average save time: **${avgSave.toFixed(3)} ms**
-- Average load time: **${avgLoad.toFixed(3)} ms**
+- Average save time: **${validSave.length > 0 ? avgSave.toFixed(3) : "N/A"} ms**
+- Average load time: **${validLoad.length > 0 ? avgLoad.toFixed(3) : "N/A"} ms**
 - Average state size: **${formatBytes(avgSize)}**
 - All tests seamless: **${
   story3.every((r) => r.seamless) ? "✅ YES" : "⚠️ PARTIAL"
@@ -232,7 +299,7 @@ markdown += `\n**Performance Metrics:**
 **Key Insights:**
 - Sub-millisecond serialization enables frequent state snapshots
 - State size scales with pipeline complexity, not input size
-- Perfect reconstruction: outputs match bit-for-bit after restoration
+- Perfect reconstruction: outputs match bit-for-bit after restoration (JSON)
 - Ideal for distributed processing (Lambda + Redis architecture)
 - Enables crash recovery without data loss
 
@@ -363,6 +430,28 @@ markdown += `\n**Key Insights:**
 - Critical for real-time applications with SLA requirements
 - No long-tail outliers from GC or unexpected allocations
 
+### Latency Distribution Threaded (p50/p95/p99)
+
+Measuring latency consistency with worker threads (isolated from main thread noise):
+
+![Latency Distribution Threaded](../charts/${platformId}/latency_distribution_threaded.png)
+
+#### Latency Percentiles (Threaded)
+
+| Input Size | p50 (Median) | p95 | p99 | Min | Max |
+|------------|--------------|-----|-----|-----|-----|
+`;
+
+for (const result of story5LatencyThreaded) {
+  markdown += `| ${result.input} | ${result.latency_p50_ms} ms | ${result.latency_p95_ms} ms | ${result.latency_p99_ms} ms | ${result.latency_min_ms} ms | ${result.latency_max_ms} ms |\n`;
+}
+
+markdown += `\n**Key Insights:**
+- Worker threads isolate DSP from main thread event loop and GC noise
+- Significantly reduced p99 tail latency compared to single-threaded
+- More consistent performance for real-time applications
+- Eliminates JavaScript-side overhead in latency measurements
+
 ### Concurrent Pipeline Scaling
 
 Testing throughput with multiple independent pipelines:
@@ -371,15 +460,20 @@ Testing throughput with multiple independent pipelines:
 
 #### Scaling Results
 
-| Pipeline Count | Total Throughput | p99 Latency | Efficiency |
-|----------------|------------------|-------------|------------|
+| Type | Pipeline Count | Total Throughput | p99 Latency | Efficiency |
+|------|----------------|------------------|-------------|------------|
 `;
 
-for (const result of story5Concurrency) {
+const allConcurrency = [
+  ...story5Concurrency.map((r) => ({ ...r, type: "Single Thread" })),
+  ...story5ConcurrencyThreaded.map((r) => ({ ...r, type: "Worker Threads" })),
+];
+
+for (const result of allConcurrency) {
   const throughput = (
     parseInt(result.throughput_samples_per_sec) / 1e6
   ).toFixed(1);
-  markdown += `| ${result.num_pipelines} | ${throughput}M samples/sec | ${result.time_p99_ms} ms | ${result.efficiency_percent}% |\n`;
+  markdown += `| ${result.type} | ${result.num_pipelines} | ${throughput}M samples/sec | ${result.time_p99_ms} ms | ${result.efficiency_percent}% |\n`;
 }
 
 const singlePipelineThroughput =
@@ -403,6 +497,148 @@ markdown += `\n**Key Insights:**
 - Async processing allows effective CPU core utilization
 - Ideal for multi-tenant or microservices architectures
 - p99 latency remains stable under concurrent load
+
+---
+
+`;
+
+// ============================================================================
+// Story 6: Audio Latency
+// ============================================================================
+
+markdown += `## Story 6 — Real-Time Audio Latency
+
+### Audio Latency vs Buffer Duration
+
+Testing real-time audio processing constraints across different buffer configurations:
+
+![Audio Latency vs Duration](../charts/${platformId}/audio_latency_vs_duration.png)
+
+#### Real-Time Suitability Matrix
+
+| Pipeline | Config | Buffer Duration | Avg Latency | p99 Latency | Headroom | Real-Time | Production Safe |
+|----------|--------|-----------------|-------------|-------------|----------|-----------|-----------------|
+`;
+
+for (const result of story6) {
+  const realtimeIcon = result.headroom_percent > 0 ? "✅" : "❌";
+  const safeIcon = result.headroom_percent > 20 ? "✅" : "⚠️";
+  markdown += `| ${result.pipeline} | ${result.config} | ${
+    result.headroom_ms + result.avg_ms
+  }ms | ${result.avg_ms}ms | ${result.p99_ms}ms | ${
+    result.headroom_percent
+  }% | ${realtimeIcon} | ${safeIcon} |\n`;
+}
+
+markdown += `\n**Real-Time Constraint:** Processing time must be < buffer duration for glitch-free audio.
+
+### DSP Processing Time
+
+Measuring pure DSP computation time (excluding OS timing overhead):
+
+![DSP Processing Time](../charts/${platformId}/dsp_processing_time.png)
+
+#### DSP Performance Analysis
+
+| Pipeline | Config | DSP Avg Time | DSP Max Time | DSP Dropouts | Status |
+|----------|--------|--------------|--------------|--------------|--------|
+`;
+
+for (const result of story6) {
+  const status =
+    result.proc_dropouts === 0
+      ? "✅ Perfect"
+      : result.proc_dropouts < 10
+      ? "⚠️ Minor"
+      : "❌ Issues";
+  markdown += `| ${result.pipeline} | ${result.config} | ${result.proc_avg_ms}ms | ${result.proc_max_ms}ms | ${result.proc_dropouts} | ${status} |\n`;
+}
+
+markdown += `\n**Key Insights:**
+- DSP processing time shows pure algorithmic performance
+- Zero DSP dropouts indicate the algorithm can handle real-time requirements
+- OS timing overhead (GC, scheduling) adds additional latency
+
+### Audio Latency Percentiles
+
+Measuring latency distribution for real-time audio processing:
+
+![Audio Latency Percentiles](../charts/${platformId}/audio_latency_percentiles.png)
+
+#### Latency Distribution Analysis
+
+| Pipeline | Config | p50 | p95 | p99 | Max | Avg Jitter |
+|----------|--------|-----|-----|-----|-----|------------|
+`;
+
+for (const result of story6) {
+  markdown += `| ${result.pipeline} | ${result.config} | ${result.p50_ms}ms | ${result.p95_ms}ms | ${result.p99_ms}ms | ${result.max_ms}ms | ${result.jitter_avg_ms}ms |\n`;
+}
+
+markdown += `\n**Key Insights:**
+- p99 latency critical for real-time audio (must be < buffer duration)
+- Low jitter indicates consistent processing performance
+- Complex pipelines require larger buffers for real-time operation
+
+### Audio Latency Jitter
+
+Analyzing processing time consistency across sustained audio load:
+
+![Audio Latency Jitter](../charts/${platformId}/audio_latency_jitter.png)
+
+### DSP Processing Dropouts
+
+Measuring pure DSP failures (processing time exceeded buffer duration):
+
+![DSP Processing Dropouts](../charts/${platformId}/dsp_processing_dropouts.png)
+
+### Audio Latency Headroom
+
+Measuring safety margin between processing time and buffer duration:
+
+![Audio Latency Headroom](../charts/${platformId}/audio_latency_headroom.png)
+
+#### Headroom Analysis
+
+| Pipeline | Config | Headroom | Dropout Rate | Status |
+|----------|--------|----------|--------------|--------|
+`;
+
+for (const result of story6) {
+  const status =
+    result.headroom_percent > 20
+      ? "✅ Production Ready"
+      : result.headroom_percent > 0
+      ? "⚠️ Marginal"
+      : "❌ Not Real-Time";
+  const dropoutRate =
+    result.dropouts > 0
+      ? ((result.dropouts / 1000) * 100).toFixed(1) + "%"
+      : "0%";
+  markdown += `| ${result.pipeline} | ${result.config} | ${result.headroom_percent}% | ${dropoutRate} | ${status} |\n`;
+}
+
+const productionReady = story6.filter((r) => r.headroom_percent > 20).length;
+const totalTests = story6.length;
+const avgHeadroom =
+  story6.reduce((sum, r) => sum + parseFloat(r.headroom_percent), 0) /
+  story6.length;
+
+markdown += `\n**Production Readiness:**
+- **${productionReady}/${totalTests} configurations** production-ready (20%+ headroom)
+- **${avgHeadroom.toFixed(1)}% average headroom** across all tests
+- **${
+  story6.filter((r) => r.dropouts === 0).length
+}/${totalTests} configurations** with zero OS dropouts
+- **${
+  story6.filter((r) => r.proc_dropouts === 0).length
+}/${totalTests} configurations** with zero DSP dropouts
+
+**Key Insights:**
+- Higher headroom = more reliable real-time performance
+- 20%+ headroom recommended for production audio applications
+- Complex pipelines need larger buffers or simpler algorithms for real-time use
+- DSP dropouts indicate algorithmic limitations, OS dropouts indicate runtime issues
 
 ---
 
@@ -471,7 +707,10 @@ markdown += `## Conclusion
 `;
 
 // Write report (platform-specific)
-const reportPath = path.join(__dirname, `reports/BENCHMARKS-${platformId}.md`);
+const reportPath = path.join(
+  process.cwd(),
+  `reports/BENCHMARKS-${platformId}.md`
+);
 fs.writeFileSync(reportPath, markdown);
 
 console.log(`✅ Report generated: ${reportPath}\n`);
@@ -579,9 +818,9 @@ function generateMovingAverageTable(results) {
 
     allTables += `\n#### Performance Comparison (${input.toUpperCase()} Input)\n\n`;
     allTables +=
-      "| Window Size | dspx (ms) | naive JS (ms) | Speedup (Time) | Throughput (dspx) | Throughput (naive) | Speedup (Throughput) |\n";
+      "| Window Size | dspx (ms) | naive JS (ms) | tf.js (ms) | Speedup (dspx vs naive) | Speedup (dspx vs tf.js) | Throughput (dspx) | Throughput (naive) | Throughput (tf.js) |\n";
     allTables +=
-      "|-------------|-----------|---------------|----------------|-------------------|--------------------|----------------------|\n";
+      "|-------------|-----------|---------------|------------|--------------------------|--------------------------|-------------------|--------------------|-------------------|\n";
 
     for (const ws of windowSizes) {
       const dspxResult = sizeResults.find(
@@ -589,6 +828,9 @@ function generateMovingAverageTable(results) {
       );
       const naiveResult = sizeResults.find(
         (r) => r.lib === "naive_js" && r.windowSize === ws
+      );
+      const tfjsResult = sizeResults.find(
+        (r) => r.lib === "tf.js" && r.windowSize === ws
       );
 
       // Don't show a row if dspx didn't run (e.g., test in progress)
@@ -600,22 +842,25 @@ function generateMovingAverageTable(results) {
       const naiveAvg = naiveResult ? naiveResult.avg_ms : null;
       const naiveThroughput = naiveResult ? naiveResult.throughput : null;
 
+      const tfjsAvg = tfjsResult ? tfjsResult.avg_ms : null;
+      const tfjsThroughput = tfjsResult ? tfjsResult.throughput : null;
+
       // Calculate speedups
-      const timeSpeedup =
+      const naiveSpeedup =
         naiveAvg && dspxAvg > 0 ? (naiveAvg / dspxAvg).toFixed(1) + "x" : "—";
-      const throughputSpeedup =
-        naiveThroughput && dspxThroughput > 0
-          ? (dspxThroughput / naiveThroughput).toFixed(1) + "x"
-          : "—";
+      const tfjsSpeedup =
+        tfjsAvg && dspxAvg > 0 ? (tfjsAvg / dspxAvg).toFixed(1) + "x" : "—";
 
       // Format strings
       const naiveTimeStr = naiveAvg ? naiveAvg.toFixed(3) : "⏭️ skipped";
+      const tfjsTimeStr = tfjsAvg ? tfjsAvg.toFixed(3) : "⏭️ skipped";
       const dspxThroughputStr = formatSimpleThroughput(dspxThroughput);
       const naiveThroughputStr = formatSimpleThroughput(naiveThroughput);
+      const tfjsThroughputStr = formatSimpleThroughput(tfjsThroughput);
 
       allTables += `| ${ws} | ${dspxAvg.toFixed(
         3
-      )} | ${naiveTimeStr} | **${timeSpeedup}** | ${dspxThroughputStr} | ${naiveThroughputStr} | **${throughputSpeedup}** |\n`;
+      )} | ${naiveTimeStr} | ${tfjsTimeStr} | **${naiveSpeedup}** | **${tfjsSpeedup}** | ${dspxThroughputStr} | ${naiveThroughputStr} | ${tfjsThroughputStr} |\n`;
     }
   }
 

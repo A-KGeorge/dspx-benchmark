@@ -21,7 +21,7 @@ import {
   ensureDirs,
   loadTensorFlow,
   getPlatformId,
-} from "./common.js";
+} from "../lib/common.js";
 
 ensureDirs();
 
@@ -294,6 +294,9 @@ for (const size of INPUT_SIZES) {
 
     results.push(data);
     printResult(data);
+
+    // Dispose pipeline
+    pipeline.dispose();
   } catch (e) {
     console.error("❌ dspx FIR Filter failed:", e.message);
   }
@@ -449,6 +452,9 @@ for (const kernelSize of KERNEL_SIZES) {
 
     results.push(data);
     printResult(data);
+
+    // Dispose pipeline
+    pipeline.dispose();
   } catch (e) {
     console.error("❌ dspx Conv1d failed:", e.message);
   }

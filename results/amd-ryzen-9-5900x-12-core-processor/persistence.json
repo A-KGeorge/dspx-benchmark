@@ -1,0 +1,41 @@
+[
+  {
+    "test": "persistence",
+    "input": "small",
+    "samples": 1024,
+    "json_save_ms": 0.5319999999999936,
+    "json_load_ms": 0.4692999999999984,
+    "toon_save_ms": 0.36957999999997354,
+    "toon_load_ms": 0.33825999999996836,
+    "state_size_bytes": 6032,
+    "toon_state_size_bytes": 1690,
+    "JsonSeamless": true,
+    "ToonSeamless": true
+  },
+  {
+    "test": "persistence",
+    "input": "medium",
+    "samples": 65536,
+    "json_save_ms": 0.39836000000002514,
+    "json_load_ms": 0.3960599999999886,
+    "toon_save_ms": 0.33660000000002127,
+    "toon_load_ms": 0.318139999999994,
+    "state_size_bytes": 6049,
+    "toon_state_size_bytes": 1690,
+    "JsonSeamless": true,
+    "ToonSeamless": true
+  },
+  {
+    "test": "persistence",
+    "input": "large",
+    "samples": 1048576,
+    "json_save_ms": 0.3861800000000358,
+    "json_load_ms": 0.3823799999999892,
+    "toon_save_ms": 0.30943999999999505,
+    "toon_load_ms": 0.30722000000002936,
+    "state_size_bytes": 5946,
+    "toon_state_size_bytes": 1690,
+    "JsonSeamless": true,
+    "ToonSeamless": true
+  }
+]
