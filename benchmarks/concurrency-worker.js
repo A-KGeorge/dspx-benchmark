@@ -45,10 +45,10 @@ pipeline
 // Notify parent thread that worker is initialized
 parentPort.postMessage({ type: "ready" });
 
-// // Clean up on exit
-// process.on("exit", () => {
-//   pipeline.dispose();
-// });
+// Clean up on exit
+process.on("exit", () => {
+  pipeline.dispose();
+});
 
 // -----------------------------------------------------------------------------
 // Main synchronous processing loop
