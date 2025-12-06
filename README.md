@@ -63,7 +63,7 @@ Tests state save/load operations for crash recovery with seamless processing con
 
 **Key Metric**: Serialization latency, state size
 
-![State Persistence Latency](./charts/12th-gen-intel-core-i5-12600t/redis_latency.png)
+![State Persistence Latency](./charts/12th-gen-intel-core-i5-12600t/persistence_latency.png)
 _Windows x64 results_
 
 ### Production Logging
