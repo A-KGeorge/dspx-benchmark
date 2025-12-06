@@ -1,0 +1,68 @@
+[
+  {
+    "test": "latency_profiling_threaded",
+    "input": "small",
+    "samples": 1024,
+    "iterations": 50,
+    "latency_p50_ms": "0.037",
+    "latency_p95_ms": "0.065",
+    "latency_p99_ms": "0.095",
+    "latency_min_ms": "0.028",
+    "latency_max_ms": "0.095",
+    "latency_avg_ms": "0.039",
+    "threaded": true,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "1.3.0"
+    }
+  },
+  {
+    "test": "latency_profiling_threaded",
+    "input": "medium",
+    "samples": 65536,
+    "iterations": 50,
+    "latency_p50_ms": "1.862",
+    "latency_p95_ms": "2.553",
+    "latency_p99_ms": "2.632",
+    "latency_min_ms": "1.639",
+    "latency_max_ms": "2.632",
+    "latency_avg_ms": "1.888",
+    "threaded": true,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "1.3.0"
+    }
+  },
+  {
+    "test": "latency_profiling_threaded",
+    "input": "large",
+    "samples": 1048576,
+    "iterations": 50,
+    "latency_p50_ms": "27.815",
+    "latency_p95_ms": "32.647",
+    "latency_p99_ms": "35.797",
+    "latency_min_ms": "23.963",
+    "latency_max_ms": "35.797",
+    "latency_avg_ms": "28.123",
+    "threaded": true,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "1.3.0"
+    }
+  }
+]

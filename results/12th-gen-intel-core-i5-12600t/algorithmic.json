@@ -6,10 +6,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.07849000000000075,
-    "min_ms": 0.05500000000000682,
-    "max_ms": 0.12349999999999284,
-    "throughput": 13046247.929672444,
+    "avg_ms": 0.06894999999999811,
+    "min_ms": 0.048900000000003274,
+    "max_ms": 0.13889999999999247,
+    "throughput": 14851341.551849574,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -17,7 +17,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -27,10 +27,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.05706000000000415,
-    "min_ms": 0.03880000000000905,
-    "max_ms": 0.11910000000000309,
-    "throughput": 17946021.731509387,
+    "avg_ms": 0.1007000000000005,
+    "min_ms": 0.041200000000003456,
+    "max_ms": 0.3061000000000007,
+    "throughput": 10168818.272095283,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -38,7 +38,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -48,10 +48,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.0637000000000029,
-    "min_ms": 0.05379999999999541,
-    "max_ms": 0.08150000000000546,
-    "throughput": 16075353.218209632,
+    "avg_ms": 0.05240000000000009,
+    "min_ms": 0.041199999999989245,
+    "max_ms": 0.11829999999999075,
+    "throughput": 19541984.732824393,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -59,7 +59,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -69,10 +69,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.103419999999997,
-    "min_ms": 0.09789999999999566,
-    "max_ms": 0.11149999999999238,
-    "throughput": 9901373.041965092,
+    "avg_ms": 0.1897199999999998,
+    "min_ms": 0.18420000000000414,
+    "max_ms": 0.1967999999999961,
+    "throughput": 5397427.788319634,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -80,7 +80,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -90,10 +90,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.059269999999997935,
-    "min_ms": 0.050699999999991974,
-    "max_ms": 0.07349999999999568,
-    "throughput": 17276868.567572728,
+    "avg_ms": 0.045019999999999526,
+    "min_ms": 0.041299999999992565,
+    "max_ms": 0.054199999999994475,
+    "throughput": 22745446.46823658,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -101,7 +101,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -111,10 +111,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.2947800000000001,
-    "min_ms": 0.2916000000000025,
-    "max_ms": 0.29710000000000036,
-    "throughput": 3473777.0540742236,
+    "avg_ms": 0.5696199999999948,
+    "min_ms": 0.5518000000000001,
+    "max_ms": 0.5788999999999902,
+    "throughput": 1797689.6878620998,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -122,7 +122,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -132,10 +132,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.06294999999999788,
-    "min_ms": 0.04829999999999757,
-    "max_ms": 0.09789999999999566,
-    "throughput": 16266878.474980691,
+    "avg_ms": 0.046050000000001035,
+    "min_ms": 0.04009999999999536,
+    "max_ms": 0.0707000000000022,
+    "throughput": 22236699.23995607,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -143,7 +143,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -153,10 +153,10 @@
     "windowSize": 2048,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.390319999999997,
-    "min_ms": 0.3889999999999958,
-    "max_ms": 0.39339999999999975,
-    "throughput": 2623488.419758167,
+    "avg_ms": 0.7657399999999968,
+    "min_ms": 0.7606999999999999,
+    "max_ms": 0.7716999999999956,
+    "throughput": 1337268.5245644792,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -164,7 +164,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -174,10 +174,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.055579999999999075,
-    "min_ms": 0.05010000000000048,
-    "max_ms": 0.06029999999999802,
-    "throughput": 18423893.486866087,
+    "avg_ms": 0.08633999999999986,
+    "min_ms": 0.039400000000000546,
+    "max_ms": 0.12919999999999732,
+    "throughput": 11860088.024090823,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -185,7 +185,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -195,10 +195,10 @@
     "windowSize": 8192,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 0.5112799999999993,
-    "min_ms": 0.38929999999999154,
-    "max_ms": 0.7241000000000071,
-    "throughput": 2002816.4606477888,
+    "avg_ms": 0.759699999999998,
+    "min_ms": 0.7513000000000005,
+    "max_ms": 0.7728000000000037,
+    "throughput": 1347900.4870343592,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -206,7 +206,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -216,10 +216,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.7796500000000008,
-    "min_ms": 0.6954999999999956,
-    "max_ms": 0.910499999999999,
-    "throughput": 84058231.2576155,
+    "avg_ms": 0.6760500000000007,
+    "min_ms": 0.6316000000000059,
+    "max_ms": 0.8061000000000007,
+    "throughput": 96939575.47518665,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -227,7 +227,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -237,10 +237,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 1.9566800000000029,
-    "min_ms": 1.7538000000000125,
-    "max_ms": 2.3636999999999944,
-    "throughput": 33493468.528323434,
+    "avg_ms": 1.9607399999999984,
+    "min_ms": 1.8933999999999997,
+    "max_ms": 2.0035000000000025,
+    "throughput": 33424115.38500773,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -248,7 +248,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -258,10 +258,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.7142599999999988,
-    "min_ms": 0.6902999999999793,
-    "max_ms": 0.8091000000000008,
-    "throughput": 91753703.13331296,
+    "avg_ms": 0.677060000000003,
+    "min_ms": 0.63900000000001,
+    "max_ms": 0.7634999999999934,
+    "throughput": 96794966.47269033,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -269,7 +269,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -279,10 +279,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 6.831040000000007,
-    "min_ms": 6.666800000000023,
-    "max_ms": 7.009299999999996,
-    "throughput": 9593853.937321393,
+    "avg_ms": 6.702180000000004,
+    "min_ms": 6.4863,
+    "max_ms": 6.990000000000009,
+    "throughput": 9778310.937635211,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -290,7 +290,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -300,10 +300,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.7614199999999954,
-    "min_ms": 0.6964000000000112,
-    "max_ms": 0.8406999999999982,
-    "throughput": 86070762.52265555,
+    "avg_ms": 0.6957300000000032,
+    "min_ms": 0.6788999999999987,
+    "max_ms": 0.7253999999999792,
+    "throughput": 94197461.65897648,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -311,7 +311,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -321,10 +321,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 24.32196,
-    "min_ms": 22.8784,
-    "max_ms": 25.574700000000007,
-    "throughput": 2694519.6850911686,
+    "avg_ms": 26.899779999999993,
+    "min_ms": 23.72320000000002,
+    "max_ms": 32.54039999999998,
+    "throughput": 2436302.453031215,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -332,7 +332,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -342,10 +342,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.742349999999982,
-    "min_ms": 0.6058999999999628,
-    "max_ms": 1.0177999999999656,
-    "throughput": 88281807.77261615,
+    "avg_ms": 0.6822499999999934,
+    "min_ms": 0.6560999999999808,
+    "max_ms": 0.7613000000000056,
+    "throughput": 96058629.534629,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -353,7 +353,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -363,10 +363,10 @@
     "windowSize": 2048,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 102.00193999999999,
-    "min_ms": 91.42379999999991,
-    "max_ms": 135.3175,
-    "throughput": 642497.5838694833,
+    "avg_ms": 107.03873999999993,
+    "min_ms": 95.72869999999989,
+    "max_ms": 132.59579999999994,
+    "throughput": 612264.3072965923,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -374,7 +374,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -384,10 +384,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 0.7969600000000128,
-    "min_ms": 0.6649999999999636,
-    "max_ms": 1.1087999999999738,
-    "throughput": 82232483.43705952,
+    "avg_ms": 0.6296899999999596,
+    "min_ms": 0.5873999999998887,
+    "max_ms": 0.8686000000000149,
+    "throughput": 104076609.12513174,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -395,7 +395,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -405,10 +405,10 @@
     "windowSize": 8192,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 347.5866800000001,
-    "min_ms": 344.7040999999999,
-    "max_ms": 353.06010000000015,
-    "throughput": 188545.77511428224,
+    "avg_ms": 403.2882999999999,
+    "min_ms": 363.49350000000004,
+    "max_ms": 435.7403999999997,
+    "throughput": 162504.0944654234,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -416,7 +416,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -426,10 +426,10 @@
     "windowSize": 32,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 9.460710000000063,
-    "min_ms": 8.89240000000018,
-    "max_ms": 10.6867000000002,
-    "throughput": 110834810.49519466,
+    "avg_ms": 10.165000000000054,
+    "min_ms": 9.787400000000162,
+    "max_ms": 11.472200000000157,
+    "throughput": 103155533.69404766,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -437,7 +437,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -447,10 +447,10 @@
     "windowSize": 32,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 27.160120000000006,
-    "min_ms": 25.008800000000065,
-    "max_ms": 29.42589999999973,
-    "throughput": 38607193.193549946,
+    "avg_ms": 34.529859999999644,
+    "min_ms": 29.095899999999347,
+    "max_ms": 41.38589999999931,
+    "throughput": 30367224.193785056,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -458,7 +458,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -468,10 +468,10 @@
     "windowSize": 128,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 9.353330000000051,
-    "min_ms": 8.909900000000107,
-    "max_ms": 10.434200000000146,
-    "throughput": 112107238.81227265,
+    "avg_ms": 11.065229999999975,
+    "min_ms": 9.675799999999981,
+    "max_ms": 17.011099999999715,
+    "throughput": 94763145.45653388,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -479,7 +479,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -489,10 +489,10 @@
     "windowSize": 128,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 102.6777,
-    "min_ms": 100.6898000000001,
-    "max_ms": 104.66790000000037,
-    "throughput": 10212305.10617203,
+    "avg_ms": 133.46188,
+    "min_ms": 119.28399999999965,
+    "max_ms": 139.9912000000004,
+    "throughput": 7856745.31184485,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -500,7 +500,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -510,10 +510,10 @@
     "windowSize": 512,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 9.432929999999851,
-    "min_ms": 8.832100000000537,
-    "max_ms": 10.993199999999888,
-    "throughput": 111161219.26061325,
+    "avg_ms": 10.444980000000033,
+    "min_ms": 9.838799999999537,
+    "max_ms": 12.156600000000253,
+    "throughput": 100390426.7887537,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -521,7 +521,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -531,10 +531,10 @@
     "windowSize": 512,
     "lib": "naive_js",
     "impl": "sliding_window_ONW",
-    "avg_ms": 374.0298000000001,
-    "min_ms": 367.90120000000024,
-    "max_ms": 380.5518000000002,
-    "throughput": 2803455.7674281565,
+    "avg_ms": 441.37923999999987,
+    "min_ms": 429.4270000000006,
+    "max_ms": 454.54089999999997,
+    "throughput": 2375680.378624061,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -542,7 +542,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -552,10 +552,10 @@
     "windowSize": 2048,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 9.229359999999906,
-    "min_ms": 8.696399999999812,
-    "max_ms": 10.712799999999334,
-    "throughput": 113613078.26328269,
+    "avg_ms": 10.615739999999823,
+    "min_ms": 9.925900000000183,
+    "max_ms": 11.308499999999185,
+    "throughput": 98775591.71569929,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -563,7 +563,28 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
+    }
+  },
+  {
+    "test": "moving_average",
+    "input": "large",
+    "samples": 1048576,
+    "windowSize": 2048,
+    "lib": "naive_js",
+    "impl": "sliding_window_ONW",
+    "avg_ms": 1776.6524799999995,
+    "min_ms": 1739.8752999999997,
+    "max_ms": 1815.0548999999992,
+    "throughput": 590197.583266256,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "1.3.0"
     }
   },
   {
@@ -573,10 +594,10 @@
     "windowSize": 8192,
     "lib": "dspx",
     "impl": "circular_buffer_O1",
-    "avg_ms": 9.076560000000063,
-    "min_ms": 8.499700000000303,
-    "max_ms": 10.30580000000009,
-    "throughput": 115525705.77399287,
+    "avg_ms": 10.365249999999287,
+    "min_ms": 9.790499999999156,
+    "max_ms": 11.542499999999563,
+    "throughput": 101162634.76520799,
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
       "cores": 12,
@@ -584,7 +605,28 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
+    }
+  },
+  {
+    "test": "moving_average",
+    "input": "large",
+    "samples": 1048576,
+    "windowSize": 8192,
+    "lib": "naive_js",
+    "impl": "sliding_window_ONW",
+    "avg_ms": 5914.4110999999975,
+    "min_ms": 5709.956599999998,
+    "max_ms": 6213.240299999998,
+    "throughput": 177291.7002675043,
+    "meta": {
+      "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
+      "cores": 12,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "Microsoft Windows [Version 10.0.26100.4946]",
+      "node": "v22.21.1",
+      "dspx": "1.3.0"
     }
   }
 ]

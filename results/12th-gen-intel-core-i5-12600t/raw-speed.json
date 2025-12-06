@@ -4,10 +4,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.011459999999993897,
-    "min_ms": 0.007699999999999818,
-    "max_ms": 0.03069999999996753,
-    "throughput": 89354275.74175788,
+    "avg_ms": 0.006630000000018299,
+    "min_ms": 0.004800000000045657,
+    "max_ms": 0.01269999999999527,
+    "throughput": 154449472.09610465,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -16,7 +16,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -24,10 +24,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "tfjs",
-    "avg_ms": 0.22451000000000362,
-    "min_ms": 0.10739999999998417,
-    "max_ms": 0.5009999999999764,
-    "throughput": 4561044.0514898375,
+    "avg_ms": 0.29454999999999815,
+    "min_ms": 0.10960000000000036,
+    "max_ms": 0.6399999999999864,
+    "throughput": 3476489.560346313,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -36,7 +36,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -44,10 +44,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "fft.js",
-    "avg_ms": 0.19954000000000746,
-    "min_ms": 0.17310000000003356,
-    "max_ms": 0.21479999999996835,
-    "throughput": 5131803.147238458,
+    "avg_ms": 0.2847700000000032,
+    "min_ms": 0.262299999999982,
+    "max_ms": 0.3202999999999747,
+    "throughput": 3595884.3979351353,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -56,7 +56,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -64,10 +64,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 0.3250300000000038,
-    "min_ms": 0.29879999999997153,
-    "max_ms": 0.4552999999999656,
-    "throughput": 201630618.71211654,
+    "avg_ms": 0.2993600000000015,
+    "min_ms": 0.2798000000000229,
+    "max_ms": 0.41500000000002046,
+    "throughput": 218920363.4420085,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -76,7 +76,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -84,10 +84,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "tfjs",
-    "avg_ms": 5.363090000000017,
-    "min_ms": 3.9459000000000515,
-    "max_ms": 7.866300000000024,
-    "throughput": 12219821.03600719,
+    "avg_ms": 5.152439999999996,
+    "min_ms": 3.8987999999999943,
+    "max_ms": 6.772999999999911,
+    "throughput": 12719410.60934238,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -96,7 +96,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -104,10 +104,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fft.js",
-    "avg_ms": 0.6355099999999994,
-    "min_ms": 0.502399999999966,
-    "max_ms": 0.9447000000000116,
-    "throughput": 103123475.63374309,
+    "avg_ms": 0.6222999999999956,
+    "min_ms": 0.5060000000000855,
+    "max_ms": 0.9055999999999358,
+    "throughput": 105312550.2169379,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -116,7 +116,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -124,10 +124,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 8.836450000000013,
-    "min_ms": 8.045599999999922,
-    "max_ms": 10.98969999999997,
-    "throughput": 118664848.44026712,
+    "avg_ms": 8.425260000000014,
+    "min_ms": 7.603800000000092,
+    "max_ms": 9.894799999999918,
+    "throughput": 124456218.56180085,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -136,7 +136,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -144,10 +144,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "tfjs",
-    "avg_ms": 79.63945000000002,
-    "min_ms": 73.65229999999997,
-    "max_ms": 88.12670000000003,
-    "throughput": 13166539.949735962,
+    "avg_ms": 85.0703,
+    "min_ms": 78.07300000000009,
+    "max_ms": 95.1534999999999,
+    "throughput": 12325993.913269378,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -156,7 +156,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -164,10 +164,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fft.js",
-    "avg_ms": 21.69395000000004,
-    "min_ms": 20.553700000000163,
-    "max_ms": 23.61810000000014,
-    "throughput": 48334950.52768159,
+    "avg_ms": 24.25133999999996,
+    "min_ms": 20.846000000000004,
+    "max_ms": 32.67750000000001,
+    "throughput": 43237858.19670178,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -176,7 +176,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -184,10 +184,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "dspx",
-    "avg_ms": 0.08078000000004977,
-    "min_ms": 0.06110000000035143,
-    "max_ms": 0.16309999999975844,
-    "throughput": 12676405.050747328,
+    "avg_ms": 0.08481000000001586,
+    "min_ms": 0.057999999999992724,
+    "max_ms": 0.15239999999994325,
+    "throughput": 12074047.871710984,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -197,7 +197,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -205,10 +205,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "fili",
-    "avg_ms": 0.2452900000000227,
-    "min_ms": 0.1645000000003165,
-    "max_ms": 0.40259999999989304,
-    "throughput": 4174650.413795529,
+    "avg_ms": 0.17684000000003836,
+    "min_ms": 0.12789999999995416,
+    "max_ms": 0.3166999999998552,
+    "throughput": 5790545.125535953,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -218,7 +218,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -226,10 +226,10 @@
     "input": "small",
     "samples": 1024,
     "lib": "naive_js",
-    "avg_ms": 0.08466999999996005,
-    "min_ms": 0.07879999999977372,
-    "max_ms": 0.1091999999998734,
-    "throughput": 12094012.046775518,
+    "avg_ms": 0.10985000000009677,
+    "min_ms": 0.08740000000034343,
+    "max_ms": 0.15540000000009968,
+    "throughput": 9321802.45788892,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -239,7 +239,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -247,10 +247,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "dspx",
-    "avg_ms": 1.6275700000000597,
-    "min_ms": 1.2337000000002263,
-    "max_ms": 3.051900000000387,
-    "throughput": 40266163.66730622,
+    "avg_ms": 1.2567299999999704,
+    "min_ms": 1.1622000000002117,
+    "max_ms": 1.5027000000000044,
+    "throughput": 52148034.97967069,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -260,7 +260,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -268,10 +268,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "fili",
-    "avg_ms": 6.897820000000047,
-    "min_ms": 6.697200000000066,
-    "max_ms": 7.308799999999792,
-    "throughput": 9500972.771107329,
+    "avg_ms": 6.878270000000066,
+    "min_ms": 6.657000000000153,
+    "max_ms": 7.423999999999978,
+    "throughput": 9527977.238462487,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -281,7 +281,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -289,10 +289,10 @@
     "input": "medium",
     "samples": 65536,
     "lib": "naive_js",
-    "avg_ms": 5.031359999999995,
-    "min_ms": 4.658999999999651,
-    "max_ms": 5.617099999999937,
-    "throughput": 13025504.038669478,
+    "avg_ms": 5.045080000000053,
+    "min_ms": 4.624400000000151,
+    "max_ms": 5.354199999999764,
+    "throughput": 12990081.425864272,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -302,7 +302,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -310,10 +310,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "dspx",
-    "avg_ms": 20.570100000000046,
-    "min_ms": 19.10079999999971,
-    "max_ms": 23.436099999999897,
-    "throughput": 50975736.62743485,
+    "avg_ms": 21.957359999999927,
+    "min_ms": 20.51299999999992,
+    "max_ms": 22.92699999999968,
+    "throughput": 47755103.52792884,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
@@ -323,7 +323,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -331,10 +331,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "fili",
-    "avg_ms": 101.59630999999999,
-    "min_ms": 99.0039999999999,
-    "max_ms": 104.44290000000001,
-    "throughput": 10321004.76877556,
+    "avg_ms": 108.79472000000001,
+    "min_ms": 103.76549999999997,
+    "max_ms": 118.05229999999983,
+    "throughput": 9638114.79086485,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -344,7 +344,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -352,10 +352,10 @@
     "input": "large",
     "samples": 1048576,
     "lib": "naive_js",
-    "avg_ms": 77.22332999999999,
-    "min_ms": 75.1848,
-    "max_ms": 78.92290000000048,
-    "throughput": 13578487.226593312,
+    "avg_ms": 82.02768999999971,
+    "min_ms": 67.92039999999997,
+    "max_ms": 114.89679999999953,
+    "throughput": 12783195.528241789,
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
@@ -365,7 +365,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -375,10 +375,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "dspx",
-    "avg_ms": 0.4660200000000259,
-    "min_ms": 0.40529999999944266,
-    "max_ms": 0.5113000000001193,
-    "throughput": 140629157.54687858,
+    "avg_ms": 0.7698899999998503,
+    "min_ms": 0.6504999999997381,
+    "max_ms": 0.9475999999995111,
+    "throughput": 85123848.86154222,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -387,7 +387,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -397,10 +397,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "tfjs",
-    "avg_ms": 4.672080000000006,
-    "min_ms": 3.7118000000000393,
-    "max_ms": 5.8740999999999985,
-    "throughput": 14027157.069228249,
+    "avg_ms": 4.391790000000128,
+    "min_ms": 3.568600000000515,
+    "max_ms": 5.492400000000089,
+    "throughput": 14922389.276353853,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -409,7 +409,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -419,10 +419,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "naive_js",
-    "avg_ms": 0.627679999999782,
-    "min_ms": 0.6004999999995562,
-    "max_ms": 0.6531000000004497,
-    "throughput": 104409890.39004391,
+    "avg_ms": 0.6810700000000907,
+    "min_ms": 0.6460999999999331,
+    "max_ms": 0.6922999999997046,
+    "throughput": 96225057.62989306,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -431,7 +431,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -441,10 +441,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "dspx",
-    "avg_ms": 0.8662899999998445,
-    "min_ms": 0.7861999999995533,
-    "max_ms": 1.3654999999998836,
-    "throughput": 75651340.77504273,
+    "avg_ms": 0.7054300000000694,
+    "min_ms": 0.6058000000002721,
+    "max_ms": 0.7893000000003667,
+    "throughput": 92902201.49411501,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -453,7 +453,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -463,10 +463,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "tfjs",
-    "avg_ms": 4.696040000000084,
-    "min_ms": 3.767399999999725,
-    "max_ms": 6.647200000000339,
-    "throughput": 13955588.112537121,
+    "avg_ms": 4.157599999999912,
+    "min_ms": 3.4992999999994936,
+    "max_ms": 5.005699999999706,
+    "throughput": 15762940.157783672,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -475,7 +475,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -485,10 +485,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "naive_js",
-    "avg_ms": 2.6275800000000347,
-    "min_ms": 2.4211999999997715,
-    "max_ms": 2.834200000000237,
-    "throughput": 24941581.226831965,
+    "avg_ms": 2.7049000000000887,
+    "min_ms": 2.4377999999996973,
+    "max_ms": 2.945499999999811,
+    "throughput": 24228622.130207345,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -497,7 +497,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -507,10 +507,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "dspx",
-    "avg_ms": 1.709100000000126,
-    "min_ms": 1.5257000000001426,
-    "max_ms": 2.0299000000004526,
-    "throughput": 38345327.950380415,
+    "avg_ms": 0.7354699999999866,
+    "min_ms": 0.6908000000003085,
+    "max_ms": 0.8055000000003929,
+    "throughput": 89107645.4512097,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -519,7 +519,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -529,10 +529,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "tfjs",
-    "avg_ms": 4.894470000000001,
-    "min_ms": 3.712000000000444,
-    "max_ms": 7.398699999999735,
-    "throughput": 13389805.229166793,
+    "avg_ms": 4.442730000000211,
+    "min_ms": 3.6637000000000626,
+    "max_ms": 5.349100000000362,
+    "throughput": 14751290.310236474,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -541,7 +541,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -551,10 +551,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "naive_js",
-    "avg_ms": 5.160770000000047,
-    "min_ms": 4.566000000000713,
-    "max_ms": 6.197400000000016,
-    "throughput": 12698880.205860635,
+    "avg_ms": 4.9657099999997625,
+    "min_ms": 4.89640000000054,
+    "max_ms": 5.029999999999745,
+    "throughput": 13197709.894456811,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -563,7 +563,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -573,10 +573,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "dspx",
-    "avg_ms": 1.8592499999999745,
-    "min_ms": 1.4297999999998865,
-    "max_ms": 2.3319000000001324,
-    "throughput": 35248621.75608493,
+    "avg_ms": 2.54378999999999,
+    "min_ms": 2.3845000000001164,
+    "max_ms": 2.8233999999993102,
+    "throughput": 25763132.963019848,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -585,7 +585,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -595,10 +595,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "tfjs",
-    "avg_ms": 4.807600000000093,
-    "min_ms": 3.828700000000026,
-    "max_ms": 5.664700000000266,
-    "throughput": 13631749.729594545,
+    "avg_ms": 4.318289999999888,
+    "min_ms": 3.6700000000000728,
+    "max_ms": 5.412899999999354,
+    "throughput": 15176377.686538352,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -607,7 +607,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -617,10 +617,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "naive_js",
-    "avg_ms": 9.060459999999875,
-    "min_ms": 8.515599999999722,
-    "max_ms": 10.863400000000183,
-    "throughput": 7233186.83598856,
+    "avg_ms": 9.8048600000001,
+    "min_ms": 7.830399999999827,
+    "max_ms": 13.690999999999804,
+    "throughput": 6684032.204437323,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -629,7 +629,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -639,10 +639,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "dspx",
-    "avg_ms": 1.5355000000001382,
-    "min_ms": 1.3513999999995576,
-    "max_ms": 2.3676000000004933,
-    "throughput": 42680560.0781466,
+    "avg_ms": 2.3593899999999848,
+    "min_ms": 1.949200000000019,
+    "max_ms": 2.945499999999811,
+    "throughput": 27776671.088713787,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -651,7 +651,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -661,10 +661,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "tfjs",
-    "avg_ms": 5.001030000000083,
-    "min_ms": 3.860099999999875,
-    "max_ms": 7.568599999999606,
-    "throughput": 13104500.472902365,
+    "avg_ms": 4.7326200000000425,
+    "min_ms": 3.750699999999597,
+    "max_ms": 6.12880000000041,
+    "throughput": 13847720.712839698,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -673,7 +673,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   },
   {
@@ -683,10 +683,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "naive_js",
-    "avg_ms": 15.802500000000327,
-    "min_ms": 15.145500000000538,
-    "max_ms": 16.971600000000763,
-    "throughput": 4147191.900015734,
+    "avg_ms": 20.69349000000011,
+    "min_ms": 15.790899999999965,
+    "max_ms": 29.96979999999985,
+    "throughput": 3166986.332416603,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "12th Gen Intel(R) Core(TM) i5-12600T",
@@ -695,7 +695,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26100.4946]",
       "node": "v22.21.1",
-      "dspx": "0.2.0-alpha.15"
+      "dspx": "1.3.0"
     }
   }
 ]
