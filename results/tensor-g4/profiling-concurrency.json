@@ -14,7 +14,7 @@
     "throughput_samples_per_sec": "26596960",
     "efficiency_percent": "100.0",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -38,7 +38,7 @@
     "throughput_samples_per_sec": "25991604",
     "efficiency_percent": "48.9",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -62,7 +62,7 @@
     "throughput_samples_per_sec": "34695551",
     "efficiency_percent": "32.6",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -86,7 +86,7 @@
     "throughput_samples_per_sec": "61708507",
     "efficiency_percent": "29.0",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -110,7 +110,7 @@
     "throughput_samples_per_sec": "104896787",
     "efficiency_percent": "24.6",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -134,7 +134,7 @@
     "throughput_samples_per_sec": "134494446",
     "efficiency_percent": "15.8",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -158,7 +158,7 @@
     "throughput_samples_per_sec": "163545241",
     "efficiency_percent": "9.6",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -182,7 +182,7 @@
     "throughput_samples_per_sec": "179575277",
     "efficiency_percent": "5.3",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -206,7 +206,7 @@
     "throughput_samples_per_sec": "188173498",
     "efficiency_percent": "2.8",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -230,7 +230,7 @@
     "throughput_samples_per_sec": "179420350",
     "efficiency_percent": "1.3",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -254,7 +254,7 @@
     "throughput_samples_per_sec": "182866086",
     "efficiency_percent": "0.7",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",

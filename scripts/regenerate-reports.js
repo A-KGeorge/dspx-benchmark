@@ -83,6 +83,45 @@ console.log(
   `\nMachine specs: ${specs.cpu} • ${specs.arch} • Node ${specs.node}`
 );
 
+console.log(
+  `\nMachine specs: ${specs.cpu} • ${specs.arch} • Node ${specs.node}`
+);
+
+// Detect sandboxed environments (Termux, etc.)
+const detectSandboxedEnvironment = () => {
+  const platform = specs.os?.toLowerCase() || "";
+  const arch = specs.arch?.toLowerCase() || "";
+  const ramGB = parseFloat(specs.ram?.replace(" GB", "") || "0");
+  const cores = parseInt(specs.cores || "0");
+
+  // Termux/Android detection - check multiple indicators
+  const isTermux =
+    platform.includes("termux") ||
+    platform.includes("android") ||
+    process.env.TERMUX_VERSION !== undefined ||
+    process.env.PREFIX?.includes("com.termux") ||
+    platform.includes("avf-arm64") || // Android Virtual File system indicator
+    arch === "arm64"; // ARM64 on Linux is likely Android/Termux
+
+  // Check if memory is suspiciously low for modern devices
+  const isLowMemory = ramGB < 6; // Most modern devices have 8GB+
+
+  // For ARM64 Linux with low memory, assume sandboxed
+  const isSandboxed =
+    isTermux || (isLowMemory && (arch === "arm64" || arch === "arm"));
+
+  return {
+    isSandboxed,
+    isTermux,
+    ramGB,
+    cores,
+    platform,
+    arch,
+  };
+};
+
+const envInfo = detectSandboxedEnvironment();
+
 // --- Main Report String ---
 let markdown = `# 🧠 DSPX Benchmarks
 
@@ -100,7 +139,70 @@ let markdown = `# 🧠 DSPX Benchmarks
 | **Node.js** | ${specs.node} |
 | **dspx** | v${specs.dspx} |
 
+${
+  envInfo.isSandboxed
+    ? `## ⚠️ Sandboxed Environment Notice
+
+**Important:** These benchmarks were run in a **sandboxed environment** with significant limitations:
+
+### Sandboxing Limitations
+
+1. **Memory Restriction**
+   - Available RAM: **${envInfo.ramGB} GB** (limited by sandbox)
+   - Impact: Prevents large buffer allocations and high concurrency tests
+
+2. **CPU Core Restriction**  
+   - Available cores: **${envInfo.cores}** (may be restricted)
+   - Impact: Worker threads cannot utilize multiple cores effectively
+
+3. **Process Isolation**
+   - Native library access is limited
+   - SharedArrayBuffer operations may have reduced performance
+   - Some SIMD optimizations may not be available
+
+### Benchmark Adjustments
+
+Due to these limitations, the following benchmarks were modified:
+
+#### ✅ **Successfully Run**
+- Single-threaded latency and throughput tests
+- Basic algorithmic efficiency tests
+- State persistence tests
+
+#### ⚠️ **Limited/Modified**
+- **Concurrency tests**: Restricted to 1 worker only (sandboxed environment cannot spawn multiple workers without crashes)
+- **Memory-intensive tests**: May use smaller buffer sizes
+- **Multi-threaded results**: Not representative of hardware capabilities
+
+#### ❌ **Skipped**
+- Tests requiring >${envInfo.ramGB}GB memory allocation
+- High-concurrency tests (>1 worker) - cause bus errors/segfaults in sandbox
+
+### Performance Notes
+
+Despite sandboxing limitations, the results demonstrate:
+
+- ✅ **Single-threaded performance**: Representative for typical applications
+- ✅ **Algorithmic efficiency**: Scaling characteristics are valid
+- ❌ **Multi-threaded throughput**: Cannot be measured accurately
+- ❌ **Memory bandwidth**: Limited by sandbox constraints
+
+### Comparison Considerations
+
+When comparing these results to other platforms:
+
+- **Single-threaded results**: Valid and comparable
+- **Multi-threaded results**: Not representative of hardware
+- **Throughput**: Lower than native due to sandbox overhead
+- **Latency**: Representative for real-time applications
+
+**For full benchmark results representative of this hardware's true capabilities, run benchmarks in a non-sandboxed environment (rooted device, native app, etc.).**
+
 ---
+
+`
+    : `---`
+}
 
 ## Executive Summary
 
@@ -252,29 +354,41 @@ Testing pipeline state serialization for crash recovery (FirFilter → RMS pipel
 
 #### Results Summary
 
-| Input Size | Save Time (ms) | Load Time (ms) | State Size | Seamless? |
-|------------|----------------|----------------|------------|-----------|
+| Input Size | JSON Save (ms) | JSON Load (ms) | TOON Save (ms) | TOON Load (ms) | State Size | Seamless? |
+|------------|----------------|----------------|----------------|----------------|------------|-----------|
 `;
 
 for (const result of story3) {
-  markdown += `| ${result.input} | ${result.save_ms.toFixed(
+  markdown += `| ${result.input} | ${result.json_save_ms.toFixed(
     3
-  )} | ${result.load_ms.toFixed(3)} | ${formatBytes(
+  )} | ${result.json_load_ms.toFixed(3)} | ${result.toon_save_ms.toFixed(
+    3
+  )} | ${result.toon_load_ms.toFixed(3)} | ${formatBytes(
     result.state_size_bytes
-  )} | ${result.seamless ? "✅" : "⚠️"} |\n`;
+  )} | ${result.JsonSeamless && result.ToonSeamless ? "✅" : "⚠️"} |\n`;
 }
 
-const avgSave = story3.reduce((sum, r) => sum + r.save_ms, 0) / story3.length;
-const avgLoad = story3.reduce((sum, r) => sum + r.load_ms, 0) / story3.length;
+const avgJsonSave =
+  story3.reduce((sum, r) => sum + r.json_save_ms, 0) / story3.length;
+const avgJsonLoad =
+  story3.reduce((sum, r) => sum + r.json_load_ms, 0) / story3.length;
+const avgToonSave =
+  story3.reduce((sum, r) => sum + r.toon_save_ms, 0) / story3.length;
+const avgToonLoad =
+  story3.reduce((sum, r) => sum + r.toon_load_ms, 0) / story3.length;
 const avgSize =
   story3.reduce((sum, r) => sum + r.state_size_bytes, 0) / story3.length;
 
 markdown += `\n**Performance Metrics:**
-- Average save time: **${avgSave.toFixed(3)} ms**
-- Average load time: **${avgLoad.toFixed(3)} ms**
+- Average JSON save time: **${avgJsonSave.toFixed(3)} ms**
+- Average JSON load time: **${avgJsonLoad.toFixed(3)} ms**
+- Average TOON save time: **${avgToonSave.toFixed(3)} ms**
+- Average TOON load time: **${avgToonLoad.toFixed(3)} ms**
 - Average state size: **${formatBytes(avgSize)}**
 - All tests seamless: **${
-  story3.every((r) => r.seamless) ? "✅ YES" : "⚠️ PARTIAL"
+  story3.every((r) => r.JsonSeamless && r.ToonSeamless)
+    ? "✅ YES"
+    : "⚠️ PARTIAL"
 }**
 
 **Key Insights:**

@@ -10,7 +10,7 @@
     "heap_growth_per_iter_kb": "-2.89",
     "heap_peak_mb": "3.84",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -36,7 +36,7 @@
     "heap_growth_per_iter_kb": "-4.76",
     "heap_peak_mb": "4.33",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -62,7 +62,7 @@
     "heap_growth_per_iter_kb": "-0.13",
     "heap_peak_mb": "4.04",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",

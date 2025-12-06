@@ -10,7 +10,7 @@
     "throughput": 100223153.70061217,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -30,7 +30,7 @@
     "throughput": 35093.69438939941,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -50,7 +50,7 @@
     "throughput": 2232510.276560493,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -70,7 +70,7 @@
     "throughput": 104146537.44991396,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -90,7 +90,7 @@
     "throughput": 34379.32475050676,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -110,7 +110,7 @@
     "throughput": 66804762.72826413,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -130,7 +130,7 @@
     "throughput": 85332004.88323426,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -150,7 +150,7 @@
     "throughput": 28561.08053059635,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -170,7 +170,7 @@
     "throughput": 14154754.737957533,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -191,7 +191,7 @@
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -212,7 +212,7 @@
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -233,7 +233,7 @@
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -254,7 +254,7 @@
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -275,7 +275,7 @@
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -296,7 +296,7 @@
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -317,7 +317,7 @@
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -338,7 +338,7 @@
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -359,7 +359,7 @@
     "backend": "CPU (Pure JS)",
     "filter_order": 51,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -381,7 +381,7 @@
     "throughput": 40492286.25119252,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -403,7 +403,7 @@
     "throughput": 3501194.627222733,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -425,7 +425,7 @@
     "throughput": 51298669.78700901,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -447,7 +447,7 @@
     "throughput": 12440308.405883713,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -469,7 +469,7 @@
     "throughput": 1507106.2187791383,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -491,7 +491,7 @@
     "throughput": 13223015.36716894,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -513,7 +513,7 @@
     "throughput": 14482201.626765661,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -535,7 +535,7 @@
     "throughput": 905932.9868692816,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -557,7 +557,7 @@
     "throughput": 6688757.447404264,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -579,7 +579,7 @@
     "throughput": 12381960.819153445,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -601,7 +601,7 @@
     "throughput": 492310.80956114637,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -623,7 +623,7 @@
     "throughput": 3381649.688672495,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -645,7 +645,7 @@
     "throughput": 13209979.4530633,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -667,7 +667,7 @@
     "throughput": 264128.73100755987,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -689,7 +689,7 @@
     "throughput": 1719962.4376478374,
     "backend": "CPU (Pure JS)",
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",

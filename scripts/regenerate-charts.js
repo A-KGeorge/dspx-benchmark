@@ -45,7 +45,7 @@ const loadPlatformJSON = (filename) => {
 
 const story1Data = loadPlatformJSON("raw-speed");
 const story2Data = loadPlatformJSON("algorithmic");
-const story3Data = loadPlatformJSON("redis");
+const story3Data = loadPlatformJSON("persistence");
 const story4Data = loadPlatformJSON("logging");
 const audioLatencyThreadedData = loadPlatformJSON("audio-latency-threaded");
 
@@ -334,7 +334,7 @@ if (story2Data) {
   const windowSizes = [32, 128, 512, 2048, 8192];
 
   // Create separate charts for each input size
-  for (const inputSize of ["small", "medium"]) {
+  for (const inputSize of ["small", "medium", "large"]) {
     const sizeResults = story2Data.filter((r) => r.input === inputSize);
 
     if (sizeResults.length === 0) continue;
@@ -517,8 +517,8 @@ if (story3Data) {
   };
 
   const buffer = await chartCanvas.renderToBuffer(config);
-  fs.writeFileSync(path.join(chartsDir, "redis_latency.png"), buffer);
-  console.log("   ✓ Saved: redis_latency.png");
+  fs.writeFileSync(path.join(chartsDir, "persistence_latency.png"), buffer);
+  console.log("   ✓ Saved: persistence_latency.png");
 }
 
 // ============================================================================
