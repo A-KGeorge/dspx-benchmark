@@ -1,0 +1,68 @@
+[
+  {
+    "test": "latency_profiling_threaded",
+    "input": "small",
+    "samples": 1024,
+    "iterations": 50,
+    "latency_p50_ms": "0.076",
+    "latency_p95_ms": "0.118",
+    "latency_p99_ms": "0.147",
+    "latency_min_ms": "0.074",
+    "latency_max_ms": "0.147",
+    "latency_avg_ms": "0.085",
+    "threaded": true,
+    "meta": {
+      "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "linux 6.6.111+",
+      "node": "v22.21.1",
+      "dspx": "1.3.3"
+    }
+  },
+  {
+    "test": "latency_profiling_threaded",
+    "input": "medium",
+    "samples": 65536,
+    "iterations": 50,
+    "latency_p50_ms": "4.597",
+    "latency_p95_ms": "4.817",
+    "latency_p99_ms": "5.173",
+    "latency_min_ms": "4.525",
+    "latency_max_ms": "5.173",
+    "latency_avg_ms": "4.638",
+    "threaded": true,
+    "meta": {
+      "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "linux 6.6.111+",
+      "node": "v22.21.1",
+      "dspx": "1.3.3"
+    }
+  },
+  {
+    "test": "latency_profiling_threaded",
+    "input": "large",
+    "samples": 1048576,
+    "iterations": 50,
+    "latency_p50_ms": "74.984",
+    "latency_p95_ms": "76.964",
+    "latency_p99_ms": "92.589",
+    "latency_min_ms": "74.382",
+    "latency_max_ms": "92.589",
+    "latency_avg_ms": "75.534",
+    "threaded": true,
+    "meta": {
+      "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x64",
+      "os": "linux 6.6.111+",
+      "node": "v22.21.1",
+      "dspx": "1.3.3"
+    }
+  }
+]
