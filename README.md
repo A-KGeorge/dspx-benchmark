@@ -1,6 +1,6 @@
-# dspx Benchmark Suite
+# DSP Benchmark Suite
 
-Comprehensive performance benchmarks for the **dspx** library, comparing native C++ SIMD implementations against pure JavaScript and TensorFlow.js (CPU) across multiple performance dimensions.
+Comprehensive performance benchmarks for DSP libraries across **JavaScript**, **Python**, and **Java**, comparing native implementations against pure language and optimized libraries across multiple performance dimensions.
 
 ## Quick Start
 
@@ -9,11 +9,15 @@ Comprehensive performance benchmarks for the **dspx** library, comparing native 
 npm install
 
 # Run all benchmarks + generate charts + create report
-npm run bench:all
+npm run benchmarks
 
 # Or run individual stories
-npm run bench:speed      # Raw computational speed
-npm run bench:algo       # Algorithmic efficiency
+npm run bench:speed      # Raw computational speed (JS)
+npm run bench:algo       # Algorithmic efficiency (JS)
+npm run bench:speed-py   # Raw computational speed (Python)
+npm run bench:algo-py    # Algorithmic efficiency (Python)
+npm run bench:speed-java # Raw computational speed (Java)
+npm run bench:algo-java  # Algorithmic efficiency (Java)
 npm run bench:redis      # Redis state persistence
 npm run bench:logging    # Logging performance
 
@@ -28,11 +32,11 @@ npm run report
 
 ### Raw Computational Speed
 
-Compares FFT and FIR filter implementations:
+Compares FFT, FIR filter, and convolution implementations across languages:
 
-- **dspx**: Native C++ SIMD (N-API)
-- **TensorFlow.js**: CPU backend (tfjs-node)
-- **Pure JS**: fft.js, dsp.js
+- **JavaScript**: dspx (Native C++ SIMD), TensorFlow.js (CPU), fft.js, fili, naive implementations
+- **Python**: numpy, scipy
+- **Java**: JDSP, naive implementations
 
 **Key Metric**: Throughput (samples/sec)
 
@@ -47,7 +51,11 @@ _Windows x64 results_
 
 ### Algorithmic Efficiency
 
-Demonstrates O(1) circular buffer vs O(N·W) naive sliding window for moving averages.
+Demonstrates O(1) circular buffer vs O(N·W) naive sliding window for moving averages across languages.
+
+- **JavaScript**: dspx, naive implementations
+- **Python**: scipy (uniform filter), numpy (convolve)
+- **Java**: JDSP (efficient), naive implementations
 
 **Key Metric**: Execution time vs window size
 
@@ -95,8 +103,12 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 ```
 ├── results/
 │   ├── amd-ryzen-9-5900x-12-core-processor/      # AMD Ryzen 9 5900X results
-│   │   ├── raw-speed.json
-│   │   ├── algorithmic.json
+│   │   ├── raw-speed.json          # JS FFT/FIR/conv benchmarks
+│   │   ├── algorithmic.json        # JS moving average benchmarks
+│   │   ├── raw-speed.json          # Python FFT/FIR/conv benchmarks
+│   │   ├── algorithmic.json        # Python moving average benchmarks
+│   │   ├── raw-speed.json          # Java FFT/FIR/conv benchmarks
+│   │   ├── algorithmic.json        # Java moving average benchmarks
 │   │   ├── redis.json
 │   │   └── logging.json
 │   ├── tensor-g4/              # Google Tensor G4 results
@@ -107,8 +119,10 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 │   ├── amd-ryzen-9-5900x-12-core-processor/      # AMD Ryzen 9 5900X charts
 │   │   ├── fft_throughput.png
 │   │   ├── fir_throughput.png
+│   │   ├── convolution_throughput.png
 │   │   ├── moving_avg_small.png
 │   │   ├── moving_avg_medium.png
+│   │   ├── moving_avg_large.png
 │   │   ├── redis_latency.png
 │   │   └── logging_perf.png
 │   ├── tensor-g4/              # Google Tensor G4 charts
@@ -122,9 +136,24 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 
 ## Requirements
 
-- Node.js ≥ 18
-- Redis (required for redis benchmarks)
+- **Node.js** ≥ 18
+- **Python** ≥ 3.8 (with numpy, scipy)
+- **Java** ≥ 17 (with Maven)
+- **Redis** (required for redis benchmarks)
 - ~2GB RAM for large input tests
+
+### Setup
+
+```bash
+# JavaScript dependencies
+npm install
+
+# Python dependencies (optional)
+pip install -r requirements.txt
+
+# Java dependencies (optional)
+mvn compile  # Downloads JDSP dependency and compiles Java benchmarks
+```
 
 ## Platform-Specific Results
 
@@ -151,11 +180,14 @@ All results include machine specifications embedded in JSON and chart subtitles:
 
 - All benchmarks are **CPU-only** (no GPU/CUDA)
 - TensorFlow.js uses CPU backend (`tfjs-node`)
+- Results from all languages (JavaScript, Python, Java) are automatically combined for cross-language comparisons
 - Warmup runs ensure JIT optimization
 - Multiple repetitions for statistical reliability
 - Results saved as JSON for custom analysis
 
 ## Example Results
+
+**JavaScript (dspx):**
 
 ```json
 {
@@ -176,9 +208,53 @@ All results include machine specifications embedded in JSON and chart subtitles:
 }
 ```
 
+**Python (scipy):**
+
+```json
+{
+  "test": "moving_average",
+  "input": "large",
+  "samples": 1048576,
+  "lib": "scipy",
+  "avg_ms": 1129.7,
+  "throughput": 928177,
+  "impl": "uniform_filter_O1",
+  "meta": {
+    "cpu": "AMD Ryzen 9 5900X",
+    "cores": 24,
+    "ram": "64 GB",
+    "os": "Windows 11 10.0",
+    "node": "3.12.5"
+  }
+}
+```
+
+**Java (JDSP):**
+
+```json
+{
+  "test": "fft",
+  "input": "medium",
+  "samples": 65536,
+  "lib": "jdsp",
+  "avg_ms": 2.33,
+  "throughput": 28130000,
+  "backend": "CPU (JDSP FFT)",
+  "meta": {
+    "cpu": "amd64 24 cores",
+    "cores": 24,
+    "ram": "15 GB",
+    "os": "Windows 11 10.0",
+    "java": "23.0.1"
+  }
+}
+```
+
 ## Contributing
 
 To add new benchmarks:
+
+### JavaScript Benchmarks
 
 1. Create `storyN-name.js` following existing patterns
 2. Use helpers from `common.js`
@@ -186,3 +262,18 @@ To add new benchmarks:
 4. Update `generate-charts.js` to visualize
 5. Update `generate-report.js` to document
 6. Add script to `package.json`
+
+### Python Benchmarks
+
+1. Create `storyN-name.py` following existing patterns
+2. Use helpers from `lib/common.py`
+3. Save results with `saveJSON()`
+4. Results automatically integrate with existing charts/reports
+
+### Java Benchmarks
+
+1. Create `StoryNName.java` following existing patterns
+2. Use Gson for JSON serialization
+3. Save results with `saveJSON()`
+4. Results automatically integrate with existing charts/reports
+5. Add Maven exec configuration to `pom.xml` if needed

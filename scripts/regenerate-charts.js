@@ -115,7 +115,7 @@ if (story1Data) {
       plugins: {
         title: {
           display: true,
-          text: "FFT Throughput: dspx vs TensorFlow.js vs fft.js",
+          text: "FFT Throughput: Cross-Language Comparison",
           font: { size: 20, weight: "bold" },
         },
         subtitle: {
@@ -193,7 +193,7 @@ if (story1Data) {
       plugins: {
         title: {
           display: true,
-          text: "FIR Filter Throughput: dspx vs fili vs naive JS",
+          text: "FIR Filter Throughput: Cross-Language Comparison",
           font: { size: 20, weight: "bold" },
         },
         subtitle: {
@@ -276,7 +276,7 @@ if (story1Data) {
         plugins: {
           title: {
             display: true,
-            text: "1D Convolution Throughput: dspx vs TensorFlow.js vs Naive JS",
+            text: "1D Convolution Throughput: Cross-Language Comparison",
             font: { size: 20, weight: "bold" },
           },
           subtitle: {
@@ -346,9 +346,37 @@ if (story2Data) {
       return result ? result.avg_ms : null;
     });
 
-    const naiveData = windowSizes.map((ws) => {
+    const naiveJSData = windowSizes.map((ws) => {
       const result = sizeResults.find(
         (r) => r.lib === "naive_js" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const scipyData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "scipy" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const numpyData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "numpy" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const jdspData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "jdsp" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const naiveJavaData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "naive_java" && r.windowSize === ws
       );
       return result ? result.avg_ms : null;
     });
@@ -368,9 +396,41 @@ if (story2Data) {
           },
           {
             label: "naive JS (O(N·W) sliding window)",
-            data: naiveData,
+            data: naiveJSData,
             borderColor: "rgb(255, 99, 132)",
             backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "JDSP (efficient moving average)",
+            data: jdspData,
+            borderColor: "rgb(255, 206, 86)",
+            backgroundColor: "rgba(255, 206, 86, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "scipy (uniform_filter O(1))",
+            data: scipyData,
+            borderColor: "rgb(153, 102, 255)",
+            backgroundColor: "rgba(153, 102, 255, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "numpy (convolve O(N·W))",
+            data: numpyData,
+            borderColor: "rgb(255, 159, 64)",
+            backgroundColor: "rgba(255, 159, 64, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "naive Java (O(N·W) sliding window)",
+            data: naiveJavaData,
+            borderColor: "rgb(201, 203, 207)",
+            backgroundColor: "rgba(201, 203, 207, 0.2)",
             borderWidth: 3,
             tension: 0.1,
           },
@@ -381,7 +441,7 @@ if (story2Data) {
         plugins: {
           title: {
             display: true,
-            text: `Moving Average: O(1) vs O(N·W) — ${inputSize.toUpperCase()} input`,
+            text: `Moving Average: Cross-Language O(1) vs O(N·W) — ${inputSize.toUpperCase()} input`,
             font: { size: 20, weight: "bold" },
           },
           subtitle: {

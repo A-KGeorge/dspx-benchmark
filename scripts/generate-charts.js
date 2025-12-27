@@ -287,9 +287,37 @@ if (story2Data) {
       return result ? result.avg_ms : null;
     });
 
-    const naiveData = windowSizes.map((ws) => {
+    const naiveJSData = windowSizes.map((ws) => {
       const result = sizeResults.find(
         (r) => r.lib === "naive_js" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const scipyData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "scipy" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const numpyData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "numpy" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const jdspData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "jdsp" && r.windowSize === ws
+      );
+      return result ? result.avg_ms : null;
+    });
+
+    const naiveJavaData = windowSizes.map((ws) => {
+      const result = sizeResults.find(
+        (r) => r.lib === "naive_java" && r.windowSize === ws
       );
       return result ? result.avg_ms : null;
     });
@@ -309,9 +337,41 @@ if (story2Data) {
           },
           {
             label: "naive JS (O(N·W) sliding window)",
-            data: naiveData,
+            data: naiveJSData,
             borderColor: "rgb(255, 99, 132)",
             backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "JDSP (efficient moving average)",
+            data: jdspData,
+            borderColor: "rgb(255, 206, 86)",
+            backgroundColor: "rgba(255, 206, 86, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "naive Java (O(N·W) sliding window)",
+            data: naiveJavaData,
+            borderColor: "rgb(153, 102, 255)",
+            backgroundColor: "rgba(153, 102, 255, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "scipy (efficient uniform filter)",
+            data: scipyData,
+            borderColor: "rgb(255, 159, 64)",
+            backgroundColor: "rgba(255, 159, 64, 0.2)",
+            borderWidth: 3,
+            tension: 0.1,
+          },
+          {
+            label: "numpy (O(N·W) convolve)",
+            data: numpyData,
+            borderColor: "rgb(54, 162, 235)",
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
             borderWidth: 3,
             tension: 0.1,
           },
