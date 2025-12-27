@@ -14,7 +14,10 @@ public class Algorithmic {
     static final int[] WINDOW_SIZES = { 32, 128, 512, 2048, 8192 };
 
     public static void main(String[] args) {
-        System.setProperty("BENCHMARK_PLATFORM", "amd-ryzen-9-5900x-12-core-processor");
+        // Check command line args first
+        if (args.length > 0) {
+            System.setProperty("BENCHMARK_PLATFORM", args[0]);
+        }
 
         ensureDirs();
 
@@ -208,9 +211,16 @@ public class Algorithmic {
     }
 
     static String getPlatformId() {
-        String env = System.getProperty("BENCHMARK_PLATFORM");
-        if (env != null)
+        // Check environment variable first
+        String env = System.getenv("BENCHMARK_PLATFORM");
+        if (env != null && !env.isEmpty())
             return env;
+
+        // Then check system property
+        String prop = System.getProperty("BENCHMARK_PLATFORM");
+        if (prop != null && !prop.isEmpty())
+            return prop;
+
         return "unknown-platform";
     }
 
