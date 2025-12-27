@@ -5,6 +5,7 @@ import os
 import platform
 import json
 import time
+import sys
 import numpy as np
 try:
     import psutil
@@ -108,11 +109,29 @@ def sanitizeCpuName(cpuName):
 
 def getPlatformId():
     """Get platform identifier"""
+    # Check command line argument first
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+
     if "BENCHMARK_PLATFORM" in os.environ:
         return os.environ["BENCHMARK_PLATFORM"]
 
-    cpu = platform.processor() or "unknown-cpu"
-    if cpu in ["unknown-cpu", "Unknown", "unknown"]:
+    # Try to get CPU model using psutil if available
+    if HAS_PSUTIL:
+        try:
+            cpu_info = psutil.cpu_info()
+            if cpu_info and hasattr(cpu_info, 'model'):
+                cpu = cpu_info.model
+            elif isinstance(cpu_info, list) and len(cpu_info) > 0:
+                cpu = cpu_info[0].model
+            else:
+                cpu = "unknown-cpu"
+        except:
+            cpu = "unknown-cpu"
+    else:
+        cpu = platform.processor() or "unknown-cpu"
+
+    if cpu in ["unknown-cpu", "Unknown", "unknown", "x86_64", ""]:
         try:
             with open("/proc/cpuinfo", "r") as f:
                 for line in f:

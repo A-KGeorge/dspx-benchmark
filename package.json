@@ -13,8 +13,8 @@
     "bench:latency-threaded": "node --experimental-worker --experimental-vm-modules --no-warnings benchmarks/latency-threaded.js",
     "bench:concurrency-threaded": "node --experimental-worker --experimental-vm-modules --no-warnings benchmarks/concurrency-threaded.js",
     "bench:audio": "node --no-warnings benchmarks/audio-latency.js",
-    "bench:speed-py": "python benchmarks/raw-speed.py",
-    "bench:algo-py": "python benchmarks/algorithmic.py",
+    "bench:speed-py": "node scripts/run-python-bench.js raw-speed",
+    "bench:algo-py": "node scripts/run-python-bench.js algorithmic",
     "bench:speed-java": "mvn compile exec:java -Dexec.mainClass=RawSpeed",
     "bench:algo-java": "mvn compile exec:java -Dexec.mainClass=Algorithmic",
     "charts": "node --no-warnings scripts/generate-charts.js",
@@ -43,5 +43,6 @@
     "redis": "^5.10.0",
     "uuid": "^13.0.0"
   },
-  "main": "lib/common.js"
-}
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
