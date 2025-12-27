@@ -697,5 +697,335 @@
       "node": "v22.21.1",
       "dspx": "1.3.3"
     }
+  },
+  {
+    "test": "fft",
+    "input": "small",
+    "samples": 1024,
+    "lib": "scipy",
+    "avg_ms": 0.03718090010806918,
+    "min_ms": 0.017591999494470656,
+    "max_ms": 0.0668399989081081,
+    "throughput": 27541022.32661566,
+    "backend": "CPU (scipy.fft)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "fft",
+    "input": "medium",
+    "samples": 65536,
+    "lib": "scipy",
+    "avg_ms": 0.8498259001498809,
+    "min_ms": 0.7302730009541847,
+    "max_ms": 1.244140999915544,
+    "throughput": 77116971.82733738,
+    "backend": "CPU (scipy.fft)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "fft",
+    "input": "large",
+    "samples": 1048576,
+    "lib": "scipy",
+    "avg_ms": 17.548849699596758,
+    "min_ms": 16.99707599982503,
+    "max_ms": 19.158199000230525,
+    "throughput": 59751836.613205165,
+    "backend": "CPU (scipy.fft)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "fir_filter",
+    "input": "small",
+    "samples": 1024,
+    "lib": "scipy",
+    "avg_ms": 0.10886679956456646,
+    "min_ms": 0.09170900011667982,
+    "max_ms": 0.15362199701485224,
+    "throughput": 9405989.742471382,
+    "backend": "CPU (scipy.signal)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "fir_filter",
+    "input": "medium",
+    "samples": 65536,
+    "lib": "scipy",
+    "avg_ms": 1.8835212002159096,
+    "min_ms": 1.8220069978269748,
+    "max_ms": 1.9291169992357027,
+    "throughput": 34794405.2833,
+    "backend": "CPU (scipy.signal)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "fir_filter",
+    "input": "large",
+    "samples": 1048576,
+    "lib": "scipy",
+    "avg_ms": 40.60411560058128,
+    "min_ms": 39.419284999894444,
+    "max_ms": 42.79330799909076,
+    "throughput": 25824377.270391498,
+    "backend": "CPU (scipy.signal)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 8,
+    "lib": "numpy",
+    "avg_ms": 0.37148219998925924,
+    "min_ms": 0.29813999935868196,
+    "max_ms": 0.47721900045871735,
+    "throughput": 176417604.9401421,
+    "backend": "CPU (numpy.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 8,
+    "lib": "scipy",
+    "avg_ms": 0.37681420071749017,
+    "min_ms": 0.31466499785892665,
+    "max_ms": 0.43233200267422944,
+    "throughput": 173921258.47490144,
+    "backend": "CPU (scipy.signal.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 32,
+    "lib": "numpy",
+    "avg_ms": 1.3686023987247609,
+    "min_ms": 1.347130997601198,
+    "max_ms": 1.3972019987704698,
+    "throughput": 47885346.43886732,
+    "backend": "CPU (numpy.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 32,
+    "lib": "scipy",
+    "avg_ms": 1.3897372009523679,
+    "min_ms": 1.3528620002034586,
+    "max_ms": 1.4322480019473005,
+    "throughput": 47157117.15501972,
+    "backend": "CPU (scipy.signal.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 64,
+    "lib": "numpy",
+    "avg_ms": 1.3359817996388301,
+    "min_ms": 1.295152000238886,
+    "max_ms": 1.415040998836048,
+    "throughput": 49054560.487064295,
+    "backend": "CPU (numpy.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 64,
+    "lib": "scipy",
+    "avg_ms": 1.3856088000466116,
+    "min_ms": 1.2883669987786561,
+    "max_ms": 1.4640879999205936,
+    "throughput": 47297621.08742048,
+    "backend": "CPU (scipy.signal.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 128,
+    "lib": "numpy",
+    "avg_ms": 1.6951359997619875,
+    "min_ms": 1.656672997341957,
+    "max_ms": 1.7439029979868792,
+    "throughput": 38661204.77011983,
+    "backend": "CPU (numpy.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 128,
+    "lib": "scipy",
+    "avg_ms": 1.7665163992205635,
+    "min_ms": 1.740015999530442,
+    "max_ms": 1.7927849985426292,
+    "throughput": 37099004.58830517,
+    "backend": "CPU (scipy.signal.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 256,
+    "lib": "numpy",
+    "avg_ms": 2.457173199218232,
+    "min_ms": 2.4093550018733367,
+    "max_ms": 2.497198998753447,
+    "throughput": 26671298.55593849,
+    "backend": "CPU (numpy.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
+  },
+  {
+    "test": "conv1d",
+    "input": "medium",
+    "samples": 65536,
+    "kernel_size": 256,
+    "lib": "scipy",
+    "avg_ms": 2.6070476000313647,
+    "min_ms": 2.5205589990946464,
+    "max_ms": 2.7325139999447856,
+    "throughput": 25138014.357394762,
+    "backend": "CPU (scipy.signal.convolve)",
+    "meta": {
+      "cpu": "x86_64",
+      "cores": 4,
+      "ram": "16 GB",
+      "arch": "x86_64",
+      "os": "Linux 6.6.111+",
+      "node": "3.12.3",
+      "dspx": "N/A"
+    }
   }
 ]
