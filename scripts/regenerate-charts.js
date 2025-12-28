@@ -487,6 +487,123 @@ if (story2Data) {
 }
 
 // ============================================================================
+// Story 2b: Moving Average Input Size Scaling (Fixed Window = 2048)
+// ============================================================================
+
+if (story2Data) {
+  console.log(
+    "📈 Chart 4b: Moving Average Input Size Scaling (Window = 2048)..."
+  );
+
+  const fixedWindowSize = 2048;
+  const windowResults = story2Data.filter(
+    (r) => r.windowSize === fixedWindowSize
+  );
+
+  if (windowResults.length > 0) {
+    const inputSizes = [...new Set(windowResults.map((r) => r.samples))].sort(
+      (a, b) => a - b
+    );
+    const libraries = [...new Set(windowResults.map((r) => r.lib))];
+
+    const datasets = libraries.map((lib) => {
+      const libData = inputSizes.map((size) => {
+        const result = windowResults.find(
+          (r) => r.lib === lib && r.samples === size
+        );
+        return result ? result.avg_ms : null;
+      });
+
+      // Color mapping for different libraries
+      const colorMap = {
+        dspx: { border: "rgb(75, 192, 192)", bg: "rgba(75, 192, 192, 0.2)" },
+        jdsp: { border: "rgb(255, 206, 86)", bg: "rgba(255, 206, 86, 0.2)" },
+        naive_js: {
+          border: "rgb(255, 99, 132)",
+          bg: "rgba(255, 99, 132, 0.2)",
+        },
+        scipy: { border: "rgb(153, 102, 255)", bg: "rgba(153, 102, 255, 0.2)" },
+        numpy: { border: "rgb(255, 159, 64)", bg: "rgba(255, 159, 64, 0.2)" },
+        naive_java: {
+          border: "rgb(201, 203, 207)",
+          bg: "rgba(201, 203, 207, 0.2)",
+        },
+      };
+
+      const colors = colorMap[lib] || {
+        border: "rgb(128, 128, 128)",
+        bg: "rgba(128, 128, 128, 0.2)",
+      };
+
+      return {
+        label: lib,
+        data: libData,
+        borderColor: colors.border,
+        backgroundColor: colors.bg,
+        borderWidth: 3,
+        tension: 0.1,
+      };
+    });
+
+    const config = {
+      type: "line",
+      data: {
+        labels: inputSizes.map((s) => s.toLocaleString()),
+        datasets,
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "Moving Average: Input Size Scaling (Fixed Window = 2048)",
+            font: { size: 20, weight: "bold" },
+          },
+          subtitle: {
+            display: true,
+            text:
+              subtitle + " • All implementations should show linear scaling",
+            font: { size: 14 },
+            padding: { bottom: 20 },
+          },
+          legend: {
+            display: true,
+            position: "top",
+            labels: { font: { size: 14 } },
+          },
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "Time (ms)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+            beginAtZero: true,
+          },
+          x: {
+            title: {
+              display: true,
+              text: "Input Size (samples)",
+              font: { size: 14 },
+            },
+            ticks: { font: { size: 12 } },
+          },
+        },
+      },
+    };
+
+    const buffer = await chartCanvas.renderToBuffer(config);
+    fs.writeFileSync(
+      path.join(chartsDir, "moving_avg_input_scaling.png"),
+      buffer
+    );
+    console.log("   ✓ Saved: moving_avg_input_scaling.png");
+  }
+}
+
+// ============================================================================
 // Story 3: Redis State Persistence
 // ============================================================================
 
