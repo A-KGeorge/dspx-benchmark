@@ -60,15 +60,6 @@ function naiveMovingAverage(signal, windowSize) {
   return output;
 }
 
-// TensorFlow.js implementation
-function sma_tfjs(data, windowSize) {
-  return tf.tidy(() => {
-    const x = tf.tensor1d(data);
-    const frames = tf.signal.frame(x, windowSize, 1); // shape: [N-W+1, W]
-    return frames.mean(-1); // reduce across window dimension
-  });
-}
-
 for (const size of INPUT_SIZES) {
   const signal = genSignal(size.length, 50, 10000);
 
