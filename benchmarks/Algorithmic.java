@@ -1,7 +1,6 @@
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
-import java.lang.management.*;
 
 import com.github.psambit9791.jdsp.signal.Smooth;
 import com.google.gson.Gson;
@@ -62,7 +61,7 @@ public class Algorithmic {
 
                     Map<String, Object> timing = runTimed(() -> {
                         Smooth smooth = new Smooth(signal, windowSize, "rectangular");
-                        double[] result = smooth.smoothSignal();
+                        smooth.smoothSignal();
                     }, 0, 10);
                     Map<String, Object> data = new HashMap<>();
                     data.put("test", "moving_average");

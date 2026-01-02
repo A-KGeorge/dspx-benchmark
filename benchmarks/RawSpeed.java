@@ -1,12 +1,9 @@
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
-import java.lang.management.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 import com.github.psambit9791.jdsp.transform.FastFourier;
 import com.github.psambit9791.jdsp.signal.Convolution;
-import com.github.psambit9791.jdsp.filter.FIRWin1;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -56,7 +53,7 @@ public class RawSpeed {
                 Map<String, Object> timing = runTimed(() -> {
                     FastFourier fft = new FastFourier(signal);
                     fft.transform();
-                    double[] result = fft.getMagnitude(true);
+                    fft.getMagnitude(true);
                 }, 3, 10);
                 Map<String, Object> data = new HashMap<>();
                 data.put("test", "fft");
@@ -94,7 +91,7 @@ public class RawSpeed {
             try {
                 Map<String, Object> timing = runTimed(() -> {
                     Convolution conv = new Convolution(signal, coeffs);
-                    double[] result = conv.convolve();
+                    conv.convolve();
                 }, 2, 5);
                 Map<String, Object> data = new HashMap<>();
                 data.put("test", "fir_filter");
@@ -137,7 +134,7 @@ public class RawSpeed {
             try {
                 Map<String, Object> timing = runTimed(() -> {
                     Convolution conv = new Convolution(signal, kernel);
-                    double[] result = conv.convolve();
+                    conv.convolve();
                 }, 2, 5);
                 Map<String, Object> data = new HashMap<>();
                 data.put("test", "conv1d");
