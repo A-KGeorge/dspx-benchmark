@@ -4,12 +4,12 @@
     "input": "small",
     "samples": 1024,
     "iterations": 50,
-    "latency_p50_ms": "0.034",
-    "latency_p95_ms": "0.056",
-    "latency_p99_ms": "1.169",
+    "latency_p50_ms": "0.033",
+    "latency_p95_ms": "0.041",
+    "latency_p99_ms": "0.047",
     "latency_min_ms": "0.032",
-    "latency_max_ms": "1.169",
-    "latency_avg_ms": "0.059",
+    "latency_max_ms": "0.047",
+    "latency_avg_ms": "0.035",
     "threaded": true,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -18,7 +18,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.3.0"
+      "dspx": "1.3.5"
     }
   },
   {
@@ -26,12 +26,12 @@
     "input": "medium",
     "samples": 65536,
     "iterations": 50,
-    "latency_p50_ms": "1.892",
-    "latency_p95_ms": "2.081",
-    "latency_p99_ms": "2.194",
-    "latency_min_ms": "1.885",
-    "latency_max_ms": "2.194",
-    "latency_avg_ms": "1.914",
+    "latency_p50_ms": "2.020",
+    "latency_p95_ms": "2.061",
+    "latency_p99_ms": "2.274",
+    "latency_min_ms": "1.870",
+    "latency_max_ms": "2.274",
+    "latency_avg_ms": "1.983",
     "threaded": true,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -40,7 +40,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.3.0"
+      "dspx": "1.3.5"
     }
   },
   {
@@ -48,12 +48,12 @@
     "input": "large",
     "samples": 1048576,
     "iterations": 50,
-    "latency_p50_ms": "31.315",
-    "latency_p95_ms": "33.392",
-    "latency_p99_ms": "33.662",
-    "latency_min_ms": "31.024",
-    "latency_max_ms": "33.662",
-    "latency_avg_ms": "31.783",
+    "latency_p50_ms": "33.196",
+    "latency_p95_ms": "33.620",
+    "latency_p99_ms": "34.077",
+    "latency_min_ms": "30.804",
+    "latency_max_ms": "34.077",
+    "latency_avg_ms": "32.549",
     "threaded": true,
     "meta": {
       "cpu": "AMD Ryzen 9 5900X 12-Core Processor            ",
@@ -62,7 +62,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.3.0"
+      "dspx": "1.3.5"
     }
   }
 ]
