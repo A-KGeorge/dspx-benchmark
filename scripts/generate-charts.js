@@ -683,6 +683,147 @@ if (story3Data) {
 }
 
 // ============================================================================
+// Story 3b: Python State Persistence
+// ============================================================================
+
+console.log("📈 Chart 5b: State Save/Load Latency (Python)...");
+
+const story3bData = loadJSON("persistence-python");
+if (story3bData) {
+  const inputSizes = story3bData.map((r) => r.input.toUpperCase());
+  const jsonSerializeTimes = story3bData.map((r) => r.json_serialize_ms);
+  const jsonRedisSetTimes = story3bData.map((r) => r.json_redis_set_ms || 0);
+  const jsonRedisGetTimes = story3bData.map((r) => r.json_redis_get_ms || 0);
+  const jsonDeserializeTimes = story3bData.map((r) => r.json_deserialize_ms);
+  const binSerializeTimes = story3bData.map((r) => r.pickle_serialize_ms);
+  const binRedisSetTimes = story3bData.map((r) => r.pickle_redis_set_ms || 0);
+  const binRedisGetTimes = story3bData.map((r) => r.pickle_redis_get_ms || 0);
+  const binDeserializeTimes = story3bData.map((r) => r.pickle_deserialize_ms);
+
+  const config = {
+    type: "bar",
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          label: "JSON Serialize",
+          data: jsonSerializeTimes,
+          backgroundColor: "rgba(54, 162, 235, 0.8)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 1,
+          stack: "json-save",
+        },
+        {
+          label: "JSON Redis SET",
+          data: jsonRedisSetTimes,
+          backgroundColor: "rgba(54, 162, 235, 0.4)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 1,
+          stack: "json-save",
+        },
+        {
+          label: "JSON Redis GET",
+          data: jsonRedisGetTimes,
+          backgroundColor: "rgba(75, 192, 192, 0.4)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 1,
+          stack: "json-load",
+        },
+        {
+          label: "JSON Deserialize",
+          data: jsonDeserializeTimes,
+          backgroundColor: "rgba(75, 192, 192, 0.8)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 1,
+          stack: "json-load",
+        },
+        {
+          label: "Pickle Serialize",
+          data: binSerializeTimes,
+          backgroundColor: "rgba(255, 206, 86, 0.8)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 1,
+          stack: "bin-save",
+        },
+        {
+          label: "Pickle Redis SET",
+          data: binRedisSetTimes,
+          backgroundColor: "rgba(255, 206, 86, 0.4)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 1,
+          stack: "bin-save",
+        },
+        {
+          label: "Pickle Redis GET",
+          data: binRedisGetTimes,
+          backgroundColor: "rgba(255, 159, 64, 0.4)",
+          borderColor: "rgb(255, 159, 64)",
+          borderWidth: 1,
+          stack: "bin-load",
+        },
+        {
+          label: "Pickle Deserialize",
+          data: binDeserializeTimes,
+          backgroundColor: "rgba(255, 159, 64, 0.8)",
+          borderColor: "rgb(255, 159, 64)",
+          borderWidth: 1,
+          stack: "bin-load",
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Python State Persistence Breakdown: Serialization + Redis (Stacked)",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: subtitle + " • Python scipy Pipeline",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 12 } },
+        },
+      },
+      scales: {
+        y: {
+          stacked: true,
+          title: {
+            display: true,
+            text: "Time (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          stacked: true,
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(chartsDir, "persistence_latency_python.png"),
+    buffer,
+  );
+  console.log("   ✓ Saved: charts/persistence_latency_python.png");
+}
+
+// ============================================================================
 // Story 4: Logging Performance
 // ============================================================================
 

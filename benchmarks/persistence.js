@@ -390,8 +390,7 @@ for (const size of INPUT_SIZES) {
       "toon-deserialize+load",
       async () => {
         const retrievedBuf = Buffer.from(retrievedB64, "base64");
-        const toonBytes = new Uint8Array(retrievedBuf);
-        await ToonPipeline2.loadState(toonBytes, { format: "toon" });
+        await ToonPipeline2.loadState(retrievedBuf);
       },
       1,
       5,
@@ -405,8 +404,7 @@ for (const size of INPUT_SIZES) {
   } else {
     const loadToonResult = await runTimed(
       "load-state",
-      async () =>
-        await ToonPipeline2.loadState(ToonStateToLoad, { format: "toon" }),
+      async () => await ToonPipeline2.loadState(ToonStateToLoad),
       1,
       5,
     );
