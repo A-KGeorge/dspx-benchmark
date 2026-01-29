@@ -25,7 +25,7 @@ const resultsDir = path.join(process.cwd(), "results", platformId);
 if (!fs.existsSync(resultsDir)) {
   console.error(`❌ Error: Results directory not found: ${resultsDir}`);
   console.error(
-    `   Run benchmarks first with BENCHMARK_PLATFORM=${platformId}`
+    `   Run benchmarks first with BENCHMARK_PLATFORM=${platformId}`,
   );
   process.exit(1);
 }
@@ -244,7 +244,7 @@ if (story1Data) {
 
   const convResults = story1Data.filter((r) => r.test === "conv1d");
   const kernelSizes = [...new Set(convResults.map((r) => r.kernel_size))].sort(
-    (a, b) => a - b
+    (a, b) => a - b,
   );
   const libraries = [...new Set(convResults.map((r) => r.lib))];
 
@@ -252,7 +252,7 @@ if (story1Data) {
     const datasets = libraries.map((lib) => {
       const libData = kernelSizes.map((size) => {
         const result = convResults.find(
-          (r) => r.lib === lib && r.kernel_size === size
+          (r) => r.lib === lib && r.kernel_size === size,
         );
         return result ? result.throughput : 0;
       });
@@ -316,7 +316,7 @@ if (story1Data) {
     const buffer = await chartCanvas.renderToBuffer(config);
     fs.writeFileSync(
       path.join(chartsDir, "convolution_throughput.png"),
-      buffer
+      buffer,
     );
     console.log("   ✓ Saved: convolution_throughput.png");
   } else {
@@ -341,42 +341,42 @@ if (story2Data) {
 
     const dspxData = windowSizes.map((ws) => {
       const result = sizeResults.find(
-        (r) => r.lib === "dspx" && r.windowSize === ws
+        (r) => r.lib === "dspx" && r.windowSize === ws,
       );
       return result ? result.avg_ms : null;
     });
 
     const naiveJSData = windowSizes.map((ws) => {
       const result = sizeResults.find(
-        (r) => r.lib === "naive_js" && r.windowSize === ws
+        (r) => r.lib === "naive_js" && r.windowSize === ws,
       );
       return result ? result.avg_ms : null;
     });
 
     const scipyData = windowSizes.map((ws) => {
       const result = sizeResults.find(
-        (r) => r.lib === "scipy" && r.windowSize === ws
+        (r) => r.lib === "scipy" && r.windowSize === ws,
       );
       return result ? result.avg_ms : null;
     });
 
     const numpyData = windowSizes.map((ws) => {
       const result = sizeResults.find(
-        (r) => r.lib === "numpy" && r.windowSize === ws
+        (r) => r.lib === "numpy" && r.windowSize === ws,
       );
       return result ? result.avg_ms : null;
     });
 
     const jdspData = windowSizes.map((ws) => {
       const result = sizeResults.find(
-        (r) => r.lib === "jdsp" && r.windowSize === ws
+        (r) => r.lib === "jdsp" && r.windowSize === ws,
       );
       return result ? result.avg_ms : null;
     });
 
     const naiveJavaData = windowSizes.map((ws) => {
       const result = sizeResults.find(
-        (r) => r.lib === "naive_java" && r.windowSize === ws
+        (r) => r.lib === "naive_java" && r.windowSize === ws,
       );
       return result ? result.avg_ms : null;
     });
@@ -480,7 +480,7 @@ if (story2Data) {
     const buffer = await chartCanvas.renderToBuffer(config);
     fs.writeFileSync(
       path.join(chartsDir, `moving_avg_${inputSize}.png`),
-      buffer
+      buffer,
     );
     console.log(`   ✓ Saved: moving_avg_${inputSize}.png`);
   }
@@ -492,24 +492,24 @@ if (story2Data) {
 
 if (story2Data) {
   console.log(
-    "📈 Chart 4b: Moving Average Input Size Scaling (Window = 2048)..."
+    "📈 Chart 4b: Moving Average Input Size Scaling (Window = 2048)...",
   );
 
   const fixedWindowSize = 2048;
   const windowResults = story2Data.filter(
-    (r) => r.windowSize === fixedWindowSize
+    (r) => r.windowSize === fixedWindowSize,
   );
 
   if (windowResults.length > 0) {
     const inputSizes = [...new Set(windowResults.map((r) => r.samples))].sort(
-      (a, b) => a - b
+      (a, b) => a - b,
     );
     const libraries = [...new Set(windowResults.map((r) => r.lib))];
 
     const datasets = libraries.map((lib) => {
       const libData = inputSizes.map((size) => {
         const result = windowResults.find(
-          (r) => r.lib === lib && r.samples === size
+          (r) => r.lib === lib && r.samples === size,
         );
         return result ? result.avg_ms : null;
       });
@@ -597,7 +597,7 @@ if (story2Data) {
     const buffer = await chartCanvas.renderToBuffer(config);
     fs.writeFileSync(
       path.join(chartsDir, "moving_avg_input_scaling.png"),
-      buffer
+      buffer,
     );
     console.log("   ✓ Saved: moving_avg_input_scaling.png");
   }
@@ -611,10 +611,14 @@ if (story3Data) {
   console.log("📈 Chart 5: State Save/Load Latency...");
 
   const inputSizes = story3Data.map((r) => r.input.toUpperCase());
-  const jsonSaveTimes = story3Data.map((r) => r.json_save_ms);
-  const jsonLoadTimes = story3Data.map((r) => r.json_load_ms);
-  const toonSaveTimes = story3Data.map((r) => r.toon_save_ms);
-  const toonLoadTimes = story3Data.map((r) => r.toon_load_ms);
+  const jsonSerializeTimes = story3Data.map((r) => r.json_serialize_ms);
+  const jsonRedisSetTimes = story3Data.map((r) => r.json_redis_set_ms || 0);
+  const jsonRedisGetTimes = story3Data.map((r) => r.json_redis_get_ms || 0);
+  const jsonDeserializeTimes = story3Data.map((r) => r.json_deserialize_ms);
+  const toonSerializeTimes = story3Data.map((r) => r.toon_serialize_ms);
+  const toonRedisSetTimes = story3Data.map((r) => r.toon_redis_set_ms || 0);
+  const toonRedisGetTimes = story3Data.map((r) => r.toon_redis_get_ms || 0);
+  const toonDeserializeTimes = story3Data.map((r) => r.toon_deserialize_ms);
 
   const config = {
     type: "bar",
@@ -622,32 +626,68 @@ if (story3Data) {
       labels: inputSizes,
       datasets: [
         {
-          label: "JSON Save",
-          data: jsonSaveTimes,
-          backgroundColor: "rgba(54, 162, 235, 0.6)",
+          label: "JSON Serialize",
+          data: jsonSerializeTimes,
+          backgroundColor: "rgba(54, 162, 235, 0.8)",
           borderColor: "rgb(54, 162, 235)",
-          borderWidth: 2,
+          borderWidth: 1,
+          stack: "json-save",
         },
         {
-          label: "JSON Load",
-          data: jsonLoadTimes,
-          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          label: "JSON Redis SET",
+          data: jsonRedisSetTimes,
+          backgroundColor: "rgba(54, 162, 235, 0.4)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 1,
+          stack: "json-save",
+        },
+        {
+          label: "JSON Redis GET",
+          data: jsonRedisGetTimes,
+          backgroundColor: "rgba(75, 192, 192, 0.4)",
           borderColor: "rgb(75, 192, 192)",
-          borderWidth: 2,
+          borderWidth: 1,
+          stack: "json-load",
         },
         {
-          label: "TOON Save",
-          data: toonSaveTimes,
-          backgroundColor: "rgba(255, 206, 86, 0.6)",
+          label: "JSON Deserialize",
+          data: jsonDeserializeTimes,
+          backgroundColor: "rgba(75, 192, 192, 0.8)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 1,
+          stack: "json-load",
+        },
+        {
+          label: "TOON Serialize",
+          data: toonSerializeTimes,
+          backgroundColor: "rgba(255, 206, 86, 0.8)",
           borderColor: "rgb(255, 206, 86)",
-          borderWidth: 2,
+          borderWidth: 1,
+          stack: "toon-save",
         },
         {
-          label: "TOON Load",
-          data: toonLoadTimes,
-          backgroundColor: "rgba(255, 159, 64, 0.6)",
+          label: "TOON Redis SET",
+          data: toonRedisSetTimes,
+          backgroundColor: "rgba(255, 206, 86, 0.4)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 1,
+          stack: "toon-save",
+        },
+        {
+          label: "TOON Redis GET",
+          data: toonRedisGetTimes,
+          backgroundColor: "rgba(255, 159, 64, 0.4)",
           borderColor: "rgb(255, 159, 64)",
-          borderWidth: 2,
+          borderWidth: 1,
+          stack: "toon-load",
+        },
+        {
+          label: "TOON Deserialize",
+          data: toonDeserializeTimes,
+          backgroundColor: "rgba(255, 159, 64, 0.8)",
+          borderColor: "rgb(255, 159, 64)",
+          borderWidth: 1,
+          stack: "toon-load",
         },
       ],
     },
@@ -656,23 +696,24 @@ if (story3Data) {
       plugins: {
         title: {
           display: true,
-          text: "State Persistence: JSON vs TOON (FirFilter → RMS Pipeline)",
+          text: "State Persistence Breakdown: Serialization + Redis (Stacked)",
           font: { size: 20, weight: "bold" },
         },
         subtitle: {
           display: true,
-          text: subtitle,
+          text: subtitle + " • FirFilter → RMS Pipeline",
           font: { size: 14 },
           padding: { bottom: 20 },
         },
         legend: {
           display: true,
           position: "top",
-          labels: { font: { size: 14 } },
+          labels: { font: { size: 12 } },
         },
       },
       scales: {
         y: {
+          stacked: true,
           title: {
             display: true,
             text: "Time (ms)",
@@ -682,6 +723,7 @@ if (story3Data) {
           beginAtZero: true,
         },
         x: {
+          stacked: true,
           title: {
             display: true,
             text: "Input Size",
@@ -789,7 +831,7 @@ if (memoryData) {
 
   const inputSizes = memoryData.map((r) => r.input.toUpperCase());
   const heapGrowth = memoryData.map((r) =>
-    parseFloat(r.heap_growth_per_iter_kb)
+    parseFloat(r.heap_growth_per_iter_kb),
   );
 
   const config = {
@@ -946,7 +988,7 @@ if (memoryData) {
 
 const concurrencyData = loadPlatformJSON("profiling-concurrency");
 const concurrencyThreadedData = loadPlatformJSON(
-  "profiling-concurrency-threaded"
+  "profiling-concurrency-threaded",
 );
 if (concurrencyData || concurrencyThreadedData) {
   console.log("📈 Chart 9: Concurrent Scaling...");
@@ -956,7 +998,7 @@ if (concurrencyData || concurrencyThreadedData) {
   if (concurrencyData) {
     const pipelineCounts = concurrencyData.map((r) => r.num_pipelines);
     const throughput = concurrencyData.map(
-      (r) => parseInt(r.throughput_samples_per_sec) / 1e6
+      (r) => parseInt(r.throughput_samples_per_sec) / 1e6,
     );
 
     datasets.push({
@@ -973,7 +1015,7 @@ if (concurrencyData || concurrencyThreadedData) {
   if (concurrencyThreadedData) {
     const pipelineCounts = concurrencyThreadedData.map((r) => r.num_pipelines);
     const throughput = concurrencyThreadedData.map(
-      (r) => parseInt(r.throughput_samples_per_sec) / 1e6
+      (r) => parseInt(r.throughput_samples_per_sec) / 1e6,
     );
 
     datasets.push({
@@ -1074,7 +1116,7 @@ if (audioLatencyData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const bufferDurations = pipelineData.map((r) => configToDuration[r.config]);
     const avgLatencies = pipelineData.map((r) => parseFloat(r.avg_ms));
@@ -1144,7 +1186,7 @@ if (audioLatencyData) {
   const buffer = await chartCanvas.renderToBuffer(config);
   fs.writeFileSync(
     path.join(chartsDir, "audio_latency_vs_duration.png"),
-    buffer
+    buffer,
   );
   console.log("   ✓ Saved: audio_latency_vs_duration.png");
 }
@@ -1164,7 +1206,7 @@ if (audioLatencyData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const p50Latencies = pipelineData.map((r) => parseFloat(r.p50_ms));
     const p95Latencies = pipelineData.map((r) => parseFloat(r.p95_ms));
@@ -1259,7 +1301,7 @@ if (audioLatencyData) {
   const buffer = await chartCanvas.renderToBuffer(config);
   fs.writeFileSync(
     path.join(chartsDir, "audio_latency_percentiles.png"),
-    buffer
+    buffer,
   );
   console.log("   ✓ Saved: audio_latency_percentiles.png");
 }
@@ -1279,7 +1321,7 @@ if (audioLatencyData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const avgJitters = pipelineData.map((r) => parseFloat(r.jitter_avg_ms));
 
@@ -1366,7 +1408,7 @@ if (audioLatencyData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const headrooms = pipelineData.map((r) => parseFloat(r.headroom_percent));
 
@@ -1467,7 +1509,7 @@ if (audioLatencyData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const bufferDurations = pipelineData.map((r) => configToDuration[r.config]);
     const procAvgLatencies = pipelineData.map((r) => parseFloat(r.proc_avg_ms));
@@ -1554,7 +1596,7 @@ if (audioLatencyData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const procDropouts = pipelineData.map((r) => parseFloat(r.proc_dropouts));
 
@@ -1657,7 +1699,7 @@ if (audioLatencyThreadedData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyThreadedData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const bufferDurations = pipelineData.map((r) => configToDuration[r.config]);
     const avgLatencies = pipelineData.map((r) => parseFloat(r.avg_ms));
@@ -1726,7 +1768,7 @@ if (audioLatencyThreadedData) {
   const buffer = await chartCanvas.renderToBuffer(config);
   fs.writeFileSync(
     path.join(chartsDir, "audio_latency_threaded_vs_duration.png"),
-    buffer
+    buffer,
   );
   console.log("   ✓ Saved: audio_latency_threaded_vs_duration.png");
 }
@@ -1758,7 +1800,7 @@ if (audioLatencyThreadedData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyThreadedData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const bufferDurations = pipelineData.map((r) => configToDuration[r.config]);
     const procAvgLatencies = pipelineData.map((r) => parseFloat(r.proc_avg_ms));
@@ -1826,7 +1868,7 @@ if (audioLatencyThreadedData) {
   const buffer = await chartCanvas.renderToBuffer(config);
   fs.writeFileSync(
     path.join(chartsDir, "dsp_processing_time_threaded.png"),
-    buffer
+    buffer,
   );
   console.log("   ✓ Saved: dsp_processing_time_threaded.png");
 }
@@ -1848,7 +1890,7 @@ if (audioLatencyThreadedData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyThreadedData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const p50Latencies = pipelineData.map((r) => parseFloat(r.p50_ms));
     const p95Latencies = pipelineData.map((r) => parseFloat(r.p95_ms));
@@ -1946,7 +1988,7 @@ if (audioLatencyThreadedData) {
   const buffer = await chartCanvas.renderToBuffer(config);
   fs.writeFileSync(
     path.join(chartsDir, "audio_latency_percentiles_threaded.png"),
-    buffer
+    buffer,
   );
   console.log("   ✓ Saved: audio_latency_percentiles_threaded.png");
 }
@@ -1968,7 +2010,7 @@ if (audioLatencyThreadedData) {
 
   pipelineTypes.forEach((pipeline, idx) => {
     const pipelineData = audioLatencyThreadedData.filter(
-      (r) => r.pipeline === pipeline
+      (r) => r.pipeline === pipeline,
     );
     const avgJitters = pipelineData.map((r) => parseFloat(r.jitter_avg_ms));
     const maxJitters = pipelineData.map((r) => parseFloat(r.jitter_max_ms));
@@ -2052,7 +2094,7 @@ if (audioLatencyThreadedData) {
   const buffer = await chartCanvas.renderToBuffer(config);
   fs.writeFileSync(
     path.join(chartsDir, "audio_latency_jitter_threaded.png"),
-    buffer
+    buffer,
   );
   console.log("   ✓ Saved: audio_latency_jitter_threaded.png");
 }

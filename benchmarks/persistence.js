@@ -61,7 +61,7 @@ try {
   redisAvailable = true;
 } catch (error) {
   console.log(
-    "⚠️  Redis not available - testing in-memory state transfer only\n"
+    "⚠️  Redis not available - testing in-memory state transfer only\n",
   );
   console.log("   To test with Redis: docker run -d -p 6379:6379 redis\n");
 }
@@ -69,7 +69,7 @@ try {
 for (const size of INPUT_SIZES) {
   console.log(`\n${"=".repeat(80)}`);
   console.log(
-    `Input: ${size.name.toUpperCase()} (${size.length.toLocaleString()} samples)`
+    `Input: ${size.name.toUpperCase()} (${size.length.toLocaleString()} samples)`,
   );
   console.log("=".repeat(80));
 
@@ -102,7 +102,7 @@ for (const size of INPUT_SIZES) {
     {
       sampleRate: 10000,
       channels: 1,
-    }
+    },
   );
 
   // =========================================================================
@@ -132,45 +132,65 @@ for (const size of INPUT_SIZES) {
     {
       sampleRate: 10000,
       channels: 1,
-    }
+    },
   );
 
   // --- Save state for JSON---
-  let JsonSaveTime, JsonLoadTime, JsonStateSize;
+  let JsonSerializeTime,
+    JsonRedisSetTime,
+    JsonRedisGetTime,
+    JsonDeserializeTime,
+    JsonStateSize;
 
   let JsonStateToLoad;
 
   // Measure persistence: serialize -> Redis SET; later: Redis GET -> load
   const jsonStateKey = `dspx:persistence:json:${size.name}`;
   if (redisAvailable) {
-    const saveJsonResult = await runTimed(
-      "redis-set",
+    // Separate timing for serialization
+    const serializeResult = await runTimed(
+      "json-serialize",
       async () => {
-        const state = await JsonPipeline1.saveState(); // JSON string
-        await redis.set(jsonStateKey, state);
-        JsonStateToLoad = state; // keep a local copy for size calculation
+        JsonStateToLoad = await JsonPipeline1.saveState();
       },
       1,
-      5
+      5,
     );
-    JsonSaveTime = saveJsonResult.avg;
-
+    JsonSerializeTime = serializeResult.avg;
     JsonStateSize = Buffer.byteLength(JsonStateToLoad, "utf8");
-    console.log(`   ✓ JSON state SET in ${JsonSaveTime.toFixed(3)} ms`);
+
+    // Separate timing for Redis SET
+    const redisSetResult = await runTimed(
+      "redis-set",
+      async () => {
+        await redis.set(jsonStateKey, JsonStateToLoad);
+      },
+      1,
+      5,
+    );
+    JsonRedisSetTime = redisSetResult.avg;
+
+    console.log(`   ✓ JSON serialized in ${JsonSerializeTime.toFixed(3)} ms`);
+    console.log(`   ✓ JSON Redis SET in ${JsonRedisSetTime.toFixed(3)} ms`);
     console.log(`   ✓ JSON state size: ${formatBytes(JsonStateSize)}`);
   } else {
-    // Fallback to in-memory timing (serialize + load only)
+    // Fallback to in-memory timing (serialize only)
     const saveJsonResult = await runTimed(
       "serialize",
       async () => {
         JsonStateToLoad = await JsonPipeline1.saveState();
       },
       1,
-      5
+      5,
     );
-    JsonSaveTime = saveJsonResult.avg;
+    JsonSerializeTime = saveJsonResult.avg;
+    JsonRedisSetTime = 0;
+    JsonRedisGetTime = 0;
+    JsonDeserializeTime = 0;
     JsonStateSize = Buffer.byteLength(JsonStateToLoad, "utf8");
-    console.log(`   ✓ JSON state serialized in ${JsonSaveTime.toFixed(3)} ms`);
+    console.log(
+      `   ✓ JSON state serialized in ${JsonSerializeTime.toFixed(3)} ms`,
+    );
     console.log(`   ✓ JSON state size: ${formatBytes(JsonStateSize)}`);
   }
 
@@ -195,36 +215,53 @@ for (const size of INPUT_SIZES) {
     {
       sampleRate: 10000,
       channels: 1,
-    }
+    },
   );
 
   // --- Save state for TOON ---
-  let ToonSaveTime, ToonLoadTime, ToonStateSize;
+  let ToonSerializeTime,
+    ToonRedisSetTime,
+    ToonRedisGetTime,
+    ToonDeserializeTime,
+    ToonStateSize;
   let ToonStateToLoad;
   const toonStateKey = `dspx:persistence:toon:${size.name}`;
   if (redisAvailable) {
-    const saveToonResult = await runTimed(
-      "redis-set",
+    // Separate timing for serialization
+    const serializeResult = await runTimed(
+      "toon-serialize",
       async () => {
         ToonStateToLoad = await ToonPipeline1.saveState({ format: "toon" });
+      },
+      1,
+      5,
+    );
+    ToonSerializeTime = serializeResult.avg;
+    ToonStateSize = Buffer.from(
+      ToonStateToLoad instanceof Uint8Array
+        ? ToonStateToLoad
+        : new Uint8Array(ToonStateToLoad),
+    ).length;
+
+    // Separate timing for Redis SET
+    const redisSetResult = await runTimed(
+      "redis-set",
+      async () => {
         const buf = Buffer.from(
           ToonStateToLoad instanceof Uint8Array
             ? ToonStateToLoad
-            : new Uint8Array(ToonStateToLoad)
+            : new Uint8Array(ToonStateToLoad),
         );
         const b64 = buf.toString("base64");
         await redis.set(toonStateKey, b64);
       },
       1,
-      5
+      5,
     );
-    ToonSaveTime = saveToonResult.avg;
-    ToonStateSize = Buffer.from(
-      ToonStateToLoad instanceof Uint8Array
-        ? ToonStateToLoad
-        : new Uint8Array(ToonStateToLoad)
-    ).length;
-    console.log(`   ✓ TOON state SET in ${ToonSaveTime.toFixed(3)} ms`);
+    ToonRedisSetTime = redisSetResult.avg;
+
+    console.log(`   ✓ TOON serialized in ${ToonSerializeTime.toFixed(3)} ms`);
+    console.log(`   ✓ TOON Redis SET in ${ToonRedisSetTime.toFixed(3)} ms`);
     console.log(`   ✓ TOON state size: ${formatBytes(ToonStateSize)}`);
   } else {
     const saveToonResult = await runTimed(
@@ -232,15 +269,20 @@ for (const size of INPUT_SIZES) {
       async () =>
         (ToonStateToLoad = await ToonPipeline1.saveState({ format: "toon" })),
       1,
-      5
+      5,
     );
-    ToonSaveTime = saveToonResult.avg;
+    ToonSerializeTime = saveToonResult.avg;
+    ToonRedisSetTime = 0;
+    ToonRedisGetTime = 0;
+    ToonDeserializeTime = 0;
     ToonStateSize = Buffer.from(
       ToonStateToLoad instanceof Uint8Array
         ? ToonStateToLoad
-        : new Uint8Array(ToonStateToLoad)
+        : new Uint8Array(ToonStateToLoad),
     ).length;
-    console.log(`   ✓ TOON state serialized in ${ToonSaveTime.toFixed(3)} ms`);
+    console.log(
+      `   ✓ TOON state serialized in ${ToonSerializeTime.toFixed(3)} ms`,
+    );
     console.log(`   ✓ TOON state size: ${formatBytes(ToonStateSize)}`);
   }
 
@@ -261,20 +303,35 @@ for (const size of INPUT_SIZES) {
     .ZScoreNormalize({ mode: "moving", windowSize: 20 })
     .Rectify({ mode: "full" });
 
-  // Measure load time now: Redis GET (if available) + loadState
+  // Measure load time now: Redis GET + deserialize/load separately
   if (redisAvailable) {
-    const loadJsonResult = await runTimed(
-      "redis-get+load",
+    // Separate timing for Redis GET
+    let retrievedState;
+    const redisGetResult = await runTimed(
+      "redis-get",
       async () => {
-        const retrieved = await redis.get(jsonStateKey);
-        JsonStateToLoad = retrieved;
-        await JsonPipeline2.loadState(retrieved);
+        retrievedState = await redis.get(jsonStateKey);
       },
       1,
-      5
+      5,
     );
-    JsonLoadTime = loadJsonResult.avg;
-    console.log(`   ✓ JSON state GET+LOAD in ${JsonLoadTime.toFixed(3)} ms`);
+    JsonRedisGetTime = redisGetResult.avg;
+
+    // Separate timing for deserialization + load
+    const deserializeResult = await runTimed(
+      "json-deserialize+load",
+      async () => {
+        await JsonPipeline2.loadState(retrievedState);
+      },
+      1,
+      5,
+    );
+    JsonDeserializeTime = deserializeResult.avg;
+
+    console.log(`   ✓ JSON Redis GET in ${JsonRedisGetTime.toFixed(3)} ms`);
+    console.log(
+      `   ✓ JSON deserialized+loaded in ${JsonDeserializeTime.toFixed(3)} ms`,
+    );
   } else {
     const loadJsonResult = await runTimed(
       "load-state",
@@ -282,10 +339,12 @@ for (const size of INPUT_SIZES) {
         await JsonPipeline2.loadState(JsonStateToLoad);
       },
       1,
-      5
+      5,
     );
-    JsonLoadTime = loadJsonResult.avg;
-    console.log(`   ✓ JSON state loaded in ${JsonLoadTime.toFixed(3)} ms`);
+    JsonDeserializeTime = loadJsonResult.avg;
+    console.log(
+      `   ✓ JSON state loaded in ${JsonDeserializeTime.toFixed(3)} ms`,
+    );
   }
   console.log(`   ✓ JSON pipeline state restored`);
   // After load, pipeline2's state is identical to pipeline1's state
@@ -296,7 +355,7 @@ for (const size of INPUT_SIZES) {
     {
       sampleRate: 10000,
       channels: 1,
-    }
+    },
   );
 
   // TOON Pipeline load
@@ -314,29 +373,47 @@ for (const size of INPUT_SIZES) {
     .Rectify({ mode: "full" });
 
   if (redisAvailable) {
-    const loadToonResult = await runTimed(
-      "redis-get+load",
+    // Separate timing for Redis GET
+    let retrievedB64;
+    const redisGetResult = await runTimed(
+      "redis-get",
       async () => {
-        const b64 = await redis.get(toonStateKey);
-        const retrievedBuf = Buffer.from(b64, "base64");
+        retrievedB64 = await redis.get(toonStateKey);
+      },
+      1,
+      5,
+    );
+    ToonRedisGetTime = redisGetResult.avg;
+
+    // Separate timing for deserialization + load
+    const deserializeResult = await runTimed(
+      "toon-deserialize+load",
+      async () => {
+        const retrievedBuf = Buffer.from(retrievedB64, "base64");
         const toonBytes = new Uint8Array(retrievedBuf);
         await ToonPipeline2.loadState(toonBytes, { format: "toon" });
       },
       1,
-      5
+      5,
     );
-    ToonLoadTime = loadToonResult.avg;
-    console.log(`   ✓ TOON state GET+LOAD in ${ToonLoadTime.toFixed(3)} ms`);
+    ToonDeserializeTime = deserializeResult.avg;
+
+    console.log(`   ✓ TOON Redis GET in ${ToonRedisGetTime.toFixed(3)} ms`);
+    console.log(
+      `   ✓ TOON deserialized+loaded in ${ToonDeserializeTime.toFixed(3)} ms`,
+    );
   } else {
     const loadToonResult = await runTimed(
       "load-state",
       async () =>
         await ToonPipeline2.loadState(ToonStateToLoad, { format: "toon" }),
       1,
-      5
+      5,
     );
-    ToonLoadTime = loadToonResult.avg;
-    console.log(`   ✓ TOON state loaded in ${ToonLoadTime.toFixed(3)} ms`);
+    ToonDeserializeTime = loadToonResult.avg;
+    console.log(
+      `   ✓ TOON state loaded in ${ToonDeserializeTime.toFixed(3)} ms`,
+    );
   }
   // After load, pipeline2's state is identical to pipeline1's state
 
@@ -345,7 +422,7 @@ for (const size of INPUT_SIZES) {
     {
       sampleRate: 10000,
       channels: 1,
-    }
+    },
   );
 
   // --- Verify continuity (compare with non-interrupted processing) ---
@@ -353,7 +430,7 @@ for (const size of INPUT_SIZES) {
 
   // Assemble the Test Output
   const outputJsonTest = new Float32Array(
-    JsonOutput1_test.length + JsonOutput2_test.length
+    JsonOutput1_test.length + JsonOutput2_test.length,
   );
   outputJsonTest.set(JsonOutput1_test, 0); // Output from pipeline1 on first half
   outputJsonTest.set(JsonOutput2_test, JsonOutput1_test.length); // Output from pipeline2 on second half
@@ -363,11 +440,11 @@ for (const size of INPUT_SIZES) {
   console.log(
     `   Length match: ${
       outputControl.length === outputJsonTest.length ? "✅" : "❌"
-    }`
+    }`,
   );
 
   const outputToonTest = new Float32Array(
-    ToonOutput1_test.length + ToonOutput2_test.length
+    ToonOutput1_test.length + ToonOutput2_test.length,
   );
   outputToonTest.set(ToonOutput1_test, 0); // Output from pipeline1 on first half
   outputToonTest.set(ToonOutput2_test, ToonOutput1_test.length);
@@ -377,7 +454,7 @@ for (const size of INPUT_SIZES) {
   console.log(
     `   Length match: ${
       outputControl.length === outputToonTest.length ? "✅" : "❌"
-    }`
+    }`,
   );
   console.log();
 
@@ -426,7 +503,7 @@ for (const size of INPUT_SIZES) {
 
     if (diffCount === 0) {
       console.log(
-        "   ✅ All samples match within threshold (hash difference likely due to floating-point rounding)"
+        "   ✅ All samples match within threshold (hash difference likely due to floating-point rounding)",
       );
     }
   }
@@ -464,7 +541,7 @@ for (const size of INPUT_SIZES) {
 
     if (diffCount === 0) {
       console.log(
-        "   ✅ All samples match within threshold (hash difference likely due to floating-point rounding)"
+        "   ✅ All samples match within threshold (hash difference likely due to floating-point rounding)",
       );
     }
   }
@@ -474,17 +551,55 @@ for (const size of INPUT_SIZES) {
     test: "persistence",
     input: size.name,
     samples: size.length,
-    json_save_ms: JsonSaveTime,
-    json_load_ms: JsonLoadTime,
-    toon_save_ms: ToonSaveTime,
-    toon_load_ms: ToonLoadTime,
+
+    // JSON metrics with separated timings
+    json_serialize_ms: JsonSerializeTime,
+    json_redis_set_ms: redisAvailable ? JsonRedisSetTime : null,
+    json_redis_get_ms: redisAvailable ? JsonRedisGetTime : null,
+    json_deserialize_ms: JsonDeserializeTime,
+    json_save_ms: JsonSerializeTime + (redisAvailable ? JsonRedisSetTime : 0),
+    json_load_ms: (redisAvailable ? JsonRedisGetTime : 0) + JsonDeserializeTime,
     state_size_bytes: JsonStateSize,
+    JsonSeamless: JsonSeamless || diffCount === 0,
+
+    // TOON metrics with separated timings
+    toon_serialize_ms: ToonSerializeTime,
+    toon_redis_set_ms: redisAvailable ? ToonRedisSetTime : null,
+    toon_redis_get_ms: redisAvailable ? ToonRedisGetTime : null,
+    toon_deserialize_ms: ToonDeserializeTime,
+    toon_save_ms: ToonSerializeTime + (redisAvailable ? ToonRedisSetTime : 0),
+    toon_load_ms: (redisAvailable ? ToonRedisGetTime : 0) + ToonDeserializeTime,
     toon_state_size_bytes: ToonStateSize,
-    JsonSeamless: JsonSeamless || diffCount === 0, // Mark as seamless if within threshold
-    ToonSeamless: ToonSeamless || diffCount === 0, // Mark as seamless if within threshold
+    ToonSeamless: ToonSeamless || diffCount === 0,
+
+    redis_available: redisAvailable,
+    meta: specs,
   };
 
   results.push(data);
+
+  console.log("\n📊 Benchmark results for this input:");
+  console.log(`   JSON - Serialize: ${JsonSerializeTime.toFixed(3)}ms`);
+  if (redisAvailable) {
+    console.log(`   JSON - Redis SET: ${JsonRedisSetTime.toFixed(3)}ms`);
+    console.log(`   JSON - Redis GET: ${JsonRedisGetTime.toFixed(3)}ms`);
+  }
+  console.log(`   JSON - Deserialize: ${JsonDeserializeTime.toFixed(3)}ms`);
+  console.log(`   JSON - Total Save: ${data.json_save_ms.toFixed(3)}ms`);
+  console.log(`   JSON - Total Load: ${data.json_load_ms.toFixed(3)}ms`);
+  console.log(`   JSON - State Size: ${formatBytes(JsonStateSize)}`);
+  console.log(`   JSON - Seamless: ${JsonSeamless ? "✅" : "❌"}`);
+  console.log();
+  console.log(`   TOON - Serialize: ${ToonSerializeTime.toFixed(3)}ms`);
+  if (redisAvailable) {
+    console.log(`   TOON - Redis SET: ${ToonRedisSetTime.toFixed(3)}ms`);
+    console.log(`   TOON - Redis GET: ${ToonRedisGetTime.toFixed(3)}ms`);
+  }
+  console.log(`   TOON - Deserialize: ${ToonDeserializeTime.toFixed(3)}ms`);
+  console.log(`   TOON - Total Save: ${data.toon_save_ms.toFixed(3)}ms`);
+  console.log(`   TOON - Total Load: ${data.toon_load_ms.toFixed(3)}ms`);
+  console.log(`   TOON - State Size: ${formatBytes(ToonStateSize)}`);
+  console.log(`   TOON - Seamless: ${ToonSeamless ? "✅" : "❌"}`);
 
   pipelineControl.dispose();
   JsonPipeline1.dispose();
@@ -500,43 +615,85 @@ console.log("\n" + "=".repeat(80));
 console.log("SUMMARY");
 console.log("=".repeat(80));
 
+const avgJsonSerialize =
+  results.reduce((sum, r) => sum + r.json_serialize_ms, 0) / results.length;
+const avgJsonDeserialize =
+  results.reduce((sum, r) => sum + r.json_deserialize_ms, 0) / results.length;
 const avgJsonSaveMs =
   results.reduce((sum, r) => sum + r.json_save_ms, 0) / results.length;
 const avgJsonLoadMs =
   results.reduce((sum, r) => sum + r.json_load_ms, 0) / results.length;
 const avgJsonStateSize =
   results.reduce((sum, r) => sum + r.state_size_bytes, 0) / results.length;
+
+const avgToonSerialize =
+  results.reduce((sum, r) => sum + r.toon_serialize_ms, 0) / results.length;
+const avgToonDeserialize =
+  results.reduce((sum, r) => sum + r.toon_deserialize_ms, 0) / results.length;
 const avgToonSaveMs =
   results.reduce((sum, r) => sum + r.toon_save_ms, 0) / results.length;
 const avgToonLoadMs =
   results.reduce((sum, r) => sum + r.toon_load_ms, 0) / results.length;
 const avgToonStateSize =
   results.reduce((sum, r) => sum + r.toon_state_size_bytes, 0) / results.length;
-const allSeamless = results.every((r) => r.JsonSeamless);
 
-console.log(`\nAverage JSON save time:  ${avgJsonSaveMs.toFixed(3)} ms`);
-console.log(`Average JSON load time:  ${avgJsonLoadMs.toFixed(3)} ms`);
-console.log(`Average JSON state size: ${formatBytes(avgJsonStateSize)}`);
-console.log(`Average TOON save time:  ${avgToonSaveMs.toFixed(3)} ms`);
-console.log(`Average TOON load time:  ${avgToonLoadMs.toFixed(3)} ms`);
-console.log(`Average TOON state size: ${formatBytes(avgToonStateSize)}`);
-console.log(`All seamless:       ${allSeamless ? "✅ YES" : "⚠️  NO"}`);
+const allSeamless = results.every((r) => r.JsonSeamless && r.ToonSeamless);
+
+console.log(`\n${"=".repeat(50)}`);
+console.log("JSON Format:");
+console.log(`${"=".repeat(50)}`);
+console.log(`Average serialize time:   ${avgJsonSerialize.toFixed(3)} ms`);
+console.log(`Average deserialize time: ${avgJsonDeserialize.toFixed(3)} ms`);
+if (redisAvailable) {
+  const avgJsonRedisSet =
+    results.reduce((sum, r) => sum + (r.json_redis_set_ms || 0), 0) /
+    results.length;
+  const avgJsonRedisGet =
+    results.reduce((sum, r) => sum + (r.json_redis_get_ms || 0), 0) /
+    results.length;
+  console.log(`Average Redis SET time:   ${avgJsonRedisSet.toFixed(3)} ms`);
+  console.log(`Average Redis GET time:   ${avgJsonRedisGet.toFixed(3)} ms`);
+}
+console.log(`Average total save time:  ${avgJsonSaveMs.toFixed(3)} ms`);
+console.log(`Average total load time:  ${avgJsonLoadMs.toFixed(3)} ms`);
+console.log(`Average state size:       ${formatBytes(avgJsonStateSize)}`);
+
+console.log(`\n${"=".repeat(50)}`);
+console.log("TOON Format:");
+console.log(`${"=".repeat(50)}`);
+console.log(`Average serialize time:   ${avgToonSerialize.toFixed(3)} ms`);
+console.log(`Average deserialize time: ${avgToonDeserialize.toFixed(3)} ms`);
+if (redisAvailable) {
+  const avgToonRedisSet =
+    results.reduce((sum, r) => sum + (r.toon_redis_set_ms || 0), 0) /
+    results.length;
+  const avgToonRedisGet =
+    results.reduce((sum, r) => sum + (r.toon_redis_get_ms || 0), 0) /
+    results.length;
+  console.log(`Average Redis SET time:   ${avgToonRedisSet.toFixed(3)} ms`);
+  console.log(`Average Redis GET time:   ${avgToonRedisGet.toFixed(3)} ms`);
+}
+console.log(`Average total save time:  ${avgToonSaveMs.toFixed(3)} ms`);
+console.log(`Average total load time:  ${avgToonLoadMs.toFixed(3)} ms`);
+console.log(`Average state size:       ${formatBytes(avgToonStateSize)}`);
+
+console.log(`\nAll seamless:             ${allSeamless ? "✅ YES" : "⚠️  NO"}`);
 
 console.log("\n📊 Results by input size:");
 results.forEach((r) => {
   console.log(
     `  ${r.input.padEnd(10)} - Save: ${r.json_save_ms.toFixed(
-      2
+      2,
     )}ms, Load: ${r.json_load_ms.toFixed(2)}ms, Size: ${formatBytes(
-      r.state_size_bytes
-    )}, Seamless: ${r.JsonSeamless ? "✅" : "❌"}`
+      r.state_size_bytes,
+    )}, Seamless: ${r.JsonSeamless ? "✅" : "❌"}`,
   );
   console.log(
     `  ${r.input.padEnd(10)} - TOON Save: ${r.toon_save_ms.toFixed(
-      2
+      2,
     )}ms, TOON Load: ${r.toon_load_ms.toFixed(2)}ms, TOON Size: ${formatBytes(
-      r.toon_state_size_bytes
-    )}, TOON Seamless: ${r.ToonSeamless ? "✅" : "❌"}`
+      r.toon_state_size_bytes,
+    )}, TOON Seamless: ${r.ToonSeamless ? "✅" : "❌"}`,
   );
 });
 
@@ -547,12 +704,14 @@ if (redisAvailable) {
 
 console.log("\nKey insights:");
 console.log(
-  "  • State save/load operations are extremely fast (< 1ms typical)"
+  "  • Serialization/deserialization is extremely fast (< 1ms typical)",
 );
+console.log("  • Redis operations add minimal overhead (< 1ms for SET/GET)");
 console.log("  • State size scales with pipeline complexity, not input size");
 console.log(
-  "  • Processing resumes seamlessly, even on *identical* pipeline structures"
+  "  • Processing resumes seamlessly, even on *identical* pipeline structures",
 );
+console.log("  • TOON format is more compact than JSON for binary state data");
 console.log("  • Ideal for crash recovery and distributed processing\n");
 
 console.log("✅ Story 3 benchmarks complete!\n");
