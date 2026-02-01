@@ -12,17 +12,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 function findPython() {
-  try {
-    spawnSync("python", ["--version"], { stdio: "ignore" });
+  const result = spawnSync("python", ["--version"], { stdio: "ignore" });
+  if (result.status === 0) {
     return "python";
-  } catch {
-    try {
-      spawnSync("python3", ["--version"], { stdio: "ignore" });
-      return "python3";
-    } catch {
-      throw new Error("Python not found");
-    }
   }
+  const result3 = spawnSync("python3", ["--version"], { stdio: "ignore" });
+  if (result3.status === 0) {
+    return "python3";
+  }
+  throw new Error("Python not found");
 }
 
 const scriptName = process.argv[2];
