@@ -4,12 +4,26 @@
  * Wrapper to run Python benchmarks with correct platform
  */
 
-import { spawn } from "child_process";
+import { spawn, spawnSync } from "child_process";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+function findPython() {
+  try {
+    spawnSync("python", ["--version"], { stdio: "ignore" });
+    return "python";
+  } catch {
+    try {
+      spawnSync("python3", ["--version"], { stdio: "ignore" });
+      return "python3";
+    } catch {
+      throw new Error("Python not found");
+    }
+  }
+}
 
 const scriptName = process.argv[2];
 const platform = process.env.BENCHMARK_PLATFORM || "";
@@ -18,7 +32,9 @@ const pythonScript = join(__dirname, "..", "benchmarks", scriptName + ".py");
 
 const args = platform ? [pythonScript, platform] : [pythonScript];
 
-const python = spawn("python", args, {
+const pythonCmd = findPython();
+
+const python = spawn(pythonCmd, args, {
   stdio: "inherit",
   cwd: join(__dirname, ".."),
   env: {
