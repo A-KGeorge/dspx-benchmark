@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "provider": "AWS Lambda",
+    "memory": "2048MB",
+    "runtime": "Node.js 22.x (ESM)",
+    "note": "dspx uses O(1) circular buffers for Moving Average"
+  },
+  "arm64": [
+    { "input": "small", "samples": 1024, "avg_ms": 0.0517, "throughput": 19.8, "iterations": 1000 },
+    { "input": "medium", "samples": 4096, "avg_ms": 0.0988, "throughput": 41.4, "iterations": 250 },
+    { "input": "large", "samples": 1048576, "avg_ms": 9.2935, "throughput": 112.8, "iterations": 50 }
+  ],
+  "x64": [
+    { "input": "small", "samples": 1024, "avg_ms": 0.0762, "throughput": 13.4, "iterations": 1000 },
+    { "input": "medium", "samples": 4096, "avg_ms": 0.1932, "throughput": 21.2, "iterations": 250 },
+    { "input": "large", "samples": 1048576, "avg_ms": 35.9223, "throughput": 29.2, "iterations": 50 }
+  ]
+}

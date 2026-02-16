@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "provider": "AWS Lambda",
+    "memory_mb": 1769,
+    "runtime": "Node.js 22.x",
+    "optimization": "O(1) Circular Buffer",
+    "note": "vCPU is proportional to memory; 1769MB provides ~1 full vCPU."
+  },
+  "arm64": [
+    { "input": "SMALL", "samples": 1024, "avg_ms": 0.0715, "throughput": 14.3 },
+    { "input": "MEDIUM", "samples": 4096, "avg_ms": 0.0931, "throughput": 44.0 },
+    { "input": "LARGE", "samples": 1048576, "avg_ms": 13.3703, "throughput": 78.4 }
+  ],
+  "x64": [
+    { "input": "SMALL", "samples": 1024, "avg_ms": 0.0837, "throughput": 12.2 },
+    { "input": "MEDIUM", "samples": 4096, "avg_ms": 0.1910, "throughput": 21.4 },
+    { "input": "LARGE", "samples": 1048576, "avg_ms": 34.9176, "throughput": 30.0 }
+  ]
+}

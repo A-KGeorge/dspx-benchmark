@@ -134,6 +134,21 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 │   └── ...                                 # Other CPU reports
 ```
 
+## ☁️ Cloud Performance (AWS Lambda)
+
+| Architecture         | 1K Samples  | 1M Samples       |
+| :------------------- | :---------- | :--------------- |
+| **Graviton (arm64)** | 19.8M s/sec | **112.8M s/sec** |
+| **Intel/AMD (x64)**  | 13.4M s/sec | 29.2M s/sec      |
+
+> **Analysis:** Graviton provides ~3.8x higher throughput for large-scale buffers due to superior memory bandwidth and physical core isolation in the Lambda environment.
+
+![AWS Lambda Comparison](./charts/lambda_comparison.png)
+_AWS Lambda 2 GB ram results_
+
+![AWS Lambda 1.0 v CPU Performance](./charts/lambda_arch_comparison.png)
+_AWS Lambda 1.769 GB ram results_
+
 ## Requirements
 
 - **Node.js** ≥ 18
