@@ -147,7 +147,7 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 _AWS Lambda 2 GB ram results_
 
 ![AWS Lambda 1.0 v CPU Performance](./charts/lambda_arch_comparison.png)
-_AWS Lambda 1.769 GB ram results_
+_AWS Lambda 1.769 GB (1 vCPU) ram results_
 
 ## Requirements
 
