@@ -824,6 +824,290 @@ if (story3bData) {
 }
 
 // ============================================================================
+// Story 3c: JSON Serialization/Deserialization
+// ============================================================================
+
+console.log("📈 Chart 5c: JSON Serialization/Deserialization...");
+
+if (story3Data && story3bData) {
+  const inputSizes = story3Data.map((r) => r.input.toUpperCase());
+
+  const jsJsonSerialize = story3Data.map((r) => r.json_serialize_ms);
+  const jsJsonDeserialize = story3Data.map((r) => r.json_deserialize_ms);
+  const pyJsonSerialize = story3bData.map((r) => r.json_serialize_ms);
+  const pyJsonDeserialize = story3bData.map((r) => r.json_deserialize_ms);
+
+  const jsToonSerialize = story3Data.map((r) => r.toon_serialize_ms);
+  const jsToonDeserialize = story3Data.map((r) => r.toon_deserialize_ms);
+  const pyPickleSerialize = story3bData.map((r) => r.pickle_serialize_ms);
+  const pyPickleDeserialize = story3bData.map((r) => r.pickle_deserialize_ms);
+
+  const allData = [
+    ...jsJsonSerialize,
+    ...jsJsonDeserialize,
+    ...pyJsonSerialize,
+    ...pyJsonDeserialize,
+    ...jsToonSerialize,
+    ...jsToonDeserialize,
+    ...pyPickleSerialize,
+    ...pyPickleDeserialize,
+  ];
+  const maxY = Math.max(...allData) * 1.1;
+
+  const config = {
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          type: "bar",
+          label: "JS JSON Serialize",
+          data: jsJsonSerialize,
+          backgroundColor: "rgba(54, 162, 235, 0.8)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 1,
+        },
+        {
+          type: "bar",
+          label: "JS JSON Deserialize",
+          data: jsJsonDeserialize,
+          backgroundColor: "rgba(54, 162, 235, 0.4)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 1,
+        },
+        {
+          type: "bar",
+          label: "PY JSON Serialize",
+          data: pyJsonSerialize,
+          backgroundColor: "rgba(75, 192, 192, 0.8)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 1,
+        },
+        {
+          type: "bar",
+          label: "PY JSON Deserialize",
+          data: pyJsonDeserialize,
+          backgroundColor: "rgba(75, 192, 192, 0.4)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 1,
+        },
+        {
+          type: "line",
+          label: "JS JSON Total (Ser + Des)",
+          data: jsJsonSerialize.map((s, i) => s + jsJsonDeserialize[i]),
+          borderColor: "rgb(0, 0, 139)",
+          backgroundColor: "rgba(0, 0, 139, 0.1)",
+          borderWidth: 3,
+          pointRadius: 5,
+          fill: false,
+        },
+        {
+          type: "line",
+          label: "PY JSON Total (Ser + Des)",
+          data: pyJsonSerialize.map((s, i) => s + pyJsonDeserialize[i]),
+          borderColor: "rgb(0, 100, 0)",
+          backgroundColor: "rgba(0, 100, 0, 0.1)",
+          borderWidth: 3,
+          pointRadius: 5,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "JSON Serialization/Deserialization: JS vs Python",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            "\n\nRedis operations are excluded to isolate serialization cost.",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 12 } },
+        },
+      },
+      scales: {
+        y: {
+          suggestedMax: maxY,
+          title: {
+            display: true,
+            text: "Time (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(chartsDir, "persistence_json_no_redis.png"),
+    buffer,
+  );
+  console.log("   ✓ Saved: charts/persistence_json_no_redis.png");
+}
+
+// ============================================================================
+// Story 3d: TOON/Pickle Serialization/Deserialization
+// ============================================================================
+
+console.log("📈 Chart 5d: TOON/Pickle Serialization/Deserialization...");
+
+if (story3Data && story3bData) {
+  const inputSizes = story3Data.map((r) => r.input.toUpperCase());
+
+  const jsToonSerialize = story3Data.map((r) => r.toon_serialize_ms);
+  const jsToonDeserialize = story3Data.map((r) => r.toon_deserialize_ms);
+  const pyPickleSerialize = story3bData.map((r) => r.pickle_serialize_ms);
+  const pyPickleDeserialize = story3bData.map((r) => r.pickle_deserialize_ms);
+
+  const jsJsonSerialize = story3Data.map((r) => r.json_serialize_ms);
+  const jsJsonDeserialize = story3Data.map((r) => r.json_deserialize_ms);
+  const pyJsonSerialize = story3bData.map((r) => r.json_serialize_ms);
+  const pyJsonDeserialize = story3bData.map((r) => r.json_deserialize_ms);
+
+  const allData = [
+    ...jsToonSerialize,
+    ...jsToonDeserialize,
+    ...pyPickleSerialize,
+    ...pyPickleDeserialize,
+    ...jsJsonSerialize,
+    ...jsJsonDeserialize,
+    ...pyJsonSerialize,
+    ...pyJsonDeserialize,
+  ];
+  const maxY = Math.max(...allData) * 1.1;
+
+  const config = {
+    data: {
+      labels: inputSizes,
+      datasets: [
+        {
+          type: "bar",
+          label: "JS TOON Serialize",
+          data: jsToonSerialize,
+          backgroundColor: "rgba(255, 206, 86, 0.8)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 1,
+        },
+        {
+          type: "bar",
+          label: "JS TOON Deserialize",
+          data: jsToonDeserialize,
+          backgroundColor: "rgba(255, 206, 86, 0.4)",
+          borderColor: "rgb(255, 206, 86)",
+          borderWidth: 1,
+        },
+        {
+          type: "bar",
+          label: "PY Pickle Serialize",
+          data: pyPickleSerialize,
+          backgroundColor: "rgba(255, 159, 64, 0.8)",
+          borderColor: "rgb(255, 159, 64)",
+          borderWidth: 1,
+        },
+        {
+          type: "bar",
+          label: "PY Pickle Deserialize",
+          data: pyPickleDeserialize,
+          backgroundColor: "rgba(255, 159, 64, 0.4)",
+          borderColor: "rgb(255, 159, 64)",
+          borderWidth: 1,
+        },
+        {
+          type: "line",
+          label: "JS TOON Total (Ser + Des)",
+          data: jsToonSerialize.map((s, i) => s + jsToonDeserialize[i]),
+          borderColor: "rgb(139, 69, 19)",
+          backgroundColor: "rgba(139, 69, 19, 0.1)",
+          borderWidth: 3,
+          pointRadius: 5,
+          fill: false,
+        },
+        {
+          type: "line",
+          label: "PY Pickle Total (Ser + Des)",
+          data: pyPickleSerialize.map((s, i) => s + pyPickleDeserialize[i]),
+          borderColor: "rgb(75, 0, 130)",
+          backgroundColor: "rgba(75, 0, 130, 0.1)",
+          borderWidth: 3,
+          pointRadius: 5,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "TOON/Pickle Serialization/Deserialization: JS vs Python",
+          font: { size: 20, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text:
+            subtitle +
+            "\n\nRedis operations are excluded to isolate serialization cost.",
+          font: { size: 14 },
+          padding: { bottom: 20 },
+        },
+        legend: {
+          display: true,
+          position: "top",
+          labels: { font: { size: 12 } },
+        },
+      },
+      scales: {
+        y: {
+          suggestedMax: maxY,
+          title: {
+            display: true,
+            text: "Time (ms)",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Input Size",
+            font: { size: 14 },
+          },
+          ticks: { font: { size: 12 } },
+        },
+      },
+    },
+  };
+
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(chartsDir, "persistence_toon_pickle_no_redis.png"),
+    buffer,
+  );
+  console.log("   ✓ Saved: charts/persistence_toon_pickle_no_redis.png");
+}
+
+// ============================================================================
 // Story 4: Logging Performance
 // ============================================================================
 
