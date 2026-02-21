@@ -144,19 +144,22 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 > **Analysis:** Graviton provides ~3.8x higher throughput for large-scale buffers due to superior memory bandwidth and physical core isolation in the Lambda environment.
 
 ![AWS Lambda Comparison](./charts/lambda/lambda_comparison.png)
-_AWS Lambda 2 GB ram results_
+_AWS Lambda 2 GB RAM results — Inputs: SMALL (1K), MEDIUM (4K), LARGE (1M)_
 
 ![AWS Lambda 1.0 v CPU Performance](./charts/lambda/lambda_arch_comparison.png)
-_AWS Lambda 1.769 GB (1 vCPU) ram results_
+_AWS Lambda 1.769 GB (1 vCPU) RAM results — Inputs: SMALL (1K), MEDIUM (4K), LARGE (1M)_
 
 ![AWS Lambda Persistence Throughput](./charts/lambda/lambda_persistence.png)
-_Persistence throughput (json vs toon) — Million samples/sec_
+_Persistence throughput (json vs toon) — Million samples/sec • Inputs: SMALL (1K), MEDIUM (4K), LARGE (1M)_
 
-![AWS Lambda Latency Profiling](./charts/lambda/lambda_latency.png)
-_Latency profiling (p50/p95/p99/avg) — ms_
+![AWS Lambda Latency — x86_64](./charts/lambda/lambda_latency_x86.png)
+_Latency profiling (x86_64) — p50/p95/p99/avg (ms) • Inputs: SMALL (1K), MEDIUM (4K), LARGE (1M)_
+
+![AWS Lambda Latency — arm64](./charts/lambda/lambda_latency_arm64.png)
+_Latency profiling (arm64) — p50/p95/p99/avg (ms) • Inputs: SMALL (1K), MEDIUM (4K), LARGE (1M)_
 
 ![AWS Lambda Memory Profiling](./charts/lambda/lambda_memory.png)
-_Heap before/peak (MB) and growth per iter (KB)_
+_Heap before/peak (MB) and growth per iter (KB) • Inputs: SMALL (1K), MEDIUM (4K), LARGE (1M)_
 
 ## Requirements
 

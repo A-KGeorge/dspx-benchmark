@@ -15,6 +15,25 @@ const base_dir = path.dirname(fileURLToPath(import.meta.url));
 const results_dir = path.join(base_dir, "../results/lambda");
 const charts_dir = path.join(base_dir, "../charts/lambda");
 
+function formatSamples(n) {
+  if (!n && n !== 0) return "";
+  if (n >= 1000000) return `${(n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1).replace(/\.0$/, "")}M`;
+  if (n >= 1000) return `${(n / 1000).toFixed(n % 1000 === 0 ? 0 : 1).replace(/\.0$/, "")}K`;
+  return `${n}`;
+}
+
+function loadPersistenceSamplesMap() {
+  try {
+    const p = JSON.parse(fs.readFileSync(path.join(results_dir, "aws-lambda-persistence.json"), "utf8"));
+    const map = {};
+    (p.arm64 || []).forEach((d) => { if (d.input && d.samples) map[d.input] = d.samples; });
+    (p.x64 || []).forEach((d) => { if (d.input && d.samples) map[d.input] = d.samples; });
+    return map;
+  } catch (e) {
+    return {};
+  }
+}
+
 async function generateChart() {
   const data = JSON.parse(
     fs.readFileSync(
@@ -143,7 +162,7 @@ async function generatePersistenceChart() {
     fs.readFileSync(path.join(results_dir, "aws-lambda-persistence.json"), "utf8"),
   );
 
-  const labels = data.arm64.map((d) => d.input);
+  const labels = data.arm64.map((d) => `${d.input} (${formatSamples(d.samples)})`);
 
   const arm64_json = data.arm64.map((d) => d.json.throughput_mbs);
   const x64_json = data.x64.map((d) => d.json.throughput_mbs);
@@ -198,53 +217,54 @@ async function generatePersistenceChart() {
 }
 
 async function generateLatencyChart() {
-  const data = JSON.parse(
-    fs.readFileSync(path.join(results_dir, "latency_metrics.json"), "utf8"),
-  );
+  const data = JSON.parse(fs.readFileSync(path.join(results_dir, "latency_metrics.json"), "utf8"));
 
-  const labels = data.x86_64.map((d) => d.input);
-
-  const datasets = [];
-  ["p50", "p95", "p99", "avg"].forEach((stat, idx) => {
-    datasets.push({
-      label: `x86_64 ${stat}`,
-      data: data.x86_64.map((d) => d[stat]),
-      borderColor: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728"][idx],
-      backgroundColor: ["#1f77b433", "#ff7f0e33", "#2ca02c33", "#d6272833"][idx],
-      fill: false,
-      tension: 0.2,
-    });
-    datasets.push({
-      label: `arm64 ${stat}`,
-      data: data.arm64.map((d) => d[stat]),
-      borderColor: ["#9467bd", "#8c564b", "#e377c2", "#7f7f7f"][idx],
-      backgroundColor: ["#9467bd33", "#8c564b33", "#e377c233", "#7f7f7f33"][idx],
-      fill: false,
-      tension: 0.2,
-    });
+  const sampleMap = loadPersistenceSamplesMap();
+  const labels = data.x86_64.map((d) => {
+    const s = d.samples || sampleMap[d.input];
+    return s ? `${d.input} (${formatSamples(s)})` : d.input;
   });
+  const stats = ["p50", "p95", "p99", "avg"];
 
-  const config = {
-    type: "line",
-    data: { labels, datasets },
+  // Helper to build datasets for a single architecture (grouped bars per input)
+  function buildDatasetsForArch(archData, colorBase) {
+    return stats.map((stat, idx) => ({
+      label: stat,
+      data: archData.map((d) => d[stat]),
+      backgroundColor: colorBase[idx],
+    }));
+  }
+
+  const x86Colors = ["#1f77b4cc", "#ff7f0ecc", "#2ca02ccc", "#d62728cc"];
+  const armColors = ["#9467bdcc", "#8c564bcc", "#e377c2cc", "#7f7f7fcc"];
+
+  const x86Datasets = buildDatasetsForArch(data.x86_64, x86Colors);
+  const armDatasets = buildDatasetsForArch(data.arm64, armColors);
+
+  const configX86 = {
+    type: "bar",
+    data: { labels, datasets: x86Datasets },
     options: {
-      plugins: {
-        title: {
-          display: true,
-          text: "Latency Profiling (ms) — p50/p95/p99/avg",
-          font: { size: 18, weight: "bold" },
-        },
-      },
-      scales: {
-        y: { beginAtZero: true, title: { display: true, text: "ms" } },
-      },
+      plugins: { title: { display: true, text: "Latency Profiling — x86_64 (ms)", font: { size: 18, weight: "bold" } } },
+      scales: { y: { beginAtZero: true, title: { display: true, text: "ms" } } },
     },
   };
 
-  console.log("📊 Generating latency chart...");
-  const buffer = await chartCanvas.renderToBuffer(config);
-  fs.writeFileSync(path.join(charts_dir, "lambda_latency.png"), buffer);
-  console.log("✅ Chart saved to ./charts/lambda/lambda_latency.png");
+  const configArm = {
+    type: "bar",
+    data: { labels, datasets: armDatasets },
+    options: {
+      plugins: { title: { display: true, text: "Latency Profiling — arm64 (ms)", font: { size: 18, weight: "bold" } } },
+      scales: { y: { beginAtZero: true, title: { display: true, text: "ms" } } },
+    },
+  };
+
+  console.log("📊 Generating latency charts (x86_64 and arm64)...");
+  const bufX86 = await chartCanvas.renderToBuffer(configX86);
+  fs.writeFileSync(path.join(charts_dir, "lambda_latency_x86.png"), bufX86);
+  const bufArm = await chartCanvas.renderToBuffer(configArm);
+  fs.writeFileSync(path.join(charts_dir, "lambda_latency_arm64.png"), bufArm);
+  console.log("✅ Charts saved to ./charts/lambda/lambda_latency_x86.png and lambda_latency_arm64.png");
 }
 
 async function generateMemoryChart() {
@@ -252,7 +272,7 @@ async function generateMemoryChart() {
     fs.readFileSync(path.join(results_dir, "memory_metrics.json"), "utf8"),
   );
 
-  const labels = data.x86_64.map((d) => d.input);
+  const labels = data.x86_64.map((d) => `${d.input} (${formatSamples(d.samples)})`);
 
   const x86_before = data.x86_64.map((d) => d.heap_before_mb);
   const x86_peak = data.x86_64.map((d) => d.heap_peak_mb);
