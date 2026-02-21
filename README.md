@@ -143,11 +143,20 @@ Results are organized by CPU name (auto-detected from `os.cpus()[0].model` or se
 
 > **Analysis:** Graviton provides ~3.8x higher throughput for large-scale buffers due to superior memory bandwidth and physical core isolation in the Lambda environment.
 
-![AWS Lambda Comparison](./charts/lambda_comparison.png)
+![AWS Lambda Comparison](./charts/lambda/lambda_comparison.png)
 _AWS Lambda 2 GB ram results_
 
-![AWS Lambda 1.0 v CPU Performance](./charts/lambda_arch_comparison.png)
+![AWS Lambda 1.0 v CPU Performance](./charts/lambda/lambda_arch_comparison.png)
 _AWS Lambda 1.769 GB (1 vCPU) ram results_
+
+![AWS Lambda Persistence Throughput](./charts/lambda/lambda_persistence.png)
+_Persistence throughput (json vs toon) — Million samples/sec_
+
+![AWS Lambda Latency Profiling](./charts/lambda/lambda_latency.png)
+_Latency profiling (p50/p95/p99/avg) — ms_
+
+![AWS Lambda Memory Profiling](./charts/lambda/lambda_memory.png)
+_Heap before/peak (MB) and growth per iter (KB)_
 
 ## Requirements
 
