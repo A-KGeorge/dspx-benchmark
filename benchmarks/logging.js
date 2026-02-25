@@ -10,6 +10,7 @@ import {
   genSignal,
   getMachineSpecs,
   runTimed,
+  runTimedSync,
   saveJSON,
   ensureDirs,
   formatThroughput,
@@ -44,7 +45,7 @@ for (const size of testSizes) {
 
   console.log(`\n${"=".repeat(80)}`);
   console.log(
-    `Input: ${size.name.toUpperCase()} (${size.length.toLocaleString()} samples)`
+    `Input: ${size.name.toUpperCase()} (${size.length.toLocaleString()} samples)`,
   );
   console.log("=".repeat(80));
 
@@ -54,16 +55,16 @@ for (const size of testSizes) {
     const pipeline = createDspPipeline();
     pipeline.MovingAverage({ mode: "moving", windowSize: 100 });
 
-    const result = await runTimed(
+    const result = runTimedSync(
       "no-logging",
-      async () => {
-        return await pipeline.process(signal, {
+      () => {
+        return pipeline.processSync(signal, {
           sampleRate: 10000,
           channels: 1,
         });
       },
       3,
-      10
+      10,
     );
 
     const throughput = (size.length / result.avg) * 1000;
@@ -112,10 +113,10 @@ for (const size of testSizes) {
     const pipeline = createDspPipeline();
     pipeline.MovingAverage({ mode: "moving", windowSize: 100 });
 
-    const result = await runTimed(
+    const result = runTimedSync(
       "batched-logging",
-      async () => {
-        return await pipeline.process(signal, {
+      () => {
+        return pipeline.processSync(signal, {
           sampleRate: 10000,
           channels: 1,
           callbacks: {
@@ -127,12 +128,12 @@ for (const size of testSizes) {
         });
       },
       3,
-      10
+      10,
     );
 
     const throughput = (size.length / result.avg) * 1000;
     const baselineResult = results.find(
-      (r) => r.input === size.name && r.mode === "none"
+      (r) => r.input === size.name && r.mode === "none",
     );
     const overhead = baselineResult
       ? ((result.avg - baselineResult.avg_ms) / baselineResult.avg_ms) * 100
@@ -172,10 +173,10 @@ for (const size of testSizes) {
     const pipeline = createDspPipeline();
     pipeline.MovingAverage({ mode: "moving", windowSize: 100 });
 
-    const result = await runTimed(
+    const result = runTimedSync(
       "per-message-logging",
-      async () => {
-        return await pipeline.process(signal, {
+      () => {
+        return pipeline.processSync(signal, {
           sampleRate: 10000,
           channels: 1,
           callbacks: {
@@ -187,12 +188,12 @@ for (const size of testSizes) {
         });
       },
       3,
-      10
+      10,
     );
 
     const throughput = (size.length / result.avg) * 1000;
     const baselineResult = results.find(
-      (r) => r.input === size.name && r.mode === "none"
+      (r) => r.input === size.name && r.mode === "none",
     );
     const overhead = baselineResult
       ? ((result.avg - baselineResult.avg_ms) / baselineResult.avg_ms) * 100
@@ -238,10 +239,10 @@ for (const size of testSizes) {
       const originalLog = console.log;
       console.log = () => {};
 
-      const result = await runTimed(
+      const result = runTimedSync(
         "console-logging",
-        async () => {
-          return await pipeline.process(signal, {
+        () => {
+          return pipeline.processSync(signal, {
             sampleRate: 10000,
             channels: 1,
             callbacks: {
@@ -253,7 +254,7 @@ for (const size of testSizes) {
           });
         },
         2,
-        5
+        5,
       );
 
       // Restore console.log
@@ -261,7 +262,7 @@ for (const size of testSizes) {
 
       const throughput = (size.length / result.avg) * 1000;
       const baselineResult = results.find(
-        (r) => r.input === size.name && r.mode === "none"
+        (r) => r.input === size.name && r.mode === "none",
       );
       const overhead = baselineResult
         ? ((result.avg - baselineResult.avg_ms) / baselineResult.avg_ms) * 100
@@ -284,7 +285,7 @@ for (const size of testSizes) {
       results.push(data);
       console.log(`   Time: ${result.avg.toFixed(2)} ms`);
       console.log(
-        `   Throughput: ${formatThroughput(size.length, result.avg)}`
+        `   Throughput: ${formatThroughput(size.length, result.avg)}`,
       );
       console.log(`   Overhead: ${overhead.toFixed(2)}%`);
       console.log(`   Logs captured: ${logCount}`);
@@ -329,7 +330,7 @@ console.log("\nAverage Overhead vs Baseline:");
 for (const [mode, data] of Object.entries(summary)) {
   if (mode !== "none") {
     console.log(
-      `  ${mode.padEnd(15)}: ${data.avgOverhead.toFixed(2)}% overhead`
+      `  ${mode.padEnd(15)}: ${data.avgOverhead.toFixed(2)}% overhead`,
     );
   }
 }

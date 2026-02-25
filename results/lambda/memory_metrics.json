@@ -3,13 +3,13 @@
   "test_condition": "Fresh Invocation",
   "memory_mb": 3008,
   "x86_64": [
-    { "input": "SMALL", "samples": 1024, "heap_before_mb": 5.56, "heap_peak_mb": 5.60, "growth_per_iter_kb": 0.83 },
-    { "input": "MEDIUM", "samples": 65536, "heap_before_mb": 5.63, "heap_peak_mb": 5.63, "growth_per_iter_kb": 0.01 },
-    { "input": "LARGE", "samples": 1048576, "heap_before_mb": 5.63, "heap_peak_mb": 5.63, "growth_per_iter_kb": 0.00 }
+    { "input": "SMALL", "samples": 1024, "heap_before_mb": 5.56, "heap_peak_mb": 5.60, "growth_per_iter_kb": 0.82 },
+    { "input": "MEDIUM", "samples": 65536, "heap_before_mb": 5.63, "heap_peak_mb": 5.63, "growth_per_iter_kb": 0.00 },
+    { "input": "LARGE", "samples": 1048576, "heap_before_mb": 5.63, "heap_peak_mb": 5.63, "growth_per_iter_kb": -0.05 }
   ],
   "arm64": [
-    { "input": "SMALL", "samples": 1024, "heap_before_mb": 5.35, "heap_peak_mb": 5.39, "growth_per_iter_kb": 0.85 },
-    { "input": "MEDIUM", "samples": 65536, "heap_before_mb": 5.42, "heap_peak_mb": 5.42, "growth_per_iter_kb": 0.01 },
-    { "input": "LARGE", "samples": 1048576, "heap_before_mb": 5.42, "heap_peak_mb": 5.42, "growth_per_iter_kb": 0.00 }
+    { "input": "SMALL", "samples": 1024, "heap_before_mb": 5.34, "heap_peak_mb": 5.38, "growth_per_iter_kb": 0.86 },
+    { "input": "MEDIUM", "samples": 65536, "heap_before_mb": 5.41, "heap_peak_mb": 5.41, "growth_per_iter_kb": 0.00 },
+    { "input": "LARGE", "samples": 1048576, "heap_before_mb": 5.42, "heap_peak_mb": 5.41, "growth_per_iter_kb": -0.02 }
   ]
 }

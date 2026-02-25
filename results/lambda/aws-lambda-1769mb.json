@@ -7,13 +7,13 @@
     "note": "vCPU is proportional to memory; 1769MB provides ~1 full vCPU."
   },
   "arm64": [
-    { "input": "SMALL", "samples": 1024, "avg_ms": 0.0715, "throughput": 14.3 },
-    { "input": "MEDIUM", "samples": 4096, "avg_ms": 0.0931, "throughput": 44.0 },
-    { "input": "LARGE", "samples": 1048576, "avg_ms": 13.3703, "throughput": 78.4 }
+    { "input": "SMALL", "samples": 1024, "avg_ms": 0.0148, "throughput": 84.8 },
+    { "input": "MEDIUM", "samples": 4096, "avg_ms": 0.0410, "throughput": 100 },
+    { "input": "LARGE", "samples": 1048576, "avg_ms": 9.9530, "throughput": 105.4 }
   ],
   "x64": [
-    { "input": "SMALL", "samples": 1024, "avg_ms": 0.0837, "throughput": 12.2 },
-    { "input": "MEDIUM", "samples": 4096, "avg_ms": 0.1910, "throughput": 21.4 },
-    { "input": "LARGE", "samples": 1048576, "avg_ms": 34.9176, "throughput": 30.0 }
+    { "input": "small", "samples": 1024, "avg_ms": 0.0336, "throughput": 30.4},
+    { "input": "medium", "samples": 4096, "avg_ms": 0.1244, "throughput": 32.9},
+    { "input": "large", "samples": 1048576, "avg_ms": 31.7056, "throughput": 33.1 }
   ]
 }

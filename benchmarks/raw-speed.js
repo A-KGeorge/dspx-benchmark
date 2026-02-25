@@ -15,6 +15,7 @@ import {
   genSignal,
   getMachineSpecs,
   runTimed,
+  runTimedSync,
   saveJSON,
   printResult,
   getSummaryLine,
@@ -69,7 +70,7 @@ for (const size of INPUT_SIZES) {
   console.log(
     `\n🔬 Testing FFT with ${
       size.name
-    } input (${size.length.toLocaleString()} samples)`
+    } input (${size.length.toLocaleString()} samples)`,
   );
 
   // --- dspx FFT ---
@@ -82,7 +83,7 @@ for (const size of INPUT_SIZES) {
         return fftProcessor.rfft(signal); // Use rfft for real-valued input
       },
       3,
-      10
+      10,
     );
 
     const data = {
@@ -115,7 +116,7 @@ for (const size of INPUT_SIZES) {
         () => {
           const tensor = tf.tensor1d(Array.from(signal));
           const fftResult = tf.spectral.fft(
-            tf.complex(tensor, tf.zeros(tensor.shape))
+            tf.complex(tensor, tf.zeros(tensor.shape)),
           );
           const output = fftResult.dataSync();
           tensor.dispose();
@@ -123,7 +124,7 @@ for (const size of INPUT_SIZES) {
           return output;
         },
         3,
-        10
+        10,
       );
 
       const data = {
@@ -162,7 +163,7 @@ for (const size of INPUT_SIZES) {
           fftjs.realTransform(out, input);
         },
         3,
-        10
+        10,
       );
 
       const data = {
@@ -246,7 +247,7 @@ for (const size of INPUT_SIZES) {
   console.log(
     `\n🔬 Testing FIR Filter with ${
       size.name
-    } input (${size.length.toLocaleString()} samples)`
+    } input (${size.length.toLocaleString()} samples)`,
   );
 
   // Generate coefficients for Fili and naive implementations
@@ -266,16 +267,16 @@ for (const size of INPUT_SIZES) {
       windowType: "hamming",
     });
 
-    const result = await runTimed(
+    const result = runTimedSync(
       "dspx-fir",
-      async () => {
-        return await pipeline.process(signal, {
+      () => {
+        return pipeline.processSync(signal, {
           sampleRate: sampleRate,
           channels: 1,
         });
       },
       3,
-      10
+      10,
     );
 
     const data = {
@@ -316,7 +317,7 @@ for (const size of INPUT_SIZES) {
           return output;
         },
         3,
-        10
+        10,
       );
 
       const data = {
@@ -348,7 +349,7 @@ for (const size of INPUT_SIZES) {
         return naiveFirFilter(signal, coeffs);
       },
       3,
-      10
+      10,
     );
 
     const data = {
@@ -402,7 +403,7 @@ const KERNEL_SIZES = [8, 32, 64, 128, 256]; // Test across direct and FFT method
 const CONV_SIGNAL_SIZE = 65536; // Medium size for consistency
 
 console.log(
-  "ℹ️  Note: Using batch mode for fair comparison with naive JS. dspx auto-switches to FFT method for kernels > 64.\n"
+  "ℹ️  Note: Using batch mode for fair comparison with naive JS. dspx auto-switches to FFT method for kernels > 64.\n",
 );
 
 for (const kernelSize of KERNEL_SIZES) {
@@ -410,7 +411,7 @@ for (const kernelSize of KERNEL_SIZES) {
   const kernel = new Float32Array(kernelSize).map(() => Math.random());
 
   console.log(
-    `\n🔬 Testing 1D Convolution: signal=${CONV_SIGNAL_SIZE.toLocaleString()}, kernel=${kernelSize}`
+    `\n🔬 Testing 1D Convolution: signal=${CONV_SIGNAL_SIZE.toLocaleString()}, kernel=${kernelSize}`,
   );
 
   // --- dspx Convolution ---
@@ -423,16 +424,16 @@ for (const kernelSize of KERNEL_SIZES) {
       method: "auto", // Let dspx choose between direct and FFT
     });
 
-    const result = await runTimed(
+    const result = runTimedSync(
       "dspx-conv1d",
-      async () => {
-        return await pipeline.process(signal, {
+      () => {
+        return pipeline.processSync(signal, {
           sampleRate: 10000,
           channels: 1,
         });
       },
       3,
-      10
+      10,
     );
 
     const data = {
@@ -491,7 +492,7 @@ for (const kernelSize of KERNEL_SIZES) {
           return output;
         },
         3,
-        10
+        10,
       );
 
       const data = {
@@ -526,7 +527,7 @@ for (const kernelSize of KERNEL_SIZES) {
         return naiveConv1d(signal, kernel);
       },
       3,
-      10
+      10,
     );
 
     const data = {

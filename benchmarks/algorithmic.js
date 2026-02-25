@@ -15,6 +15,7 @@ import {
   genSignal,
   getMachineSpecs,
   runTimed,
+  runTimedSync,
   saveJSON,
   ensureDirs,
 } from "../lib/common.js";
@@ -38,7 +39,7 @@ console.log("=".repeat(80));
 console.log("\nExpected patterns:");
 console.log("  • dspx (circular buffer): O(1) — flat line");
 console.log(
-  "  • naive JS (sliding window): O(N·W) — increasing with window size\n"
+  "  • naive JS (sliding window): O(N·W) — increasing with window size\n",
 );
 
 // Naive JavaScript implementation
@@ -65,7 +66,7 @@ for (const size of INPUT_SIZES) {
 
   console.log(`\n${"=".repeat(80)}`);
   console.log(
-    `Input: ${size.name.toUpperCase()} (${size.length.toLocaleString()} samples)`
+    `Input: ${size.name.toUpperCase()} (${size.length.toLocaleString()} samples)`,
   );
   console.log("=".repeat(80));
 
@@ -82,7 +83,7 @@ for (const size of INPUT_SIZES) {
 
       // Warm up JIT and allocate memory (5 iterations)
       for (let i = 0; i < 5; i++) {
-        await warmupPipeline.process(signal, {
+        warmupPipeline.processSync(signal, {
           sampleRate: 10000,
           channels: 1,
         });
@@ -94,14 +95,14 @@ for (const size of INPUT_SIZES) {
 
       // ✅ FIX: Now measure steady-state performance
       // Since we can't reset, we'll create fresh pipeline but with warmed JIT
-      const result = await runTimed(
+      const result = runTimedSync(
         `dspx-ma-${windowSize}`,
-        async () => {
+        () => {
           // Create fresh pipeline for each iteration to ensure independence
           const pipeline = createDspPipeline();
           pipeline.MovingAverage({ mode: "moving", windowSize });
 
-          const output = await pipeline.process(signal, {
+          const output = pipeline.processSync(signal, {
             sampleRate: 10000,
             channels: 1,
           });
@@ -110,7 +111,7 @@ for (const size of INPUT_SIZES) {
           return output;
         },
         0, // No additional warmup needed (already done)
-        10 // More reps for better statistics
+        10, // More reps for better statistics
       );
 
       const data = {
@@ -133,7 +134,7 @@ for (const size of INPUT_SIZES) {
         `   Throughput:        ${(
           ((size.length / result.avg) * 1000) /
           1e6
-        ).toFixed(1)}M samples/sec`
+        ).toFixed(1)}M samples/sec`,
       );
     } catch (e) {
       console.error(`   ❌ dspx failed:`, e.message);
@@ -142,13 +143,13 @@ for (const size of INPUT_SIZES) {
     // --- Naive JS Moving Average (O(N·W)) ---
     // Only run for smaller inputs to avoid extremely long execution times
     try {
-      const result = await runTimed(
+      const result = runTimedSync(
         `naive-ma-${windowSize}`,
         () => {
           return naiveMovingAverage(signal, windowSize);
         },
         2,
-        5
+        5,
       );
 
       const data = {
@@ -173,7 +174,7 @@ for (const size of INPUT_SIZES) {
         (r) =>
           r.lib === "dspx" &&
           r.input === size.name &&
-          r.windowSize === windowSize
+          r.windowSize === windowSize,
       );
 
       if (dspxResult) {
@@ -182,7 +183,7 @@ for (const size of INPUT_SIZES) {
         console.log(
           `   ${symbol} Speedup:        ${speedup.toFixed(1)}x ${
             speedup > 1 ? "faster" : "slower"
-          }`
+          }`,
         );
       }
     } catch (e) {
@@ -212,11 +213,11 @@ const naiveAvg =
   results.filter((r) => r.lib === "naive_js").length;
 
 console.log(
-  `\ndspx (O(1) circular buffer):   ${dspxAvg.toFixed(2)} ms average`
+  `\ndspx (O(1) circular buffer):   ${dspxAvg.toFixed(2)} ms average`,
 );
 console.log(`naive JS (O(N·W) sliding):     ${naiveAvg.toFixed(2)} ms average`);
 console.log(
-  `Overall speedup:                ${(naiveAvg / dspxAvg).toFixed(2)}x\n`
+  `Overall speedup:                ${(naiveAvg / dspxAvg).toFixed(2)}x\n`,
 );
 
 // Calculate average throughput
@@ -228,12 +229,12 @@ const dspxThroughput =
 
 console.log(
   `Average dspx throughput:        ${(dspxThroughput / 1e6).toFixed(
-    1
-  )}M samples/sec\n`
+    1,
+  )}M samples/sec\n`,
 );
 
 console.log(
-  "Key insight: dspx maintains constant time regardless of window size,"
+  "Key insight: dspx maintains constant time regardless of window size,",
 );
 console.log("while naive implementation scales linearly with window size.\n");
 
