@@ -4,19 +4,19 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "dspx",
-    "avg_ms": 0.01739810000005946,
-    "min_ms": 0.009954999999990832,
-    "max_ms": 0.038666000000148415,
-    "throughput": 5.885700162641325E7,
+    "avg_ms": 0.0273470999998608,
+    "min_ms": 0.012995000000046275,
+    "max_ms": 0.04704399999991438,
+    "throughput": 3.744455536437912E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -24,19 +24,19 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "tfjs",
-    "avg_ms": 0.5696293000000197,
-    "min_ms": 0.3472719999999754,
-    "max_ms": 1.0392790000000787,
-    "throughput": 1797660.3380478579,
+    "avg_ms": 1.0019170999999916,
+    "min_ms": 0.7068410000001677,
+    "max_ms": 2.103802999999971,
+    "throughput": 1022040.6458777963,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -44,19 +44,19 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "fft.js",
-    "avg_ms": 0.8900176999999985,
-    "min_ms": 0.4401519999998982,
-    "max_ms": 2.9473370000000614,
-    "throughput": 1150538.9162485215,
+    "avg_ms": 0.9463416000001417,
+    "min_ms": 0.4415340000005017,
+    "max_ms": 3.1509600000008504,
+    "throughput": 1082061.6994960876,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -64,19 +64,19 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "dspx",
-    "avg_ms": 0.9716741999999841,
-    "min_ms": 0.9032290000000103,
-    "max_ms": 1.0800329999999576,
-    "throughput": 6.744647537209599E7,
+    "avg_ms": 0.9468354000002364,
+    "min_ms": 0.8382760000004055,
+    "max_ms": 1.3542489999999816,
+    "throughput": 6.921583202316225E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -84,19 +84,19 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "tfjs",
-    "avg_ms": 12.223477100000036,
-    "min_ms": 10.825917000000118,
-    "max_ms": 15.645477000000028,
-    "throughput": 5361485.890131852,
+    "avg_ms": 13.30758649999989,
+    "min_ms": 11.419902999999977,
+    "max_ms": 16.73260499999924,
+    "throughput": 4924709.675943158,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -104,19 +104,19 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "fft.js",
-    "avg_ms": 1.6813194000000522,
-    "min_ms": 1.5108070000001135,
-    "max_ms": 2.8917120000000978,
-    "throughput": 3.897891144300004E7,
+    "avg_ms": 1.6889112999998361,
+    "min_ms": 1.5009769999996934,
+    "max_ms": 3.0102979999992385,
+    "throughput": 3.880369561149029E7,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -124,19 +124,19 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "dspx",
-    "avg_ms": 17.609205600000017,
-    "min_ms": 16.32724600000006,
-    "max_ms": 19.34703300000001,
-    "throughput": 5.9547036011664204E7,
+    "avg_ms": 17.896233999999822,
+    "min_ms": 16.131321999999273,
+    "max_ms": 19.74150699999973,
+    "throughput": 5.8591992035866894E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -144,19 +144,19 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "tfjs",
-    "avg_ms": 193.04716750000006,
-    "min_ms": 188.20080400000006,
-    "max_ms": 200.13293699999986,
-    "throughput": 5431708.80764153,
+    "avg_ms": 196.77877249999992,
+    "min_ms": 188.5697909999999,
+    "max_ms": 203.89815999999973,
+    "throughput": 5328704.853060309,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -164,19 +164,19 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "fft.js",
-    "avg_ms": 59.401862800000075,
-    "min_ms": 57.98366400000032,
-    "max_ms": 61.452479000000494,
-    "throughput": 1.7652241033760957E7,
+    "avg_ms": 63.35317840000007,
+    "min_ms": 59.281106000000364,
+    "max_ms": 67.34311200000047,
+    "throughput": 1.6551276928514747E7,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -184,10 +184,10 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "dspx",
-    "avg_ms": 0.14847299999992175,
-    "min_ms": 0.09262200000011944,
-    "max_ms": 0.2525070000001506,
-    "throughput": 6896876.873239846,
+    "avg_ms": 0.07050769999968906,
+    "min_ms": 0.03756500000054075,
+    "max_ms": 0.1567749999994703,
+    "throughput": 1.4523236469272375E7,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51.0,
     "meta": {
@@ -195,9 +195,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -205,10 +205,10 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "fili",
-    "avg_ms": 0.6361545999997361,
-    "min_ms": 0.406289999999899,
-    "max_ms": 1.002582999999504,
-    "throughput": 1609671.611272519,
+    "avg_ms": 0.6402538999998797,
+    "min_ms": 0.4076179999992746,
+    "max_ms": 1.060088000000178,
+    "throughput": 1599365.5017176662,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -216,9 +216,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -226,10 +226,10 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "naive_js",
-    "avg_ms": 0.25082760000013876,
-    "min_ms": 0.23790600000029372,
-    "max_ms": 0.2912980000000971,
-    "throughput": 4082485.340526455,
+    "avg_ms": 0.2534351999998762,
+    "min_ms": 0.23879200000010314,
+    "max_ms": 0.28570399999989604,
+    "throughput": 4040480.564659133,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -237,9 +237,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -247,10 +247,10 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "dspx",
-    "avg_ms": 2.7091990999999327,
-    "min_ms": 2.5904460000001563,
-    "max_ms": 3.2505360000004657,
-    "throughput": 2.4190174874929503E7,
+    "avg_ms": 2.284275599999637,
+    "min_ms": 2.2070480000002135,
+    "max_ms": 2.376942999999301,
+    "throughput": 2.8690058239912212E7,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51.0,
     "meta": {
@@ -258,9 +258,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -268,10 +268,10 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "fili",
-    "avg_ms": 23.390900200000125,
-    "min_ms": 23.160891999999876,
-    "max_ms": 23.531723000000056,
-    "throughput": 2801773.3152484507,
+    "avg_ms": 23.514978000000156,
+    "min_ms": 23.21304500000042,
+    "max_ms": 23.850406999999905,
+    "throughput": 2786989.636987947,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -279,9 +279,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -289,10 +289,10 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "naive_js",
-    "avg_ms": 15.71929599999994,
-    "min_ms": 15.476188999999977,
-    "max_ms": 16.109370000000126,
-    "throughput": 4169143.4527347945,
+    "avg_ms": 15.656779900000037,
+    "min_ms": 15.50181899999916,
+    "max_ms": 16.013950000000477,
+    "throughput": 4185790.463848817,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -300,9 +300,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -310,10 +310,10 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "dspx",
-    "avg_ms": 42.409372799999986,
-    "min_ms": 40.48144999999931,
-    "max_ms": 48.66378099999929,
-    "throughput": 2.472510039101546E7,
+    "avg_ms": 37.3983043000002,
+    "min_ms": 37.16143100000045,
+    "max_ms": 37.76052100000015,
+    "throughput": 2.803806267761703E7,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51.0,
     "meta": {
@@ -321,9 +321,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -331,10 +331,10 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "fili",
-    "avg_ms": 376.7288984999997,
-    "min_ms": 372.7664300000015,
-    "max_ms": 380.2535230000012,
-    "throughput": 2783370.2277023513,
+    "avg_ms": 380.0642107,
+    "min_ms": 374.2520829999994,
+    "max_ms": 410.734969000001,
+    "throughput": 2758944.3322451725,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -342,9 +342,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -352,10 +352,10 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "naive_js",
-    "avg_ms": 178.25899109999992,
-    "min_ms": 145.7245750000002,
-    "max_ms": 252.61594700000023,
-    "throughput": 5882317.596040744,
+    "avg_ms": 156.90729740000023,
+    "min_ms": 145.48703000000023,
+    "max_ms": 250.77244299999802,
+    "throughput": 6682773.952360475,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -363,9 +363,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -375,19 +375,19 @@
     "signal_size": 65536.0,
     "kernel_size": 8.0,
     "lib": "dspx",
-    "avg_ms": 1.1803290999998353,
-    "min_ms": 1.1115269999991142,
-    "max_ms": 1.292684999998528,
-    "throughput": 5.5523497641470626E7,
+    "avg_ms": 0.4262869000001956,
+    "min_ms": 0.3799089999993157,
+    "max_ms": 0.5075309999992896,
+    "throughput": 1.5373683779625866E8,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -397,19 +397,19 @@
     "signal_size": 65536.0,
     "kernel_size": 8.0,
     "lib": "tfjs",
-    "avg_ms": 11.355109299999821,
-    "min_ms": 9.102353000000221,
-    "max_ms": 16.699506999999358,
-    "throughput": 5771498.826523936,
+    "avg_ms": 11.27469409999976,
+    "min_ms": 9.835751000002347,
+    "max_ms": 13.887919999997393,
+    "throughput": 5812663.24555993,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -419,19 +419,19 @@
     "signal_size": 65536.0,
     "kernel_size": 8.0,
     "lib": "naive_js",
-    "avg_ms": 2.2599317999998676,
-    "min_ms": 2.2084450000002107,
-    "max_ms": 2.3357359999990877,
-    "throughput": 2.8999105194238093E7,
+    "avg_ms": 2.278312300000107,
+    "min_ms": 2.2132200000014564,
+    "max_ms": 2.4705770000000484,
+    "throughput": 2.8765152169874568E7,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -441,19 +441,19 @@
     "signal_size": 65536.0,
     "kernel_size": 32.0,
     "lib": "dspx",
-    "avg_ms": 1.2893889000002674,
-    "min_ms": 1.2465580000007321,
-    "max_ms": 1.3581800000010844,
-    "throughput": 5.082717867354559E7,
+    "avg_ms": 0.5749622999996064,
+    "min_ms": 0.5321289999992587,
+    "max_ms": 0.6144889999995939,
+    "throughput": 1.1398312550239357E8,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -463,19 +463,19 @@
     "signal_size": 65536.0,
     "kernel_size": 32.0,
     "lib": "tfjs",
-    "avg_ms": 10.834397400000125,
-    "min_ms": 9.693869999999151,
-    "max_ms": 11.666330000000016,
-    "throughput": 6048882.792503,
+    "avg_ms": 10.98224220000011,
+    "min_ms": 10.172545000001264,
+    "max_ms": 12.499096999999892,
+    "throughput": 5967451.710361965,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -485,19 +485,19 @@
     "signal_size": 65536.0,
     "kernel_size": 32.0,
     "lib": "naive_js",
-    "avg_ms": 8.271252900000217,
-    "min_ms": 8.201268999999229,
-    "max_ms": 8.464245000001029,
-    "throughput": 7923346.17165415,
+    "avg_ms": 8.35219479999978,
+    "min_ms": 8.221240999999281,
+    "max_ms": 8.574513999999908,
+    "throughput": 7846560.283771367,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -507,19 +507,19 @@
     "signal_size": 65536.0,
     "kernel_size": 64.0,
     "lib": "dspx",
-    "avg_ms": 1.6603188999999474,
-    "min_ms": 1.5652160000008735,
-    "max_ms": 1.77164300000004,
-    "throughput": 3.947193518064637E7,
+    "avg_ms": 0.8883801000007224,
+    "min_ms": 0.8372439999984636,
+    "max_ms": 0.9776250000031723,
+    "throughput": 7.377022515469077E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -529,19 +529,19 @@
     "signal_size": 65536.0,
     "kernel_size": 64.0,
     "lib": "tfjs",
-    "avg_ms": 11.46119009999984,
-    "min_ms": 10.559040999998615,
-    "max_ms": 12.564634000000297,
-    "throughput": 5718079.835356794,
+    "avg_ms": 11.4802002000004,
+    "min_ms": 10.502786999997625,
+    "max_ms": 13.301032999999734,
+    "throughput": 5708611.248782728,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -551,19 +551,19 @@
     "signal_size": 65536.0,
     "kernel_size": 64.0,
     "lib": "naive_js",
-    "avg_ms": 14.78277769999986,
-    "min_ms": 14.679318000000421,
-    "max_ms": 14.916407999999137,
-    "throughput": 4433266.963082359,
+    "avg_ms": 14.915530099999888,
+    "min_ms": 14.688933999997971,
+    "max_ms": 15.153802999997424,
+    "throughput": 4393809.644083685,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -573,19 +573,19 @@
     "signal_size": 65536.0,
     "kernel_size": 128.0,
     "lib": "dspx",
-    "avg_ms": 4.362555400000383,
-    "min_ms": 4.08053099999961,
-    "max_ms": 4.518831000001228,
-    "throughput": 1.5022388025145592E7,
+    "avg_ms": 3.5984236999996937,
+    "min_ms": 3.422567000001436,
+    "max_ms": 3.7845019999986107,
+    "throughput": 1.821241895444541E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -595,19 +595,19 @@
     "signal_size": 65536.0,
     "kernel_size": 128.0,
     "lib": "tfjs",
-    "avg_ms": 12.691923700000189,
-    "min_ms": 11.83946300000025,
-    "max_ms": 14.165006000001085,
-    "throughput": 5163598.64344276,
+    "avg_ms": 13.047395900000264,
+    "min_ms": 11.960996000001614,
+    "max_ms": 14.620020000002114,
+    "throughput": 5022918.02151866,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -617,19 +617,19 @@
     "signal_size": 65536.0,
     "kernel_size": 128.0,
     "lib": "naive_js",
-    "avg_ms": 29.74213499999987,
-    "min_ms": 29.320826999999554,
-    "max_ms": 30.709139000000505,
-    "throughput": 2203473.2879801765,
+    "avg_ms": 29.76564380000091,
+    "min_ms": 29.280077999999776,
+    "max_ms": 30.915899999999965,
+    "throughput": 2201732.9925851626,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -639,19 +639,19 @@
     "signal_size": 65536.0,
     "kernel_size": 256.0,
     "lib": "dspx",
-    "avg_ms": 3.9815319999999703,
-    "min_ms": 3.868820000001506,
-    "max_ms": 4.137751999998727,
-    "throughput": 1.6459995800611544E7,
+    "avg_ms": 3.7629242999995767,
+    "min_ms": 3.627337999998417,
+    "max_ms": 4.031985999998142,
+    "throughput": 1.741624193715706E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -661,19 +661,19 @@
     "signal_size": 65536.0,
     "kernel_size": 256.0,
     "lib": "tfjs",
-    "avg_ms": 16.31729979999982,
-    "min_ms": 14.972029000000475,
-    "max_ms": 18.11797099999967,
-    "throughput": 4016350.7935302337,
+    "avg_ms": 16.359017399999722,
+    "min_ms": 15.099427000001015,
+    "max_ms": 17.93636300000071,
+    "throughput": 4006108.5820473004,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -683,19 +683,19 @@
     "signal_size": 65536.0,
     "kernel_size": 256.0,
     "lib": "naive_js",
-    "avg_ms": 57.9983784,
-    "min_ms": 57.74264199999925,
-    "max_ms": 58.632588000000396,
-    "throughput": 1129962.6266792314,
+    "avg_ms": 58.52411450000036,
+    "min_ms": 57.58126899999843,
+    "max_ms": 62.36602500000299,
+    "throughput": 1119811.9024936224,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -703,17 +703,17 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "scipy",
-    "avg_ms": 0.03718090010806918,
-    "min_ms": 0.017591999494470656,
-    "max_ms": 0.0668399989081081,
-    "throughput": 2.754102232661566E7,
+    "avg_ms": 0.024796299993568027,
+    "min_ms": 0.016700999992735888,
+    "max_ms": 0.05816299997718488,
+    "throughput": 4.129648376030367E7,
     "backend": "CPU (scipy.fft)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -723,17 +723,17 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "scipy",
-    "avg_ms": 0.8498259001498809,
-    "min_ms": 0.7302730009541847,
-    "max_ms": 1.244140999915544,
-    "throughput": 7.711697182733738E7,
+    "avg_ms": 0.869942800002832,
+    "min_ms": 0.7795820000069398,
+    "max_ms": 1.0612369999876137,
+    "throughput": 7.533368860548837E7,
     "backend": "CPU (scipy.fft)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -743,17 +743,17 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "scipy",
-    "avg_ms": 17.548849699596758,
-    "min_ms": 16.99707599982503,
-    "max_ms": 19.158199000230525,
-    "throughput": 5.9751836613205165E7,
+    "avg_ms": 16.914850099993828,
+    "min_ms": 16.220269999990933,
+    "max_ms": 17.983270000001994,
+    "throughput": 6.1991445020277336E7,
     "backend": "CPU (scipy.fft)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -763,17 +763,17 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "scipy",
-    "avg_ms": 0.10886679956456646,
-    "min_ms": 0.09170900011667982,
-    "max_ms": 0.15362199701485224,
-    "throughput": 9405989.742471382,
+    "avg_ms": 0.132158199994592,
+    "min_ms": 0.09251800000242838,
+    "max_ms": 0.17056799998727,
+    "throughput": 7748289.550265537,
     "backend": "CPU (scipy.signal)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -783,17 +783,17 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "scipy",
-    "avg_ms": 1.8835212002159096,
-    "min_ms": 1.8220069978269748,
-    "max_ms": 1.9291169992357027,
-    "throughput": 3.47944052833E7,
+    "avg_ms": 1.8123431999924833,
+    "min_ms": 1.7324599999994916,
+    "max_ms": 1.9561789999897883,
+    "throughput": 3.616092139737761E7,
     "backend": "CPU (scipy.signal)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -803,17 +803,17 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "scipy",
-    "avg_ms": 40.60411560058128,
-    "min_ms": 39.419284999894444,
-    "max_ms": 42.79330799909076,
-    "throughput": 2.5824377270391498E7,
+    "avg_ms": 34.15971320000608,
+    "min_ms": 33.80575400001362,
+    "max_ms": 34.72854200001052,
+    "throughput": 3.069627645468093E7,
     "backend": "CPU (scipy.signal)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -824,17 +824,17 @@
     "samples": 65536.0,
     "kernel_size": 8.0,
     "lib": "numpy",
-    "avg_ms": 0.37148219998925924,
-    "min_ms": 0.29813999935868196,
-    "max_ms": 0.47721900045871735,
-    "throughput": 1.764176049401421E8,
+    "avg_ms": 0.2943164000100751,
+    "min_ms": 0.2565390000199841,
+    "max_ms": 0.3658760000178063,
+    "throughput": 2.226719272108403E8,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -845,17 +845,17 @@
     "samples": 65536.0,
     "kernel_size": 8.0,
     "lib": "scipy",
-    "avg_ms": 0.37681420071749017,
-    "min_ms": 0.31466499785892665,
-    "max_ms": 0.43233200267422944,
-    "throughput": 1.7392125847490144E8,
+    "avg_ms": 0.3220741999996335,
+    "min_ms": 0.29940499999270287,
+    "max_ms": 0.37416600000028666,
+    "throughput": 2.0348106119668877E8,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -866,17 +866,17 @@
     "samples": 65536.0,
     "kernel_size": 32.0,
     "lib": "numpy",
-    "avg_ms": 1.3686023987247609,
-    "min_ms": 1.347130997601198,
-    "max_ms": 1.3972019987704698,
-    "throughput": 4.788534643886732E7,
+    "avg_ms": 1.1183468000012908,
+    "min_ms": 1.0955369999976483,
+    "max_ms": 1.177397999981622,
+    "throughput": 5.860078465814393E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -887,17 +887,17 @@
     "samples": 65536.0,
     "kernel_size": 32.0,
     "lib": "scipy",
-    "avg_ms": 1.3897372009523679,
-    "min_ms": 1.3528620002034586,
-    "max_ms": 1.4322480019473005,
-    "throughput": 4.715711715501972E7,
+    "avg_ms": 1.277395200003184,
+    "min_ms": 1.152163000000428,
+    "max_ms": 1.5495190000081038,
+    "throughput": 5.130440446295449E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -908,17 +908,17 @@
     "samples": 65536.0,
     "kernel_size": 64.0,
     "lib": "numpy",
-    "avg_ms": 1.3359817996388301,
-    "min_ms": 1.295152000238886,
-    "max_ms": 1.415040998836048,
-    "throughput": 4.9054560487064295E7,
+    "avg_ms": 1.304456999997683,
+    "min_ms": 1.2581299999965267,
+    "max_ms": 1.3667480000094656,
+    "throughput": 5.02400615736022E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -929,17 +929,17 @@
     "samples": 65536.0,
     "kernel_size": 64.0,
     "lib": "scipy",
-    "avg_ms": 1.3856088000466116,
-    "min_ms": 1.2883669987786561,
-    "max_ms": 1.4640879999205936,
-    "throughput": 4.729762108742048E7,
+    "avg_ms": 1.3261448000093878,
+    "min_ms": 1.2742510000123275,
+    "max_ms": 1.4027070000111053,
+    "throughput": 4.941843454767237E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -950,17 +950,17 @@
     "samples": 65536.0,
     "kernel_size": 128.0,
     "lib": "numpy",
-    "avg_ms": 1.6951359997619875,
-    "min_ms": 1.656672997341957,
-    "max_ms": 1.7439029979868792,
-    "throughput": 3.866120477011983E7,
+    "avg_ms": 1.64039900000148,
+    "min_ms": 1.6281289999824367,
+    "max_ms": 1.6547429999889118,
+    "throughput": 3.995125576151953E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -971,17 +971,17 @@
     "samples": 65536.0,
     "kernel_size": 128.0,
     "lib": "scipy",
-    "avg_ms": 1.7665163992205635,
-    "min_ms": 1.740015999530442,
-    "max_ms": 1.7927849985426292,
-    "throughput": 3.709900458830517E7,
+    "avg_ms": 1.6971901999966121,
+    "min_ms": 1.680509999999913,
+    "max_ms": 1.7340759999910915,
+    "throughput": 3.861441104251652E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -992,17 +992,17 @@
     "samples": 65536.0,
     "kernel_size": 256.0,
     "lib": "numpy",
-    "avg_ms": 2.457173199218232,
-    "min_ms": 2.4093550018733367,
-    "max_ms": 2.497198998753447,
-    "throughput": 2.667129855593849E7,
+    "avg_ms": 2.3725756000033016,
+    "min_ms": 2.355237000017496,
+    "max_ms": 2.3978709999994408,
+    "throughput": 2.762230210911248E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1013,17 +1013,17 @@
     "samples": 65536.0,
     "kernel_size": 256.0,
     "lib": "scipy",
-    "avg_ms": 2.6070476000313647,
-    "min_ms": 2.5205589990946464,
-    "max_ms": 2.7325139999447856,
-    "throughput": 2.5138014357394762E7,
+    "avg_ms": 2.512838199993439,
+    "min_ms": 2.421416999993653,
+    "max_ms": 2.747720999991543,
+    "throughput": 2.6080469486722667E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1033,19 +1033,19 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "dspx",
-    "avg_ms": 0.01739810000005946,
-    "min_ms": 0.009954999999990832,
-    "max_ms": 0.038666000000148415,
-    "throughput": 5.885700162641325E7,
+    "avg_ms": 0.0273470999998608,
+    "min_ms": 0.012995000000046275,
+    "max_ms": 0.04704399999991438,
+    "throughput": 3.744455536437912E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1053,19 +1053,19 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "tfjs",
-    "avg_ms": 0.5696293000000197,
-    "min_ms": 0.3472719999999754,
-    "max_ms": 1.0392790000000787,
-    "throughput": 1797660.3380478579,
+    "avg_ms": 1.0019170999999916,
+    "min_ms": 0.7068410000001677,
+    "max_ms": 2.103802999999971,
+    "throughput": 1022040.6458777963,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1073,19 +1073,19 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "fft.js",
-    "avg_ms": 0.8900176999999985,
-    "min_ms": 0.4401519999998982,
-    "max_ms": 2.9473370000000614,
-    "throughput": 1150538.9162485215,
+    "avg_ms": 0.9463416000001417,
+    "min_ms": 0.4415340000005017,
+    "max_ms": 3.1509600000008504,
+    "throughput": 1082061.6994960876,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1093,19 +1093,19 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "dspx",
-    "avg_ms": 0.9716741999999841,
-    "min_ms": 0.9032290000000103,
-    "max_ms": 1.0800329999999576,
-    "throughput": 6.744647537209599E7,
+    "avg_ms": 0.9468354000002364,
+    "min_ms": 0.8382760000004055,
+    "max_ms": 1.3542489999999816,
+    "throughput": 6.921583202316225E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1113,19 +1113,19 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "tfjs",
-    "avg_ms": 12.223477100000036,
-    "min_ms": 10.825917000000118,
-    "max_ms": 15.645477000000028,
-    "throughput": 5361485.890131852,
+    "avg_ms": 13.30758649999989,
+    "min_ms": 11.419902999999977,
+    "max_ms": 16.73260499999924,
+    "throughput": 4924709.675943158,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1133,19 +1133,19 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "fft.js",
-    "avg_ms": 1.6813194000000522,
-    "min_ms": 1.5108070000001135,
-    "max_ms": 2.8917120000000978,
-    "throughput": 3.897891144300004E7,
+    "avg_ms": 1.6889112999998361,
+    "min_ms": 1.5009769999996934,
+    "max_ms": 3.0102979999992385,
+    "throughput": 3.880369561149029E7,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1153,19 +1153,19 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "dspx",
-    "avg_ms": 17.609205600000017,
-    "min_ms": 16.32724600000006,
-    "max_ms": 19.34703300000001,
-    "throughput": 5.9547036011664204E7,
+    "avg_ms": 17.896233999999822,
+    "min_ms": 16.131321999999273,
+    "max_ms": 19.74150699999973,
+    "throughput": 5.8591992035866894E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1173,19 +1173,19 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "tfjs",
-    "avg_ms": 193.04716750000006,
-    "min_ms": 188.20080400000006,
-    "max_ms": 200.13293699999986,
-    "throughput": 5431708.80764153,
+    "avg_ms": 196.77877249999992,
+    "min_ms": 188.5697909999999,
+    "max_ms": 203.89815999999973,
+    "throughput": 5328704.853060309,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1193,19 +1193,19 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "fft.js",
-    "avg_ms": 59.401862800000075,
-    "min_ms": 57.98366400000032,
-    "max_ms": 61.452479000000494,
-    "throughput": 1.7652241033760957E7,
+    "avg_ms": 63.35317840000007,
+    "min_ms": 59.281106000000364,
+    "max_ms": 67.34311200000047,
+    "throughput": 1.6551276928514747E7,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1213,10 +1213,10 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "dspx",
-    "avg_ms": 0.14847299999992175,
-    "min_ms": 0.09262200000011944,
-    "max_ms": 0.2525070000001506,
-    "throughput": 6896876.873239846,
+    "avg_ms": 0.07050769999968906,
+    "min_ms": 0.03756500000054075,
+    "max_ms": 0.1567749999994703,
+    "throughput": 1.4523236469272375E7,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51.0,
     "meta": {
@@ -1224,9 +1224,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1234,10 +1234,10 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "fili",
-    "avg_ms": 0.6361545999997361,
-    "min_ms": 0.406289999999899,
-    "max_ms": 1.002582999999504,
-    "throughput": 1609671.611272519,
+    "avg_ms": 0.6402538999998797,
+    "min_ms": 0.4076179999992746,
+    "max_ms": 1.060088000000178,
+    "throughput": 1599365.5017176662,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -1245,9 +1245,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1255,10 +1255,10 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "naive_js",
-    "avg_ms": 0.25082760000013876,
-    "min_ms": 0.23790600000029372,
-    "max_ms": 0.2912980000000971,
-    "throughput": 4082485.340526455,
+    "avg_ms": 0.2534351999998762,
+    "min_ms": 0.23879200000010314,
+    "max_ms": 0.28570399999989604,
+    "throughput": 4040480.564659133,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -1266,9 +1266,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1276,10 +1276,10 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "dspx",
-    "avg_ms": 2.7091990999999327,
-    "min_ms": 2.5904460000001563,
-    "max_ms": 3.2505360000004657,
-    "throughput": 2.4190174874929503E7,
+    "avg_ms": 2.284275599999637,
+    "min_ms": 2.2070480000002135,
+    "max_ms": 2.376942999999301,
+    "throughput": 2.8690058239912212E7,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51.0,
     "meta": {
@@ -1287,9 +1287,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1297,10 +1297,10 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "fili",
-    "avg_ms": 23.390900200000125,
-    "min_ms": 23.160891999999876,
-    "max_ms": 23.531723000000056,
-    "throughput": 2801773.3152484507,
+    "avg_ms": 23.514978000000156,
+    "min_ms": 23.21304500000042,
+    "max_ms": 23.850406999999905,
+    "throughput": 2786989.636987947,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -1308,9 +1308,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1318,10 +1318,10 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "naive_js",
-    "avg_ms": 15.71929599999994,
-    "min_ms": 15.476188999999977,
-    "max_ms": 16.109370000000126,
-    "throughput": 4169143.4527347945,
+    "avg_ms": 15.656779900000037,
+    "min_ms": 15.50181899999916,
+    "max_ms": 16.013950000000477,
+    "throughput": 4185790.463848817,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -1329,9 +1329,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1339,10 +1339,10 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "dspx",
-    "avg_ms": 42.409372799999986,
-    "min_ms": 40.48144999999931,
-    "max_ms": 48.66378099999929,
-    "throughput": 2.472510039101546E7,
+    "avg_ms": 37.3983043000002,
+    "min_ms": 37.16143100000045,
+    "max_ms": 37.76052100000015,
+    "throughput": 2.803806267761703E7,
     "backend": "CPU (Native C++ SIMD)",
     "filter_order": 51.0,
     "meta": {
@@ -1350,9 +1350,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1360,10 +1360,10 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "fili",
-    "avg_ms": 376.7288984999997,
-    "min_ms": 372.7664300000015,
-    "max_ms": 380.2535230000012,
-    "throughput": 2783370.2277023513,
+    "avg_ms": 380.0642107,
+    "min_ms": 374.2520829999994,
+    "max_ms": 410.734969000001,
+    "throughput": 2758944.3322451725,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -1371,9 +1371,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1381,10 +1381,10 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "naive_js",
-    "avg_ms": 178.25899109999992,
-    "min_ms": 145.7245750000002,
-    "max_ms": 252.61594700000023,
-    "throughput": 5882317.596040744,
+    "avg_ms": 156.90729740000023,
+    "min_ms": 145.48703000000023,
+    "max_ms": 250.77244299999802,
+    "throughput": 6682773.952360475,
     "backend": "CPU (Pure JS)",
     "filter_order": 51.0,
     "meta": {
@@ -1392,9 +1392,9 @@
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1404,19 +1404,19 @@
     "signal_size": 65536.0,
     "kernel_size": 8.0,
     "lib": "dspx",
-    "avg_ms": 1.1803290999998353,
-    "min_ms": 1.1115269999991142,
-    "max_ms": 1.292684999998528,
-    "throughput": 5.5523497641470626E7,
+    "avg_ms": 0.4262869000001956,
+    "min_ms": 0.3799089999993157,
+    "max_ms": 0.5075309999992896,
+    "throughput": 1.5373683779625866E8,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1426,19 +1426,19 @@
     "signal_size": 65536.0,
     "kernel_size": 8.0,
     "lib": "tfjs",
-    "avg_ms": 11.355109299999821,
-    "min_ms": 9.102353000000221,
-    "max_ms": 16.699506999999358,
-    "throughput": 5771498.826523936,
+    "avg_ms": 11.27469409999976,
+    "min_ms": 9.835751000002347,
+    "max_ms": 13.887919999997393,
+    "throughput": 5812663.24555993,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1448,19 +1448,19 @@
     "signal_size": 65536.0,
     "kernel_size": 8.0,
     "lib": "naive_js",
-    "avg_ms": 2.2599317999998676,
-    "min_ms": 2.2084450000002107,
-    "max_ms": 2.3357359999990877,
-    "throughput": 2.8999105194238093E7,
+    "avg_ms": 2.278312300000107,
+    "min_ms": 2.2132200000014564,
+    "max_ms": 2.4705770000000484,
+    "throughput": 2.8765152169874568E7,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1470,19 +1470,19 @@
     "signal_size": 65536.0,
     "kernel_size": 32.0,
     "lib": "dspx",
-    "avg_ms": 1.2893889000002674,
-    "min_ms": 1.2465580000007321,
-    "max_ms": 1.3581800000010844,
-    "throughput": 5.082717867354559E7,
+    "avg_ms": 0.5749622999996064,
+    "min_ms": 0.5321289999992587,
+    "max_ms": 0.6144889999995939,
+    "throughput": 1.1398312550239357E8,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1492,19 +1492,19 @@
     "signal_size": 65536.0,
     "kernel_size": 32.0,
     "lib": "tfjs",
-    "avg_ms": 10.834397400000125,
-    "min_ms": 9.693869999999151,
-    "max_ms": 11.666330000000016,
-    "throughput": 6048882.792503,
+    "avg_ms": 10.98224220000011,
+    "min_ms": 10.172545000001264,
+    "max_ms": 12.499096999999892,
+    "throughput": 5967451.710361965,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1514,19 +1514,19 @@
     "signal_size": 65536.0,
     "kernel_size": 32.0,
     "lib": "naive_js",
-    "avg_ms": 8.271252900000217,
-    "min_ms": 8.201268999999229,
-    "max_ms": 8.464245000001029,
-    "throughput": 7923346.17165415,
+    "avg_ms": 8.35219479999978,
+    "min_ms": 8.221240999999281,
+    "max_ms": 8.574513999999908,
+    "throughput": 7846560.283771367,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1536,19 +1536,19 @@
     "signal_size": 65536.0,
     "kernel_size": 64.0,
     "lib": "dspx",
-    "avg_ms": 1.6603188999999474,
-    "min_ms": 1.5652160000008735,
-    "max_ms": 1.77164300000004,
-    "throughput": 3.947193518064637E7,
+    "avg_ms": 0.8883801000007224,
+    "min_ms": 0.8372439999984636,
+    "max_ms": 0.9776250000031723,
+    "throughput": 7.377022515469077E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1558,19 +1558,19 @@
     "signal_size": 65536.0,
     "kernel_size": 64.0,
     "lib": "tfjs",
-    "avg_ms": 11.46119009999984,
-    "min_ms": 10.559040999998615,
-    "max_ms": 12.564634000000297,
-    "throughput": 5718079.835356794,
+    "avg_ms": 11.4802002000004,
+    "min_ms": 10.502786999997625,
+    "max_ms": 13.301032999999734,
+    "throughput": 5708611.248782728,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1580,19 +1580,19 @@
     "signal_size": 65536.0,
     "kernel_size": 64.0,
     "lib": "naive_js",
-    "avg_ms": 14.78277769999986,
-    "min_ms": 14.679318000000421,
-    "max_ms": 14.916407999999137,
-    "throughput": 4433266.963082359,
+    "avg_ms": 14.915530099999888,
+    "min_ms": 14.688933999997971,
+    "max_ms": 15.153802999997424,
+    "throughput": 4393809.644083685,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1602,19 +1602,19 @@
     "signal_size": 65536.0,
     "kernel_size": 128.0,
     "lib": "dspx",
-    "avg_ms": 4.362555400000383,
-    "min_ms": 4.08053099999961,
-    "max_ms": 4.518831000001228,
-    "throughput": 1.5022388025145592E7,
+    "avg_ms": 3.5984236999996937,
+    "min_ms": 3.422567000001436,
+    "max_ms": 3.7845019999986107,
+    "throughput": 1.821241895444541E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1624,19 +1624,19 @@
     "signal_size": 65536.0,
     "kernel_size": 128.0,
     "lib": "tfjs",
-    "avg_ms": 12.691923700000189,
-    "min_ms": 11.83946300000025,
-    "max_ms": 14.165006000001085,
-    "throughput": 5163598.64344276,
+    "avg_ms": 13.047395900000264,
+    "min_ms": 11.960996000001614,
+    "max_ms": 14.620020000002114,
+    "throughput": 5022918.02151866,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1646,19 +1646,19 @@
     "signal_size": 65536.0,
     "kernel_size": 128.0,
     "lib": "naive_js",
-    "avg_ms": 29.74213499999987,
-    "min_ms": 29.320826999999554,
-    "max_ms": 30.709139000000505,
-    "throughput": 2203473.2879801765,
+    "avg_ms": 29.76564380000091,
+    "min_ms": 29.280077999999776,
+    "max_ms": 30.915899999999965,
+    "throughput": 2201732.9925851626,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1668,19 +1668,19 @@
     "signal_size": 65536.0,
     "kernel_size": 256.0,
     "lib": "dspx",
-    "avg_ms": 3.9815319999999703,
-    "min_ms": 3.868820000001506,
-    "max_ms": 4.137751999998727,
-    "throughput": 1.6459995800611544E7,
+    "avg_ms": 3.7629242999995767,
+    "min_ms": 3.627337999998417,
+    "max_ms": 4.031985999998142,
+    "throughput": 1.741624193715706E7,
     "backend": "CPU (Native C++ SIMD)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1690,19 +1690,19 @@
     "signal_size": 65536.0,
     "kernel_size": 256.0,
     "lib": "tfjs",
-    "avg_ms": 16.31729979999982,
-    "min_ms": 14.972029000000475,
-    "max_ms": 18.11797099999967,
-    "throughput": 4016350.7935302337,
+    "avg_ms": 16.359017399999722,
+    "min_ms": 15.099427000001015,
+    "max_ms": 17.93636300000071,
+    "throughput": 4006108.5820473004,
     "backend": "CPU (TensorFlow.js Node (C++))",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1712,19 +1712,19 @@
     "signal_size": 65536.0,
     "kernel_size": 256.0,
     "lib": "naive_js",
-    "avg_ms": 57.9983784,
-    "min_ms": 57.74264199999925,
-    "max_ms": 58.632588000000396,
-    "throughput": 1129962.6266792314,
+    "avg_ms": 58.52411450000036,
+    "min_ms": 57.58126899999843,
+    "max_ms": 62.36602500000299,
+    "throughput": 1119811.9024936224,
     "backend": "CPU (Pure JS)",
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -1732,17 +1732,17 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "scipy",
-    "avg_ms": 0.03718090010806918,
-    "min_ms": 0.017591999494470656,
-    "max_ms": 0.0668399989081081,
-    "throughput": 2.754102232661566E7,
+    "avg_ms": 0.024796299993568027,
+    "min_ms": 0.016700999992735888,
+    "max_ms": 0.05816299997718488,
+    "throughput": 4.129648376030367E7,
     "backend": "CPU (scipy.fft)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1752,17 +1752,17 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "scipy",
-    "avg_ms": 0.8498259001498809,
-    "min_ms": 0.7302730009541847,
-    "max_ms": 1.244140999915544,
-    "throughput": 7.711697182733738E7,
+    "avg_ms": 0.869942800002832,
+    "min_ms": 0.7795820000069398,
+    "max_ms": 1.0612369999876137,
+    "throughput": 7.533368860548837E7,
     "backend": "CPU (scipy.fft)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1772,17 +1772,17 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "scipy",
-    "avg_ms": 17.548849699596758,
-    "min_ms": 16.99707599982503,
-    "max_ms": 19.158199000230525,
-    "throughput": 5.9751836613205165E7,
+    "avg_ms": 16.914850099993828,
+    "min_ms": 16.220269999990933,
+    "max_ms": 17.983270000001994,
+    "throughput": 6.1991445020277336E7,
     "backend": "CPU (scipy.fft)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1792,17 +1792,17 @@
     "input": "small",
     "samples": 1024.0,
     "lib": "scipy",
-    "avg_ms": 0.10886679956456646,
-    "min_ms": 0.09170900011667982,
-    "max_ms": 0.15362199701485224,
-    "throughput": 9405989.742471382,
+    "avg_ms": 0.132158199994592,
+    "min_ms": 0.09251800000242838,
+    "max_ms": 0.17056799998727,
+    "throughput": 7748289.550265537,
     "backend": "CPU (scipy.signal)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1812,17 +1812,17 @@
     "input": "medium",
     "samples": 65536.0,
     "lib": "scipy",
-    "avg_ms": 1.8835212002159096,
-    "min_ms": 1.8220069978269748,
-    "max_ms": 1.9291169992357027,
-    "throughput": 3.47944052833E7,
+    "avg_ms": 1.8123431999924833,
+    "min_ms": 1.7324599999994916,
+    "max_ms": 1.9561789999897883,
+    "throughput": 3.616092139737761E7,
     "backend": "CPU (scipy.signal)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1832,17 +1832,17 @@
     "input": "large",
     "samples": 1048576.0,
     "lib": "scipy",
-    "avg_ms": 40.60411560058128,
-    "min_ms": 39.419284999894444,
-    "max_ms": 42.79330799909076,
-    "throughput": 2.5824377270391498E7,
+    "avg_ms": 34.15971320000608,
+    "min_ms": 33.80575400001362,
+    "max_ms": 34.72854200001052,
+    "throughput": 3.069627645468093E7,
     "backend": "CPU (scipy.signal)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1853,17 +1853,17 @@
     "samples": 65536.0,
     "kernel_size": 8.0,
     "lib": "numpy",
-    "avg_ms": 0.37148219998925924,
-    "min_ms": 0.29813999935868196,
-    "max_ms": 0.47721900045871735,
-    "throughput": 1.764176049401421E8,
+    "avg_ms": 0.2943164000100751,
+    "min_ms": 0.2565390000199841,
+    "max_ms": 0.3658760000178063,
+    "throughput": 2.226719272108403E8,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1874,17 +1874,17 @@
     "samples": 65536.0,
     "kernel_size": 8.0,
     "lib": "scipy",
-    "avg_ms": 0.37681420071749017,
-    "min_ms": 0.31466499785892665,
-    "max_ms": 0.43233200267422944,
-    "throughput": 1.7392125847490144E8,
+    "avg_ms": 0.3220741999996335,
+    "min_ms": 0.29940499999270287,
+    "max_ms": 0.37416600000028666,
+    "throughput": 2.0348106119668877E8,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1895,17 +1895,17 @@
     "samples": 65536.0,
     "kernel_size": 32.0,
     "lib": "numpy",
-    "avg_ms": 1.3686023987247609,
-    "min_ms": 1.347130997601198,
-    "max_ms": 1.3972019987704698,
-    "throughput": 4.788534643886732E7,
+    "avg_ms": 1.1183468000012908,
+    "min_ms": 1.0955369999976483,
+    "max_ms": 1.177397999981622,
+    "throughput": 5.860078465814393E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1916,17 +1916,17 @@
     "samples": 65536.0,
     "kernel_size": 32.0,
     "lib": "scipy",
-    "avg_ms": 1.3897372009523679,
-    "min_ms": 1.3528620002034586,
-    "max_ms": 1.4322480019473005,
-    "throughput": 4.715711715501972E7,
+    "avg_ms": 1.277395200003184,
+    "min_ms": 1.152163000000428,
+    "max_ms": 1.5495190000081038,
+    "throughput": 5.130440446295449E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1937,17 +1937,17 @@
     "samples": 65536.0,
     "kernel_size": 64.0,
     "lib": "numpy",
-    "avg_ms": 1.3359817996388301,
-    "min_ms": 1.295152000238886,
-    "max_ms": 1.415040998836048,
-    "throughput": 4.9054560487064295E7,
+    "avg_ms": 1.304456999997683,
+    "min_ms": 1.2581299999965267,
+    "max_ms": 1.3667480000094656,
+    "throughput": 5.02400615736022E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1958,17 +1958,17 @@
     "samples": 65536.0,
     "kernel_size": 64.0,
     "lib": "scipy",
-    "avg_ms": 1.3856088000466116,
-    "min_ms": 1.2883669987786561,
-    "max_ms": 1.4640879999205936,
-    "throughput": 4.729762108742048E7,
+    "avg_ms": 1.3261448000093878,
+    "min_ms": 1.2742510000123275,
+    "max_ms": 1.4027070000111053,
+    "throughput": 4.941843454767237E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -1979,17 +1979,17 @@
     "samples": 65536.0,
     "kernel_size": 128.0,
     "lib": "numpy",
-    "avg_ms": 1.6951359997619875,
-    "min_ms": 1.656672997341957,
-    "max_ms": 1.7439029979868792,
-    "throughput": 3.866120477011983E7,
+    "avg_ms": 1.64039900000148,
+    "min_ms": 1.6281289999824367,
+    "max_ms": 1.6547429999889118,
+    "throughput": 3.995125576151953E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -2000,17 +2000,17 @@
     "samples": 65536.0,
     "kernel_size": 128.0,
     "lib": "scipy",
-    "avg_ms": 1.7665163992205635,
-    "min_ms": 1.740015999530442,
-    "max_ms": 1.7927849985426292,
-    "throughput": 3.709900458830517E7,
+    "avg_ms": 1.6971901999966121,
+    "min_ms": 1.680509999999913,
+    "max_ms": 1.7340759999910915,
+    "throughput": 3.861441104251652E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -2021,17 +2021,17 @@
     "samples": 65536.0,
     "kernel_size": 256.0,
     "lib": "numpy",
-    "avg_ms": 2.457173199218232,
-    "min_ms": 2.4093550018733367,
-    "max_ms": 2.497198998753447,
-    "throughput": 2.667129855593849E7,
+    "avg_ms": 2.3725756000033016,
+    "min_ms": 2.355237000017496,
+    "max_ms": 2.3978709999994408,
+    "throughput": 2.762230210911248E7,
     "backend": "CPU (numpy.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -2042,17 +2042,17 @@
     "samples": 65536.0,
     "kernel_size": 256.0,
     "lib": "scipy",
-    "avg_ms": 2.6070476000313647,
-    "min_ms": 2.5205589990946464,
-    "max_ms": 2.7325139999447856,
-    "throughput": 2.5138014357394762E7,
+    "avg_ms": 2.512838199993439,
+    "min_ms": 2.421416999993653,
+    "max_ms": 2.747720999991543,
+    "throughput": 2.6080469486722667E7,
     "backend": "CPU (scipy.signal.convolve)",
     "meta": {
       "cpu": "x86_64",
       "cores": 4.0,
       "ram": "16 GB",
       "arch": "x86_64",
-      "os": "Linux 6.6.111+",
+      "os": "Linux 6.6.123+",
       "node": "3.12.3",
       "dspx": "N/A"
     }
@@ -2061,314 +2061,314 @@
     "input": "small",
     "test": "fft",
     "lib": "jdsp",
-    "avg_ms": 0.8332840000000001,
+    "avg_ms": 0.9234606,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 0.768135,
+    "min_ms": 0.717348,
     "backend": "CPU (JDSP FFT)",
-    "throughput": 1228872.7492667565,
+    "throughput": 1108872.430507593,
     "samples": 1024,
-    "max_ms": 0.929857
+    "max_ms": 1.32527
   },
   {
     "input": "medium",
     "test": "fft",
     "lib": "jdsp",
-    "avg_ms": 7.367724099999999,
+    "avg_ms": 9.289333,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 6.719786,
+    "min_ms": 6.891156,
     "backend": "CPU (JDSP FFT)",
-    "throughput": 8895012.776062014,
+    "throughput": 7054973.699403392,
     "samples": 65536,
-    "max_ms": 7.975258
+    "max_ms": 12.186557
   },
   {
     "input": "large",
     "test": "fft",
     "lib": "jdsp",
-    "avg_ms": 146.008497,
+    "avg_ms": 152.2943859,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 92.977099,
+    "min_ms": 117.822541,
     "backend": "CPU (JDSP FFT)",
-    "throughput": 7181609.437428837,
+    "throughput": 6885191.425825237,
     "samples": 1048576,
-    "max_ms": 229.847616
+    "max_ms": 188.031172
   },
   {
     "input": "small",
     "test": "fir_filter",
     "lib": "jdsp",
-    "avg_ms": 0.5577102,
+    "avg_ms": 0.612346,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 0.32467,
+    "min_ms": 0.576947,
     "backend": "CPU (JDSP FIR)",
-    "throughput": 1836079.0245543295,
+    "throughput": 1672257.1879297,
     "samples": 1024,
-    "max_ms": 0.633521
+    "max_ms": 0.660756
   },
   {
     "input": "medium",
     "test": "fir_filter",
     "lib": "jdsp",
-    "avg_ms": 4.9524154,
+    "avg_ms": 4.5997546,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 4.044148,
+    "min_ms": 4.470355,
     "backend": "CPU (JDSP FIR)",
-    "throughput": 1.3233138722571617E7,
+    "throughput": 1.4247716606446788E7,
     "samples": 65536,
-    "max_ms": 6.202483
+    "max_ms": 4.772106
   },
   {
     "input": "large",
     "test": "fir_filter",
     "lib": "jdsp",
-    "avg_ms": 74.292341,
+    "avg_ms": 77.93022140000001,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 71.676733,
+    "min_ms": 74.378471,
     "backend": "CPU (JDSP FIR)",
-    "throughput": 1.4114187086929997E7,
+    "throughput": 1.3455319145288607E7,
     "samples": 1048576,
-    "max_ms": 78.625776
+    "max_ms": 80.869235
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "jdsp",
-    "avg_ms": 1.50637,
+    "avg_ms": 2.0217365999999997,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 1.449433,
+    "min_ms": 1.848156,
     "backend": "CPU (JDSP Conv)",
-    "throughput": 4.350591156223239E7,
+    "throughput": 3.241569648588249E7,
     "samples": 65536,
-    "max_ms": 1.591693,
+    "max_ms": 2.514834,
     "kernel_size": 8
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "naive_java",
-    "avg_ms": 3.5132855999999997,
+    "avg_ms": 2.6210519999999997,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 1.565471,
+    "min_ms": 1.16407,
     "backend": "CPU (naive Java)",
-    "throughput": 1.8653763872769125E7,
+    "throughput": 2.5003700804104615E7,
     "samples": 65536,
-    "max_ms": 6.460513,
+    "max_ms": 5.106879,
     "kernel_size": 8
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "jdsp",
-    "avg_ms": 2.8587461999999997,
+    "avg_ms": 20.450755,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 2.7356,
+    "min_ms": 3.144488,
     "backend": "CPU (JDSP Conv)",
-    "throughput": 2.2924735326276958E7,
+    "throughput": 3204576.0657736105,
     "samples": 65536,
-    "max_ms": 2.955265,
+    "max_ms": 88.981007,
     "kernel_size": 32
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "naive_java",
-    "avg_ms": 2.6996118,
+    "avg_ms": 6.249278,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 2.358653,
+    "min_ms": 2.437446,
     "backend": "CPU (naive Java)",
-    "throughput": 2.4276082953852843E7,
+    "throughput": 1.0486971454942476E7,
     "samples": 65536,
-    "max_ms": 3.129458,
+    "max_ms": 21.392092,
     "kernel_size": 32
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "jdsp",
-    "avg_ms": 5.9038775999999995,
+    "avg_ms": 6.0139228000000005,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 5.818901,
+    "min_ms": 5.890294,
     "backend": "CPU (JDSP Conv)",
-    "throughput": 1.1100501135050632E7,
+    "throughput": 1.0897379660410672E7,
     "samples": 65536,
-    "max_ms": 5.967857,
+    "max_ms": 6.191603,
     "kernel_size": 64
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "naive_java",
-    "avg_ms": 5.1813392,
+    "avg_ms": 5.417844,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 5.104424,
+    "min_ms": 5.15128,
     "backend": "CPU (naive Java)",
-    "throughput": 1.264846740780839E7,
+    "throughput": 1.2096324663463918E7,
     "samples": 65536,
-    "max_ms": 5.282373,
+    "max_ms": 6.166144,
     "kernel_size": 64
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "jdsp",
-    "avg_ms": 12.0147738,
+    "avg_ms": 12.372209000000002,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 11.751111,
+    "min_ms": 12.234349,
     "backend": "CPU (JDSP Conv)",
-    "throughput": 5454617.8805297185,
+    "throughput": 5297033.052060468,
     "samples": 65536,
-    "max_ms": 12.138561,
+    "max_ms": 12.574183,
     "kernel_size": 128
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "naive_java",
-    "avg_ms": 11.677665399999999,
+    "avg_ms": 11.679907,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 11.346409,
+    "min_ms": 11.494683,
     "backend": "CPU (naive Java)",
-    "throughput": 5612080.647558202,
+    "throughput": 5611003.580764812,
     "samples": 65536,
-    "max_ms": 12.55571,
+    "max_ms": 11.860906,
     "kernel_size": 128
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "jdsp",
-    "avg_ms": 24.5767458,
+    "avg_ms": 25.2475632,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 24.220826,
+    "min_ms": 24.955452,
     "backend": "CPU (JDSP Conv)",
-    "throughput": 2666585.7446432146,
+    "throughput": 2595735.6549958056,
     "samples": 65536,
-    "max_ms": 24.788123,
+    "max_ms": 25.866148,
     "kernel_size": 256
   },
   {
     "input": "medium",
     "test": "conv1d",
     "lib": "naive_java",
-    "avg_ms": 23.907814600000002,
+    "avg_ms": 24.775462400000002,
     "meta": {
       "cores": 4,
-      "java": "17.0.17",
-      "os": "Linux 6.6.111+",
+      "java": "17.0.18",
+      "os": "Linux 6.6.123+",
       "dspx": "N/A",
       "cpu": "amd64 4 cores",
       "ram": "3 GB"
     },
-    "min_ms": 23.766502,
+    "min_ms": 24.446176,
     "backend": "CPU (naive Java)",
-    "throughput": 2741195.7594819223,
+    "throughput": 2645197.85511652,
     "samples": 65536,
-    "max_ms": 24.004229,
+    "max_ms": 25.564206,
     "kernel_size": 256
   }
 ]

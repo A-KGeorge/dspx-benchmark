@@ -4,19 +4,19 @@
     "input": "medium",
     "samples": 65536,
     "mode": "none",
-    "avg_ms": 3.036643300000004,
-    "min_ms": 2.942261000000002,
-    "max_ms": 3.278576000000001,
-    "throughput": 21581724.79461118,
+    "avg_ms": 2.5504591000000003,
+    "min_ms": 2.411352999999991,
+    "max_ms": 2.737230000000011,
+    "throughput": 25695765.91132161,
     "overhead_percent": 0,
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -24,20 +24,20 @@
     "input": "medium",
     "samples": 65536,
     "mode": "batched",
-    "avg_ms": 2.9280898000000035,
-    "min_ms": 2.861844000000019,
-    "max_ms": 3.090870999999993,
-    "throughput": 22381827.224014755,
-    "overhead_percent": -3.574786014544431,
+    "avg_ms": 2.400382099999996,
+    "min_ms": 2.3705190000000016,
+    "max_ms": 2.444609999999983,
+    "throughput": 27302319.90981774,
+    "overhead_percent": -5.884313141896862,
     "log_count": 0,
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -45,20 +45,20 @@
     "input": "medium",
     "samples": 65536,
     "mode": "per-message",
-    "avg_ms": 2.9154753999999996,
-    "min_ms": 2.857118000000014,
-    "max_ms": 2.987482,
-    "throughput": 22478666.77249275,
-    "overhead_percent": -3.9901920650345852,
+    "avg_ms": 2.5521163000000002,
+    "min_ms": 2.3621060000000114,
+    "max_ms": 3.0592860000000144,
+    "throughput": 25679080.534065,
+    "overhead_percent": 0.0649765369693603,
     "log_count": 0,
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -66,20 +66,20 @@
     "input": "medium",
     "samples": 65536,
     "mode": "console",
-    "avg_ms": 2.9503329999999948,
-    "min_ms": 2.8428570000000093,
-    "max_ms": 3.0380090000000166,
-    "throughput": 22213085.777097065,
-    "overhead_percent": -2.842293001618243,
+    "avg_ms": 2.418827199999993,
+    "min_ms": 2.3699000000000012,
+    "max_ms": 2.4577889999999627,
+    "throughput": 27094122.30853043,
+    "overhead_percent": -5.16110609262495,
     "log_count": 0,
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -87,19 +87,19 @@
     "input": "large",
     "samples": 1048576,
     "mode": "none",
-    "avg_ms": 42.92387560000001,
-    "min_ms": 41.005017000000066,
-    "max_ms": 47.49777499999993,
-    "throughput": 24428735.41456261,
+    "avg_ms": 38.62797589999998,
+    "min_ms": 38.325688000000014,
+    "max_ms": 39.060114999999996,
+    "throughput": 27145507.253979634,
     "overhead_percent": 0,
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -107,20 +107,20 @@
     "input": "large",
     "samples": 1048576,
     "mode": "batched",
-    "avg_ms": 41.625533999999995,
-    "min_ms": 41.21878000000015,
-    "max_ms": 42.957182999999986,
-    "throughput": 25190691.84794122,
-    "overhead_percent": -3.0247538971061934,
+    "avg_ms": 38.391003699999985,
+    "min_ms": 37.8785640000001,
+    "max_ms": 39.08329800000001,
+    "throughput": 27313065.5346737,
+    "overhead_percent": -0.6134729932872224,
     "log_count": 0,
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -128,20 +128,20 @@
     "input": "large",
     "samples": 1048576,
     "mode": "per-message",
-    "avg_ms": 41.977966400000014,
-    "min_ms": 41.03335199999992,
-    "max_ms": 43.588573,
-    "throughput": 24979199.564083688,
-    "overhead_percent": -2.2036901066780543,
+    "avg_ms": 38.4022639,
+    "min_ms": 37.90708399999994,
+    "max_ms": 39.108412000000044,
+    "throughput": 27305056.877128538,
+    "overhead_percent": -0.5843226178464616,
     "log_count": 0,
     "meta": {
       "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
       "cores": 4,
       "ram": "16 GB",
       "arch": "x64",
-      "os": "linux 6.6.111+",
+      "os": "linux 6.6.123+",
       "node": "v22.21.1",
-      "dspx": "1.3.3"
+      "dspx": "1.4.12"
     }
   }
 ]
