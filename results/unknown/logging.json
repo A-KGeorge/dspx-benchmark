@@ -1,0 +1,147 @@
+[
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "none",
+    "avg_ms": 0.5803960000000046,
+    "min_ms": 0.545178000000007,
+    "max_ms": 0.6036509999999993,
+    "throughput": 112916009.06966878,
+    "overhead_percent": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.12.63-android16-6-g8ee72b352c6a-ab14789739-4k",
+      "node": "v24.13.1",
+      "dspx": "1.4.12"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "batched",
+    "avg_ms": 0.5911013999999938,
+    "min_ms": 0.5402949999999862,
+    "max_ms": 0.8058439999999791,
+    "throughput": 110870994.38438259,
+    "overhead_percent": 1.8444992729083458,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.12.63-android16-6-g8ee72b352c6a-ab14789739-4k",
+      "node": "v24.13.1",
+      "dspx": "1.4.12"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "per-message",
+    "avg_ms": 0.5786587000000025,
+    "min_ms": 0.5391149999999811,
+    "max_ms": 0.655776000000003,
+    "throughput": 113255015.43483181,
+    "overhead_percent": -0.2993301125442004,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.12.63-android16-6-g8ee72b352c6a-ab14789739-4k",
+      "node": "v24.13.1",
+      "dspx": "1.4.12"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "medium",
+    "samples": 65536,
+    "mode": "console",
+    "avg_ms": 0.5639363999999943,
+    "min_ms": 0.5404979999999853,
+    "max_ms": 0.6447489999999902,
+    "throughput": 116211686.282355,
+    "overhead_percent": -2.8359258161686336,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.12.63-android16-6-g8ee72b352c6a-ab14789739-4k",
+      "node": "v24.13.1",
+      "dspx": "1.4.12"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "none",
+    "avg_ms": 8.3760727,
+    "min_ms": 8.203831999999977,
+    "max_ms": 8.65411899999998,
+    "throughput": 125187070.06924619,
+    "overhead_percent": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.12.63-android16-6-g8ee72b352c6a-ab14789739-4k",
+      "node": "v24.13.1",
+      "dspx": "1.4.12"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "batched",
+    "avg_ms": 8.301258399999995,
+    "min_ms": 8.110689999999977,
+    "max_ms": 8.523988999999972,
+    "throughput": 126315306.60459872,
+    "overhead_percent": -0.8931906715662248,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.12.63-android16-6-g8ee72b352c6a-ab14789739-4k",
+      "node": "v24.13.1",
+      "dspx": "1.4.12"
+    }
+  },
+  {
+    "test": "logging",
+    "input": "large",
+    "samples": 1048576,
+    "mode": "per-message",
+    "avg_ms": 8.37525070000001,
+    "min_ms": 8.146945000000017,
+    "max_ms": 8.597477000000026,
+    "throughput": 125199356.71895754,
+    "overhead_percent": -0.009813668403219,
+    "log_count": 0,
+    "meta": {
+      "cpu": "unknown",
+      "cores": 8,
+      "ram": "4 GB",
+      "arch": "arm64",
+      "os": "linux 6.12.63-android16-6-g8ee72b352c6a-ab14789739-4k",
+      "node": "v24.13.1",
+      "dspx": "1.4.12"
+    }
+  }
+]
