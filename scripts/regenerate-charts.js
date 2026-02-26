@@ -44,6 +44,7 @@ const loadPlatformJSON = (filename) => {
 };
 
 const story1Data = loadPlatformJSON("raw-speed");
+const parallelData = loadPlatformJSON("parallel-speed");
 const story2Data = loadPlatformJSON("algorithmic");
 const story3Data = loadPlatformJSON("persistence");
 const story4Data = loadPlatformJSON("logging");
@@ -89,7 +90,6 @@ if (story1Data) {
   const fftResults = story1Data.filter((r) => r.test === "fft");
   const inputSizes = ["small", "medium", "large"];
   const libraries = [...new Set(fftResults.map((r) => r.lib))];
-
   const datasets = libraries.map((lib) => {
     const libData = inputSizes.map((size) => {
       const result = fftResults.find((r) => r.lib === lib && r.input === size);
@@ -103,6 +103,23 @@ if (story1Data) {
       tension: 0.1,
     };
   });
+
+  // Merge dspx_parallel FFT data if available
+  if (parallelData) {
+    const fftParallel = parallelData.filter((r) => r.test === "fft_parallel");
+    if (fftParallel && fftParallel.length > 0) {
+      const parData = inputSizes.map((size) => {
+        const r = fftParallel.find((p) => p.input === size && p.lib === "dspx");
+        return r ? r.throughput : 0;
+      });
+      datasets.push({
+        label: "dspx_parallel",
+        data: parData,
+        borderWidth: 3,
+        tension: 0.1,
+      });
+    }
+  }
 
   const config = {
     type: "line",
@@ -182,6 +199,25 @@ if (story1Data) {
     };
   });
 
+  // Merge dspx_parallel FIR data if available
+  if (parallelData) {
+    const firParallel = parallelData.filter(
+      (r) => r.test === "fir_filter_parallel",
+    );
+    if (firParallel && firParallel.length > 0) {
+      const parData = inputSizes.map((size) => {
+        const r = firParallel.find((p) => p.input === size && p.lib === "dspx");
+        return r ? r.throughput : 0;
+      });
+      datasets.push({
+        label: "dspx_parallel",
+        data: parData,
+        borderWidth: 3,
+        tension: 0.1,
+      });
+    }
+  }
+
   const config = {
     type: "line",
     data: {
@@ -249,7 +285,18 @@ if (story1Data) {
   const libraries = [...new Set(convResults.map((r) => r.lib))];
 
   if (kernelSizes.length > 0) {
-    const datasets = libraries.map((lib) => {
+    // Chart.js default color palette
+    const defaultColors = [
+      { border: "rgb(54, 162, 235)", bg: "rgba(54, 162, 235, 0.2)" },
+      { border: "rgb(255, 99, 132)", bg: "rgba(255, 99, 132, 0.2)" },
+      { border: "rgb(255, 206, 86)", bg: "rgba(255, 206, 86, 0.2)" },
+      { border: "rgb(75, 192, 192)", bg: "rgba(75, 192, 192, 0.2)" },
+      { border: "rgb(153, 102, 255)", bg: "rgba(153, 102, 255, 0.2)" },
+      { border: "rgb(255, 159, 64)", bg: "rgba(255, 159, 64, 0.2)" },
+      { border: "rgb(201, 203, 207)", bg: "rgba(201, 203, 207, 0.2)" },
+    ];
+
+    const datasets = libraries.map((lib, index) => {
       const libData = kernelSizes.map((size) => {
         const result = convResults.find(
           (r) => r.lib === lib && r.kernel_size === size,
@@ -257,13 +304,39 @@ if (story1Data) {
         return result ? result.throughput : 0;
       });
 
+      const colors = defaultColors[index % defaultColors.length];
       return {
         label: lib,
         data: libData,
+        borderColor: colors.border,
+        backgroundColor: colors.bg,
         borderWidth: 3,
         tension: 0.1,
       };
     });
+
+    // Merge dspx_parallel conv1d data if available
+    if (parallelData) {
+      const convParallel = parallelData.filter(
+        (r) => r.test === "conv1d_parallel",
+      );
+      if (convParallel && convParallel.length > 0) {
+        const parData = kernelSizes.map((size) => {
+          const r = convParallel.find(
+            (p) => p.kernel_size === size && p.lib === "dspx",
+          );
+          return r ? r.throughput : 0;
+        });
+        datasets.push({
+          label: "dspx_parallel",
+          data: parData,
+          borderColor: "rgb(255, 99, 71)",
+          backgroundColor: "rgba(255, 99, 71, 0.2)",
+          borderWidth: 3,
+          tension: 0.1,
+        });
+      }
+    }
 
     const config = {
       type: "line",
@@ -1415,7 +1488,16 @@ const concurrencyData = loadPlatformJSON("profiling-concurrency");
 const concurrencyThreadedData = loadPlatformJSON(
   "profiling-concurrency-threaded",
 );
-if (concurrencyData || concurrencyThreadedData) {
+const pythonConcurrencyThreading = loadPlatformJSON("concurrency-threading");
+const pythonConcurrencyMultiprocessing = loadPlatformJSON(
+  "concurrency-multiprocessing",
+);
+if (
+  concurrencyData ||
+  concurrencyThreadedData ||
+  pythonConcurrencyThreading ||
+  pythonConcurrencyMultiprocessing
+) {
   console.log("📈 Chart 9: Concurrent Scaling...");
 
   const datasets = [];
@@ -1427,7 +1509,7 @@ if (concurrencyData || concurrencyThreadedData) {
     );
 
     datasets.push({
-      label: "Throughput (Million samples/sec) - Single Thread",
+      label: "JS - Single Thread",
       data: throughput,
       borderColor: "rgb(153, 102, 255)",
       backgroundColor: "rgba(153, 102, 255, 0.2)",
@@ -1444,7 +1526,7 @@ if (concurrencyData || concurrencyThreadedData) {
     );
 
     datasets.push({
-      label: "Throughput (Million samples/sec) - Worker Threads",
+      label: "JS - Worker Threads",
       data: throughput,
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.2)",
@@ -1454,9 +1536,45 @@ if (concurrencyData || concurrencyThreadedData) {
     });
   }
 
+  if (pythonConcurrencyThreading) {
+    const throughput = pythonConcurrencyThreading.map(
+      (r) => parseInt(r.throughput_samples_per_sec) / 1e6,
+    );
+
+    datasets.push({
+      label: "Python - Threading",
+      data: throughput,
+      borderColor: "rgb(54, 162, 235)",
+      backgroundColor: "rgba(54, 162, 235, 0.2)",
+      borderWidth: 3,
+      tension: 0.1,
+      fill: true,
+    });
+  }
+
+  if (pythonConcurrencyMultiprocessing) {
+    const throughput = pythonConcurrencyMultiprocessing.map(
+      (r) => parseInt(r.throughput_samples_per_sec) / 1e6,
+    );
+
+    datasets.push({
+      label: "Python - Multiprocessing",
+      data: throughput,
+      borderColor: "rgb(75, 192, 192)",
+      backgroundColor: "rgba(75, 192, 192, 0.2)",
+      borderWidth: 3,
+      tension: 0.1,
+      fill: true,
+    });
+  }
+
   const labels = concurrencyData
     ? concurrencyData.map((r) => r.num_pipelines)
-    : concurrencyThreadedData.map((r) => r.num_pipelines);
+    : concurrencyThreadedData
+      ? concurrencyThreadedData.map((r) => r.num_pipelines)
+      : pythonConcurrencyThreading
+        ? pythonConcurrencyThreading.map((r) => r.num_pipelines)
+        : pythonConcurrencyMultiprocessing.map((r) => r.num_pipelines);
 
   const config = {
     type: "line",
@@ -1474,7 +1592,7 @@ if (concurrencyData || concurrencyThreadedData) {
         },
         subtitle: {
           display: true,
-          text: subtitle + " • Should scale linearly or stay flat",
+          text: subtitle + " • JS vs Python: Threading vs Multiprocessing",
           font: { size: 14 },
           padding: { bottom: 20 },
         },

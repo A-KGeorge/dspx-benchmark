@@ -1,6 +1,6 @@
 # 🧠 DSPX Benchmarks
 
-**Auto-Generated:** 2026-02-25
+**Auto-Generated:** 2026-02-26
 
 ## Machine Specifications
 
@@ -119,11 +119,15 @@ Testing Finite Impulse Response filter implementations (51-tap lowpass):
 | jdsp | small | 8.34M samples/sec | CPU (JDSP FIR) |
 | jdsp | medium | 42.30M samples/sec | CPU (JDSP FIR) |
 | jdsp | large | 34.88M samples/sec | CPU (JDSP FIR) |
+| dspx_parallel | small | 5.12M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | medium | 13.82M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | large | 16.50M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
 
 **Key Insights:**
 - SIMD-optimized convolution in dspx delivers N/Ax speedup
 - Pure JS implementation struggles with inner loop overhead
 - FIR filters benefit most from vectorization (repeated multiply-accumulate)
+- **Parallel processing (18 workers)**: 3.9x additional speedup over single-threaded dspx
 
 ---
 
@@ -181,6 +185,84 @@ Demonstrating constant-time scaling with circular buffer implementation:
 - Naive implementation degrades linearly with window size (O(N·W) complexity)
 - **~882x speedup** with circular buffer approach at production scale (medium input, 8192 window)
 - Critical for real-time processing where window sizes can be large (1000+ samples)
+
+---
+
+## Story 1b — Parallel Processing Performance
+
+### 1D Convolution: Multi-threaded Scaling
+
+Testing dspx parallel processing with 18 worker threads:
+
+![Convolution Throughput](../charts/amd-ryzen-9-5900x-12-core-processor/convolution_throughput.png)
+
+#### Parallel Results Summary
+
+| Library | Kernel Size | Throughput | Workers | Backend |
+|---------|-------------|------------|---------|----------|
+| dspx_parallel | 8 | 28.86M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 32 | 28.55M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 64 | 30.39M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 128 | 13.74M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 256 | 11.23M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+
+**Key Insights:**
+- **1.3x speedup** with 18 workers vs single-threaded dspx
+- Worker threads enable true parallel processing on multi-core CPUs
+- Ideal for batch processing and high-throughput scenarios
+- Throughput scales with available CPU cores
+
+---
+
+## Story 2b — Python Concurrency: Threading vs Multiprocessing
+
+### Concurrent DSP Pipeline Scaling (Python scipy)
+
+Comparing Python threading (GIL-limited) vs multiprocessing (true parallelism):
+
+#### Python Threading Results (GIL-limited)
+
+| Pipelines | Avg Time (ms) | Throughput | Efficiency |
+|-----------|---------------|------------|------------|
+| 1 | 2.2 | 30.4M samples/sec | 100% |
+| 2 | 3.0 | 44.0M samples/sec | 144.5% |
+| 4 | 3.9 | 66.5M samples/sec | 218.7% |
+| 8 | 7.3 | 71.5M samples/sec | 234.9% |
+| 16 | 12.0 | 87.2M samples/sec | 286.5% |
+| 32 | 22.2 | 94.3M samples/sec | 310% |
+| 64 | 31.9 | 131.7M samples/sec | 432.8% |
+| 128 | 68.0 | 123.4M samples/sec | 405.7% |
+| 256 | 148.7 | 112.8M samples/sec | 370.8% |
+| 512 | 310.0 | 108.2M samples/sec | 355.8% |
+| 1024 | 670.0 | 100.2M samples/sec | 329.2% |
+
+#### Python Multiprocessing Results (true parallelism)
+
+| Pipelines | Avg Time (ms) | Throughput | Efficiency |
+|-----------|---------------|------------|------------|
+| 1 | 3.6 | 18.4M samples/sec | 100% |
+| 2 | 6.9 | 19.1M samples/sec | 103.7% |
+| 4 | 13.6 | 19.3M samples/sec | 104.7% |
+| 8 | 27.9 | 18.8M samples/sec | 102.2% |
+| 16 | 32.1 | 32.7M samples/sec | 177.4% |
+| 32 | 35.1 | 59.7M samples/sec | 324.4% |
+| 64 | 47.2 | 88.9M samples/sec | 482.6% |
+| 128 | 54.9 | 152.7M samples/sec | 829.1% |
+| 256 | 121.7 | 137.9M samples/sec | 748.6% |
+| 512 | 218.1 | 153.9M samples/sec | 835.5% |
+| 1024 | 427.9 | 156.8M samples/sec | 851.7% |
+
+**Key Insights:**
+- **Python threading**: GIL limits parallel execution, efficiency plateaus with more threads
+- **Python multiprocessing**: True parallelism bypasses GIL, better scaling with more workers
+- scipy releases GIL during C calls, enabling some threading benefits
+- At high concurrency (128+ pipelines), multiprocessing shows 8.5x efficiency
+- IPC overhead limits multiprocessing gains at low pipeline counts
+
+**Comparison to dspx:**
+- dspx worker threads avoid GIL entirely (native C++ execution)
+- Both Python strategies viable for different use cases
+- Python multiprocessing better for CPU-bound tasks
 
 ---
 
@@ -393,21 +475,21 @@ Testing real-time audio processing constraints across different buffer configura
 
 | Pipeline | Config | Buffer Duration | Avg Latency | p99 Latency | Headroom | Real-Time | Production Safe |
 |----------|--------|-----------------|-------------|-------------|----------|-----------|-----------------|
-| simple | ultra-low | 2.67ms | 0.008100999999996687ms | 0.03110000000015134ms | 99.69659176029975% | ✅ | ✅ |
-| simple | low | 5.33ms | 0.011701499999995577ms | 0.03569999999990614ms | 99.78045966228902% | ✅ | ✅ |
-| simple | balanced | 10.67ms | 0.01652700000002733ms | 0.03600000000005821ms | 99.84510777881887% | ✅ | ✅ |
-| simple | high-quality | 21.33ms | 0.026606099999975413ms | 0.051800000001094304ms | 99.87526441631516% | ✅ | ✅ |
-| simple | batch | 42.67ms | 0.03743120000020281ms | 0.06160000000090804ms | 99.91227747832154% | ✅ | ✅ |
-| moderate | ultra-low | 2.67ms | 0.009080599999826518ms | 0.03969999999389984ms | 99.65990262172933% | ✅ | ✅ |
-| moderate | low | 5.33ms | 0.013167000000132248ms | 0.03840000000491273ms | 99.75296435271797% | ✅ | ✅ |
-| moderate | balanced | 10.67ms | 0.021620500000150058ms | 0.045000000012805685ms | 99.79737113401922% | ✅ | ✅ |
-| moderate | high-quality | 21.33ms | 0.03373740000014368ms | 0.055900000006658956ms | 99.841831223628% | ✅ | ✅ |
-| moderate | batch | 42.67ms | 0.05099880000020494ms | 0.07730000000447035ms | 99.8804808999292% | ✅ | ✅ |
-| complex | ultra-low | 2.67ms | 0.009597400000144262ms | 0.025400000013178214ms | 99.640546816474% | ✅ | ✅ |
-| complex | low | 5.33ms | 0.015290099999605445ms | 0.04099999999743886ms | 99.71313133208996% | ✅ | ✅ |
-| complex | balanced | 10.67ms | 0.025537999999854948ms | 0.04999999998835847ms | 99.7606560449873% | ✅ | ✅ |
-| complex | high-quality | 21.33ms | 0.04161240000021644ms | 0.06759999998030253ms | 99.80491139240407% | ✅ | ✅ |
-| complex | batch | 42.67ms | 0.06562990000043646ms | 0.09249999999883585ms | 99.8461919381288% | ✅ | ✅ |
+| simple | ultra-low | 2.67ms | 0.08467189999999955ms | 0.4389000000001033ms | 96.82876779026219% | ✅ | ✅ |
+| simple | low | 5.33ms | 0.09159459999999399ms | 0.4378000000006068ms | 98.28152720450292% | ✅ | ✅ |
+| simple | balanced | 10.67ms | 0.127718399999967ms | 0.4412999999985914ms | 98.80301405810715% | ✅ | ✅ |
+| simple | high-quality | 21.33ms | 0.16294639999991706ms | 0.4415000000008149ms | 99.23606938584193% | ✅ | ✅ |
+| simple | batch | 42.67ms | 0.2060565000002607ms | 0.44210000000020955ms | 99.51709280524898% | ✅ | ✅ |
+| moderate | ultra-low | 2.67ms | 0.07214420000015526ms | 0.4140999999945052ms | 97.29797003744737% | ✅ | ✅ |
+| moderate | low | 5.33ms | 0.08720250000026135ms | 0.4232999999949243ms | 98.3639305816086% | ✅ | ✅ |
+| moderate | balanced | 10.67ms | 0.11904729999978736ms | 0.42369999999937136ms | 98.88428022493171% | ✅ | ✅ |
+| moderate | high-quality | 21.33ms | 0.16360039999989384ms | 0.4342999999935273ms | 99.23300328176327% | ✅ | ✅ |
+| moderate | batch | 42.67ms | 0.20756290000028094ms | 0.44510000001173466ms | 99.51356245605746% | ✅ | ✅ |
+| complex | ultra-low | 2.67ms | 0.07074899999983608ms | 0.41379999998025596ms | 97.35022471910727% | ✅ | ✅ |
+| complex | low | 5.33ms | 0.08425940000050468ms | 0.42560000001685694ms | 98.41914821762656% | ✅ | ✅ |
+| complex | balanced | 10.67ms | 0.13150090000053752ms | 0.43419999998877756ms | 98.76756419868288% | ✅ | ✅ |
+| complex | high-quality | 21.33ms | 0.173526499999949ms | 0.43809999999939464ms | 99.18646741678413% | ✅ | ✅ |
+| complex | batch | 42.67ms | 0.21180799999990269ms | 0.4482999999891035ms | 99.50361378017365% | ✅ | ✅ |
 
 **Real-Time Constraint:** Processing time must be < buffer duration for glitch-free audio.
 
@@ -421,21 +503,21 @@ Measuring pure DSP computation time (excluding OS timing overhead):
 
 | Pipeline | Config | DSP Avg Time | DSP Max Time | DSP Dropouts | Status |
 |----------|--------|--------------|--------------|--------------|--------|
-| simple | ultra-low | 0.008100999999996687ms | 0.042799999999942884ms | 0 | ✅ Perfect |
-| simple | low | 0.011701499999995577ms | 0.04209999999966385ms | 0 | ✅ Perfect |
-| simple | balanced | 0.01652700000002733ms | 0.043300000001181616ms | 0 | ✅ Perfect |
-| simple | high-quality | 0.026606099999975413ms | 0.05860000000029686ms | 0 | ✅ Perfect |
-| simple | batch | 0.03743120000020281ms | 0.0816999999951804ms | 0 | ✅ Perfect |
-| moderate | ultra-low | 0.009080599999826518ms | 0.043600000004516914ms | 0 | ✅ Perfect |
-| moderate | low | 0.013167000000132248ms | 0.0503000000026077ms | 0 | ✅ Perfect |
-| moderate | balanced | 0.021620500000150058ms | 0.07790000000386499ms | 0 | ✅ Perfect |
-| moderate | high-quality | 0.03373740000014368ms | 0.08189999999012798ms | 0 | ✅ Perfect |
-| moderate | batch | 0.05099880000020494ms | 0.09150000000954606ms | 0 | ✅ Perfect |
-| complex | ultra-low | 0.009597400000144262ms | 0.042799999995622784ms | 0 | ✅ Perfect |
-| complex | low | 0.015290099999605445ms | 0.053299999999580905ms | 0 | ✅ Perfect |
-| complex | balanced | 0.025537999999854948ms | 0.104300000006333ms | 0 | ✅ Perfect |
-| complex | high-quality | 0.04161240000021644ms | 0.07790000000386499ms | 0 | ✅ Perfect |
-| complex | batch | 0.06562990000043646ms | 0.10939999998663552ms | 0 | ✅ Perfect |
+| simple | ultra-low | 0.08467189999999955ms | 0.5565000000001419ms | 0 | ✅ Perfect |
+| simple | low | 0.09159459999999399ms | 0.6125000000001819ms | 0 | ✅ Perfect |
+| simple | balanced | 0.127718399999967ms | 0.6904999999987922ms | 0 | ✅ Perfect |
+| simple | high-quality | 0.16294639999991706ms | 0.5847000000030675ms | 0 | ✅ Perfect |
+| simple | batch | 0.2060565000002607ms | 0.5906000000104541ms | 0 | ✅ Perfect |
+| moderate | ultra-low | 0.07214420000015526ms | 0.5394000000087544ms | 0 | ✅ Perfect |
+| moderate | low | 0.08720250000026135ms | 0.44689999999536667ms | 0 | ✅ Perfect |
+| moderate | balanced | 0.11904729999978736ms | 0.6526000000012573ms | 0 | ✅ Perfect |
+| moderate | high-quality | 0.16360039999989384ms | 0.584499999997206ms | 0 | ✅ Perfect |
+| moderate | batch | 0.20756290000028094ms | 0.5745000000024447ms | 0 | ✅ Perfect |
+| complex | ultra-low | 0.07074899999983608ms | 1.0726999999897089ms | 0 | ✅ Perfect |
+| complex | low | 0.08425940000050468ms | 0.48240000000805594ms | 0 | ✅ Perfect |
+| complex | balanced | 0.13150090000053752ms | 0.4905000000144355ms | 0 | ✅ Perfect |
+| complex | high-quality | 0.173526499999949ms | 0.715200000006007ms | 0 | ✅ Perfect |
+| complex | batch | 0.21180799999990269ms | 0.6344000000099186ms | 0 | ✅ Perfect |
 
 **Key Insights:**
 - DSP processing time shows pure algorithmic performance
@@ -452,21 +534,21 @@ Measuring latency distribution for real-time audio processing:
 
 | Pipeline | Config | p50 | p95 | p99 | Max | Avg Jitter |
 |----------|--------|-----|-----|-----|-----|------------|
-| simple | ultra-low | 0.005499999999983629ms | 0.02039999999999509ms | 0.03110000000015134ms | 0.042799999999942884ms | 0.004967267267282416ms |
-| simple | low | 0.00889999999981228ms | 0.024800000000141154ms | 0.03569999999990614ms | 0.04209999999966385ms | 0.009056856856857136ms |
-| simple | balanced | 0.01660000000083528ms | 0.027700000000550062ms | 0.03600000000005821ms | 0.043300000001181616ms | 0.00858848848850551ms |
-| simple | high-quality | 0.025200000003678724ms | 0.0404000000016822ms | 0.051800000001094304ms | 0.05860000000029686ms | 0.006575375375660343ms |
-| simple | batch | 0.0356000000028871ms | 0.054799999998067506ms | 0.06160000000090804ms | 0.0816999999951804ms | 0.009750450450554525ms |
-| moderate | ultra-low | 0.005900000003748573ms | 0.024699999994481914ms | 0.03969999999389984ms | 0.043600000004516914ms | 0.0058288288292843516ms |
-| moderate | low | 0.008300000001327135ms | 0.025200000003678724ms | 0.03840000000491273ms | 0.0503000000026077ms | 0.009688188188430341ms |
-| moderate | balanced | 0.022700000001350418ms | 0.035199999998440035ms | 0.045000000012805685ms | 0.07790000000386499ms | 0.010270570570550457ms |
-| moderate | high-quality | 0.0328999999910593ms | 0.046999999991385266ms | 0.055900000006658956ms | 0.08189999999012798ms | 0.006973173173139332ms |
-| moderate | batch | 0.04980000000796281ms | 0.06880000000819564ms | 0.07730000000447035ms | 0.09150000000954606ms | 0.01009949949949661ms |
-| complex | ultra-low | 0.006800000002840534ms | 0.020900000003166497ms | 0.025400000013178214ms | 0.042799999995622784ms | 0.004927427427821305ms |
-| complex | low | 0.010999999998603016ms | 0.026799999992363155ms | 0.04099999999743886ms | 0.053299999999580905ms | 0.009974774774528706ms |
-| complex | balanced | 0.026600000011967495ms | 0.03870000000461005ms | 0.04999999998835847ms | 0.104300000006333ms | 0.010117417417712056ms |
-| complex | high-quality | 0.04060000000754371ms | 0.05869999999413267ms | 0.06759999998030253ms | 0.07790000000386499ms | 0.007999199200179186ms |
-| complex | batch | 0.0647000000171829ms | 0.0829000000085216ms | 0.09249999999883585ms | 0.10939999998663552ms | 0.011036836835791127ms |
+| simple | ultra-low | 0.04100000000016735ms | 0.36750000000029104ms | 0.4389000000001033ms | 0.5565000000001419ms | 0.08092432432433551ms |
+| simple | low | 0.053399999999783176ms | 0.3359999999993306ms | 0.4378000000006068ms | 0.6125000000001819ms | 0.09258238238234033ms |
+| simple | balanced | 0.07939999999871361ms | 0.39400000000023283ms | 0.4412999999985914ms | 0.6904999999987922ms | 0.1143585585585277ms |
+| simple | high-quality | 0.10090000000127475ms | 0.3989000000001397ms | 0.4415000000008149ms | 0.5847000000030675ms | 0.11137017016998041ms |
+| simple | batch | 0.1695999999938067ms | 0.41790000000037253ms | 0.44210000000020955ms | 0.5906000000104541ms | 0.12956956956973212ms |
+| moderate | ultra-low | 0.02680000000691507ms | 0.3361000000004424ms | 0.4140999999945052ms | 0.5394000000087544ms | 0.08591561561553027ms |
+| moderate | low | 0.05139999999664724ms | 0.33530000000610016ms | 0.4232999999949243ms | 0.44689999999536667ms | 0.10110570570525436ms |
+| moderate | balanced | 0.0771999999997206ms | 0.37290000000211876ms | 0.42369999999937136ms | 0.6526000000012573ms | 0.111566166165843ms |
+| moderate | high-quality | 0.09950000001117587ms | 0.4006000000081258ms | 0.4342999999935273ms | 0.584499999997206ms | 0.11832922922914733ms |
+| moderate | batch | 0.16479999999864958ms | 0.4130999999906635ms | 0.44510000001173466ms | 0.5745000000024447ms | 0.1244166166167585ms |
+| complex | ultra-low | 0.02569999999832362ms | 0.323499999998603ms | 0.41379999998025596ms | 1.0726999999897089ms | 0.0862721721721835ms |
+| complex | low | 0.04749999998603016ms | 0.34949999998207204ms | 0.42560000001685694ms | 0.48240000000805594ms | 0.09705255255355402ms |
+| complex | balanced | 0.08160000000498258ms | 0.39239999998244457ms | 0.43419999998877756ms | 0.4905000000144355ms | 0.11407057057013381ms |
+| complex | high-quality | 0.10629999998491257ms | 0.4121000000159256ms | 0.43809999999939464ms | 0.715200000006007ms | 0.11825915915819628ms |
+| complex | batch | 0.16220000002067536ms | 0.4225999999907799ms | 0.4482999999891035ms | 0.6344000000099186ms | 0.11829659659613005ms |
 
 **Key Insights:**
 - p99 latency critical for real-time audio (must be < buffer duration)
@@ -495,25 +577,25 @@ Measuring safety margin between processing time and buffer duration:
 
 | Pipeline | Config | Headroom | Dropout Rate | Status |
 |----------|--------|----------|--------------|--------|
-| simple | ultra-low | 99.69659176029975% | 0% | ✅ Production Ready |
-| simple | low | 99.78045966228902% | 0% | ✅ Production Ready |
-| simple | balanced | 99.84510777881887% | 0% | ✅ Production Ready |
-| simple | high-quality | 99.87526441631516% | 0% | ✅ Production Ready |
-| simple | batch | 99.91227747832154% | 0% | ✅ Production Ready |
-| moderate | ultra-low | 99.65990262172933% | 0% | ✅ Production Ready |
-| moderate | low | 99.75296435271797% | 0% | ✅ Production Ready |
-| moderate | balanced | 99.79737113401922% | 0% | ✅ Production Ready |
-| moderate | high-quality | 99.841831223628% | 0% | ✅ Production Ready |
-| moderate | batch | 99.8804808999292% | 0% | ✅ Production Ready |
-| complex | ultra-low | 99.640546816474% | 0% | ✅ Production Ready |
-| complex | low | 99.71313133208996% | 0% | ✅ Production Ready |
-| complex | balanced | 99.7606560449873% | 0% | ✅ Production Ready |
-| complex | high-quality | 99.80491139240407% | 0% | ✅ Production Ready |
-| complex | batch | 99.8461919381288% | 0% | ✅ Production Ready |
+| simple | ultra-low | 96.82876779026219% | 0% | ✅ Production Ready |
+| simple | low | 98.28152720450292% | 0% | ✅ Production Ready |
+| simple | balanced | 98.80301405810715% | 0% | ✅ Production Ready |
+| simple | high-quality | 99.23606938584193% | 0% | ✅ Production Ready |
+| simple | batch | 99.51709280524898% | 0% | ✅ Production Ready |
+| moderate | ultra-low | 97.29797003744737% | 0% | ✅ Production Ready |
+| moderate | low | 98.3639305816086% | 0% | ✅ Production Ready |
+| moderate | balanced | 98.88428022493171% | 0% | ✅ Production Ready |
+| moderate | high-quality | 99.23300328176327% | 0% | ✅ Production Ready |
+| moderate | batch | 99.51356245605746% | 0% | ✅ Production Ready |
+| complex | ultra-low | 97.35022471910727% | 0% | ✅ Production Ready |
+| complex | low | 98.41914821762656% | 0% | ✅ Production Ready |
+| complex | balanced | 98.76756419868288% | 0% | ✅ Production Ready |
+| complex | high-quality | 99.18646741678413% | 0% | ✅ Production Ready |
+| complex | batch | 99.50361378017365% | 0% | ✅ Production Ready |
 
 **Production Readiness:**
 - **15/15 configurations** production-ready (20%+ headroom)
-- **99.8% average headroom** across all tests
+- **98.6% average headroom** across all tests
 - **15/15 configurations** with zero OS dropouts
 - **15/15 configurations** with zero DSP dropouts
 
@@ -579,5 +661,5 @@ Measuring safety margin between processing time and buffer duration:
 ---
 
 **Generated by:** dspx benchmark suite v1.0  
-**Date:** 2026-02-25T16:41:48.649Z  
+**Date:** 2026-02-26T16:42:34.315Z  
 **Runtime:** Node.js v22.17.1

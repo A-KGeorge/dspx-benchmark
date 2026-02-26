@@ -51,6 +51,7 @@ const loadPlatformJSON = (filename) => {
 
 // 4. Load all data for that specific platform
 const story1 = loadPlatformJSON("raw-speed") || [];
+const parallelSpeed = loadPlatformJSON("parallel-speed") || [];
 const story2 = loadPlatformJSON("algorithmic") || [];
 const story3 = loadPlatformJSON("persistence") || [];
 const story4 = loadPlatformJSON("logging") || [];
@@ -58,6 +59,10 @@ const story5Memory = loadPlatformJSON("profiling-memory") || [];
 const story5Concurrency = loadPlatformJSON("profiling-concurrency") || [];
 const story5ConcurrencyThreaded =
   loadPlatformJSON("profiling-concurrency-threaded") || [];
+const pythonConcurrencyThreading =
+  loadPlatformJSON("concurrency-threading") || [];
+const pythonConcurrencyMultiprocessing =
+  loadPlatformJSON("concurrency-multiprocessing") || [];
 const story6 = loadPlatformJSON("audio-latency") || [];
 
 // 5. Get machine specs from the *loaded JSON data*, not the host
@@ -294,14 +299,28 @@ for (const result of firResults) {
   markdown += `| ${result.lib} | ${result.input} | ${throughput} | ${result.backend} |\n`;
 }
 
+// Add parallel FIR results if available
+const firParallel = parallelSpeed.filter(
+  (r) => r.test === "fir_filter_parallel",
+);
+for (const result of firParallel) {
+  const throughput = formatThroughput(result.samples, result.avg_ms);
+  markdown += `| ${result.lib}_parallel | ${result.input} | ${throughput} | ${result.backend} |\n`;
+}
+
 markdown += `\n**Key Insights:**
 - SIMD-optimized convolution in dspx delivers ${calculateFilterSpeedup(
   firResults,
 )}x speedup
 - Pure JS implementation struggles with inner loop overhead
-- FIR filters benefit most from vectorization (repeated multiply-accumulate)
+- FIR filters benefit most from vectorization (repeated multiply-accumulate)`;
 
----
+if (firParallel.length > 0) {
+  const parallelSpeedup = calculateParallelSpeedup(firResults, firParallel);
+  markdown += `\n- **Parallel processing (18 workers)**: ${parallelSpeedup}x additional speedup over single-threaded dspx`;
+}
+
+markdown += `\n\n---
 
 `;
 
@@ -339,7 +358,107 @@ ${generateMovingAverageTable(story2)}
 ---
 
 `;
+// ============================================================================
+// Story 1b: Convolution Parallel Performance
+// ============================================================================
 
+if (parallelSpeed.length > 0) {
+  const convParallel = parallelSpeed.filter(
+    (r) => r.test === "conv1d_parallel",
+  );
+  if (convParallel.length > 0) {
+    markdown += `## Story 1b — Parallel Processing Performance
+
+### 1D Convolution: Multi-threaded Scaling
+
+Testing dspx parallel processing with 18 worker threads:
+
+![Convolution Throughput](../charts/${platformId}/convolution_throughput.png)
+
+#### Parallel Results Summary
+
+| Library | Kernel Size | Throughput | Workers | Backend |
+|---------|-------------|------------|---------|----------|
+`;
+
+    for (const result of convParallel) {
+      const throughput = formatThroughput(result.samples, result.avg_ms);
+      markdown += `| ${result.lib}_parallel | ${result.kernel_size} | ${throughput} | ${result.workers || 18} | ${result.backend} |\n`;
+    }
+
+    const convSingle = story1.filter(
+      (r) => r.test === "conv1d" && r.lib === "dspx",
+    );
+    if (convSingle.length > 0) {
+      const parallelSpeedup = calculateConvolutionParallelSpeedup(
+        convSingle,
+        convParallel,
+      );
+      markdown += `\n**Key Insights:**
+- **${parallelSpeedup}x speedup** with 18 workers vs single-threaded dspx
+- Worker threads enable true parallel processing on multi-core CPUs
+- Ideal for batch processing and high-throughput scenarios
+- Throughput scales with available CPU cores
+
+---
+
+`;
+    }
+  }
+}
+
+// ============================================================================
+// Story 2b: Python Concurrency Comparison
+// ============================================================================
+
+if (
+  pythonConcurrencyThreading.length > 0 ||
+  pythonConcurrencyMultiprocessing.length > 0
+) {
+  markdown += `## Story 2b — Python Concurrency: Threading vs Multiprocessing
+
+### Concurrent DSP Pipeline Scaling (Python scipy)
+
+Comparing Python threading (GIL-limited) vs multiprocessing (true parallelism):
+
+#### Python Threading Results (GIL-limited)
+
+| Pipelines | Avg Time (ms) | Throughput | Efficiency |
+|-----------|---------------|------------|------------|
+`;
+
+  for (const result of pythonConcurrencyThreading) {
+    const throughput = (result.throughput_samples_per_sec / 1e6).toFixed(1);
+    markdown += `| ${result.num_pipelines} | ${result.time_avg_ms.toFixed(1)} | ${throughput}M samples/sec | ${result.efficiency_percent}% |\n`;
+  }
+
+  markdown += `\n#### Python Multiprocessing Results (true parallelism)
+
+| Pipelines | Avg Time (ms) | Throughput | Efficiency |
+|-----------|---------------|------------|------------|
+`;
+
+  for (const result of pythonConcurrencyMultiprocessing) {
+    const throughput = (result.throughput_samples_per_sec / 1e6).toFixed(1);
+    markdown += `| ${result.num_pipelines} | ${result.time_avg_ms.toFixed(1)} | ${throughput}M samples/sec | ${result.efficiency_percent}% |\n`;
+  }
+
+  markdown += `\n**Key Insights:**
+- **Python threading**: GIL limits parallel execution, efficiency plateaus with more threads
+- **Python multiprocessing**: True parallelism bypasses GIL, better scaling with more workers
+- scipy releases GIL during C calls, enabling some threading benefits
+- At high concurrency (128+ pipelines), multiprocessing shows ${pythonConcurrencyMultiprocessing.length > 0 ? (pythonConcurrencyMultiprocessing[pythonConcurrencyMultiprocessing.length - 1].efficiency_percent / 100).toFixed(1) : "N/A"}x efficiency
+- IPC overhead limits multiprocessing gains at low pipeline counts
+
+**Comparison to dspx:**
+- dspx worker threads avoid GIL entirely (native C++ execution)
+- Both Python strategies viable for different use cases
+- Python multiprocessing better for CPU-bound tasks
+
+---
+
+`;
+}
 // ============================================================================
 // Story 3: Redis Persistence
 // ============================================================================
@@ -992,4 +1111,38 @@ function generateMovingAverageTable(results) {
   }
 
   return allTables;
+}
+
+/**
+ * Calculate parallel speedup for FIR filters
+ */
+function calculateParallelSpeedup(singleResults, parallelResults) {
+  const dspxSingle = singleResults.filter((r) => r.lib === "dspx");
+  const dspxParallel = parallelResults.filter((r) => r.lib === "dspx");
+
+  if (dspxSingle.length === 0 || dspxParallel.length === 0) return "N/A";
+
+  const singleAvg =
+    dspxSingle.reduce((sum, r) => sum + r.throughput, 0) / dspxSingle.length;
+  const parallelAvg =
+    dspxParallel.reduce((sum, r) => sum + r.throughput, 0) /
+    dspxParallel.length;
+
+  return (parallelAvg / singleAvg).toFixed(1);
+}
+
+/**
+ * Calculate parallel speedup for convolution
+ */
+function calculateConvolutionParallelSpeedup(singleResults, parallelResults) {
+  if (singleResults.length === 0 || parallelResults.length === 0) return "N/A";
+
+  const singleAvg =
+    singleResults.reduce((sum, r) => sum + r.throughput, 0) /
+    singleResults.length;
+  const parallelAvg =
+    parallelResults.reduce((sum, r) => sum + r.throughput, 0) /
+    parallelResults.length;
+
+  return (parallelAvg / singleAvg).toFixed(1);
 }

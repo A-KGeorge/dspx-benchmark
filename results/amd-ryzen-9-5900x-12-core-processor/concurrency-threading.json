@@ -1,0 +1,233 @@
+[
+  {
+    "num_pipelines": 1,
+    "time_avg_ms": 2.154,
+    "time_p50_ms": 2.115,
+    "time_p95_ms": 2.616,
+    "time_p99_ms": 2.616,
+    "time_min_ms": 2.041,
+    "time_max_ms": 2.616,
+    "throughput_samples_per_sec": 30421865,
+    "total_samples_per_iter": 65536,
+    "efficiency_percent": 100.0,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 2,
+    "time_avg_ms": 2.981,
+    "time_p50_ms": 2.978,
+    "time_p95_ms": 3.277,
+    "time_p99_ms": 3.277,
+    "time_min_ms": 2.669,
+    "time_max_ms": 3.277,
+    "throughput_samples_per_sec": 43973120,
+    "total_samples_per_iter": 131072,
+    "efficiency_percent": 144.5,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 4,
+    "time_avg_ms": 3.939,
+    "time_p50_ms": 3.9,
+    "time_p95_ms": 4.722,
+    "time_p99_ms": 4.722,
+    "time_min_ms": 3.505,
+    "time_max_ms": 4.722,
+    "throughput_samples_per_sec": 66545748,
+    "total_samples_per_iter": 262144,
+    "efficiency_percent": 218.7,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 8,
+    "time_avg_ms": 7.336,
+    "time_p50_ms": 7.258,
+    "time_p95_ms": 9.173,
+    "time_p99_ms": 9.173,
+    "time_min_ms": 6.376,
+    "time_max_ms": 9.173,
+    "throughput_samples_per_sec": 71466806,
+    "total_samples_per_iter": 524288,
+    "efficiency_percent": 234.9,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 16,
+    "time_avg_ms": 12.029,
+    "time_p50_ms": 11.763,
+    "time_p95_ms": 15.314,
+    "time_p99_ms": 15.314,
+    "time_min_ms": 9.901,
+    "time_max_ms": 15.314,
+    "throughput_samples_per_sec": 87171685,
+    "total_samples_per_iter": 1048576,
+    "efficiency_percent": 286.5,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 32,
+    "time_avg_ms": 22.239,
+    "time_p50_ms": 22.395,
+    "time_p95_ms": 24.002,
+    "time_p99_ms": 24.002,
+    "time_min_ms": 18.872,
+    "time_max_ms": 24.002,
+    "throughput_samples_per_sec": 94301300,
+    "total_samples_per_iter": 2097152,
+    "efficiency_percent": 310.0,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 64,
+    "time_avg_ms": 31.857,
+    "time_p50_ms": 31.051,
+    "time_p95_ms": 37.429,
+    "time_p99_ms": 37.429,
+    "time_min_ms": 29.829,
+    "time_max_ms": 37.429,
+    "throughput_samples_per_sec": 131658621,
+    "total_samples_per_iter": 4194304,
+    "efficiency_percent": 432.8,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 128,
+    "time_avg_ms": 67.974,
+    "time_p50_ms": 69.1,
+    "time_p95_ms": 75.567,
+    "time_p99_ms": 75.567,
+    "time_min_ms": 57.226,
+    "time_max_ms": 75.567,
+    "throughput_samples_per_sec": 123409621,
+    "total_samples_per_iter": 8388608,
+    "efficiency_percent": 405.7,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 256,
+    "time_avg_ms": 148.726,
+    "time_p50_ms": 152.094,
+    "time_p95_ms": 164.02,
+    "time_p99_ms": 164.02,
+    "time_min_ms": 121.225,
+    "time_max_ms": 164.02,
+    "throughput_samples_per_sec": 112805941,
+    "total_samples_per_iter": 16777216,
+    "efficiency_percent": 370.8,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 512,
+    "time_avg_ms": 310.023,
+    "time_p50_ms": 316.718,
+    "time_p95_ms": 354.125,
+    "time_p99_ms": 354.125,
+    "time_min_ms": 229.396,
+    "time_max_ms": 354.125,
+    "throughput_samples_per_sec": 108232217,
+    "total_samples_per_iter": 33554432,
+    "efficiency_percent": 355.8,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  },
+  {
+    "num_pipelines": 1024,
+    "time_avg_ms": 670.031,
+    "time_p50_ms": 683.611,
+    "time_p95_ms": 800.806,
+    "time_p99_ms": 800.806,
+    "time_min_ms": 466.218,
+    "time_max_ms": 800.806,
+    "throughput_samples_per_sec": 100157775,
+    "total_samples_per_iter": 67108864,
+    "efficiency_percent": 329.2,
+    "strategy": "threading",
+    "meta": {
+      "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "cores": 24,
+      "python": "3.12.10",
+      "numpy": "2.3.3",
+      "scipy": "1.16.2",
+      "os": "Windows 11"
+    }
+  }
+]
