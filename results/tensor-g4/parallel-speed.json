@@ -14,7 +14,7 @@
     "filter_order": 51,
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -38,7 +38,7 @@
     "filter_order": 51,
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -62,7 +62,7 @@
     "filter_order": 51,
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -87,7 +87,7 @@
     "backend": "CPU (Native C++ SIMD + 4 Worker Threads)",
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -112,7 +112,7 @@
     "backend": "CPU (Native C++ SIMD + 4 Worker Threads)",
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -137,7 +137,7 @@
     "backend": "CPU (Native C++ SIMD + 4 Worker Threads)",
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -162,7 +162,7 @@
     "backend": "CPU (Native C++ SIMD + 4 Worker Threads)",
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
@@ -187,7 +187,7 @@
     "backend": "CPU (Native C++ SIMD + 4 Worker Threads)",
     "num_threads": 4,
     "meta": {
-      "cpu": "unknown",
+      "cpu": "Tensor G4",
       "cores": 8,
       "ram": "4 GB",
       "arch": "arm64",
