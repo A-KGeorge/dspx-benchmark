@@ -12,7 +12,7 @@
 | **Architecture** | x64 |
 | **OS** | Microsoft Windows [Version 10.0.26200.6901] |
 | **Node.js** | v22.17.1 |
-| **dspx** | v1.4.11 |
+| **dspx** | v1.4.12 |
 
 ---
 
@@ -27,7 +27,7 @@ This benchmark suite evaluates **dspx**, a high-performance DSP library with nat
 5. **Production Profiling** — Memory stability, latency distribution, concurrent scaling
 
 **Key Findings:**
-- 🚀 **2.7x faster** than pure JS for FFT and filtering
+- 🚀 **2.9x faster** than pure JS for FFT and filtering
 - ⚡ **O(1) complexity** for moving averages (vs O(N·W) naive)
 - 💾 **Sub-millisecond** state save/load operations
 - 📊 **<5% overhead** with batched logging (vs >20% per-message)
@@ -49,33 +49,33 @@ Comparing Fast Fourier Transform implementations across different backends:
 
 | Library | Input Size | Throughput | Backend |
 |---------|------------|------------|---------|
-| dspx | small | 110.34M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | small | 3.72M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | small | 5.46M samples/sec | CPU (Pure JS) |
-| dspx | medium | 193.65M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | medium | 14.49M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | medium | 96.56M samples/sec | CPU (Pure JS) |
-| dspx | large | 152.38M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | large | 16.25M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | large | 65.09M samples/sec | CPU (Pure JS) |
-| scipy | small | 124.57M samples/sec | CPU (scipy.fft) |
-| scipy | medium | 203.30M samples/sec | CPU (scipy.fft) |
-| scipy | large | 111.90M samples/sec | CPU (scipy.fft) |
-| dspx | small | 110.34M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | small | 3.72M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | small | 5.46M samples/sec | CPU (Pure JS) |
-| dspx | medium | 193.65M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | medium | 14.49M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | medium | 96.56M samples/sec | CPU (Pure JS) |
-| dspx | large | 152.38M samples/sec | CPU (Native C++ SIMD) |
-| tfjs | large | 16.25M samples/sec | CPU (TensorFlow.js Node (C++)) |
-| fft.js | large | 65.09M samples/sec | CPU (Pure JS) |
-| scipy | small | 124.57M samples/sec | CPU (scipy.fft) |
-| scipy | medium | 203.30M samples/sec | CPU (scipy.fft) |
-| scipy | large | 111.90M samples/sec | CPU (scipy.fft) |
-| jdsp | small | 1.49M samples/sec | CPU (JDSP FFT) |
-| jdsp | medium | 25.90M samples/sec | CPU (JDSP FFT) |
-| jdsp | large | 24.37M samples/sec | CPU (JDSP FFT) |
+| dspx | small | 131.96M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | small | 3.84M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | small | 5.32M samples/sec | CPU (Pure JS) |
+| dspx | medium | 214.11M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | medium | 14.72M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | medium | 97.14M samples/sec | CPU (Pure JS) |
+| dspx | large | 152.61M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | large | 16.66M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | large | 70.69M samples/sec | CPU (Pure JS) |
+| scipy | small | 117.84M samples/sec | CPU (scipy.fft) |
+| scipy | medium | 177.10M samples/sec | CPU (scipy.fft) |
+| scipy | large | 110.43M samples/sec | CPU (scipy.fft) |
+| dspx | small | 131.96M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | small | 3.84M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | small | 5.32M samples/sec | CPU (Pure JS) |
+| dspx | medium | 214.11M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | medium | 14.72M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | medium | 97.14M samples/sec | CPU (Pure JS) |
+| dspx | large | 152.61M samples/sec | CPU (Native C++ SIMD) |
+| tfjs | large | 16.66M samples/sec | CPU (TensorFlow.js Node (C++)) |
+| fft.js | large | 70.69M samples/sec | CPU (Pure JS) |
+| scipy | small | 117.84M samples/sec | CPU (scipy.fft) |
+| scipy | medium | 177.10M samples/sec | CPU (scipy.fft) |
+| scipy | large | 110.43M samples/sec | CPU (scipy.fft) |
+| jdsp | small | 1.58M samples/sec | CPU (JDSP FFT) |
+| jdsp | medium | 25.99M samples/sec | CPU (JDSP FFT) |
+| jdsp | large | 24.62M samples/sec | CPU (JDSP FFT) |
 
 **Key Insights:**
 - Native C++ SIMD (dspx) consistently outperforms pure JS implementations
@@ -92,42 +92,42 @@ Testing Finite Impulse Response filter implementations (51-tap lowpass):
 
 | Library | Input Size | Throughput | Backend |
 |---------|------------|------------|---------|
-| dspx | small | 20.80M samples/sec | CPU (Native C++ SIMD) |
-| fili | small | 7.59M samples/sec | CPU (Pure JS) |
-| naive_js | small | 11.65M samples/sec | CPU (Pure JS) |
-| dspx | medium | 35.63M samples/sec | CPU (Native C++ SIMD) |
-| fili | medium | 12.22M samples/sec | CPU (Pure JS) |
-| naive_js | medium | 15.69M samples/sec | CPU (Pure JS) |
-| dspx | large | 34.63M samples/sec | CPU (Native C++ SIMD) |
-| fili | large | 12.24M samples/sec | CPU (Pure JS) |
-| naive_js | large | 21.56M samples/sec | CPU (Pure JS) |
-| scipy | small | 11.95M samples/sec | CPU (scipy.signal) |
-| scipy | medium | 65.26M samples/sec | CPU (scipy.signal) |
-| scipy | large | 51.06M samples/sec | CPU (scipy.signal) |
-| dspx | small | 20.80M samples/sec | CPU (Native C++ SIMD) |
-| fili | small | 7.59M samples/sec | CPU (Pure JS) |
-| naive_js | small | 11.65M samples/sec | CPU (Pure JS) |
-| dspx | medium | 35.63M samples/sec | CPU (Native C++ SIMD) |
-| fili | medium | 12.22M samples/sec | CPU (Pure JS) |
-| naive_js | medium | 15.69M samples/sec | CPU (Pure JS) |
-| dspx | large | 34.63M samples/sec | CPU (Native C++ SIMD) |
-| fili | large | 12.24M samples/sec | CPU (Pure JS) |
-| naive_js | large | 21.56M samples/sec | CPU (Pure JS) |
-| scipy | small | 11.95M samples/sec | CPU (scipy.signal) |
-| scipy | medium | 65.26M samples/sec | CPU (scipy.signal) |
-| scipy | large | 51.06M samples/sec | CPU (scipy.signal) |
-| jdsp | small | 8.34M samples/sec | CPU (JDSP FIR) |
-| jdsp | medium | 42.30M samples/sec | CPU (JDSP FIR) |
-| jdsp | large | 34.88M samples/sec | CPU (JDSP FIR) |
-| dspx_parallel | small | 5.12M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
-| dspx_parallel | medium | 13.82M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
-| dspx_parallel | large | 16.50M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx | small | 16.22M samples/sec | CPU (Native C++ SIMD) |
+| fili | small | 8.47M samples/sec | CPU (Pure JS) |
+| naive_js | small | 10.59M samples/sec | CPU (Pure JS) |
+| dspx | medium | 34.67M samples/sec | CPU (Native C++ SIMD) |
+| fili | medium | 12.06M samples/sec | CPU (Pure JS) |
+| naive_js | medium | 13.64M samples/sec | CPU (Pure JS) |
+| dspx | large | 33.76M samples/sec | CPU (Native C++ SIMD) |
+| fili | large | 12.25M samples/sec | CPU (Pure JS) |
+| naive_js | large | 21.44M samples/sec | CPU (Pure JS) |
+| scipy | small | 15.11M samples/sec | CPU (scipy.signal) |
+| scipy | medium | 65.01M samples/sec | CPU (scipy.signal) |
+| scipy | large | 55.90M samples/sec | CPU (scipy.signal) |
+| dspx | small | 16.22M samples/sec | CPU (Native C++ SIMD) |
+| fili | small | 8.47M samples/sec | CPU (Pure JS) |
+| naive_js | small | 10.59M samples/sec | CPU (Pure JS) |
+| dspx | medium | 34.67M samples/sec | CPU (Native C++ SIMD) |
+| fili | medium | 12.06M samples/sec | CPU (Pure JS) |
+| naive_js | medium | 13.64M samples/sec | CPU (Pure JS) |
+| dspx | large | 33.76M samples/sec | CPU (Native C++ SIMD) |
+| fili | large | 12.25M samples/sec | CPU (Pure JS) |
+| naive_js | large | 21.44M samples/sec | CPU (Pure JS) |
+| scipy | small | 15.11M samples/sec | CPU (scipy.signal) |
+| scipy | medium | 65.01M samples/sec | CPU (scipy.signal) |
+| scipy | large | 55.90M samples/sec | CPU (scipy.signal) |
+| jdsp | small | 8.26M samples/sec | CPU (JDSP FIR) |
+| jdsp | medium | 42.21M samples/sec | CPU (JDSP FIR) |
+| jdsp | large | 34.77M samples/sec | CPU (JDSP FIR) |
+| dspx_parallel | small | 4.50M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | medium | 15.51M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | large | 15.46M samples/sec | CPU (Native C++ SIMD + 18 Worker Threads) |
 
 **Key Insights:**
 - SIMD-optimized convolution in dspx delivers N/Ax speedup
 - Pure JS implementation struggles with inner loop overhead
 - FIR filters benefit most from vectorization (repeated multiply-accumulate)
-- **Parallel processing (18 workers)**: 3.9x additional speedup over single-threaded dspx
+- **Parallel processing (18 workers)**: 4.2x additional speedup over single-threaded dspx
 
 ---
 
@@ -200,14 +200,14 @@ Testing dspx parallel processing with 18 worker threads:
 
 | Library | Kernel Size | Throughput | Workers | Backend |
 |---------|-------------|------------|---------|----------|
-| dspx_parallel | 8 | 28.86M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
-| dspx_parallel | 32 | 28.55M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
-| dspx_parallel | 64 | 30.39M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
-| dspx_parallel | 128 | 13.74M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
-| dspx_parallel | 256 | 11.23M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 8 | 30.96M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 32 | 27.50M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 64 | 33.17M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 128 | 11.93M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
+| dspx_parallel | 256 | 14.80M samples/sec | 18 | CPU (Native C++ SIMD + 18 Worker Threads) |
 
 **Key Insights:**
-- **1.3x speedup** with 18 workers vs single-threaded dspx
+- **1.4x speedup** with 18 workers vs single-threaded dspx
 - Worker threads enable true parallel processing on multi-core CPUs
 - Ideal for batch processing and high-throughput scenarios
 - Throughput scales with available CPU cores
@@ -224,39 +224,39 @@ Comparing Python threading (GIL-limited) vs multiprocessing (true parallelism):
 
 | Pipelines | Avg Time (ms) | Throughput | Efficiency |
 |-----------|---------------|------------|------------|
-| 1 | 2.2 | 30.4M samples/sec | 100% |
-| 2 | 3.0 | 44.0M samples/sec | 144.5% |
-| 4 | 3.9 | 66.5M samples/sec | 218.7% |
-| 8 | 7.3 | 71.5M samples/sec | 234.9% |
-| 16 | 12.0 | 87.2M samples/sec | 286.5% |
-| 32 | 22.2 | 94.3M samples/sec | 310% |
-| 64 | 31.9 | 131.7M samples/sec | 432.8% |
-| 128 | 68.0 | 123.4M samples/sec | 405.7% |
-| 256 | 148.7 | 112.8M samples/sec | 370.8% |
-| 512 | 310.0 | 108.2M samples/sec | 355.8% |
-| 1024 | 670.0 | 100.2M samples/sec | 329.2% |
+| 1 | 2.3 | 29.0M samples/sec | 100% |
+| 2 | 2.8 | 47.1M samples/sec | 162.2% |
+| 4 | 3.5 | 75.2M samples/sec | 258.8% |
+| 8 | 5.5 | 95.4M samples/sec | 328.5% |
+| 16 | 13.1 | 79.9M samples/sec | 275% |
+| 32 | 19.4 | 108.1M samples/sec | 372.3% |
+| 64 | 32.8 | 128.1M samples/sec | 440.9% |
+| 128 | 61.6 | 136.1M samples/sec | 468.7% |
+| 256 | 134.1 | 125.1M samples/sec | 430.8% |
+| 512 | 286.4 | 117.2M samples/sec | 403.4% |
+| 1024 | 605.5 | 110.8M samples/sec | 381.6% |
 
 #### Python Multiprocessing Results (true parallelism)
 
 | Pipelines | Avg Time (ms) | Throughput | Efficiency |
 |-----------|---------------|------------|------------|
-| 1 | 3.6 | 18.4M samples/sec | 100% |
-| 2 | 6.9 | 19.1M samples/sec | 103.7% |
-| 4 | 13.6 | 19.3M samples/sec | 104.7% |
-| 8 | 27.9 | 18.8M samples/sec | 102.2% |
-| 16 | 32.1 | 32.7M samples/sec | 177.4% |
-| 32 | 35.1 | 59.7M samples/sec | 324.4% |
-| 64 | 47.2 | 88.9M samples/sec | 482.6% |
-| 128 | 54.9 | 152.7M samples/sec | 829.1% |
-| 256 | 121.7 | 137.9M samples/sec | 748.6% |
-| 512 | 218.1 | 153.9M samples/sec | 835.5% |
-| 1024 | 427.9 | 156.8M samples/sec | 851.7% |
+| 1 | 3.6 | 18.3M samples/sec | 100% |
+| 2 | 6.7 | 19.4M samples/sec | 106.3% |
+| 4 | 13.9 | 18.9M samples/sec | 103.5% |
+| 8 | 27.4 | 19.1M samples/sec | 104.8% |
+| 16 | 27.8 | 37.8M samples/sec | 206.6% |
+| 32 | 35.2 | 59.6M samples/sec | 325.9% |
+| 64 | 45.6 | 91.9M samples/sec | 503% |
+| 128 | 62.4 | 134.4M samples/sec | 735.5% |
+| 256 | 121.2 | 138.4M samples/sec | 757.3% |
+| 512 | 247.9 | 135.3M samples/sec | 740.7% |
+| 1024 | 506.0 | 132.6M samples/sec | 725.8% |
 
 **Key Insights:**
 - **Python threading**: GIL limits parallel execution, efficiency plateaus with more threads
 - **Python multiprocessing**: True parallelism bypasses GIL, better scaling with more workers
 - scipy releases GIL during C calls, enabling some threading benefits
-- At high concurrency (128+ pipelines), multiprocessing shows 8.5x efficiency
+- At high concurrency (128+ pipelines), multiprocessing shows 7.3x efficiency
 - IPC overhead limits multiprocessing gains at low pipeline counts
 
 **Comparison to dspx:**
@@ -332,21 +332,21 @@ Comparing throughput impact of different logging strategies:
 
 | Mode | Average Overhead | Recommendation |
 |------|------------------|----------------|
-| batched | 0.49% | ✅ Recommended |
-| per-message | 0.38% | ✅ Recommended |
-| console | 6.65% | ✅ Recommended |
+| batched | 2.53% | ✅ Recommended |
+| per-message | -0.39% | ✅ Recommended |
+| console | 4.92% | ✅ Recommended |
 
 #### Detailed Results
 
 | Input Size | Mode | Throughput | Overhead |
 |------------|------|------------|----------|
-| medium | none | 177.41M samples/sec | — |
-| medium | batched | 175.64M samples/sec | 1.00% |
-| medium | per-message | 176.65M samples/sec | 0.43% |
-| medium | console | 166.35M samples/sec | 6.65% |
-| large | none | 190.48M samples/sec | — |
-| large | batched | 190.51M samples/sec | -0.02% |
-| large | per-message | 189.85M samples/sec | 0.33% |
+| medium | none | 181.01M samples/sec | — |
+| medium | batched | 173.08M samples/sec | 4.59% |
+| medium | per-message | 180.85M samples/sec | 0.09% |
+| medium | console | 172.53M samples/sec | 4.92% |
+| large | none | 192.30M samples/sec | — |
+| large | batched | 191.39M samples/sec | 0.48% |
+| large | per-message | 193.97M samples/sec | -0.86% |
 
 **Key Insights:**
 - **Batched logging (TopicRouter)**: <5% overhead — production-ready
@@ -612,7 +612,7 @@ Measuring safety margin between processing time and buffer duration:
 ### Performance Wins
 
 1. **Native SIMD Acceleration**
-   - 2.7x faster than pure JavaScript
+   - 2.9x faster than pure JavaScript
    - Consistent performance across input sizes
    - Optimized for modern CPU architectures
 
@@ -661,5 +661,5 @@ Measuring safety margin between processing time and buffer duration:
 ---
 
 **Generated by:** dspx benchmark suite v1.0  
-**Date:** 2026-02-26T16:42:34.315Z  
+**Date:** 2026-02-26T20:02:08.775Z  
 **Runtime:** Node.js v22.17.1

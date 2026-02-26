@@ -6,10 +6,10 @@
     "batch_size": 10,
     "total_samples": 10240,
     "lib": "dspx",
-    "avg_ms": 0.1999000000000251,
-    "min_ms": 0.17319999999995161,
-    "max_ms": 0.2645999999999731,
-    "throughput": 51225612.80639676,
+    "avg_ms": 0.22780000000007022,
+    "min_ms": 0.19830000000001746,
+    "max_ms": 0.27280000000018845,
+    "throughput": 44951712.02808096,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "filter_order": 51,
     "num_threads": 18,
@@ -20,7 +20,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -30,10 +30,10 @@
     "batch_size": 10,
     "total_samples": 655360,
     "lib": "dspx",
-    "avg_ms": 4.743659999999954,
-    "min_ms": 3.941899999999805,
-    "max_ms": 5.644600000000082,
-    "throughput": 138154926.7864911,
+    "avg_ms": 4.225019999999995,
+    "min_ms": 3.7230999999999312,
+    "max_ms": 4.48070000000007,
+    "throughput": 155114058.6316753,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "filter_order": 51,
     "num_threads": 18,
@@ -44,7 +44,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -54,10 +54,10 @@
     "batch_size": 10,
     "total_samples": 10485760,
     "lib": "dspx",
-    "avg_ms": 63.56323999999999,
-    "min_ms": 60.543499999999995,
-    "max_ms": 66.14030000000002,
-    "throughput": 164965788.4022275,
+    "avg_ms": 67.84428000000003,
+    "min_ms": 63.98590000000013,
+    "max_ms": 72.71179999999981,
+    "throughput": 154556286.8380355,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "filter_order": 51,
     "num_threads": 18,
@@ -68,7 +68,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -80,10 +80,10 @@
     "signal_size": 65536,
     "kernel_size": 8,
     "lib": "dspx",
-    "avg_ms": 2.2704399999998714,
-    "min_ms": 2.0907999999999447,
-    "max_ms": 2.667899999999918,
-    "throughput": 288648896.2492015,
+    "avg_ms": 2.116920000000209,
+    "min_ms": 1.9176000000002205,
+    "max_ms": 2.318300000000363,
+    "throughput": 309581845.322419,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "num_threads": 18,
     "meta": {
@@ -93,7 +93,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -105,10 +105,10 @@
     "signal_size": 65536,
     "kernel_size": 32,
     "lib": "dspx",
-    "avg_ms": 2.295499999999811,
-    "min_ms": 2.201299999999719,
-    "max_ms": 2.37729999999965,
-    "throughput": 285497712.9165994,
+    "avg_ms": 2.382759999999962,
+    "min_ms": 2.1624000000001615,
+    "max_ms": 2.741899999999987,
+    "throughput": 275042387.8191721,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "num_threads": 18,
     "meta": {
@@ -118,7 +118,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -130,10 +130,10 @@
     "signal_size": 65536,
     "kernel_size": 64,
     "lib": "dspx",
-    "avg_ms": 2.156159999999909,
-    "min_ms": 1.9917999999997846,
-    "max_ms": 2.326799999999821,
-    "throughput": 303947758.97893834,
+    "avg_ms": 1.9756200000001627,
+    "min_ms": 1.8524999999999636,
+    "max_ms": 2.1233000000001994,
+    "throughput": 331723712.0498608,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "num_threads": 18,
     "meta": {
@@ -143,7 +143,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -155,10 +155,10 @@
     "signal_size": 65536,
     "kernel_size": 128,
     "lib": "dspx",
-    "avg_ms": 4.768499999999767,
-    "min_ms": 4.372499999999491,
-    "max_ms": 5.20299999999952,
-    "throughput": 137435252.1757433,
+    "avg_ms": 5.49435999999987,
+    "min_ms": 4.552400000000489,
+    "max_ms": 6.4968999999991865,
+    "throughput": 119278678.4994095,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "num_threads": 18,
     "meta": {
@@ -168,7 +168,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   },
   {
@@ -180,10 +180,10 @@
     "signal_size": 65536,
     "kernel_size": 256,
     "lib": "dspx",
-    "avg_ms": 5.8357399999998965,
-    "min_ms": 4.225699999999961,
-    "max_ms": 7.102799999999661,
-    "throughput": 112301096.34768027,
+    "avg_ms": 4.428919999999925,
+    "min_ms": 4.133499999999913,
+    "max_ms": 4.737500000000182,
+    "throughput": 147972869.23223066,
     "backend": "CPU (Native C++ SIMD + 18 Worker Threads)",
     "num_threads": 18,
     "meta": {
@@ -193,7 +193,7 @@
       "arch": "x64",
       "os": "Microsoft Windows [Version 10.0.26200.6901]",
       "node": "v22.17.1",
-      "dspx": "1.4.11"
+      "dspx": "1.4.12"
     }
   }
 ]
