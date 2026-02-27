@@ -80,7 +80,7 @@ if (story1Data) {
       plugins: {
         title: {
           display: true,
-          text: "FFT Throughput: dspx vs TensorFlow.js vs fft.js",
+          text: "FFT Throughput: Cross-Language Comparison",
           font: { size: 20, weight: "bold" },
         },
         subtitle: {
@@ -177,7 +177,7 @@ if (story1Data) {
       plugins: {
         title: {
           display: true,
-          text: "FIR Filter Throughput: dspx vs fili vs dsp.js",
+          text: "FIR Filter Throughput: Cross-Language Comparison",
           font: { size: 20, weight: "bold" },
         },
         subtitle: {
@@ -296,7 +296,7 @@ if (story1Data) {
       plugins: {
         title: {
           display: true,
-          text: "1D Convolution Throughput: dspx vs TensorFlow.js vs Naive JS",
+          text: "1D Convolution Throughput: Cross-Language Comparison",
           font: { size: 20, weight: "bold" },
         },
         subtitle: {
