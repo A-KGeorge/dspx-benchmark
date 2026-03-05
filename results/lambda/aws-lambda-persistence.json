@@ -10,40 +10,40 @@
     {
       "input": "SMALL",
       "samples": 1024,
-      "json": { "avg_ms": 0.1008, "size_bytes": 5169, "throughput_mbs": 48.91 },
-      "toon": { "avg_ms": 0.0111, "size_bytes": 1500, "throughput_mbs": 128.87 }
+      "json": { "avg_ser_ms": 0.0974, "avg_des_ms": 0.0758, "size_bytes": 5169, "throughput_mbs": 10.50 },
+      "toon": { "avg_ser_ms": 0.0063, "avg_des_ms": 0.0033, "size_bytes": 1500, "throughput_mbs": 161.99 }
     },
     {
       "input": "MEDIUM",
       "samples": 4096,
-      "json": { "avg_ms": 0.1463, "size_bytes": 5231, "throughput_mbs": 34.09 },
-      "toon": { "avg_ms": 0.0103, "size_bytes": 1500, "throughput_mbs": 138.88 }
+      "json": { "avg_ser_ms": 0.0973, "avg_des_ms": 0.0773, "size_bytes": 5231, "throughput_mbs": 673.01 },
+      "toon": { "avg_ser_ms": 0.0070, "avg_des_ms": 0.0033, "size_bytes": 1500, "throughput_mbs": 9242.92 }
     },
     {
       "input": "LARGE",
       "samples": 1048576,
-      "json": { "avg_ms": 0.0971, "size_bytes": 5154, "throughput_mbs": 50.62 },
-      "toon": { "avg_ms": 0.0088, "size_bytes": 1500, "throughput_mbs": 162.56 }
+      "json": { "avg_ser_ms": 0.0978, "avg_des_ms": 0.0755, "size_bytes": 5154, "throughput_mbs": 10724.98 },
+      "toon": { "avg_ser_ms": 0.0078, "avg_des_ms": 0.0035, "size_bytes": 1500, "throughput_mbs": 133640.35 }
     }
   ],
   "x64": [
     {
       "input": "SMALL",
       "samples": 1024,
-      "json": { "avg_ms": 0.1381, "size_bytes": 5957, "throughput_mbs": 41.14 },
-      "toon": { "avg_ms": 0.0167, "size_bytes": 1652, "throughput_mbs": 94.34 }
+      "json": { "avg_ser_ms": 0.1229, "avg_des_ms": 0.0969, "size_bytes": 5957, "throughput_mbs": 8.35 },
+      "toon": { "avg_ser_ms": 0.0081, "avg_des_ms": 0.0047, "size_bytes": 1652, "throughput_mbs": 126.22 }
     },
     {
       "input": "MEDIUM",
       "samples": 4096,
-      "json": { "avg_ms": 0.1669, "size_bytes": 5974, "throughput_mbs": 34.14 },
-      "toon": { "avg_ms": 0.0116, "size_bytes": 1652, "throughput_mbs": 135.81 }
+      "json": { "avg_ser_ms": 0.1267, "avg_des_ms": 0.1017, "size_bytes": 5974, "throughput_mbs": 517.2 },
+      "toon": { "avg_ser_ms": 0.0098, "avg_des_ms": 0.0046, "size_bytes": 1652, "throughput_mbs": 6565.55 }
     },
     {
       "input": "LARGE",
       "samples": 1048576,
-      "json": { "avg_ms": 0.1255, "size_bytes": 5871, "throughput_mbs": 44.61 },
-      "toon": { "avg_ms": 0.0144, "size_bytes": 1652, "throughput_mbs": 109.41 }
+      "json": { "avg_ser_ms": 0.1268, "avg_des_ms": 0.0950, "size_bytes": 5871, "throughput_mbs": 8267.77 },
+      "toon": { "avg_ser_ms": 0.0093, "avg_des_ms": 0.0046, "size_bytes": 1652, "throughput_mbs": 112070.53}
     }
   ]
 }

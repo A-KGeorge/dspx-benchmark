@@ -219,6 +219,10 @@ async function generatePersistenceChart() {
           text: "dspx Persistence Throughput (Million samples/sec)",
           font: { size: 18, weight: "bold" },
         },
+        subtitle: {
+          display: true,
+          text: "Based on Serialization Times - Higher is Better",
+        },
       },
       scales: {
         y: {
@@ -473,16 +477,30 @@ async function generatePersistenceLatencyArm64Chart() {
       labels,
       datasets: [
         {
-          label: "JSON",
-          data: data.arm64.map((d) => d.json.avg_ms),
+          label: "JSON - Serialization",
+          data: data.arm64.map((d) => d.json.avg_ser_ms),
           backgroundColor: "rgba(54, 162, 235, 0.8)",
           borderColor: "rgb(54, 162, 235)",
           borderWidth: 1,
         },
         {
-          label: "TOON",
-          data: data.arm64.map((d) => d.toon.avg_ms),
+          label: "JSON - Deserialization",
+          data: data.arm64.map((d) => d.json.avg_des_ms),
+          backgroundColor: "rgba(54, 162, 235, 0.5)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 1,
+        },
+        {
+          label: "TOON - Serialization",
+          data: data.arm64.map((d) => d.toon.avg_ser_ms),
           backgroundColor: "rgba(75, 192, 192, 0.8)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 1,
+        },
+        {
+          label: "TOON - Deserialization",
+          data: data.arm64.map((d) => d.toon.avg_des_ms),
+          backgroundColor: "rgba(75, 192, 192, 0.5)",
           borderColor: "rgb(75, 192, 192)",
           borderWidth: 1,
         },
@@ -492,12 +510,12 @@ async function generatePersistenceLatencyArm64Chart() {
       plugins: {
         title: {
           display: true,
-          text: "Persistence Average Latency — arm64 (AWS Lambda)",
+          text: "Persistence Latency — arm64 (AWS Lambda)",
           font: { size: 18, weight: "bold" },
         },
         subtitle: {
           display: true,
-          text: "Average latency (ms) - Lower is Better",
+          text: "Serialization & Deserialization (ms) - Lower is Better",
         },
       },
       scales: {
@@ -541,16 +559,30 @@ async function generatePersistenceLatencyX64Chart() {
       labels,
       datasets: [
         {
-          label: "JSON",
-          data: data.x64.map((d) => d.json.avg_ms),
+          label: "JSON - Serialization",
+          data: data.x64.map((d) => d.json.avg_ser_ms),
           backgroundColor: "rgba(255, 99, 132, 0.8)",
           borderColor: "rgb(255, 99, 132)",
           borderWidth: 1,
         },
         {
-          label: "TOON",
-          data: data.x64.map((d) => d.toon.avg_ms),
+          label: "JSON - Deserialization",
+          data: data.x64.map((d) => d.json.avg_des_ms),
+          backgroundColor: "rgba(255, 99, 132, 0.5)",
+          borderColor: "rgb(255, 99, 132)",
+          borderWidth: 1,
+        },
+        {
+          label: "TOON - Serialization",
+          data: data.x64.map((d) => d.toon.avg_ser_ms),
           backgroundColor: "rgba(255, 205, 86, 0.8)",
+          borderColor: "rgb(255, 205, 86)",
+          borderWidth: 1,
+        },
+        {
+          label: "TOON - Deserialization",
+          data: data.x64.map((d) => d.toon.avg_des_ms),
+          backgroundColor: "rgba(255, 205, 86, 0.5)",
           borderColor: "rgb(255, 205, 86)",
           borderWidth: 1,
         },
@@ -560,12 +592,12 @@ async function generatePersistenceLatencyX64Chart() {
       plugins: {
         title: {
           display: true,
-          text: "Persistence Average Latency — x64 (AWS Lambda)",
+          text: "Persistence Latency — x64 (AWS Lambda)",
           font: { size: 18, weight: "bold" },
         },
         subtitle: {
           display: true,
-          text: "Average latency (ms) - Lower is Better",
+          text: "Serialization & Deserialization (ms) - Lower is Better",
         },
       },
       scales: {
