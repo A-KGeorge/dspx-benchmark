@@ -455,8 +455,146 @@ async function generateP99ComparisonChart() {
   console.log("✅ Chart saved to ./charts/lambda/lambda_p99_comparison.png");
 }
 
+async function generatePersistenceLatencyArm64Chart() {
+  const data = JSON.parse(
+    fs.readFileSync(
+      path.join(results_dir, "aws-lambda-persistence.json"),
+      "utf8",
+    ),
+  );
+
+  const labels = data.arm64.map(
+    (d) => `${d.input} (${formatSamples(d.samples)})`,
+  );
+
+  const config = {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "JSON",
+          data: data.arm64.map((d) => d.json.avg_ms),
+          backgroundColor: "rgba(54, 162, 235, 0.8)",
+          borderColor: "rgb(54, 162, 235)",
+          borderWidth: 1,
+        },
+        {
+          label: "TOON",
+          data: data.arm64.map((d) => d.toon.avg_ms),
+          backgroundColor: "rgba(75, 192, 192, 0.8)",
+          borderColor: "rgb(75, 192, 192)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "Persistence Average Latency — arm64 (AWS Lambda)",
+          font: { size: 18, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: "Average latency (ms) - Lower is Better",
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: "Latency (ms)" },
+        },
+        x: {
+          title: { display: true, text: "Input Buffer Size" },
+        },
+      },
+    },
+  };
+
+  console.log("📊 Generating persistence latency arm64 chart...");
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(charts_dir, "lambda_persistence_latency_arm64.png"),
+    buffer,
+  );
+  console.log(
+    "✅ Chart saved to ./charts/lambda/lambda_persistence_latency_arm64.png",
+  );
+}
+
+async function generatePersistenceLatencyX64Chart() {
+  const data = JSON.parse(
+    fs.readFileSync(
+      path.join(results_dir, "aws-lambda-persistence.json"),
+      "utf8",
+    ),
+  );
+
+  const labels = data.x64.map(
+    (d) => `${d.input} (${formatSamples(d.samples)})`,
+  );
+
+  const config = {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "JSON",
+          data: data.x64.map((d) => d.json.avg_ms),
+          backgroundColor: "rgba(255, 99, 132, 0.8)",
+          borderColor: "rgb(255, 99, 132)",
+          borderWidth: 1,
+        },
+        {
+          label: "TOON",
+          data: data.x64.map((d) => d.toon.avg_ms),
+          backgroundColor: "rgba(255, 205, 86, 0.8)",
+          borderColor: "rgb(255, 205, 86)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "Persistence Average Latency — x64 (AWS Lambda)",
+          font: { size: 18, weight: "bold" },
+        },
+        subtitle: {
+          display: true,
+          text: "Average latency (ms) - Lower is Better",
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: "Latency (ms)" },
+        },
+        x: {
+          title: { display: true, text: "Input Buffer Size" },
+        },
+      },
+    },
+  };
+
+  console.log("📊 Generating persistence latency x64 chart...");
+  const buffer = await chartCanvas.renderToBuffer(config);
+  fs.writeFileSync(
+    path.join(charts_dir, "lambda_persistence_latency_x64.png"),
+    buffer,
+  );
+  console.log(
+    "✅ Chart saved to ./charts/lambda/lambda_persistence_latency_x64.png",
+  );
+}
+
 // Generate additional charts
 generatePersistenceChart().catch(console.error);
 generateLatencyChart().catch(console.error);
 generateMemoryChart().catch(console.error);
 generateP99ComparisonChart().catch(console.error);
+generatePersistenceLatencyArm64Chart().catch(console.error);
+generatePersistenceLatencyX64Chart().catch(console.error);
