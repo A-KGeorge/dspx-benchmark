@@ -1,6 +1,6 @@
 # 🧠 DSPX Benchmarks
 
-**Auto-Generated:** 2026-01-29
+**Auto-Generated:** 2026-03-05
 
 ## Machine Specifications
 
@@ -10,9 +10,9 @@
 | **Cores** | 12 |
 | **RAM** | 16 GB |
 | **Architecture** | x64 |
-| **OS** | Microsoft Windows [Version 10.0.26100.4946] |
+| **OS** | Microsoft Windows [Version 10.0.26200.7623] |
 | **Node.js** | v22.21.1 |
-| **dspx** | v1.4.2 |
+| **dspx** | v1.4.12 |
 
 ---
 
@@ -119,11 +119,15 @@ Testing Finite Impulse Response filter implementations (51-tap lowpass):
 | jdsp | small | 9.28M samples/sec | CPU (JDSP FIR) |
 | jdsp | medium | 43.21M samples/sec | CPU (JDSP FIR) |
 | jdsp | large | 42.28M samples/sec | CPU (JDSP FIR) |
+| dspx_parallel | small | 2.58M samples/sec | CPU (Native C++ SIMD + 9 Worker Threads) |
+| dspx_parallel | medium | 7.92M samples/sec | CPU (Native C++ SIMD + 9 Worker Threads) |
+| dspx_parallel | large | 7.74M samples/sec | CPU (Native C++ SIMD + 9 Worker Threads) |
 
 **Key Insights:**
 - SIMD-optimized convolution in dspx delivers N/Ax speedup
 - Pure JS implementation struggles with inner loop overhead
 - FIR filters benefit most from vectorization (repeated multiply-accumulate)
+- **Parallel processing (18 workers)**: 1.6x additional speedup over single-threaded dspx
 
 ---
 
@@ -181,6 +185,84 @@ Demonstrating constant-time scaling with circular buffer implementation:
 - Naive implementation degrades linearly with window size (O(N·W) complexity)
 - **~640x speedup** with circular buffer approach at production scale (medium input, 8192 window)
 - Critical for real-time processing where window sizes can be large (1000+ samples)
+
+---
+
+## Story 1b — Parallel Processing Performance
+
+### 1D Convolution: Multi-threaded Scaling
+
+Testing dspx parallel processing with 18 worker threads:
+
+![Convolution Throughput](../charts/12th-gen-intel-core-i5-12600t/convolution_throughput.png)
+
+#### Parallel Results Summary
+
+| Library | Kernel Size | Throughput | Workers | Backend |
+|---------|-------------|------------|---------|----------|
+| dspx_parallel | 8 | 17.28M samples/sec | 18 | CPU (Native C++ SIMD + 9 Worker Threads) |
+| dspx_parallel | 32 | 15.65M samples/sec | 18 | CPU (Native C++ SIMD + 9 Worker Threads) |
+| dspx_parallel | 64 | 17.65M samples/sec | 18 | CPU (Native C++ SIMD + 9 Worker Threads) |
+| dspx_parallel | 128 | 7.84M samples/sec | 18 | CPU (Native C++ SIMD + 9 Worker Threads) |
+| dspx_parallel | 256 | 7.65M samples/sec | 18 | CPU (Native C++ SIMD + 9 Worker Threads) |
+
+**Key Insights:**
+- **2.1x speedup** with 18 workers vs single-threaded dspx
+- Worker threads enable true parallel processing on multi-core CPUs
+- Ideal for batch processing and high-throughput scenarios
+- Throughput scales with available CPU cores
+
+---
+
+## Story 2b — Python Concurrency: Threading vs Multiprocessing
+
+### Concurrent DSP Pipeline Scaling (Python scipy)
+
+Comparing Python threading (GIL-limited) vs multiprocessing (true parallelism):
+
+#### Python Threading Results (GIL-limited)
+
+| Pipelines | Avg Time (ms) | Throughput | Efficiency |
+|-----------|---------------|------------|------------|
+| 1 | 2.5 | 25.8M samples/sec | 100% |
+| 2 | 3.2 | 40.8M samples/sec | 158.3% |
+| 4 | 4.6 | 57.5M samples/sec | 223% |
+| 8 | 8.3 | 63.0M samples/sec | 244.3% |
+| 16 | 16.5 | 63.5M samples/sec | 246.1% |
+| 32 | 34.2 | 61.3M samples/sec | 237.4% |
+| 64 | 60.2 | 69.7M samples/sec | 270% |
+| 128 | 123.0 | 68.2M samples/sec | 264.3% |
+| 256 | 244.6 | 68.6M samples/sec | 265.8% |
+| 512 | 486.2 | 69.0M samples/sec | 267.5% |
+| 1024 | 1003.7 | 66.9M samples/sec | 259.1% |
+
+#### Python Multiprocessing Results (true parallelism)
+
+| Pipelines | Avg Time (ms) | Throughput | Efficiency |
+|-----------|---------------|------------|------------|
+| 1 | 3.7 | 17.5M samples/sec | 100% |
+| 2 | 8.0 | 16.4M samples/sec | 93.7% |
+| 4 | 20.0 | 13.1M samples/sec | 74.9% |
+| 8 | 27.3 | 19.2M samples/sec | 109.7% |
+| 16 | 41.0 | 25.6M samples/sec | 146.3% |
+| 32 | 58.3 | 36.0M samples/sec | 205.7% |
+| 64 | 84.9 | 49.4M samples/sec | 282.3% |
+| 128 | 143.8 | 58.3M samples/sec | 333.5% |
+| 256 | 367.8 | 45.6M samples/sec | 260.8% |
+| 512 | 774.5 | 43.3M samples/sec | 247.7% |
+| 1024 | 1280.7 | 52.4M samples/sec | 299.6% |
+
+**Key Insights:**
+- **Python threading**: GIL limits parallel execution, efficiency plateaus with more threads
+- **Python multiprocessing**: True parallelism bypasses GIL, better scaling with more workers
+- scipy releases GIL during C calls, enabling some threading benefits
+- At high concurrency (128+ pipelines), multiprocessing shows 3.0x efficiency
+- IPC overhead limits multiprocessing gains at low pipeline counts
+
+**Comparison to dspx:**
+- dspx worker threads avoid GIL entirely (native C++ execution)
+- Both Python strategies viable for different use cases
+- Python multiprocessing better for CPU-bound tasks
 
 ---
 
@@ -579,5 +661,5 @@ Measuring safety margin between processing time and buffer duration:
 ---
 
 **Generated by:** dspx benchmark suite v1.0  
-**Date:** 2026-01-29T21:55:39.740Z  
+**Date:** 2026-03-05T03:07:33.889Z  
 **Runtime:** Node.js v22.21.1
